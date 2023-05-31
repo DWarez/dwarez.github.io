@@ -77,10 +77,10 @@ theme_mode: dark # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: https://cdn.com
+img_cdn: "https://dwarez.github.io"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://github.com/DWarez/dwarez.github.io/blob/main/avatar.png
+avatar: assets/img/avatar.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
