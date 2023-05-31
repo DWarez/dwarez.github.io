@@ -80,7 +80,7 @@ theme_mode: dark # [light|dark]
 img_cdn: https://cdn.com
 
 # the avatar on sidebar, support local or CORS resources
-avatar: avatar.png
+avatar: https://github.com/DWarez/dwarez.github.io/blob/main/avatar.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
