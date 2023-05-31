@@ -15,9 +15,17 @@ Let's check it out. Simply define it in your code, as such:
 
 ```python
 from lightning.pytorch.loggers import MLFlowLogger
-# some code
+
+...
+# some code here
+...
+
 logger = MLFlowLogger("Default", "test_run")
-# some more code
+
+...
+# some code here
+...
+
 es = EarlyStopping(monitor="val_acc", patience=3, min_delta=0.05)
 trainer = Trainer(max_epochs=20, logger=logger, callbacks=[es])
 # trainer.fit()
@@ -44,6 +52,10 @@ mlflow.set_experiment(experiment_name)
 mlflow.pytorch.autolog()
 mlflow.start_run(run_name=run_name)
 
+...
+# some code here
+...
+
 # now we can log whatever we want
 transform = transforms.Compose(
         [
@@ -53,6 +65,10 @@ transform = transforms.Compose(
         ]
     )
 mlflow.log_param("dataset transformation", transform)
+
+...
+# some more code here
+...
 
 # how to integrate the MLFlow logger that we are using right now with the Lightning's one?
 # As simple as doing this
