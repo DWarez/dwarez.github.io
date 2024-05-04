@@ -1,0 +1,4 @@
+# config/_default/config.toml
+
+baseURL = "https://dwarez.github.io/"
+languageCode = "en"
