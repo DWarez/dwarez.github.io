@@ -3,8 +3,8 @@ title: "An Introduction to Sparsity for Efficient Neural Network Inference"
 date: 2024-05-05
 draft: false
 description: "Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference."
-slug: "pruning"
-tags: ["pruning", "low level", "optimization"]
+slug: "pruning-intro"
+tags: ["pruning", "optimization", "inference"]
 ---
 
 **Large Language Model**. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.

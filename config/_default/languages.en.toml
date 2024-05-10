@@ -8,7 +8,7 @@ title = "NeuronBit"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  # logo = "img/blowfish_logo_transparent.png"
+  logo = "img/logo.png"
   description = "The low level side of machine learning."
 
 [author]

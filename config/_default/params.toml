@@ -12,7 +12,7 @@ autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = true
 
-mainSections = ["docs"]
+mainSections = ["posts"]
 # robots = ""
 
 disableImageOptimization = false
@@ -38,7 +38,7 @@ smartTOCHideUnfocusedChildren = false
 [homepage]
   layout = "hero" # valid options: page, profile, hero, card, background, custom
   homepageImage = "/img/gpu_power.jpg" # used in: hero, and card
-  showRecent = false
+  showRecent = true
   showRecentItems = 6
   showMoreLink = true
   showMoreLinkDest = "docs"
@@ -60,7 +60,7 @@ smartTOCHideUnfocusedChildren = false
   showBreadcrumbs = true
   showDraftLabel = true
   showEdit = true
-  editURL = "https://github.com/nunocoracao/blowfish/tree/main/exampleSite/content"
+  editURL = "https://github.com/DWarez/dwarez.github.io/tree/master/content/"
   editAppendPath = true
   seriesOpened = false
   showHeadingAnchors = true
