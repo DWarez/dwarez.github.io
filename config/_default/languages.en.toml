@@ -1,7 +1,7 @@
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "NeuronBit"
+title = "The ML Surgeon"
 
 [params]
   displayName = "English"
@@ -13,9 +13,9 @@ title = "NeuronBit"
 
 [author]
   name = "Dario Salvati"
-  image = "img/avatar.png"
-  headline = "Machine Learning Engineer making models go brrr."
-  bio = "Machine Learning Engineer making models go brrr."
+  image = "img/avatar.jpg"
+  headline = "A surgeon for Machine Learning models."
+  bio = "A surgeon for Machine Learning models."
   links = [
     { linkedin = "https://linkedin.com/in/dwarez" },
     { github = "https://github.com/dwarez" },

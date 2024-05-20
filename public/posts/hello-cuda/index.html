@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Hello CUDA: the righteous way &middot; NeuronBit</title>
-  <meta name="title" content="Hello CUDA: the righteous way &middot; NeuronBit" />
+  <title>Hello CUDA: A Surgical Dissection &middot; The ML Surgeon</title>
+  <meta name="title" content="Hello CUDA: A Surgical Dissection &middot; The ML Surgeon" />
   
   <meta name="description" content="The CUDA programming language enables developers to harness the power of NVIDIA GPUs for general-purpose processing tasks. Given its steep learning curve, many." />
-  <meta name="keywords" content="gpu-programming, cuda, " />
+  <meta name="keywords" content="gpu-programming, cuda, basics, " />
   
   
   <link rel="canonical" href="http://localhost:1313/posts/hello-cuda/" />
@@ -64,8 +64,8 @@
   
   
   <meta property="og:url" content="http://localhost:1313/posts/hello-cuda/">
-  <meta property="og:site_name" content="NeuronBit">
-  <meta property="og:title" content="Hello CUDA: the righteous way">
+  <meta property="og:site_name" content="The ML Surgeon">
+  <meta property="og:title" content="Hello CUDA: A Surgical Dissection">
   <meta property="og:description" content="The CUDA programming language enables developers to harness the power of NVIDIA GPUs for general-purpose processing tasks. Given its steep learning curve, many.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
@@ -74,8 +74,9 @@
     <meta property="article:modified_time" content="2024-05-06T00:00:00+00:00">
     <meta property="article:tag" content="Gpu-Programming">
     <meta property="article:tag" content="Cuda">
+    <meta property="article:tag" content="Basics">
 
-  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Hello CUDA: the righteous way">
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Hello CUDA: A Surgical Dissection">
 <meta name="twitter:description" content="The CUDA programming language enables developers to harness the power of NVIDIA GPUs for general-purpose processing tasks. Given its steep learning curve, many.">
 
   
@@ -84,8 +85,8 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Posts",
-    "name": "Hello CUDA: the righteous way",
-    "headline": "Hello CUDA: the righteous way",
+    "name": "Hello CUDA: A Surgical Dissection",
+    "headline": "Hello CUDA: A Surgical Dissection",
     "description": "The CUDA programming language enables developers to harness the power of NVIDIA GPUs for general-purpose processing tasks. Given its steep learning curve, many.",
     "abstract": "In case you didn\u0026rsquo;t already know, CUDA is a parallel computing platform and API, developed by NVIDIA, that enables programmers to exploit certain types of GPUs. Not too long ago (around until 2007), GPUs were solely utilized for graphics rendering, and programmers had to depend on very specific graphics APIs to utilize them for solving general problems.",
     "inLanguage": "en",
@@ -100,10 +101,10 @@
     
     "dateModified": "2024-05-06T00:00:00\u002b00:00",
     
-    "keywords": ["gpu-programming","cuda"],
+    "keywords": ["gpu-programming","cuda","basics"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1120"
+    "wordCount": "2633"
   }]
   </script>
 
@@ -207,10 +208,10 @@
     
     <div>
         <a href="/" class="flex">
-            <span class="sr-only">NeuronBit</span>
+            <span class="sr-only">The ML Surgeon</span>
 
-            <img src="/img/logo.png" width="540" height="540"
-                class="logo max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom" alt="NeuronBit" />
+            <img src="/img/logo.png" width="250" height="250"
+                class="logo max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom" alt="The ML Surgeon" />
 
         </a>
     </div>
@@ -219,7 +220,7 @@
         <nav class="flex space-x-3">
 
             
-            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">NeuronBit</a>
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">The ML Surgeon</a>
             
 
         </nav>
@@ -572,7 +573,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/"
-      >NeuronBit</a
+      >The ML Surgeon</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -590,7 +591,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/posts/hello-cuda/"
-      >Hello CUDA: the righteous way</a
+      >Hello CUDA: A Surgical Dissection</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -599,7 +600,7 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Hello CUDA: the righteous way
+      Hello CUDA: A Surgical Dissection
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -650,7 +651,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <span title="Reading time">6 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+  <span title="Reading time">13 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
   
   
     
@@ -814,6 +815,14 @@
 </span>
   </span>
   
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/basics/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Basics
+  </span>
+</span>
+  </span>
+  
   
   
   
@@ -847,7 +856,7 @@
         
       
       <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
-      alt="Dario Salvati" src="/img/avatar_hu467a9ca845fcd1b850bf564628452bad_214980_192x192_fill_box_center_3.png" />
+      alt="Dario Salvati" src="/img/avatar_hud9c675c2b51511effe7081e0eea760d3_364165_192x192_fill_q75_box_center.jpg" />
     
   
   <div class="place-self-center">
@@ -860,7 +869,7 @@
     </div>
     
     
-    <div class="text-sm text-neutral-700 dark:text-neutral-400">Machine Learning Engineer making models go brrr.</div>
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A surgeon for Machine Learning models.</div>
     
     <div class="text-2xl sm:text-lg">
   <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
@@ -935,17 +944,27 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#code-analysis">Code Analysis</a>
+    <li><a href="#code-dissection">Code Dissection</a>
       <ul>
         <li><a href="#cuda-error-handling">CUDA Error Handling</a></li>
         <li><a href="#the-kernel">The Kernel</a>
           <ul>
             <li><a href="#function-execution-space">Function Execution Space</a></li>
-            <li><a href="#blocks-and-threads">Blocks and threads</a></li>
+            <li><a href="#blocks_and_threads">Blocks and threads</a></li>
           </ul>
         </li>
+        <li><a href="#host-code">Host code</a>
+          <ul>
+            <li><a href="#device-memory">Device Memory</a></li>
+            <li><a href="#kernel-invocation">Kernel Invocation</a></li>
+            <li><a href="#storing-and-cleaning-up">Storing and cleaning up</a></li>
+          </ul>
+        </li>
+        <li><a href="#main">Main</a></li>
       </ul>
     </li>
+    <li><a href="#compile-and-run">Compile and run</a></li>
+    <li><a href="#wrapping-up">Wrapping Up</a></li>
   </ul>
 </nav>
   </div>
@@ -960,17 +979,27 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#code-analysis">Code Analysis</a>
+    <li><a href="#code-dissection">Code Dissection</a>
       <ul>
         <li><a href="#cuda-error-handling">CUDA Error Handling</a></li>
         <li><a href="#the-kernel">The Kernel</a>
           <ul>
             <li><a href="#function-execution-space">Function Execution Space</a></li>
-            <li><a href="#blocks-and-threads">Blocks and threads</a></li>
+            <li><a href="#blocks_and_threads">Blocks and threads</a></li>
           </ul>
         </li>
+        <li><a href="#host-code">Host code</a>
+          <ul>
+            <li><a href="#device-memory">Device Memory</a></li>
+            <li><a href="#kernel-invocation">Kernel Invocation</a></li>
+            <li><a href="#storing-and-cleaning-up">Storing and cleaning up</a></li>
+          </ul>
+        </li>
+        <li><a href="#main">Main</a></li>
       </ul>
     </li>
+    <li><a href="#compile-and-run">Compile and run</a></li>
+    <li><a href="#wrapping-up">Wrapping Up</a></li>
   </ul>
 </nav>
   </div>
@@ -1029,7 +1058,8 @@
     CUDA</a> is a parallel computing platform and API, developed by NVIDIA, that enables programmers to exploit certain types of GPUs. Not too long ago (around until 2007), GPUs were solely utilized for graphics rendering, and programmers had to depend on very specific graphics APIs to utilize them for solving general problems.</p>
 <p>With the introduction of CUDA, everything changed. Its integration with languages like C, C++, or Python, along with the elimination of the need for knowledge in graphics programming, made GPU programming much more accessible.</p>
 <p>However, many individuals today still feel daunted by the complexity of GPU programming, both in terms of the language (which is too low-level compared to the most popular programming languages today) and the architecture and development knowledge required to write this kind of software.</p>
-<p>This article aims to introduce you to this realm through an in-depth technical analysis of a HelloWorld, which is famously the starting point for every programmer who ventures into a new programming language.</p>
+<p>This article aims to introduce you to this realm through an in-depth technical analysis of a HelloWorld, which is famously the starting point for every programmer who ventures into a new programming language.
+Just as a surgeon carefully dissects to reveal the inner workings of the human body, we&rsquo;ll break down each component of CUDA&rsquo;s basic architecture and functionality.</p>
 <p>Since we&rsquo;re discussing GPU programming, the classic <code>print(&quot;hello world&quot;)</code> won&rsquo;t be applicable. Instead, we&rsquo;ll analyze a complete program that adds two vectors, using the GPU.</p>
 
 
@@ -1052,19 +1082,20 @@
 <p>That&rsquo;s about it.</p>
 
 
-<h2 class="relative group">Code Analysis 
-    <div id="code-analysis" class="anchor"></div>
+<h2 class="relative group">Code Dissection 
+    <div id="code-dissection" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#code-analysis" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#code-dissection" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
 <p>In the link below, you will find the full code snippet for our HelloWorld program. I believe that reading the entire code first piques your interest, as you will likely have questions you want answered.</p>
 <p>If this code seems intimidating to you, please don&rsquo;t be afraid. I assure you that by the end of your reading, you will fully understand it and realize its simplicity.</p>
-<p>TODO: inserisci link a Github gist 
+<p><a href="https://gist.github.com/DWarez/90515ace919f5dca6e65a4d35f09a8b5"   target="_blank">
+    Here&rsquo;s the code</a> 
 
   <span class="relative inline-block align-text-bottom icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -1072,7 +1103,7 @@
   </span>
 
 </p>
-<p>We are now ready to analyze this code, top to bottom.</p>
+<p>We are now ready to dissect this code, top to bottom.</p>
 
 
 <h3 class="relative group">CUDA Error Handling 
@@ -1093,7 +1124,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp">    }
 </span></span></span></code></pre></div><p>Within this macro, we utilize several CUDA-defined functions and symbols, such as <code>cudaSuccess</code> and <code>cudaGetErrorString(cudaError_t)</code>. While these are fairly self-explanatory, let&rsquo;s delve deeper into their significance.</p>
 <p>We consider the <code>err</code> variable a <code>cudaError_t</code> type variable, intended to store errors encountered during execution. Within the macro, we check if the error status is <code>cudaSuccess</code>, indicating successful code execution. If this condition is not met, we invoke the <code>cudaGetErrorString(cudaError_t)</code> function to retrieve the error string, providing clarity on the encountered issue, and then we exit the code execution.</p>
-<p>While this is obviously the most basic way of doing error handling, it&rsquo;s crucial to remember to remember its necessity whenever utilizing CUDA APIs, as errors may arise during their invocation.</p>
+<p>While this is obviously the most basic way of doing error handling, it&rsquo;s crucial to remember its necessity whenever utilizing CUDA APIs, as errors may arise during their invocation.</p>
 
 
 <h3 class="relative group">The Kernel 
@@ -1129,20 +1160,20 @@
 <li><code>__device__</code> signifies code executed exclusively on the device. It can only be called by another device execution and not from the host.</li>
 <li><code>__host__</code> denotes code that can be called and executed solely by the host. This is the default execution space if no execution space is specified.</li>
 </ul>
-<p>Now that we understand what a function execution space entails, let&rsquo;s briefly delve into the remainder of the prototype. As mentioned earlier, given that this function serves as a kernel, it must inherently return <code>void</code>. Consequently, we&rsquo;ll need both the input and output vectors, as well as explicitly specify the length of the vectors.</p>
+<p>Now that we understand what a function execution space entails, let&rsquo;s briefly delve into the remainder of the prototype. As mentioned earlier, given that this function serves as a kernel, it must inherently return <code>void</code>. Consequently, we&rsquo;ll need both the input (<code>A</code>, <code>B</code>) and output (<code>C</code>) vectors, as well as explicitly specify the length of the vectors (<code>n</code>).</p>
 
 
 <h4 class="relative group">Blocks and threads 
-    <div id="blocks-and-threads" class="anchor"></div>
+    <div id="blocks_and_threads" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#blocks-and-threads" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#blocks_and_threads" aria-label="Anchor">#</a>
     </span>        
     
 </h4>
-<p>The subsequent lines of code may appear cryptic at first glance, as it encompasses several complexities. To unravel its intricacies, let&rsquo;s begin with the fundamentals.</p>
+<p>The subsequent lines of code may appear cryptic at first glance, as they encompasses several complexities. To unravel their intricacies, let&rsquo;s begin with the fundamentals.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -1157,6 +1188,177 @@
 <li><code>blockIdx</code>: Denotes the index of the block containing the executing thread.</li>
 <li><code>blockDim</code>: Specifies the size of each spawned block.</li>
 </ul>
+<p>A block is a group of threads that collaborate and communicate through shared memory. These blocks are scheduled and executed together by the hardware. Moreover, all blocks together form what is termed as a grid. This implies that the structure is inherently multi-dimensional: a grid has three dimensions—x, y, and z. Hence, when referencing the built-in variables <code>threadIdx</code>, <code>blockIdx</code>, and <code>blockDim</code>, we utilize their <code>x</code> attribute, which corresponds to the x-dimension of the grid. The rationale behind this will become clearer when we examine the kernel invocation.</p>
+<p>The final piece to explain is the <code>if</code> statement preceding the actual sum computation. This if statement verifies that the computed index falls within the bounds of the input vectors. While this check may initially seem unnecessary, its significance will become apparent later on.</p>
+
+
+<h3 class="relative group">Host code 
+    <div id="host-code" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#host-code" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Following the discussion on the kernel, let&rsquo;s shift our attention to the host code of the program. Here, we&rsquo;re tasked with memory allocation, kernel invocation, and error checking.</p>
+
+
+<h4 class="relative group">Device Memory 
+    <div id="device-memory" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#device-memory" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>A crucial consideration is that device memory is distinct from host memory. Consequently, the device cannot directly operate on data residing in host memory. This necessitates the allocation of device memory and the transfer of data from the host to the device. While this may appear trivial, it&rsquo;s one of the most significant bottlenecks in modern software, particularly when handling large amounts of data, leading to substantial communication overhead between the host and the device.
+Given this distinction, as a best practice, we use the notation <code>V_h</code> to indicate a variable used by the <strong>h</strong>ost and <code>V_d</code> to denote a variable used by the <strong>d</strong>evice.</p>
+<p>Given the simplicity of our case study, we&rsquo;ll overlook these technical intricacies and focus on accomplishing the bare minimum to ensure functionality.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vecAdd</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">A_h</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">B_h</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">C_h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span></code></pre></div><p>The <code>vecAdd</code> function accepts three host-vectors as arguments: <code>A_h</code> and <code>B_h</code>, which are to be summed, and <code>C_h</code>, which will store the result. It&rsquo;s important to note that an output vector <code>C</code> is necessary since the kernel cannot directly return anything. Finally, <code>n</code> represents the length of the input vectors.</p>
+<p>Our initial step is to determine the size of the device-vectors. This computation follows a standard C approach:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">size</span> <span class="o">=</span>  <span class="n">n</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span>
+</span></span></code></pre></div><p>Next, we proceed to allocate memory on the device to store the device-vectors:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">float</span> <span class="o">*</span><span class="n">A_d</span><span class="p">,</span> <span class="o">*</span><span class="n">B_d</span><span class="p">,</span> <span class="o">*</span><span class="n">C_d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cudaMalloc</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">A_d</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cudaMalloc</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">B_d</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cudaMalloc</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">C_d</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+</span></span></code></pre></div><p>Fortunately, the CUDA programming language provides us with the <code>cudaMalloc</code> function, which functions similarly to the <code>malloc</code> function but operates on the device.</p>
+<p>Before invoking the kernel, the final step is to transfer data from the host to the device. At this stage, we have:</p>
+<ul>
+<li>On the host, three vectors containing the data for computation</li>
+<li>On the device, three memory allocations initialized but lacking of the necessary data.</li>
+</ul>
+<p>To address this, we leverage another CUDA programming function, <code>cudaMemcpy</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">cudaError_t</span> <span class="n">error</span> <span class="o">=</span> <span class="nf">cudaMemcpy</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span> <span class="n">A_h</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">cudaMemcpyHostToDevice</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">CUDA_CHECK_ERROR</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">error</span> <span class="o">=</span> <span class="nf">cudaMemcpy</span><span class="p">(</span><span class="n">B_d</span><span class="p">,</span> <span class="n">B_h</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">cudaMemcpyHostToDevice</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">CUDA_CHECK_ERROR</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+</span></span></code></pre></div><p>We invoke the function with the following parameters: the destination pointer, the source pointer, the size to copy, and the direction. The parameter <code>cudaMemcpyHostToDevice</code> specifies that we intend to copy data from the host to the device.
+Additionally, observe how we utilize the previously defined macro to check for errors in case the memory copying operation fails.</p>
+
+
+<h4 class="relative group">Kernel Invocation 
+    <div id="kernel-invocation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#kernel-invocation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>Assuming everything executes correctly, we&rsquo;ve successfully copied the input vectors to the device memory. Hence, we can proceed to call the kernel.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">number_of_threads</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">dim3</span> <span class="nf">dimGrid</span><span class="p">(</span><span class="nf">ceil</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">number_of_threads</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">dim3</span> <span class="nf">dimBlock</span><span class="p">(</span><span class="n">number_of_threads</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">vecAddKernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">dimGrid</span><span class="p">,</span> <span class="n">dimBlock</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span> <span class="n">B_d</span><span class="p">,</span> <span class="n">C_d</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+</span></span></code></pre></div><p>First, we define the number of threads we want to allocate per block. Next, we define two <code>dim3</code> type variables, which represent 3-dimensional vectors typically used to specify grid and block sizes. Since we are dealing with a 1-dimensional problem, we only need to use the x-dimension.</p>
+<p>We compute the grid size as the number of elements in the input vectors, <code>n</code>, divided by the number of threads per block. To ensure the grid dimension can accommodate all threads, even if <code>n</code> is not perfectly divisible by the number of threads per block, we use the <code>ceil</code> operator, which will round-up the division. The block dimension is simply set to the number of threads we want to allocate per block.</p>
+<p>Lastly, we invoke the kernel, as specified in the previous sections.</p>
+<p>Notice two things:</p>
+<ol>
+<li>
+<p>We can now fully understand why we need to use an <code>if</code> statement in the kernel, as explained in the <a href="#blocks_and_threads"  >
+    Blocks and threads</a>. Let&rsquo;s illustrate with a practical example. Suppose <code>n = 100</code> and <code>number_of_threads = 16</code>. When computing the x-dimension of the grid size, the exact result is 6.25. However, if we set the grid x-size to 6, we won&rsquo;t allocate enough threads because we&rsquo;ll have 6 blocks of 16 elements each, totaling 96 threads, leaving out 4 positions of the vectors. On the other hand, if we set the grid size to 7, we&rsquo;ll allocate more threads than the number of positions to compute because 7x16=112. We can&rsquo;t allow the extra threads to access memory indicated by their <code>int i = threadIdx.x + blockIdx.x * blockDim.x;</code> because it would be out of bounds. Therefore, the necessity of using an <code>if</code> statement to check such boundaries.</p>
+</li>
+<li>
+<p>Often, tutorials do not explicitly allocate the <code>dimGrid</code> and <code>dimBlock</code> variables, but instead invoke the kernel directly like this: <code>vecAddKernel&lt;&lt;&lt;ceil(n/number_of_threads), number_of_threads&gt;&gt;&gt;(A_d, B_d, C_d, n)</code>. This syntax is valid because the <code>dim3</code> data type automatically defaults unspecified dimensions to 1. However, I chose to specify all dimensions to clarify the explanation provided in the section <a href="#blocks_and_threads"  >
+    Blocks and threads</a>.</p>
+</li>
+</ol>
+
+
+<h4 class="relative group">Storing and cleaning up 
+    <div id="storing-and-cleaning-up" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#storing-and-cleaning-up" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>After the kernel invocation, we need to retrieve the computation result. Since the kernel cannot return anything, it&rsquo;s the programmer&rsquo;s responsibility to fetch the output of the computation. We can easily accomplish this as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">error</span> <span class="o">=</span> <span class="nf">cudaMemcpy</span><span class="p">(</span><span class="n">C_h</span><span class="p">,</span> <span class="n">C_d</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">cudaMemcpyDeviceToHost</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">CUDA_CHECK_ERROR</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cudaFree</span><span class="p">(</span><span class="n">A_d</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cudaFree</span><span class="p">(</span><span class="n">B_d</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cudaFree</span><span class="p">(</span><span class="n">C_d</span><span class="p">);</span>
+</span></span></code></pre></div><p>Once again, we utilize the <code>cudaMemcpy</code> function, but this time we specify <code>cudaMemcpyDeviceToHost</code>, indicating that we are transferring data from the device to the host. Notice also how the order of the host and device variables has switched in the function call compared to previous occurrences.</p>
+<p>Finally, we must free the memory that was used. This isn&rsquo;t just a best practice—it&rsquo;s an absolute necessity!</p>
+
+
+<h3 class="relative group">Main 
+    <div id="main" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#main" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Just for completeness, let&rsquo;s quickly go through the main function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">512</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">A_h</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">B_h</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">C_h</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">A_h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">B_h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">vecAdd</span><span class="p">(</span><span class="n">A_h</span><span class="p">,</span> <span class="n">B_h</span><span class="p">,</span> <span class="n">C_h</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">C_h</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></code></pre></div><p>There isn&rsquo;t much to say here. We define the length of the vectors <code>n</code>, then allocate and initialize the input vectors <code>A_h</code> and <code>B_h</code> with a range from 0 to n-1. Next, we call the host code, which also invokes the kernel, and finally, we print the result stored in <code>C_h</code>.</p>
+
+
+<h2 class="relative group">Compile and run 
+    <div id="compile-and-run" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#compile-and-run" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Compiling and running this example is straightforward. First, we compile the source as we would for a C file, but we use the CUDA compiler, called <code>nvcc</code>. Assuming the source is named <code>hello_world.cu</code> and we are in its parent directory, we can build the executable like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">nvcc hello_world.cu -o hello_world
+</span></span></code></pre></div><p>Then, we simply run the executable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">./hello_world
+</span></span></code></pre></div><p>And we will receive the output (truncated for readability):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span>
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl"><span class="m">1018</span>
+</span></span><span class="line"><span class="cl"><span class="m">1020</span>
+</span></span><span class="line"><span class="cl"><span class="m">1022</span>
+</span></span></code></pre></div>
+
+<h2 class="relative group">Wrapping Up 
+    <div id="wrapping-up" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#wrapping-up" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>In summary, we&rsquo;ve explored the fundamentals of CUDA programming, which enables us to harness the power of GPUs for parallel computing tasks. We began by understanding the distinction between the host (CPU) and the device (GPU) and delved into CUDA&rsquo;s function execution specifiers (<code>__global__</code>, <code>__device__</code>, <code>__host__</code>) that define where functions can be executed.</p>
+<p>We discussed the importance of memory management, highlighting how data must be transferred between host and device memories using functions like <code>cudaMalloc</code> and <code>cudaMemcpy</code>. We also saw the significance of error handling throughout the CUDA programming process, utilizing macros to check for errors and ensure smooth execution.</p>
+<p>The heart of CUDA programming lies in kernels, functions executed on the GPU, typically invoked in a grid of threads. We learned about grid and block dimensions, and the necessity of boundary checks within kernels to avoid out-of-bounds memory access.</p>
+<p>We then examined a practical example of vector addition, illustrating how to define and invoke kernels, manage memory, and handle errors.</p>
+<p>Lastly, we discussed compiling and running CUDA programs using the <code>nvcc</code> compiler and executing the resulting executables.</p>
+<p>Overall, CUDA provides a powerful framework for parallel programming on GPUs, offering immense computational capabilities for a wide range of applications. With a solid understanding of its principles and techniques, developers can unlock the full potential of GPU-accelerated computing.</p>
+<p>Time to close the operating theater! You&rsquo;ve witnessed the basic intricacies of CUDA programming under the scalpel today. Keep honing those skills, and you&rsquo;ll soon be performing GPU surgeries with finesse. Until our next exploration, stay sharp and happy coding! 🤖</p>
 
         </div>
         
@@ -1171,7 +1373,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/hello-cuda/&amp;title=Hello%20CUDA:%20the%20righteous%20way"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/hello-cuda/&amp;title=Hello%20CUDA:%20A%20Surgical%20Dissection"
       title="Share on LinkedIn"
       aria-label="Share on LinkedIn"
       >
@@ -1190,7 +1392,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://t.me/share/url?url=http://localhost:1313/posts/hello-cuda/&amp;resubmit=true&amp;title=Hello%20CUDA:%20the%20righteous%20way"
+      href="https://t.me/share/url?url=http://localhost:1313/posts/hello-cuda/&amp;resubmit=true&amp;title=Hello%20CUDA:%20A%20Surgical%20Dissection"
       title=""
       aria-label=""
       >
@@ -1209,7 +1411,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://reddit.com/submit/?url=http://localhost:1313/posts/hello-cuda/&amp;resubmit=true&amp;title=Hello%20CUDA:%20the%20righteous%20way"
+      href="https://reddit.com/submit/?url=http://localhost:1313/posts/hello-cuda/&amp;resubmit=true&amp;title=Hello%20CUDA:%20A%20Surgical%20Dissection"
       title="Submit to Reddit"
       aria-label="Submit to Reddit"
       >
@@ -1228,7 +1430,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="mailto:?body=http://localhost:1313/posts/hello-cuda/&amp;subject=Hello%20CUDA:%20the%20righteous%20way"
+      href="mailto:?body=http://localhost:1313/posts/hello-cuda/&amp;subject=Hello%20CUDA:%20A%20Surgical%20Dissection"
       title="Send via email"
       aria-label="Send via email"
       >

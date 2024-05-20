@@ -21,12 +21,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
@@ -34,6 +28,12 @@
   </url>
   <url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
