@@ -88,7 +88,7 @@
     "name": "An Introduction to Sparsity for Efficient Neural Network Inference",
     "headline": "An Introduction to Sparsity for Efficient Neural Network Inference",
     "description": "Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference.",
-    "abstract": "Large Language Model. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models.",
+    "abstract": "NOTE: This post was written before the Machine Learning Surgeon got in charge of the blog, that\u0026rsquo;s why there are no references to surgical operations!\nLarge Language Model. How many times did you read that term?",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/pruning-intro\/",
     "author" : {
@@ -104,7 +104,7 @@
     "keywords": ["pruning","optimization","inference"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1346"
+    "wordCount": "1371"
   }]
   </script>
 
@@ -1060,7 +1060,10 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <p><strong>Large Language Model</strong>. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.</p>
+          <blockquote>
+<p><strong><em>NOTE:</em></strong>  This post was written before the Machine Learning Surgeon got in charge of the blog, that&rsquo;s why there are no references to surgical operations!</p>
+</blockquote>
+<p><strong>Large Language Model</strong>. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.</p>
 <p>When I first started learning about neural networks -about 5 years ago-, one of the key questions I had was if it would be possible to know, a priori, the minimum number of parameters that a network must implement to achieve a certain metric value when solving a specific problem. Unfortunately, as far as I know, there is no such theorem. Surely, we know about convergence theorems -like the <a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem"   target="_blank">
     Universal Approximation Theorem</a>-, but nothing tells us the optimal number of parameters, given an architecture and a problem to solve.</p>
 <p>A very interesting methodology is the Cascade Correlation, which is a constructive approach for obtaining a network that solves a specific problem. However, this methodology is impractical in modern times: the size of neural networks is just too big, especially when talking about LLMs, which typically span from 7 to 70 billion parameters.</p>

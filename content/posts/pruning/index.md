@@ -7,6 +7,9 @@ slug: "pruning-intro"
 tags: ["pruning", "optimization", "inference"]
 ---
 
+> **_NOTE:_**  This post was written before the Machine Learning Surgeon got in charge of the blog, that's why there are no references to surgical operations!
+
+
 **Large Language Model**. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.
 
 When I first started learning about neural networks -about 5 years ago-, one of the key questions I had was if it would be possible to know, a priori, the minimum number of parameters that a network must implement to achieve a certain metric value when solving a specific problem. Unfortunately, as far as I know, there is no such theorem. Surely, we know about convergence theorems -like the [Universal Approximation Theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)-, but nothing tells us the optimal number of parameters, given an architecture and a problem to solve.

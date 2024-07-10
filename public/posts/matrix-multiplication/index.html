@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Matrix Multiplication &middot; The ML Surgeon</title>
-  <meta name="title" content="Matrix Multiplication &middot; The ML Surgeon" />
+  <title>A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA &middot; The ML Surgeon</title>
+  <meta name="title" content="A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA &middot; The ML Surgeon" />
   
   <meta name="description" content="The low level side of machine learning." />
   <meta name="keywords" content="cuda, gpu, architecture, " />
@@ -65,19 +65,19 @@
   
   <meta property="og:url" content="http://localhost:1313/posts/matrix-multiplication/">
   <meta property="og:site_name" content="The ML Surgeon">
-  <meta property="og:title" content="Matrix Multiplication">
-  <meta property="og:description" content="During the first year of my Master’s Degree in Computer Science, I had to complete a project for a Machine Learning course. The project involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.">
+  <meta property="og:title" content="A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA">
+  <meta property="og:description" content="During the first year of my Master’s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-06-25T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-06-25T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-07-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-07-10T00:00:00+00:00">
     <meta property="article:tag" content="Cuda">
     <meta property="article:tag" content="Gpu">
     <meta property="article:tag" content="Architecture">
 
-  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Matrix Multiplication">
-<meta name="twitter:description" content="During the first year of my Master&rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. The project involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.">
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA">
+<meta name="twitter:description" content="During the first year of my Master&rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.">
 
   
   <script type="application/ld+json">
@@ -85,10 +85,10 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Posts",
-    "name": "Matrix Multiplication",
-    "headline": "Matrix Multiplication",
+    "name": "A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA",
+    "headline": "A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA",
     
-    "abstract": "During the first year of my Master\u0026rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. The project involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.",
+    "abstract": "During the first year of my Master\u0026rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/matrix-multiplication\/",
     "author" : {
@@ -96,15 +96,15 @@
       "name": "Dario Salvati"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-06-25T00:00:00\u002b00:00",
-    "datePublished": "2024-06-25T00:00:00\u002b00:00",
+    "dateCreated": "2024-07-10T00:00:00\u002b00:00",
+    "datePublished": "2024-07-10T00:00:00\u002b00:00",
     
-    "dateModified": "2024-06-25T00:00:00\u002b00:00",
+    "dateModified": "2024-07-10T00:00:00\u002b00:00",
     
     "keywords": ["cuda","gpu","architecture"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "2247"
+    "wordCount": "3202"
   }]
   </script>
 
@@ -701,7 +701,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/posts/matrix-multiplication/"
-      >Matrix Multiplication</a
+      >A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -710,7 +710,7 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Matrix Multiplication
+      A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -755,7 +755,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <span title="Reading time">11 mins</span><span class="px-2 text-primary-500">&middot;</span>
+  <span title="Reading time">16 mins</span><span class="px-2 text-primary-500">&middot;</span>
 
 
   
@@ -979,18 +979,20 @@
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#the-starting-point">The starting point</a>
+    <li><a href="#the-first-cut">The First Cut</a>
       <ul>
-        <li><a href="#matrix-linearization">Matrix linearization</a></li>
-        <li><a href="#the-simplest-kernel">The simplest kernel</a></li>
+        <li><a href="#matrix-linearization">Matrix Linearization</a></li>
+        <li><a href="#a-naive-kernel">A Naive Kernel</a></li>
       </ul>
     </li>
-    <li><a href="#analysis-and-limitations">Analysis and limitations</a>
+    <li><a href="#advanced-surgical-techniques">Advanced Surgical Techniques</a>
       <ul>
-        <li><a href="#understanding-the-role-of-tiling">Understanding the Role of Tiling</a></li>
+        <li><a href="#advanced-incision-techniques-tiling">Advanced Incision Techniques: Tiling</a></li>
         <li><a href="#brain-cells-cooperating">Brain Cells Cooperating</a></li>
+        <li><a href="#flexible-incisions-arbitrary-tile-size">Flexible Incisions: Arbitrary Tile Size</a></li>
       </ul>
     </li>
+    <li><a href="#closing-the-incision">Closing the Incision</a></li>
   </ul>
 </nav>
   </div>
@@ -1004,18 +1006,20 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#the-starting-point">The starting point</a>
+    <li><a href="#the-first-cut">The First Cut</a>
       <ul>
-        <li><a href="#matrix-linearization">Matrix linearization</a></li>
-        <li><a href="#the-simplest-kernel">The simplest kernel</a></li>
+        <li><a href="#matrix-linearization">Matrix Linearization</a></li>
+        <li><a href="#a-naive-kernel">A Naive Kernel</a></li>
       </ul>
     </li>
-    <li><a href="#analysis-and-limitations">Analysis and limitations</a>
+    <li><a href="#advanced-surgical-techniques">Advanced Surgical Techniques</a>
       <ul>
-        <li><a href="#understanding-the-role-of-tiling">Understanding the Role of Tiling</a></li>
+        <li><a href="#advanced-incision-techniques-tiling">Advanced Incision Techniques: Tiling</a></li>
         <li><a href="#brain-cells-cooperating">Brain Cells Cooperating</a></li>
+        <li><a href="#flexible-incisions-arbitrary-tile-size">Flexible Incisions: Arbitrary Tile Size</a></li>
       </ul>
     </li>
+    <li><a href="#closing-the-incision">Closing the Incision</a></li>
   </ul>
 </nav>
   </div>
@@ -1070,8 +1074,8 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <p>During the first year of my Master&rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. The project involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</p>
-<p>That project was crucial for me because it revealed an inconvenient truth: matrix multiplication is the most important aspect of Machine Learning. Hence, I named my project &ldquo;ML is ML&rdquo;: Machine Learning is Matrix Multiplication. Although the course professor didn&rsquo;t fully appreciate the title, it still earned me the highest grade. Because deep down, they knew it was true. It was, indeed, an inconvenient truth.</p>
+          <p>During the first year of my Master&rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</p>
+<p>That project was crucial for me because it revealed an inconvenient truth: matrix multiplication is the most fundamental aspect of Machine Learning. Hence, I named my project &ldquo;ML is ML&rdquo;: <strong>Machine Learning is Matrix Multiplication</strong>. Although the course professor didn&rsquo;t fully appreciate the title, it still earned me the highest grade. Because deep down, they knew it was true. It was, indeed, an inconvenient truth.</p>
 <blockquote>
 <p><strong><em>NOTE:</em></strong>  Yes, I&rsquo;m well aware that tensor contraction is not the same as matrix multiplication. Still, the &ldquo;ML is ML&rdquo; joke only works when talking about matrices, so stick with it.</p>
 </blockquote>
@@ -1080,13 +1084,13 @@
 <p>So, put on your gloves, wield your scalpels and let&rsquo;s start the operation!</p>
 
 
-<h2 class="relative group">The starting point 
-    <div id="the-starting-point" class="anchor"></div>
+<h2 class="relative group">The First Cut 
+    <div id="the-first-cut" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#the-starting-point" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#the-first-cut" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
@@ -1094,7 +1098,7 @@
 But first, there is a basic concept that you have to grasp before proceeding with the code.</p>
 
 
-<h3 class="relative group">Matrix linearization 
+<h3 class="relative group">Matrix Linearization 
     <div id="matrix-linearization" class="anchor"></div>
     
     <span
@@ -1106,7 +1110,7 @@ But first, there is a basic concept that you have to grasp before proceeding wit
 </h3>
 <p>As you may have learned from the <a href="https://dwarez.github.io/posts/hello-cuda/"   target="_blank">
     Hello CUDA</a> article, when writing CUDA kernels, we typically use block and thread indices to select elements for computation. But what happens when dealing with higher-dimensional data structures, such as matrices? Moreover, how is memory organized on GPUs when dealing with such data structures?</p>
-<p>In CUDA, memory on the device is managed linearly, meaning it is stored as a single, contiguous block of memory. Therefore, matrices are stored in this contiguous block of memory in a row-major order. Linearization involves mapping the multi-dimensional indices of a matrix to a single-dimensional index. It&rsquo;s much easier to do than to explain.</p>
+<p>In CUDA, memory on the device is managed <strong>linearly</strong>, meaning it is stored as a single, contiguous block of memory. Therefore, matrices are stored in this contiguous block of memory in a <strong>row-major</strong> order. Linearization involves mapping the multi-dimensional indices of a matrix to a single-dimensional index. It&rsquo;s much easier to do than to explain.</p>
 <p>Consider a matrix 
 \(\mathrm{A} \in \mathrm{R}^{\mathrm{N} x \mathrm{N}}\)
 stored in a row-major order, which is the representation used by CUDA. The linear index of the element 
@@ -1117,19 +1121,21 @@ stored in a row-major order, which is the representation used by CUDA. The linea
 \(i\) rows, doing 
 \(i * \mathrm{N}\) and sum to it the column index 
 \(j\).</p>
+<p>This is a fundamental concept to understand before proceeding, as we will be performing numerous memory accesses using this technique.</p>
 
 
-<h3 class="relative group">The simplest kernel 
-    <div id="the-simplest-kernel" class="anchor"></div>
+<h3 class="relative group">A Naive Kernel 
+    <div id="a-naive-kernel" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#the-simplest-kernel" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#a-naive-kernel" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
-<p>Great! Now you are ready to fully understand the simplest matrix multiplication kernel. Keep in mind that I&rsquo;ll avoid writing all the usual boilerplate code for instantiating variables on the host, moving data to the device, and printing results. If you have any doubts, you can check the full code here: TODO link 
+<p>Great! Now you are ready to fully understand the simplest matrix multiplication kernel. Keep in mind that I&rsquo;ll avoid writing all the usual boilerplate code for instantiating variables on the host, moving data to the device, and printing results. If you have any doubts, you can check the <a href="https://gist.github.com/DWarez/e5e0b9d30dc12b26c1a973271ee49a1f#file-naive-cu"   target="_blank">
+    full code here</a> 
 
   <span class="relative inline-block align-text-bottom icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -1168,30 +1174,30 @@ stored in a row-major order, which is the representation used by CUDA. The linea
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>You should be able to understand most of this code, but let&rsquo;s quickly walk through it.</p>
-<p>In <strong>lines 2-3</strong>, we define the index of the row and column of the matrix element that the thread will use for the dot product computation. Remember that the mathematical notation and the CUDA representation are inverted. While in mathematical notation we use the x-axis for referring to the rows and the y-axis for referring to the columns, in CUDA we use the y-components to compute the row index and the x-components to compute the column index.</p>
+<p>In <strong>lines 2-3</strong>, we define the index of the row and column of the matrix element that the thread will use for the dot product computation. Remember that the mathematical notation and the CUDA representation are <strong>inverted</strong>. While in mathematical notation we use the x-axis for referring to the rows and the y-axis for referring to the columns, in CUDA we use the y-components to compute the row index and the x-components to compute the column index.</p>
 <p><strong>Line 5</strong> simply checks the index boundaries. We must check this condition because we will likely spawn more threads than there are elements in the matrix, so some threads may compute out-of-bounds indices.</p>
-<p><strong>Lines 6-10</strong> perform the actual dot product computation. We start by initializing a local variable to accumulate the result. Given that this is a local scalar variable, it will be stored in a register, the fastest type of memory available. This approach works well because the dot product, which involves summing the products of corresponding elements, can be computed incrementally. Remember this, as it will be essential for the upcoming optimization steps!</p>
-<p><strong>Line 7</strong> defines the loop that allows the thread to iterate over all elements of the rows of A and the columns of B. In each iteration, we accumulate the value by adding the product of the linearized row element from A and the linearized column element from B. If you find it difficult to visualize the linearizations, I suggest writing out a few loop iterations on a piece of paper.</p>
-<p>Lastly, <strong>line 10</strong> stores the computed dot product into the linearized element of C.</p>
+<p><strong>Lines 6-10</strong> perform the actual dot product computation. We start by initializing a local variable to accumulate the result. Given that this is a local scalar variable, it will be stored in a register, the fastest type of memory available. This approach works well because the dot product, which involves summing the products of corresponding elements, can be computed <strong>incrementally</strong>. Remember this, as it will be essential for the upcoming optimization steps!</p>
+<p><strong>Line 7</strong> defines the loop that allows the thread to iterate over all elements of the rows of <code>A</code> and the columns of <code>B</code>. In each iteration, we accumulate the value by adding the product of the linearized row element from <code>A</code> and the linearized column element from <code>B</code>. If you find it difficult to visualize the linearizations, I suggest writing out a few loop iterations on a piece of paper.</p>
+<p>Lastly, <strong>line 10</strong> stores the computed dot product into the linearized element of <code>C</code>.</p>
 <p>For completeness, I will also include the kernel invocation. Keep in mind that you can use the <code>ceil()</code> function for the <code>gridSize</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">dim3</span> <span class="nf">blockSize</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">dim3</span> <span class="nf">gridSize</span><span class="p">((</span><span class="n">N</span> <span class="o">+</span> <span class="n">blockSize</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">blockSize</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="n">blockSize</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">blockSize</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">matMulKernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">gridSize</span><span class="p">,</span> <span class="n">blockSize</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_C</span><span class="p">,</span> <span class="n">d_A</span><span class="p">,</span> <span class="n">d_B</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
 </span></span></code></pre></div>
 
-<h2 class="relative group">Analysis and limitations 
-    <div id="analysis-and-limitations" class="anchor"></div>
+<h2 class="relative group">Advanced Surgical Techniques 
+    <div id="advanced-surgical-techniques" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#analysis-and-limitations" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#advanced-surgical-techniques" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
 <p>Now that we have a basic implementation, let&rsquo;s pause to consider the kernel&rsquo;s behavior.</p>
 <p>A subtle issue to notice is that all memory accesses we perform are done using Global Memory. If you need an explanation about memory types in CUDA, please read <a href="https://dwarez.github.io/posts/cpu-gpu-architecture/"   target="_blank">
-    this blog post</a>. In brief, Global Memory is much slower compared to other types of memory, such as Shared Memory. As a result, we are wasting time with these accesses.</p>
+    this blog post</a>. In brief, Global Memory is much slower compared to other types of memory, such as Shared Memory. As a result, we are <strong>wasting time</strong> with these accesses.</p>
 <p>Furthermore, the kernel is actually performing more data loads than necessary.
 Consider the first thread of the grid, let&rsquo;s call it 
 \(thread_{0,0}\). This thread will compute the indexes 
@@ -1212,19 +1218,23 @@ Consider the first thread of the grid, let&rsquo;s call it
 \(\mathrm{A}_{0,2}\) and 
 \(\mathrm{B}_{2,1}\) and so on.</p>
 <p>Notice how element 
-\(\mathrm{A}_{0,0}\) is loaded by both kernels. Since Global Memory access is not shared between threads, each thread must perform a separate loading operation to obtain the value of the matrix element. In fact, in this example, it is easy to see how all elements of 
+\(\mathrm{A}_{0,0}\) is <strong>loaded by both kernels</strong>. Since Global Memory access is not shared between threads, each thread must perform a separate loading operation to obtain the value of the matrix element. In fact, in this example, it is easy to see how all elements of 
 \(\mathrm{A}\) are loaded by both kernels. I encourage you to continue this analysis on your own so that you can see for yourself that the same is true for all elements of
 \(\mathrm{B}\) as well.</p>
-<p>It&rsquo;s now clear what we can do to optimize this kernel: use Shared Memory to avoid redundant loading operations within a block. Specifically, we will use <strong>tiling</strong> to manage the memory traffic reduction factor. If we assume 16x16 blocks, we can reduce the memory traffic by a factor of 1/16 compared to the naive implementation, because all threads will cooperate for the memory accesses.</p>
+<p>It&rsquo;s now clear what we can do to optimize this kernel: use Shared Memory to improve the speed of loading operations, while also avoiding redundant loading operations within a block. Specifically, we will use <strong>tiling</strong> to manage the memory traffic reduction factor. If we assume 16x16 tiles, we can reduce the memory traffic by a factor of 1/16 compared to the naive implementation, because all threads will cooperate for the memory accesses. In general, given a tile size 
+\(T_N\), we reduce the memory traffic by 
+\(1/T_N\). If we take this idea to the extreme, by setting 
+\(N = T_N\)we could load the entire matrix into a single tile in Shared Memory, thereby maximizing the reduction in memory traffic. However, this is rarely feasible. In real-world scenarios, the size of matrices is usually so large that the entire matrix cannot fit into the Shared Memory.</p>
+<p>Understanding the balance between tile size and Shared Memory usage is crucial for optimizing performance. While larger tiles can reduce memory traffic, they are limited by the available shared memory, and practical implementations must account for this constraint.</p>
 
 
-<h3 class="relative group">Understanding the Role of Tiling 
-    <div id="understanding-the-role-of-tiling" class="anchor"></div>
+<h3 class="relative group">Advanced Incision Techniques: Tiling 
+    <div id="advanced-incision-techniques-tiling" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#understanding-the-role-of-tiling" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#advanced-incision-techniques-tiling" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
@@ -1232,9 +1242,9 @@ Consider the first thread of the grid, let&rsquo;s call it
 <p><strong><em>NOTE:</em></strong>  A bit of linear algebra ahead, proceed with caution.</p>
 </blockquote>
 <p>As mentioned before, the dot product can be computed incrementally. We can leverage this property to split the computation of a single dot product into <strong>phases</strong>, which correspond directly to tiles. Let&rsquo;s consider two matrices 
-\(\mathrm{A} \in \mathrm{R}^{8x8}\) and 
-\(\mathrm{B} \in \mathrm{R}^{8x8}\). We want to perform a matrix multiplication which result will be represented by 
-\(\mathrm{C} \in \mathrm{R}^{8x8}\).</p>
+\(\mathrm{A} \in \mathrm{R}^{16x16}\) and 
+\(\mathrm{B} \in \mathrm{R}^{16x16}\). We want to perform a matrix multiplication which result will be represented by 
+\(\mathrm{C} \in \mathrm{R}^{16x16}\).</p>
 <p>Let&rsquo;s split 
 \(\mathrm{A}\) and 
 \(\mathrm{B}\) into 4 tiles of size 4x4 each, let&rsquo;s call them 
@@ -1247,12 +1257,12 @@ Consider the first thread of the grid, let&rsquo;s call it
 <p>Since the dot product can be computed incrementally, we can procede as follows:</p>
 <ol>
 <li>
-<p>Load two tiles into memory. We load tiles based on the current phase. At the start, we are in phase 0, so we load 
+<p><strong>Load</strong> two tiles into memory. We load tiles based on the current phase. At the start, we are in phase 0, so we load 
 \(\mathrm{T_A}_{0}\) and 
 \(\mathrm{T_B}_{0}\).</p>
 </li>
 <li>
-<p>Compute all elements of the dot product that can be computed with the loaded tiles. Note that these are partial computations! The remaining parts of the computations will be performed in subsequent phases. In phase 0, we would compute:</p>
+<p><strong>Compute</strong> all elements of the dot product that can be computed with the loaded tiles. Note that these are partial computations! The remaining parts of the computations will be performed in subsequent phases. In phase 0, we would compute:</p>
 <ol>
 <li>
 \(\mathrm{C}^{0}_{0,0} = \sum_{k=0}^{3} \mathrm{T_A}_{0,k} * \mathrm{T_B}_{k,0}\)</li>
@@ -1265,16 +1275,16 @@ Consider the first thread of the grid, let&rsquo;s call it
 </ol>
 <p>Notice that the notation 
 \(\mathrm{C}^{0}\) indicates the computation of and element of 
-\(\mathrm{C}\) for the first phase, phase 0. Subsequent phases will build upon this initial computation to obtain the final result.</p>
+\(\mathrm{C}\) for the first phase, phase 0. Subsequent phases will <strong>sum upon</strong> this initial computation to obtain the final result.</p>
 </li>
 <li>
-<p>Then, increase the phase counter and repeat the process until all computational phases are complete. Note that the number of phases is 
+<p>Then, <strong>increase</strong> the phase counter and repeat the process until all computational phases are complete. Note that the number of phases is 
 \(N/size\_of\_tile\), where 
 \(N\) is the dimension of the square input matrices.</p>
 </li>
 <li>
 <p>After all the computations for a point of 
-\(\mathrm{C}\) are done, store the result in the actual output matrix.</p>
+\(\mathrm{C}\) are done, <strong>store</strong> the result in the actual output matrix.</p>
 </li>
 </ol>
 <p>If you&rsquo;ve made it through this notation hell, you&rsquo;re ready to see the actual kernel code!</p>
@@ -1290,7 +1300,7 @@ Consider the first thread of the grid, let&rsquo;s call it
     </span>        
     
 </h3>
-<p>An attentive reader might ask: <em>Why the heck are we using tiling?</em> From a mathematical and algorithmic perspective, there is no obvious benefit to splitting the computations and using tiling; in fact, it can make things more complex to understand. However, tiling is essential for optimizing memory access patterns, as mentioned earlier. Let’s examine the code to see how tiling impacts performance in practice:</p>
+<p>An attentive reader might ask: <em>How is this algorithm faster?</em> From a mathematical and algorithmic perspective, the benefits of splitting computations and using tiling might not be immediately clear and can even seem to complicate matters. However, tiling is crucial for optimizing memory access patterns, as we discussed earlier. Let&rsquo;s examine the code to understand how tiling enhances performance in practice:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1353,12 +1363,12 @@ Consider the first thread of the grid, let&rsquo;s call it
 </div>
 </div><p>In <strong>lines 2-3</strong>, we define the two data structures used to load the tiles from 
 \(\mathrm{A}\) and 
-\(\mathrm{B}\). We use the <code>__shared__</code> keyword to specify that this memory allocation will be performed in Shared Memory.</p>
+\(\mathrm{B}\). We use the <code>__shared__</code> keyword to specify that this memory allocation will be performed in <strong>Shared Memory</strong>.</p>
 <p>In <strong>lines 5-8</strong>, we define some variables to store the block and thread IDs for both the x and y dimensions. This is done for convenience, as writing these values explicitly each time would make the code less readable. Since we are not even close to register saturation, it’s a luxury we can afford. In <strong>lines 10-11</strong>, we simply compute the row and column indexes, since the kernel assumes that each thread will compute one element of 
 \(\mathrm{C}\).</p>
-<p><strong>Line 15</strong> starts the for loop that iterates over the computational phases. As mentioned before, there are 
+<p><strong>Line 15</strong> starts the for loop that iterates over the <strong>computational phases</strong>. As mentioned before, there are 
 \(N/size\_of\_tile\) phases in total. For simplicity, we assume that the dimension of the matrices is divisible by the tile size, so the division yields a whole number.</p>
-<p>Finally, <strong>lines 16-18</strong> demonstrate <strong>thread cooperation</strong>. Here, the threads use the shared variables <code>Ads</code> and <code>Bds</code> to load the elements into the tiles for the current phase, <code>ph</code>. If you look closely at the index computations, you’ll see they are almost identical to those used in the naive implementation. The key difference is that here we skip elements by using the contribution <code>ph * TILE_WIDTH</code>. This adjustment is necessary because, at each phase, we have already performed the required computations using elements from the previous phase (and therefore the previous tile). The picture below illustrates this behavior perfectly.</p>
+<p>Finally, <strong>lines 16-18</strong> demonstrate <strong>thread cooperation</strong>. Here, the threads use the shared variables <code>Ads</code> and <code>Bds</code> to load the elements into the tiles for the current phase, <code>ph</code>. If you look closely at the index computations, you’ll see they are almost identical to those used in the naive implementation. The key difference is that here we skip elements by using the contribution <code>ph * TILE_WIDTH</code>. This adjustment is necessary because, at each phase, we have already performed the required computations using elements from the previous phases (and therefore the previous tiles). The picture below illustrates this behavior perfectly.</p>
 <p>
 
 
@@ -1389,9 +1399,99 @@ Consider the first thread of the grid, let&rsquo;s call it
   
 
 </p>
-<p>Furthermore, <strong>line 18</strong> introduces a <strong>barrier synchronization</strong>. Since threads are loading elements into memory asynchronously, we must ensure that all elements of the tiles for the current phase have been loaded before proceeding with the computation of the partial dot product.</p>
-<p>Lines <strong>20-22</strong> perform exactly the operation listed as step 2 in the previous section, which is the computation of the partial dot product using the previously loaded tiled elements. This step also requires a barrier synchronization, as the elements stored in <code>Ads</code> and <code>Bds</code> will be overwritten in the next phase. We must ensure that all threads have finished the computation of the partial dot product for the current phase before proceeding to the next phase.</p>
-<p>Finally, in line 26, we write the computed value to the output matrix <code>C</code>.</p>
+<p>Furthermore, <strong>line 18</strong> introduces a <strong>barrier synchronization</strong>. Since threads are loading elements into memory <strong>asynchronously</strong>, we must ensure that all elements of the tiles for the current phase have been loaded before proceeding with the computation of the partial dot product.</p>
+<p>Lines <strong>20-22</strong> perform exactly the operation listed as step 2 in the previous section, which is the computation of the <strong>partial</strong> dot product using the previously loaded tiled elements. This step also requires a barrier synchronization, as the elements stored in <code>Ads</code> and <code>Bds</code> will be overwritten in the next phase. We must ensure that all threads have finished the computation of the partial dot product for the current phase before proceeding to the next phase.</p>
+<p>Finally, in <strong>line 26</strong>, we write the computed value to the output matrix <code>C</code>.</p>
+
+
+<h3 class="relative group">Flexible Incisions: Arbitrary Tile Size 
+    <div id="flexible-incisions-arbitrary-tile-size" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#flexible-incisions-arbitrary-tile-size" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>In our previous kernel code, we assumed that the matrix size is divisible by the tile size. However, this is a strong assumption that may not always hold true. Is there a way to relax this assumption? Yes, through <strong>boundary checking</strong>.</p>
+<p>First, let&rsquo;s examine what happens when the matrix size is not divisible by the tile size.</p>
+<p>The first observation we make is that issues arise only with the <strong>last tile</strong>. For instance, consider a matrix 
+\(\mathrm{A} \in \mathrm{R}^{16,16}\) and tiles 
+\(\mathrm{T_A}_{i,j} \in \mathrm{R}^{3x3}, i = 0,1,2,3,4,5 \land j=0,1,2,3,4,5\). For example, the tile 
+\(\mathrm{T_A}_{0,0}\) is within the bounds of the matrix, so it does not present any issues. However, a tile like 
+\(\mathrm{T_A}_{5,5}\) is problematic because it extends <strong>beyond</strong> the matrix boundaries. This issue occurs because 16 is not divisible by 6, therefore some tiles will go out of bounds.</p>
+<p>What exactly happens when we go out of bounds? If we access an element beyond the <strong>last row</strong>, we will end up accessing elements from subsequent rows due to the row-major linearization of the matrix. This will lead to <strong>incorrect results</strong>.
+When it comes to columns, accessing elements outside the allocated memory of the matrix can have various outcomes. We might load random values, load zeros, or even cause a <strong>kernel crash</strong>, depending on the system and its handling of such memory accesses.</p>
+<p>We cannot solve this problem by simply not using the aforementioned tiles, as this would leave some elements <strong>unprocessed</strong>.</p>
+<p>To address this, we can perform boundary checks to ensure that the computed x and y indexes for the thread are responsible for loading valid elements. The same checks apply to the output indexes. For rows, we check that 
+\(row \text{\textless} Width \land (ph * TILE\_WIDTH) \text{\textless} Width\). For columns we check that 
+\((ph * TILE\_WIDTH + ty) \text{\textless} Width \land Col \text{\textless} Width\). If these conditions are not met, we load a neutral value, such as 0.0, into shared memory for the operation, so that such elements will not effect the computations.</p>
+<p>Lastly, we will store the value only if <strong>both</strong> the row and column indexes are within the bounds of the output matrix.
+Therefore, the kernel code is modified as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">__global__</span> <span class="kt">void</span> <span class="nf">matMulKernel</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">B</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Width</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__shared__</span> <span class="kt">float</span> <span class="n">Ads</span><span class="p">[</span><span class="n">TILE_WIDTH</span><span class="p">][</span><span class="n">TILE_WIDTH</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__shared__</span> <span class="kt">float</span> <span class="n">Bds</span><span class="p">[</span><span class="n">TILE_WIDTH</span><span class="p">][</span><span class="n">TILE_WIDTH</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">bx</span> <span class="o">=</span> <span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">by</span> <span class="o">=</span> <span class="n">blockIdx</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ty</span> <span class="o">=</span> <span class="n">threadIdx</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="n">by</span> <span class="o">*</span> <span class="n">TILE_WIDTH</span> <span class="o">+</span> <span class="n">ty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="n">bx</span> <span class="o">*</span> <span class="n">TILE_WIDTH</span> <span class="o">+</span> <span class="n">tx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Cvalue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">ph</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ph</span> <span class="o">&lt;</span> <span class="nf">ceil</span><span class="p">(</span><span class="n">Width</span><span class="o">/</span><span class="kt">float</span><span class="p">(</span><span class="n">TILE_WIDTH</span><span class="p">));</span> <span class="o">++</span><span class="n">ph</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">row</span> <span class="o">&lt;</span> <span class="n">Width</span> <span class="o">&amp;&amp;</span> <span class="n">ph</span> <span class="o">*</span> <span class="n">TILE_WIDTH</span> <span class="o">+</span> <span class="n">tx</span> <span class="o">&lt;</span> <span class="n">Width</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Ads</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">tx</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">Width</span> <span class="o">+</span> <span class="n">ph</span> <span class="o">*</span> <span class="n">TILE_WIDTH</span> <span class="o">+</span> <span class="n">tx</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Ads</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">tx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">ph</span> <span class="o">*</span> <span class="n">TILE_WIDTH</span> <span class="o">+</span> <span class="n">ty</span> <span class="o">&lt;</span> <span class="n">Width</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="n">Width</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Bds</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">tx</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[(</span><span class="n">ph</span> <span class="o">*</span> <span class="n">TILE_WIDTH</span> <span class="o">+</span> <span class="n">ty</span><span class="p">)</span> <span class="o">*</span> <span class="n">Width</span> <span class="o">+</span> <span class="n">col</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Bds</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">tx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">__syncthreads</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">TILE_WIDTH</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Cvalue</span> <span class="o">+=</span> <span class="n">Ads</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">Bds</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">tx</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">__syncthreads</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">row</span> <span class="o">&lt;</span> <span class="n">Width</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="n">Width</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">Width</span> <span class="o">+</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">Cvalue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+
+<h2 class="relative group">Closing the Incision 
+    <div id="closing-the-incision" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#closing-the-incision" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>We’ve come a long way in our exploration of matrix multiplication in CUDA, haven&rsquo;t we? We began with the basics—our &ldquo;first cut&rdquo;—where we learned how to implement a straightforward matrix multiplication kernel. From there, we moved on to the exciting phase of optimization and refinement, focusing on making our GPU computations faster and more efficient. By leveraging shared memory with tiling, we achieved significant performance improvements. We also incorporated boundary checking to allow for flexible tile sizes.</p>
+<p>Fun fact: adapting the boundary-checked, tiled version of the kernel to support rectangular matrices is surprisingly straightforward! Just follow these steps:</p>
+<ol>
+<li>Replace <code>Width</code> with unsigned integer arguments: <code>j</code>, <code>k</code>, <code>l</code>.</li>
+<li>Update <code>Width</code> for Matrix Heights and Widths:
+<ol>
+<li>Replace <code>Width</code> with <code>j</code> where it refers to the height of matrix <code>A</code> or the height of matrix <code>C</code>.</li>
+<li>Replace <code>Width</code> with <code>k</code> where it refers to the width of matrix <code>A</code> or the height of matrix <code>B</code>.</li>
+<li>Replace <code>Width</code> with <code>l</code> where it refers to the width of matrix <code>B</code> or the width of matrix <code>C</code>.</li>
+</ol>
+</li>
+</ol>
+<p>That&rsquo;s it, you just wrote a <strong>general</strong> matrix multiplication CUDA kernel!</p>
+<p>What? You’re not convinced? You don&rsquo;t trust your <em>brilliant doctor</em>?!</p>
+<p>I see that you want <strong>proof</strong>. You want some empirical data that proves that the optimizations we saw today actually worked!
+Fear not! In the next blog post, we’ll dive into the art of <strong>profiling</strong> CUDA kernels. I’ll guide you through the process of using tools like <strong>NVIDIA’s Nsight Compute</strong> to measure performance improvements, analyze memory usage, and make data-driven decisions about further optimizations. We’ll get down to the nitty-gritty details of profiling, so you can see exactly how your changes impact performance. It’s going to be a thrilling ride through the land of performance metrics and profiling!</p>
+<p>Until then, happy coding, and remember to wash your hands!</p>
 
         </div>
         
@@ -1406,7 +1506,7 @@ Consider the first thread of the grid, let&rsquo;s call it
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/matrix-multiplication/&amp;title=Matrix%20Multiplication"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/matrix-multiplication/&amp;title=A%20Machine%20Learning%20Surgeon%e2%80%99s%20Toolkit:%20Advanced%20Matrix%20Multiplication%20in%20CUDA"
       title="Share on LinkedIn"
       aria-label="Share on LinkedIn"
       >
@@ -1425,7 +1525,7 @@ Consider the first thread of the grid, let&rsquo;s call it
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://t.me/share/url?url=http://localhost:1313/posts/matrix-multiplication/&amp;resubmit=true&amp;title=Matrix%20Multiplication"
+      href="https://t.me/share/url?url=http://localhost:1313/posts/matrix-multiplication/&amp;resubmit=true&amp;title=A%20Machine%20Learning%20Surgeon%e2%80%99s%20Toolkit:%20Advanced%20Matrix%20Multiplication%20in%20CUDA"
       title=""
       aria-label=""
       >
@@ -1444,7 +1544,7 @@ Consider the first thread of the grid, let&rsquo;s call it
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://reddit.com/submit/?url=http://localhost:1313/posts/matrix-multiplication/&amp;resubmit=true&amp;title=Matrix%20Multiplication"
+      href="https://reddit.com/submit/?url=http://localhost:1313/posts/matrix-multiplication/&amp;resubmit=true&amp;title=A%20Machine%20Learning%20Surgeon%e2%80%99s%20Toolkit:%20Advanced%20Matrix%20Multiplication%20in%20CUDA"
       title="Submit to Reddit"
       aria-label="Submit to Reddit"
       >
@@ -1463,7 +1563,7 @@ Consider the first thread of the grid, let&rsquo;s call it
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="mailto:?body=http://localhost:1313/posts/matrix-multiplication/&amp;subject=Matrix%20Multiplication"
+      href="mailto:?body=http://localhost:1313/posts/matrix-multiplication/&amp;subject=A%20Machine%20Learning%20Surgeon%e2%80%99s%20Toolkit:%20Advanced%20Matrix%20Multiplication%20in%20CUDA"
       title="Send via email"
       aria-label="Send via email"
       >
