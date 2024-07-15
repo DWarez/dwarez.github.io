@@ -4,7 +4,7 @@ date: 2024-07-10
 draft: false
 description: ""
 slug: "matrix-multiplication"
-tags: ["cuda", "gpu", "architecture"]
+tags: ["cuda", "gpu", "optimization", "matrix-multiplication"]
 ---
 
 During the first year of my Master's Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.
