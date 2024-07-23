@@ -12,7 +12,7 @@
   <meta name="title" content="A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA &middot; The ML Surgeon" />
   
   <meta name="description" content="The low level side of machine learning." />
-  <meta name="keywords" content="cuda, gpu, architecture, " />
+  <meta name="keywords" content="cuda, gpu, optimization, matrix-multiplication, " />
   
   
   <link rel="canonical" href="http://localhost:1313/posts/matrix-multiplication/" />
@@ -74,7 +74,8 @@
     <meta property="article:modified_time" content="2024-07-10T00:00:00+00:00">
     <meta property="article:tag" content="Cuda">
     <meta property="article:tag" content="Gpu">
-    <meta property="article:tag" content="Architecture">
+    <meta property="article:tag" content="Optimization">
+    <meta property="article:tag" content="Matrix-Multiplication">
 
   <meta name="twitter:card" content="summary"><meta name="twitter:title" content="A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA">
 <meta name="twitter:description" content="During the first year of my Master&rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.">
@@ -101,7 +102,7 @@
     
     "dateModified": "2024-07-10T00:00:00\u002b00:00",
     
-    "keywords": ["cuda","gpu","architecture"],
+    "keywords": ["cuda","gpu","optimization","matrix-multiplication"],
     
     "mainEntityOfPage": "true",
     "wordCount": "3202"
@@ -851,10 +852,18 @@
 </span>
   </span>
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/architecture/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/optimization/&#34;,'_self');">
     <span class="flex" style="cursor: pointer;">
   <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Architecture
+    Optimization
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/matrix-multiplication/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Matrix-Multiplication
   </span>
 </span>
   </span>
@@ -2019,6 +2028,26 @@ Fear not! In the next blog post, we’ll dive into the art of <strong>profiling<
           
         </span>
         <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/profiling-introduction/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Performing Kernel Surgery: Profiling CUDA Kernels with NVIDIA Nsight Compute</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
           
         </span>
       </div>

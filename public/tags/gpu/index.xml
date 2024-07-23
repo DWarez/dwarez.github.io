@@ -7,14 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 Dario Salvati</copyright>
-    <lastBuildDate>Tue, 25 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Matrix Multiplication</title>
+      <title>A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA</title>
       <link>http://localhost:1313/posts/matrix-multiplication/</link>
-      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/matrix-multiplication/</guid>
-      <description>During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. The project involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</description>
+      <description>During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</description>
       
     </item>
     

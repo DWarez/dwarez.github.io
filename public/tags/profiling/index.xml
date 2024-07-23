@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Profiling on The ML Surgeon</title>
+    <link>http://localhost:1313/tags/profiling/</link>
+    <description>Recent content in Profiling on The ML Surgeon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 Dario Salvati</copyright>
+    <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/profiling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Profiling</title>
+      <link>http://localhost:1313/posts/profiling/</link>
+      <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/profiling/</guid>
+      <description>Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
