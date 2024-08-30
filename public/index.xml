@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 Dario Salvati</copyright>
-    <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A quick incision: ten minutes to RAG</title>
+      <link>http://localhost:1313/posts/ten-minutes-to-rag/</link>
+      <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/ten-minutes-to-rag/</guid>
+      <description>Hello, fellow surgeons! How is life treating you? I hope you&amp;rsquo;ve spent your vacation relaxing, far, far away from the tools of our trade. After all, a good surgeon needs to rest after a long year of work and learning, right?</description>
+      
+    </item>
+    
     <item>
       <title>Performing Kernel Surgery: Profiling CUDA Kernels with NVIDIA Nsight Compute</title>
       <link>http://localhost:1313/posts/profiling-introduction/</link>

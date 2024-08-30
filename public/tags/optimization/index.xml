@@ -9,11 +9,11 @@
     <copyright>© 2024 Dario Salvati</copyright>
     <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Profiling</title>
-      <link>http://localhost:1313/posts/profiling/</link>
+      <title>Performing Kernel Surgery: Profiling CUDA Kernels with NVIDIA Nsight Compute</title>
+      <link>http://localhost:1313/posts/profiling-introduction/</link>
       <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/profiling/</guid>
+      <guid>http://localhost:1313/posts/profiling-introduction/</guid>
       <description>Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set.</description>
       
     </item>
