@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
   data-auto-appearance="true"><head>
 	<meta name="generator" content="Hugo 0.133.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
@@ -31,8 +31,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.f45ab567066571a138e005c4bc8ab3cdd16644275739c29e1fe97e10c67b3579d18cf90f9b6db688b3af9263efc08d4762c419fe14d61e3c2c28d55e8eac99ec.css"
-    integrity="sha512-9Fq1ZwZlcaE44AXEvIqzzdFmRCdXOcKeH&#43;l&#43;EMZ7NXnRjPkPm222iLOvkmPvwI1HYsQZ/hTWHjwsKNVejqyZ7A==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.586f74a54c9229f6b5d27ee8ef9604e882158391ca83d5e823b47ef3e3d489767da47582ee9a6f57de35e0247ca19de0c161b85e443ea25fb8e1894f035344a0.css"
+    integrity="sha512-WG90pUySKfa10n7o75YE6IIVg5HKg9XoI7R&#43;8&#43;PUiXZ9pHWC7ppvV9414CR8oZ3gwWG4XkQ&#43;ol&#43;44YlPA1NEoA==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -488,8 +488,8 @@
     <div class="relative">
         <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
         <div class="mx-auto max-w-7xl p-0">
-            <div class="relative shadow-xl sm:overflow-hidden rounded-2xl">
-                <div class="absolute inset-0">
+            <div class="relative sm:overflow-hidden">
+                <div class="fixed inset-x-0 top-0" style="z-index:-10">
                     
                     
                         
@@ -502,13 +502,16 @@
                         
                     
                     
-                    <img class="h-full w-full object-cover m-0 nozoom" src="/img/gpu_power.jpg">
+                    <img class="w-full h-[1000px] object-cover m-0 nozoom" src="/img/gpu_power.jpg" role="presentation">
                     <div
-                        class="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-600 dark:from-primary-600 dark:to-secondary-800 mix-blend-multiply">
+                        class="absolute inset-0 h-[1000px] bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+                    </div>
+                    <div
+                        class="opacity-60 absolute inset-0 h-[1000px] bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
                     </div>
                     
                 </div>
-                <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex flex-col items-center justify-center text-center">
+                <div class="relative px-1 py-1 flex flex-col items-center justify-center text-center">
                     
                         
                         
@@ -522,11 +525,11 @@
                                 alt="Dario Salvati" src="/img/avatar_hu843467794981748956.jpg" />
                         
                     
-                    <h1 class="mb-2 text-4xl font-extrabold text-neutral-200">
+                    <h1 class="mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
                         Dario Salvati
                     </h1>
                     
-                    <h2 class="mt-0 mb-0 text-xl text-neutral-300">
+                    <h2 class="mt-0 mb-0 text-xl text-neutral-800 dark:text-neutral-300">
                         A surgeon for Machine Learning models.
                     </h2>
                     
@@ -535,7 +538,7 @@
                         <div class="flex flex-wrap">
                             
                             
-                            <a class="px-1 hover:text-primary-400 text-primary-300" href="https://linkedin.com/in/dwarez" target="_blank"
+                            <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://linkedin.com/in/dwarez" target="_blank"
                                 aria-label="Linkedin" rel="me noopener noreferrer">
 
   <span class="relative block icon">
@@ -547,7 +550,7 @@
                             
                             
                             
-                            <a class="px-1 hover:text-primary-400 text-primary-300" href="https://github.com/dwarez" target="_blank"
+                            <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://github.com/dwarez" target="_blank"
                                 aria-label="Github" rel="me noopener noreferrer">
 
   <span class="relative block icon">
@@ -561,7 +564,7 @@
                         </div>
                         
                     </div>
-                    <section class="prose prose-invert"></section>
+                    <section class="prose dark:prose-invert"></section>
                 </div>
             </div>
         </div>
@@ -1368,6 +1371,16 @@
 
 
 </section>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
 
   
 
