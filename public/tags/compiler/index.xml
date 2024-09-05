@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Compiler on The ML Surgeon</title>
+    <link>http://localhost:1313/tags/compiler/</link>
+    <description>Recent content in Compiler on The ML Surgeon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 Dario Salvati</copyright>
+    <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/compiler/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Torch compile</title>
+      <link>http://localhost:1313/posts/torch-compile/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/torch-compile/</guid>
+      <description>&lt;p&gt;Remember when machine learning was done using Caffe? The ML Surgeon remembers that.
+If you didn’t catch the reference, too bad for you!&lt;/p&gt;
+&lt;p&gt;In the last few days, I&amp;rsquo;ve been reflecting on how much easier machine learning has become in recent years. Not only do we now have a larger and higher-quality plethora of tools and frameworks—ones we could only dream of a few years ago—but the fact that these frameworks are so user-friendly is mind-boggling!&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
