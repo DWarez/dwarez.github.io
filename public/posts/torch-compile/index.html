@@ -26,8 +26,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.586f74a54c9229f6b5d27ee8ef9604e882158391ca83d5e823b47ef3e3d489767da47582ee9a6f57de35e0247ca19de0c161b85e443ea25fb8e1894f035344a0.css"
-    integrity="sha512-WG90pUySKfa10n7o75YE6IIVg5HKg9XoI7R&#43;8&#43;PUiXZ9pHWC7ppvV9414CR8oZ3gwWG4XkQ&#43;ol&#43;44YlPA1NEoA==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.16ef8a6896d8151791996e6789da59a48d35efa92f465864bfebdef24f1b8a6b7b542a9f4a9ca1d2b987d1ac6c72f3ed184dab5eb1db16fa43b0da3255b9f86c.css"
+    integrity="sha512-Fu&#43;KaJbYFReRmW5nidpZpI0176kvRlhkv&#43;ve8k8bimt7VCqfSpyh0rmH0axscvPtGE2rXrHbFvpDsNoyVbn4bA==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -107,7 +107,7 @@ In the last few days, I’ve been reflecting on how much easier machine learning
     "keywords": ["torch-compile","compiler"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1209"
+    "wordCount": "1979"
   }]
   </script>
 
@@ -758,7 +758,7 @@ In the last few days, I’ve been reflecting on how much easier machine learning
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <span title="Reading time">6 mins</span><span class="px-2 text-primary-500">&middot;</span>
+  <span title="Reading time">10 mins</span><span class="px-2 text-primary-500">&middot;</span>
 
 
   
@@ -984,7 +984,8 @@ In the last few days, I’ve been reflecting on how much easier machine learning
     </li>
     <li><a href="#into-the-operating-room-dissecting-the-mechanics-of-torch-compile">Into the Operating Room: Dissecting the Mechanics of Torch Compile</a>
       <ul>
-        <li><a href="#torch-dynamo">Torch Dynamo</a></li>
+        <li><a href="#operating-on-the-fly-torch-dynamos-jit-bytecode-transformation">Operating on the Fly: Torch Dynamo’s JIT Bytecode Transformation</a></li>
+        <li><a href="#overcoming-limitations">Overcoming limitations</a></li>
       </ul>
     </li>
     <li><a href="#diocan">Diocan</a></li>
@@ -1011,7 +1012,8 @@ In the last few days, I’ve been reflecting on how much easier machine learning
     </li>
     <li><a href="#into-the-operating-room-dissecting-the-mechanics-of-torch-compile">Into the Operating Room: Dissecting the Mechanics of Torch Compile</a>
       <ul>
-        <li><a href="#torch-dynamo">Torch Dynamo</a></li>
+        <li><a href="#operating-on-the-fly-torch-dynamos-jit-bytecode-transformation">Operating on the Fly: Torch Dynamo’s JIT Bytecode Transformation</a></li>
+        <li><a href="#overcoming-limitations">Overcoming limitations</a></li>
       </ul>
     </li>
     <li><a href="#diocan">Diocan</a></li>
@@ -1297,16 +1299,129 @@ Long story short, PyTorch automatically computes gradients for tensors. A comput
 <p>After all this talk about graphs, it&rsquo;s finally time to get down to business. Now, we’re ready to make the incision and dive deep into <code>torch.compile</code> to explore its inner workings. Armed with the knowledge we’ve gained in the previous sections, this should feel like a well-prepared field trip into the body of PyTorch, right? I certainly hope so—my head’s already spinning from the sheer complexity of it all!</p>
 
 
-<h3 class="relative group">Torch Dynamo 
-    <div id="torch-dynamo" class="anchor"></div>
+<h3 class="relative group">Operating on the Fly: Torch Dynamo’s JIT Bytecode Transformation 
+    <div id="operating-on-the-fly-torch-dynamos-jit-bytecode-transformation" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#torch-dynamo" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#operating-on-the-fly-torch-dynamos-jit-bytecode-transformation" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
+<p>Let&rsquo;s start with a definition: <strong>Torch Dynamo</strong> is a Python JIT compiler that uses CPython&rsquo;s frame evaluation API to dynamically modify the bytecode generated from Pytorch source.
+That sentence might sound a bit overwhelming, so let’s take it step by step.</p>
+<p>First, what is <strong>Just-in-time</strong> (JIT) compilation? It’s a compilation process that occurs during the execution of a program, rather than before (as with languages like C). In Python, this means that while the program is running, its bytecode is translated into machine code, which the system then executes. Here’s a simple diagram to illustrate:</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/torch-compile/python_schema_hu892059387794601592.png 330w,
+        /posts/torch-compile/python_schema_hu6874950270713104524.png 660w,
+        /posts/torch-compile/python_schema_hu7958899415084392755.png 1024w,
+        /posts/torch-compile/python_schema_hu3496970889048702844.png 2x"
+        src="/posts/torch-compile/python_schema_hu6874950270713104524.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>As you can see, the original Python source code is parsed into bytecode, which is easier to manage during execution. Now, thanks to the <strong>frame evaluation API</strong>, we can insert a middleware between the bytecode and the interpreter, as shown in the diagram below:</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/torch-compile/frame_evaluation_hu15797033654603190872.png 330w,
+        /posts/torch-compile/frame_evaluation_hu10777199593306000427.png 660w,
+        /posts/torch-compile/frame_evaluation_hu1948742451148945910.png 1024w,
+        /posts/torch-compile/frame_evaluation_hu8760490793802124212.png 2x"
+        src="/posts/torch-compile/frame_evaluation_hu10777199593306000427.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>This is where <strong>Torch Dynamo</strong> comes in. It acts as a middleware, intercepting the bytecode to rewrite it and extract FX graphs from the PyTorch operations defined in the source code.</p>
+<p>Since Dynamo operates just-in-time, it dynamically intercepts bytecode during execution and extracts graphs based on the current state of the code. This allows us to work with dynamic graphs, adapting to the changing flow of execution. However, for the sake of performance, we want to avoid re-capturing graphs every time the same code runs—doing so repeatedly, as seen in frameworks like JAX, would result in unnecessary overhead.</p>
+<p>To address this, Dynamo uses <strong>guards</strong>. These guards are conditions that check whether the graph needs to be re-captured. If nothing significant has changed since the last run, Dynamo will use the previously captured graph, avoiding the need to reconstruct it from scratch.</p>
+<p>Here’s a code snippet to illustrate how guards work:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">_dynamo</span> <span class="k">as</span> <span class="n">torchdynamo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">custom_compiler</span><span class="p">(</span><span class="n">graph_module</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">fx</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">,</span> <span class="n">dummy_inputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">graph_module</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">print_tabular</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">graph_module</span><span class="o">.</span><span class="n">forward</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@torchdynamo.optimize</span><span class="p">(</span><span class="n">custom_compiler</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">b</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">example</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</span></span></code></pre></div><p>To observe Dynamo in action, run the script with the following command to enable the appropriate logging level:</p>
+<pre tabindex="0"><code>TORCH_LOGS=guards uv run src/dynamo.py
+</code></pre><p>Here’s a snippet of the output:</p>
+<pre tabindex="0"><code>[__guards] | +- GuardManager: source=L[&#39;a&#39;], accessed_by=DictGetItemGuardAccessor(a)
+[__guards] | | +- TENSOR_MATCH: check_tensor(L[&#39;a&#39;], Tensor, DispatchKeySet(CPU, BackendSelect, ADInplaceOrView, AutogradCPU), torch.float32, device=None, requires_grad=False, size=[10], stride=[1])  # x = a / (torch.abs(a) + 1)  # src/dynamo.py:14 in example
+</code></pre><p>As you can see, the output shows guards being used. These are essentially assertions that determine whether the graph should be reused or re-captured. For example, the <code>check_tensor</code> guard verifies properties of the <code>torch.Tensor</code>, such as <code>dtype</code>, <code>device</code>, <code>requires_grad</code>, and <code>size</code>. If any of these properties change, the guard triggers a re-capture of the graph, ensuring that it remains accurate for the current execution.</p>
+
+
+<h3 class="relative group">Overcoming limitations 
+    <div id="overcoming-limitations" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#overcoming-limitations" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>A great functionality addition of Torch Dynamo compared to other tracing tools like Torchscript or FX tracing is that Dynamo is capable of tracing dynamic graphs that present data-dependant control flow. This is just a fancy way of saying that the execution of the code depends on a dynamic value, therefore the function cannot be traced in a static graph.</p>
+<p>Here&rsquo;s a very easy example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="n">y</span>
+</span></span></code></pre></div><p>In this case, the returned value depends on the <code>sum</code> of the <code>x</code> tensor. Therefore, it is impossible to trace this source code in a single, static graph.</p>
+<p>If we try to trace it using Torchscript, the tool will silently fail, since it will compute a single static graph. This means that, for our example, even if the condition <code>x.sum() &gt; 0</code> is not met, the traced function will return <code>y</code>, which is the incorrect result.</p>
+<p>FX tracing, instead, will throw an exception like:</p>
+<blockquote>
+<p><code>raise TraceError('symbolically traced variables cannot be used as inputs to control flow') torch.fx.proxy.TraceError: symbolically traced variables cannot be used as inputs to control flow</code></p>
+</blockquote>
+<p>If we try to trace the function by concretizing the input arguments, we will obtain the same result as if using Torchscript, since FX Tracing will trace a static graph.</p>
+<p>To be fair, TorchScript can support data-dependant control flow, but that implies changing a lot of the codebase.
+On the other hand, Dynamo handles data-dependant control flow, with no code changes needed. In fact, when Dynamo encounters unsupported Python code (like data-dependant control flow), it breaks the computation graph and lets the Python&rsquo;s interpreter handle the unsupported code, and then it resumes the graph capture.
+This allows Dynamo to solve another great limitation of Torchscript and FX tracing, which is supporting non-Pytorch code.</p>
 
 
 <h2 class="relative group">Diocan 

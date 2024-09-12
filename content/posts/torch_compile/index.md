@@ -126,10 +126,83 @@ The image below illustrates this concept perfectly:
 ## Into the Operating Room: Dissecting the Mechanics of Torch Compile
 After all this talk about graphs, it's finally time to get down to business. Now, we’re ready to make the incision and dive deep into `torch.compile` to explore its inner workings. Armed with the knowledge we’ve gained in the previous sections, this should feel like a well-prepared field trip into the body of PyTorch, right? I certainly hope so—my head’s already spinning from the sheer complexity of it all!
 
-### Torch Dynamo
+### Operating on the Fly: Torch Dynamo’s JIT Bytecode Transformation
+Let's start with a definition: **Torch Dynamo** is a Python JIT compiler that uses CPython's frame evaluation API to dynamically modify the bytecode generated from Pytorch source.
+That sentence might sound a bit overwhelming, so let’s take it step by step.
+
+First, what is **Just-in-time** (JIT) compilation? It’s a compilation process that occurs during the execution of a program, rather than before (as with languages like C). In Python, this means that while the program is running, its bytecode is translated into machine code, which the system then executes. Here’s a simple diagram to illustrate:
+
+![](python_schema.png "")
+
+As you can see, the original Python source code is parsed into bytecode, which is easier to manage during execution. Now, thanks to the **frame evaluation API**, we can insert a middleware between the bytecode and the interpreter, as shown in the diagram below:
+
+![](frame_evaluation.png "")
+
+This is where **Torch Dynamo** comes in. It acts as a middleware, intercepting the bytecode to rewrite it and extract FX graphs from the PyTorch operations defined in the source code.
+
+Since Dynamo operates just-in-time, it dynamically intercepts bytecode during execution and extracts graphs based on the current state of the code. This allows us to work with dynamic graphs, adapting to the changing flow of execution. However, for the sake of performance, we want to avoid re-capturing graphs every time the same code runs—doing so repeatedly, as seen in frameworks like JAX, would result in unnecessary overhead.
+
+To address this, Dynamo uses **guards**. These guards are conditions that check whether the graph needs to be re-captured. If nothing significant has changed since the last run, Dynamo will use the previously captured graph, avoiding the need to reconstruct it from scratch.
+
+Here’s a code snippet to illustrate how guards work:
+```python
+from typing import Callable, List
+import torch
+from torch import _dynamo as torchdynamo
+
+def custom_compiler(graph_module: torch.fx.GraphModule, dummy_inputs: List[torch.Tensor]) -> Callable:
+    graph_module.graph.print_tabular()
+    return graph_module.forward
+
+@torchdynamo.optimize(custom_compiler)
+def example(a, b):
+    x = a / (torch.abs(a) + 1)
+    return x * b
+
+for _ in range(100):
+    example(torch.randn(10), torch.randn(10))
+```
+
+To observe Dynamo in action, run the script with the following command to enable the appropriate logging level:
+```
+TORCH_LOGS=guards uv run src/dynamo.py
+```
+
+Here’s a snippet of the output:
+```
+[__guards] | +- GuardManager: source=L['a'], accessed_by=DictGetItemGuardAccessor(a)
+[__guards] | | +- TENSOR_MATCH: check_tensor(L['a'], Tensor, DispatchKeySet(CPU, BackendSelect, ADInplaceOrView, AutogradCPU), torch.float32, device=None, requires_grad=False, size=[10], stride=[1])  # x = a / (torch.abs(a) + 1)  # src/dynamo.py:14 in example
+```
+
+As you can see, the output shows guards being used. These are essentially assertions that determine whether the graph should be reused or re-captured. For example, the `check_tensor` guard verifies properties of the `torch.Tensor`, such as `dtype`, `device`, `requires_grad`, and `size`. If any of these properties change, the guard triggers a re-capture of the graph, ensuring that it remains accurate for the current execution.
 
 
-## Diocan
+### Overcoming limitations
+A great functionality addition of Torch Dynamo compared to other tracing tools like Torchscript or FX tracing is that Dynamo is capable of tracing dynamic graphs that present data-dependant control flow. This is just a fancy way of saying that the execution of the code depends on a dynamic value, therefore the function cannot be traced in a static graph. 
+
+Here's a very easy example:
+
+```python
+def function(x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
+    return y if x.sum() > 0 else -y
+```
+
+In this case, the returned value depends on the `sum` of the `x` tensor. Therefore, it is impossible to trace this source code in a single, static graph. 
+
+If we try to trace it using Torchscript, the tool will silently fail, since it will compute a single static graph. This means that, for our example, even if the condition `x.sum() > 0` is not met, the traced function will return `y`, which is the incorrect result.
+
+FX tracing, instead, will throw an exception like: 
+
+> `raise TraceError('symbolically traced variables cannot be used as inputs to control flow')
+torch.fx.proxy.TraceError: symbolically traced variables cannot be used as inputs to control flow`
+
+If we try to trace the function by concretizing the input arguments, we will obtain the same result as if using Torchscript, since FX Tracing will trace a static graph.
+
+To be fair, TorchScript can support data-dependant control flow, but that implies changing a lot of the codebase.
+On the other hand, Dynamo handles data-dependant control flow, with no code changes needed. In fact, when Dynamo encounters unsupported Python code (like data-dependant control flow), it breaks the computation graph and lets the Python's interpreter handle the unsupported code, and then it resumes the graph capture.
+This allows Dynamo to solve another great limitation of Torchscript and FX tracing, which is supporting non-Pytorch code.
+
+##
 Hey! Torch just called me GPU-poor! Not cool! 
 https://discuss.pytorch.org/t/torch-compile-warning-not-enough-sms-to-use-max-autotune-gemm-mode/184405
 https://github.com/pytorch/pytorch/blob/e5f5bcf6d4ec022558caf4d0611d928497394a88/torch/_inductor/utils.py#L644-L645
