@@ -14,7 +14,7 @@
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/torch-compile/</guid>
-      <description>&lt;p&gt;Remember when machine learning was done using Caffe? The ML Surgeon remembers that.
+      <description>&lt;p&gt;Remember when machine learning was done using &lt;code&gt;Caffe&lt;/code&gt;? The ML Surgeon remembers that.
 If you didn’t catch the reference, too bad for you!&lt;/p&gt;
 &lt;p&gt;In the last few days, I&amp;rsquo;ve been reflecting on how much easier machine learning has become in recent years. Not only do we now have a larger and higher-quality plethora of tools and frameworks—ones we could only dream of a few years ago—but the fact that these frameworks are so user-friendly is mind-boggling!&lt;/p&gt;</description>
       

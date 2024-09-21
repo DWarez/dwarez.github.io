@@ -66,8 +66,8 @@
   <meta property="og:url" content="http://localhost:1313/posts/torch-compile/">
   <meta property="og:site_name" content="The ML Surgeon">
   <meta property="og:title" content="Torch compile">
-  <meta property="og:description" content="Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!
-In the last few days, I’ve been reflecting on how much easier machine learning has become in recent years. Not only do we now have a larger and higher-quality plethora of tools and frameworks—ones we could only dream of a few years ago—but the fact that these frameworks are so user-friendly is mind-boggling!">
+  <meta property="og:description" content=" You can take a look at the GitHub repository of this blogpost at this link
+Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -79,8 +79,8 @@ In the last few days, I’ve been reflecting on how much easier machine learning
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Torch compile">
-  <meta name="twitter:description" content="Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!
-In the last few days, I’ve been reflecting on how much easier machine learning has become in recent years. Not only do we now have a larger and higher-quality plethora of tools and frameworks—ones we could only dream of a few years ago—but the fact that these frameworks are so user-friendly is mind-boggling!">
+  <meta name="twitter:description" content=" You can take a look at the GitHub repository of this blogpost at this link
+Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!">
 
   
   <script type="application/ld+json">
@@ -91,7 +91,7 @@ In the last few days, I’ve been reflecting on how much easier machine learning
     "name": "Torch compile",
     "headline": "Torch compile",
     
-    "abstract": "\u003cp\u003eRemember when machine learning was done using Caffe? The ML Surgeon remembers that.\nIf you didn’t catch the reference, too bad for you!\u003c\/p\u003e\n\u003cp\u003eIn the last few days, I\u0026rsquo;ve been reflecting on how much easier machine learning has become in recent years. Not only do we now have a larger and higher-quality plethora of tools and frameworks—ones we could only dream of a few years ago—but the fact that these frameworks are so user-friendly is mind-boggling!\u003c\/p\u003e",
+    "abstract": "\u003cblockquote\u003e\n\u003cp\u003eYou can take a look at the GitHub repository of this blogpost \u003ca href=\u0022https:\/\/github.com\/DWarez\/torch_compile_blogpost\u0022   target=\u0022_blank\u0022\u003e\n    \u003cstrong\u003eat this link\u003c\/strong\u003e\u003c\/a\u003e\u003c\/p\u003e\n\u003c\/blockquote\u003e\n\u003cp\u003eRemember when machine learning was done using \u003ccode\u003eCaffe\u003c\/code\u003e? The ML Surgeon remembers that.\nIf you didn’t catch the reference, too bad for you!\u003c\/p\u003e",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/torch-compile\/",
     "author" : {
@@ -107,7 +107,7 @@ In the last few days, I’ve been reflecting on how much easier machine learning
     "keywords": ["torch-compile","compiler"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1979"
+    "wordCount": "4255"
   }]
   </script>
 
@@ -758,7 +758,7 @@ In the last few days, I’ve been reflecting on how much easier machine learning
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <span title="Reading time">10 mins</span><span class="px-2 text-primary-500">&middot;</span>
+  <span title="Reading time">20 mins</span><span class="px-2 text-primary-500">&middot;</span>
 
 
   
@@ -985,10 +985,26 @@ In the last few days, I’ve been reflecting on how much easier machine learning
     <li><a href="#into-the-operating-room-dissecting-the-mechanics-of-torch-compile">Into the Operating Room: Dissecting the Mechanics of Torch Compile</a>
       <ul>
         <li><a href="#operating-on-the-fly-torch-dynamos-jit-bytecode-transformation">Operating on the Fly: Torch Dynamo’s JIT Bytecode Transformation</a></li>
-        <li><a href="#overcoming-limitations">Overcoming limitations</a></li>
+        <li><a href="#handling-dynamic-flow-with-surgical-precision-torch-dynamo-vs-static-tracing-tools">Handling Dynamic Flow with Surgical Precision: Torch Dynamo vs. Static Tracing Tools</a></li>
+        <li><a href="#torch-inductor-the-final-scalpel-for-optimizing-computational-graphs">Torch Inductor: The Final Scalpel for Optimizing Computational Graphs</a>
+          <ul>
+            <li><a href="#key-optimization-techniques-with-torchinductor">Key Optimization Techniques with TorchInductor</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#diocan">Diocan</a></li>
+    <li><a href="#scalpel-in-hand-a-practical-dive-into-torchcompile">Scalpel in Hand: A Practical Dive into torch.compile</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#intermediate-representation-ir">Intermediate Representation (IR)</a></li>
+            <li><a href="#fx-graph-artifacts">FX Graph Artifacts</a></li>
+          </ul>
+        </li>
+        <li><a href="#benchmarking-is-the-compiled-function-actually-faster">Benchmarking: Is the Compiled Function Actually Faster?</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a></li>
   </ul>
 </nav>
   </div>
@@ -1013,10 +1029,26 @@ In the last few days, I’ve been reflecting on how much easier machine learning
     <li><a href="#into-the-operating-room-dissecting-the-mechanics-of-torch-compile">Into the Operating Room: Dissecting the Mechanics of Torch Compile</a>
       <ul>
         <li><a href="#operating-on-the-fly-torch-dynamos-jit-bytecode-transformation">Operating on the Fly: Torch Dynamo’s JIT Bytecode Transformation</a></li>
-        <li><a href="#overcoming-limitations">Overcoming limitations</a></li>
+        <li><a href="#handling-dynamic-flow-with-surgical-precision-torch-dynamo-vs-static-tracing-tools">Handling Dynamic Flow with Surgical Precision: Torch Dynamo vs. Static Tracing Tools</a></li>
+        <li><a href="#torch-inductor-the-final-scalpel-for-optimizing-computational-graphs">Torch Inductor: The Final Scalpel for Optimizing Computational Graphs</a>
+          <ul>
+            <li><a href="#key-optimization-techniques-with-torchinductor">Key Optimization Techniques with TorchInductor</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#diocan">Diocan</a></li>
+    <li><a href="#scalpel-in-hand-a-practical-dive-into-torchcompile">Scalpel in Hand: A Practical Dive into torch.compile</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#intermediate-representation-ir">Intermediate Representation (IR)</a></li>
+            <li><a href="#fx-graph-artifacts">FX Graph Artifacts</a></li>
+          </ul>
+        </li>
+        <li><a href="#benchmarking-is-the-compiled-function-actually-faster">Benchmarking: Is the Compiled Function Actually Faster?</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a></li>
   </ul>
 </nav>
   </div>
@@ -1071,7 +1103,11 @@ In the last few days, I’ve been reflecting on how much easier machine learning
 
 
         <div class="article-content max-w-prose mb-20">
-          <p>Remember when machine learning was done using Caffe? The ML Surgeon remembers that.
+          <blockquote>
+<p>You can take a look at the GitHub repository of this blogpost <a href="https://github.com/DWarez/torch_compile_blogpost"   target="_blank">
+    <strong>at this link</strong></a></p>
+</blockquote>
+<p>Remember when machine learning was done using <code>Caffe</code>? The ML Surgeon remembers that.
 If you didn’t catch the reference, too bad for you!</p>
 <p>In the last few days, I&rsquo;ve been reflecting on how much easier machine learning has become in recent years. Not only do we now have a larger and higher-quality plethora of tools and frameworks—ones we could only dream of a few years ago—but the fact that these frameworks are so user-friendly is mind-boggling!</p>
 <p>This got me thinking: are practitioners truly aware of the extreme complexity behind modern machine learning tools? Probably not. That’s why today, I want to dissect <strong>Torch Compile</strong>.</p>
@@ -1089,12 +1125,14 @@ If you didn’t catch the reference, too bad for you!</p>
     
 </h2>
 <p>At the end of 2022, PyTorch 2.0 was released, bringing with it a host of improvements and new features. Among them, the standout addition was undoubtedly <strong>torch.compile</strong>, a method designed to speed up PyTorch code. Its usage is quite straightforward: pass either a <code>torch.nn.Module</code> or a function to the method, and you’ll get an optimized version of it. For example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="o">...</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">optimized_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-</span></span></code></pre></div><p>The <code>optimized_model</code> will, hopefully, run faster than the originally instantiated model. Later on, we’ll conduct some benchmarks to demonstrate these speedups. So far, so simple, right?</p>
+</span></span></code></pre></div><p>The <code>optimized_model</code> will, hopefully, run faster than the originally instantiated model.
+// ToDo: maybe remove
+Later on, we’ll conduct some benchmarks to demonstrate these speedups. So far, so simple, right?</p>
 <p>But what actually happens when we use <code>torch.compile</code>? How can a single line of code optimize a model and achieve up to 3x speedups compared to classic, eager-mode PyTorch?</p>
 <p>To understand that, we’ll need to cut deeper—time to get some blood on our hands (or, ideally, gloves).</p>
 
@@ -1190,6 +1228,9 @@ Long story short, PyTorch automatically computes gradients for tensors. A comput
   
 
 </p>
+<blockquote>
+<p>⚠️ Note: I forgot to add arrows from <code>op</code> and <code>Z</code> to the <code>Derivative Magic</code> block!</p>
+</blockquote>
 <p>Damn, I&rsquo;m good at drawing. Anyway, in case you missed your calculus classes, the notation 
 \(\frac{\partial Z}{\partial X}\) and 
 \(\frac{\partial Z}{\partial Y}\) stands for the partial derivative of <code>Z</code> with respect to <code>X</code> (or <code>Y</code>).</p>
@@ -1384,7 +1425,7 @@ That sentence might sound a bit overwhelming, so let’s take it step by step.</
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">graph_module</span><span class="o">.</span><span class="n">forward</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nd">@torchdynamo.optimize</span><span class="p">(</span><span class="n">custom_compiler</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">b</span>
 </span></span><span class="line"><span class="cl">
@@ -1398,39 +1439,410 @@ That sentence might sound a bit overwhelming, so let’s take it step by step.</
 </code></pre><p>As you can see, the output shows guards being used. These are essentially assertions that determine whether the graph should be reused or re-captured. For example, the <code>check_tensor</code> guard verifies properties of the <code>torch.Tensor</code>, such as <code>dtype</code>, <code>device</code>, <code>requires_grad</code>, and <code>size</code>. If any of these properties change, the guard triggers a re-capture of the graph, ensuring that it remains accurate for the current execution.</p>
 
 
-<h3 class="relative group">Overcoming limitations 
-    <div id="overcoming-limitations" class="anchor"></div>
+<h3 class="relative group">Handling Dynamic Flow with Surgical Precision: Torch Dynamo vs. Static Tracing Tools 
+    <div id="handling-dynamic-flow-with-surgical-precision-torch-dynamo-vs-static-tracing-tools" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#overcoming-limitations" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#handling-dynamic-flow-with-surgical-precision-torch-dynamo-vs-static-tracing-tools" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
-<p>A great functionality addition of Torch Dynamo compared to other tracing tools like Torchscript or FX tracing is that Dynamo is capable of tracing dynamic graphs that present data-dependant control flow. This is just a fancy way of saying that the execution of the code depends on a dynamic value, therefore the function cannot be traced in a static graph.</p>
-<p>Here&rsquo;s a very easy example:</p>
+<p>One of the standout features of Torch Dynamo, compared to other tracing tools like TorchScript or FX tracing, is its ability to trace dynamic graphs that involve data-dependent control flow. In simpler terms, this means that the execution path of the code depends on a dynamic value, which makes it impossible to capture within a static graph.</p>
+<p>Here’s a simple example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="n">y</span>
-</span></span></code></pre></div><p>In this case, the returned value depends on the <code>sum</code> of the <code>x</code> tensor. Therefore, it is impossible to trace this source code in a single, static graph.</p>
-<p>If we try to trace it using Torchscript, the tool will silently fail, since it will compute a single static graph. This means that, for our example, even if the condition <code>x.sum() &gt; 0</code> is not met, the traced function will return <code>y</code>, which is the incorrect result.</p>
-<p>FX tracing, instead, will throw an exception like:</p>
+</span></span></code></pre></div><p>In this case, the returned value depends on the sum of the tensor <code>x</code>. Because of this dynamic condition, the function can’t be traced by a tool that only works with static graphs.</p>
+<p>If we attempt to trace this function using TorchScript, it will fail silently, producing a static graph. This means that even if the condition <code>x.sum() &gt; 0</code> is false, the traced function will still return <code>y</code>, which is incorrect.</p>
+<p>With <strong>FX tracing</strong>, however, we would get an exception like:</p>
 <blockquote>
 <p><code>raise TraceError('symbolically traced variables cannot be used as inputs to control flow') torch.fx.proxy.TraceError: symbolically traced variables cannot be used as inputs to control flow</code></p>
 </blockquote>
-<p>If we try to trace the function by concretizing the input arguments, we will obtain the same result as if using Torchscript, since FX Tracing will trace a static graph.</p>
-<p>To be fair, TorchScript can support data-dependant control flow, but that implies changing a lot of the codebase.
-On the other hand, Dynamo handles data-dependant control flow, with no code changes needed. In fact, when Dynamo encounters unsupported Python code (like data-dependant control flow), it breaks the computation graph and lets the Python&rsquo;s interpreter handle the unsupported code, and then it resumes the graph capture.
-This allows Dynamo to solve another great limitation of Torchscript and FX tracing, which is supporting non-Pytorch code.</p>
+<p>Trying to bypass this by providing concrete input arguments won’t work either, as FX tracing will still generate a static graph—leading to the same issues as TorchScript.</p>
+<p>Although TorchScript can technically support data-dependent control flow, this requires significant changes to the codebase. Torch Dynamo, on the other hand, handles data-dependent control flow seamlessly, with no need for code modifications. When Dynamo encounters unsupported Python code (like control flow dependent on dynamic data), it breaks the computation graph, allows Python’s interpreter to process the unsupported code, and then resumes graph capture.</p>
+<p>This feature also allows Dynamo to trace and optimize non-PyTorch code—another major limitation of both TorchScript and FX tracing.</p>
 
 
-<h2 class="relative group">Diocan 
-    <div id="diocan" class="anchor"></div>
+<h3 class="relative group">Torch Inductor: The Final Scalpel for Optimizing Computational Graphs 
+    <div id="torch-inductor-the-final-scalpel-for-optimizing-computational-graphs" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#diocan" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#torch-inductor-the-final-scalpel-for-optimizing-computational-graphs" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>The last crucial tool in our arsenal is a compiler that knows how to transform the computational graph into highly efficient machine code. In this realm, this is typically called <strong>deep learning compiler</strong>. This is where <strong>TorchInductor</strong> comes in.</p>
+<p>TorchInductor acts as the key performance engine for PyTorch’s deep learning models by compiling and optimizing the graph for both inference and training modes—something that many traditional backends struggle with. Most alternative backends are limited to <strong>inference-only</strong> optimizations, leaving a significant gap in performance during the training phase. TorchInductor fills this gap by targeting both modes of operation, offering a unified solution that performs well across different stages of machine learning pipelines.</p>
+<p>TorchInductor supports both CPU and GPU architectures, adapting its optimizations based on the target hardware:</p>
+<ul>
+<li>
+<p>For CPUs, TorchInductor generates highly efficient C++/<a href="https://www.openmp.org/"   target="_blank">
+    <strong>OpenMP</strong></a> code. OpenMP is a popular framework for parallel computing on CPUs, making it ideal for distributing workloads across multiple cores in modern processors. By leveraging OpenMP, Inductor ensures that the compiled code scales with CPU architectures for tasks like training and inference.</p>
+</li>
+<li>
+<p>For GPUs, the generated code is written in <a href="https://openai.com/index/triton/"   target="_blank">
+    <strong>Triton</strong></a>, a high-level programming language designed for ease of use and speed, serving as a flexible alternative to CUDA. Triton is designed to simplify GPU programming by providing Python-like syntax, making it accessible to a broader range of developers. It supports NVIDIA GPUs with compute capability 7.0 or greater, as well as AMD GPUs with ROCm 5.2 or later. Though Triton’s support for CPUs is still evolving, its GPU capabilities make it a powerful ally in the quest for optimization.</p>
+</li>
+</ul>
+
+
+<h4 class="relative group">Key Optimization Techniques with TorchInductor 
+    <div id="key-optimization-techniques-with-torchinductor" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#key-optimization-techniques-with-torchinductor" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>Once the computational graph is fed into TorchInductor, a number of advanced optimization techniques are applied to significantly speed up the execution of your machine learning models.</p>
+<ul>
+<li>
+<p><strong>Operation Fusion</strong></p>
+<p>One of the primary optimizations that TorchInductor performs is operation fusion. This technique merges multiple operations into a single kernel, reducing the overhead associated with launching separate kernels and minimizing memory bandwidth usage. By combining operations, the system executes more tasks with fewer memory transactions, leading to noticeable performance boosts. This is particularly effective for GPU optimization, where kernel launch overhead can become a bottleneck.</p>
+</li>
+<li>
+<p><strong>Memory Layout Transformations</strong></p>
+<p>Another key technique involves memory layout transformations. The layout of tensors in memory can have a substantial impact on performance, especially when accessing data in parallel. TorchInductor reorders tensors to match the access patterns of the target hardware, ensuring that memory accesses are efficient. This process helps reduce cache misses, improve memory locality, and maximize the performance of both CPU and GPU systems.</p>
+</li>
+<li>
+<p><strong>Loop Unrolling</strong></p>
+<p>For CPU-bound operations, loop unrolling is a critical optimization. It involves transforming loops to execute multiple iterations in one go, reducing the overhead associated with loop control and improving cache utilization. By expanding loops, TorchInductor increases the efficiency of the CPU&rsquo;s instruction pipeline, making it better suited to handle parallel workloads and improving overall throughput.</p>
+</li>
+<li>
+<p><strong>Parallelism and Hardware Utilization</strong></p>
+<p>TorchInductor doesn&rsquo;t just focus on memory and execution optimizations—it also maximizes hardware utilization through enhanced parallelism. For GPUs, this means leveraging more cores simultaneously, while for CPUs, this means distributing tasks efficiently across multiple cores. The overall effect is that models run faster and scale better across different hardware setups.</p>
+</li>
+</ul>
+
+
+<h2 class="relative group">Scalpel in Hand: A Practical Dive into torch.compile 
+    <div id="scalpel-in-hand-a-practical-dive-into-torchcompile" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#scalpel-in-hand-a-practical-dive-into-torchcompile" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Enough theory—let’s get our hands dirty! As any good surgeon knows, the best way to master a technique is through practice. In this section, we’ll explore the magic of <code>torch.compile</code> by dissecting its output and performance. We’ll first analyze what happens under the hood when we use <code>torch.compile</code>, and then we’ll run a benchmark to determine if the compiled function is truly faster.</p>
+<p>Let’s start with a straightforward PyTorch function to keep things simple. This will allow us to focus on understanding how the compilation process works without being overwhelmed by complexity:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">simple_fn</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>Why this function?</p>
+<ol>
+<li><strong>Readability</strong>: It’s easier to understand and debug the logs with a minimal example compared to a full <code>nn.Module</code>.</li>
+<li><strong>Interesting Output</strong>: This function performs a matrix multiplication (<code>matmul</code>) followed by a softmax operation. These are common operations in deep learning, and their transformation during compilation will give us insights into PyTorch’s lower-level optimizations.</li>
+</ol>
+<p>Now, let’s compile the function using <code>torch.compile</code> with the TorchInductor backend, and then run it with some random input tensors:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Create input tensors</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compile the function using torch.compile() with TorchInductor backend</span>
+</span></span><span class="line"><span class="cl"><span class="n">compiled_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">simple_fn</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&#34;inductor&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Call the compiled function</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">compiled_fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span></code></pre></div><p>If we run this script with debugging enabled (<code>TORCH_COMPILE_DEBUG=1</code>), a folder named <code>torch_compile_debug</code> will appear in the directory where the script was executed. This folder contains artifacts from the compilation process, such as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">fx_graph_readable.py
+</span></span><span class="line"><span class="cl">fx_graph_runnable.py
+</span></span><span class="line"><span class="cl">fx_graph_transformed.py
+</span></span><span class="line"><span class="cl">ir_post_fusion.txt
+</span></span><span class="line"><span class="cl">ir_pre_fusion.txt
+</span></span><span class="line"><span class="cl">output_code.py
+</span></span></code></pre></div><p>Let’s break down the most interesting files:</p>
+
+
+<h4 class="relative group">Intermediate Representation (IR) 
+    <div id="intermediate-representation-ir" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#intermediate-representation-ir" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>The <strong>Intermediate Representation</strong> (IR) files provide snapshots of the computational graph before and after fusion. These files contain a low-level, abstracted view of the operations PyTorch will perform, allowing for optimizations to be applied.</p>
+<ol>
+<li><strong>Pre-Fusion IR</strong>: Shows the state of the computational graph before any optimizations have been applied.</li>
+<li><strong>Post-Fusion IR</strong>: Displays the graph after key optimizations, such as <strong>operation fusion</strong>, have been performed.</li>
+</ol>
+
+
+<h4 class="relative group">FX Graph Artifacts 
+    <div id="fx-graph-artifacts" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#fx-graph-artifacts" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>The <strong>FX graph</strong> files offer another layer of insight into the internal workings of <code>torch.compile</code>. Let’s open <code>fx_graph_readable.py</code> to examine how PyTorch translates the original function into an intermediate, traceable format:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="err">&lt;</span><span class="nc">lambda</span><span class="o">&gt;</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg0_1</span><span class="p">:</span> <span class="s2">&#34;f32[100, 100]&#34;</span><span class="p">,</span> <span class="n">arg1_1</span><span class="p">:</span> <span class="s2">&#34;f32[100, 100]&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># File: /home/dwarez/Documents/workspace/torch_compile/inductor.py:6 in simple_fn, code: z = torch.matmul(x, y)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">mm</span><span class="p">:</span> <span class="s2">&#34;f32[100, 100]&#34;</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">mm</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">arg1_1</span><span class="p">,</span> <span class="n">arg0_1</span><span class="p">);</span>  <span class="n">arg1_1</span> <span class="o">=</span> <span class="n">arg0_1</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1"># File: /home/dwarez/Documents/workspace/torch_compile/inductor.py:7 in simple_fn, code: return torch.nn.functional.softmax(z, dim=1)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">amax</span><span class="p">:</span> <span class="s2">&#34;f32[100, 1]&#34;</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">amax</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sub</span><span class="p">:</span> <span class="s2">&#34;f32[100, 100]&#34;</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">sub</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="n">amax</span><span class="p">);</span>  <span class="n">mm</span> <span class="o">=</span> <span class="n">amax</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">      <span class="n">exp</span><span class="p">:</span> <span class="s2">&#34;f32[100, 100]&#34;</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">exp</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">sub</span><span class="p">);</span>  <span class="n">sub</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sum_1</span><span class="p">:</span> <span class="s2">&#34;f32[100, 1]&#34;</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">sum</span><span class="o">.</span><span class="n">dim_IntList</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">div</span><span class="p">:</span> <span class="s2">&#34;f32[100, 100]&#34;</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">sum_1</span><span class="p">);</span>  <span class="n">exp</span> <span class="o">=</span> <span class="n">sum_1</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">(</span><span class="n">div</span><span class="p">,)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Here:</p>
+<ul>
+<li>The graph is structured as a PyTorch <code>nn.Module</code> with a <code>forward</code> method.</li>
+<li>Each operation (such as <code>matmul</code> and <code>softmax</code>) is translated into lower-level <strong>ATen</strong> operations (<code>torch.ops.aten</code>), which represent the core tensor computations that PyTorch relies on.</li>
+</ul>
+<p>The code clearly shows how PyTorch’s softmax function has been decomposed into its mathematical components:</p>
+<ol>
+<li><strong>amax</strong>: Maximum value extraction across the specified dimension.</li>
+<li><strong>sub</strong>: Subtraction of the maximum value from each element in the matrix.</li>
+<li><strong>exp</strong>: Exponentiation of the result.</li>
+<li><strong>sum</strong>: Summation across the same dimension.</li>
+<li><strong>div</strong>: Division to normalize the output, resulting in the final <code>softmax</code>.</li>
+</ol>
+<p>This low-level breakdown reveals the granular steps involved in even simple operations, showing how TorchInductor prepares the graph for optimization.</p>
+<p>When you see <code>torch.ops.aten</code>, it refers to <strong>ATen</strong>, the backend engine that powers PyTorch’s tensor computations. ATen is responsible for handling fundamental operations like matrix multiplication, element-wise functions, and reductions, ensuring that these operations are executed efficiently on both CPU and GPU.</p>
+<p>Let’s dive into the contents of <code>fx_graph_runnable.py</code>, which provides another view of the computational graph. This file is generated as part of the artifact collection during the compilation process, and it’s crucial for understanding how PyTorch turns your high-level code into something that can actually run on your hardware.</p>
+<p>Here’s what the file looks like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">device</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch.fx</span> <span class="k">as</span> <span class="nn">fx</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch._dynamo.testing</span> <span class="kn">import</span> <span class="n">rand_strided</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">inf</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch._inductor.inductor_prims</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch._dynamo.config</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch._inductor.config</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch._functorch.config</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch.fx.experimental._config</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">_functorch</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">debug_partitioner</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">_functorch</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">unlift_effect_tokens</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">isolate_fails_code_str</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># torch version: 2.4.1+cu121</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># torch cuda version: 12.1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># torch git version: 38b96d3399a695e704ed39b60dac733c3fbf20e2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># CUDA Info:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># nvcc: NVIDIA (R) Cuda compiler driver</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Copyright (c) 2005-2024 NVIDIA Corporation</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Built on Wed_Aug_14_10:10:22_PDT_2024</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Cuda compilation tools, release 12.6, V12.6.68</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Build cuda_12.6.r12.6/compiler.34714021_0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># GPU Hardware Info:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># NVIDIA GeForce RTX 4060 : 1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch.nn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Repro</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg0_1</span><span class="p">,</span> <span class="n">arg1_1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">mm</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">arg1_1</span><span class="p">,</span> <span class="n">arg0_1</span><span class="p">);</span>  <span class="n">arg1_1</span> <span class="o">=</span> <span class="n">arg0_1</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="n">amax</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">amax</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sub</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">sub</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="n">amax</span><span class="p">);</span>  <span class="n">mm</span> <span class="o">=</span> <span class="n">amax</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">exp</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">sub</span><span class="p">);</span>  <span class="n">sub</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sum_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">sum</span><span class="o">.</span><span class="n">dim_IntList</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">div</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">aten</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">sum_1</span><span class="p">);</span>  <span class="n">exp</span> <span class="o">=</span> <span class="n">sum_1</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="n">div</span><span class="p">,)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">load_args</span><span class="p">(</span><span class="n">reader</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">buf0</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">40000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">reader</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">buf0</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">is_leaf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># arg0_1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">buf1</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">40000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">reader</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">buf1</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">is_leaf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># arg1_1</span>
+</span></span><span class="line"><span class="cl"><span class="n">load_args</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">mod</span> <span class="o">=</span> <span class="n">Repro</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">from</span> <span class="nn">torch._dynamo.repro.after_aot</span> <span class="kn">import</span> <span class="n">run_repro</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">run_repro</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">load_args</span><span class="p">,</span> <span class="n">accuracy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tracing_mode</span><span class="o">=</span><span class="s1">&#39;real&#39;</span><span class="p">,</span> <span class="n">check_str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># To run it separately, do</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># mod, args = run_repro(mod, load_args, accuracy=False, command=&#39;get_args&#39;, save_dir=None, tracing_mode=&#39;real&#39;, check_str=None)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># mod(*args)</span>
+</span></span></code></pre></div><p>By now you should be understaing this quite easily. Additionally to the <code>Repro</code> class (which is simply a runnable <code>nn.Module</code> of the computational graph), there&rsquo;s an <strong>argument loader function</strong>, called <code>load_args</code> and some useful <strong>debugging information</strong> in the comments, like CUDA version and underlying hardware.</p>
+<p>Now, let’s take a look at the output code file (<code>output_code.py</code>), which contains the actual machine code generated by TorchInductor. Although the file is quite long, here’s a snippet that highlights a key portion:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cpp_fused__softmax_0</span> <span class="o">=</span> <span class="n">async_compile</span><span class="o">.</span><span class="n">cpp_pybinding</span><span class="p">([</span><span class="s1">&#39;const float*&#39;</span><span class="p">,</span> <span class="s1">&#39;float*&#39;</span><span class="p">,</span> <span class="s1">&#39;float*&#39;</span><span class="p">,</span> <span class="s1">&#39;float*&#39;</span><span class="p">,</span> <span class="s1">&#39;float*&#39;</span><span class="p">],</span> <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">#include &#34;/tmp/torchinductor_dwarez/sk/cskh5dx62fglpphcrl6723dnmowdabouerrzy3dmqcngbxwfa7bv.h&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">extern &#34;C&#34; void kernel(const float* in_ptr0,
+</span></span></span><span class="line"><span class="cl"><span class="s1">...
+</span></span></span></code></pre></div><p>What’s Happening Here?</p>
+<ul>
+<li>
+<p><strong>C++ to Python Binding</strong>: This snippet shows the generation of a C++ binding for the <strong>fused softmax operation</strong>. Here, PyTorch has automatically compiled the <code>softmax</code> function into efficient C++ code, and this function will be called directly during execution.</p>
+</li>
+<li>
+<p><strong>Asynchronous Compilation</strong>: The <code>async_compile.cpp_pybinding</code> function allows this C++ kernel to be invoked asynchronously from Python, ensuring that the CPU or GPU isn’t sitting idle waiting for Python’s GIL (Global Interpreter Lock).</p>
+</li>
+<li>
+<p><strong>Fused Operations</strong>: Notice that the <code>softmax</code> operation has been fused into a single C++ function. Operation fusion is one of the key optimizations that TorchInductor applies to improve performance by reducing memory bandwidth and kernel launch overhead.</p>
+</li>
+</ul>
+
+
+<h3 class="relative group">Benchmarking: Is the Compiled Function Actually Faster? 
+    <div id="benchmarking-is-the-compiled-function-actually-faster" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#benchmarking-is-the-compiled-function-actually-faster" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Let&rsquo;s put theory into practice and check if the compiled function outperforms the eager-mode function. We’ll use PyTorch&rsquo;s <code>torch.cuda</code> utilities to measure the execution time of both. Here’s the code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">N_ITERS</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">timed</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span><span class="n">enable_timing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span><span class="n">enable_timing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">start</span><span class="o">.</span><span class="n">record</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span><span class="o">.</span><span class="n">record</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">synchronize</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">start</span><span class="o">.</span><span class="n">elapsed_time</span><span class="p">(</span><span class="n">end</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define a simple function</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">simple_fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generate_data</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compile the function using torch.compile() with TorchInductor backend</span>
+</span></span><span class="line"><span class="cl"><span class="n">compiled_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">simple_fn</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&#34;inductor&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">eager_times</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERS</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">inp</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">,</span> <span class="n">eager_time</span> <span class="o">=</span> <span class="n">timed</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">simple_fn</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">inp</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">eager_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eager_time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;eager eval time </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">eager_time</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;~&#34;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">compile_times</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ITERS</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">inp</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">,</span> <span class="n">compile_time</span> <span class="o">=</span> <span class="n">timed</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">compiled_fn</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">inp</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">compile_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compile_time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;compile eval time </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">compile_time</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;~&#34;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">eager_med</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">eager_times</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">compile_med</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">compile_times</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">speedup</span> <span class="o">=</span> <span class="n">eager_med</span> <span class="o">/</span> <span class="n">compile_med</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="sa">f</span><span class="s2">&#34;(eval) eager median: </span><span class="si">{</span><span class="n">eager_med</span><span class="si">}</span><span class="s2">, compile median: </span><span class="si">{</span><span class="n">compile_med</span><span class="si">}</span><span class="s2">, speedup: </span><span class="si">{</span><span class="n">speedup</span><span class="si">}</span><span class="s2">x&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;~&#34;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+</span></span></code></pre></div><p>When running this script, you might see an output like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 0: 0.018083839416503905
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 1: 6.585600227117538e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 2: 2.332800067961216e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 3: 1.8239999189972877e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 4: 1.744000054895878e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 5: 1.6383999958634378e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 6: 1.6383999958634378e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 7: 1.711999997496605e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 8: 1.5231999568641186e-05
+</span></span><span class="line"><span class="cl">eager <span class="nb">eval</span> <span class="nb">time</span> 9: 1.535999961197376e-05
+</span></span><span class="line"><span class="cl">~~~~~~~~~~
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 0: 0.8755618286132812
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 1: 0.00010204800218343735
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 2: 5.8816000819206235e-05
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 3: 4.831999912858009e-05
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 4: 4.790399968624115e-05
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 5: 4.1280001401901244e-05
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 6: 3.82080003619194e-05
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 7: 3.683200106024742e-05
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 8: 3.686400130391121e-05
+</span></span><span class="line"><span class="cl">compile <span class="nb">eval</span> <span class="nb">time</span> 9: 3.481600061058998e-05
+</span></span><span class="line"><span class="cl">~~~~~~~~~~
+</span></span><span class="line"><span class="cl"><span class="o">(</span><span class="nb">eval</span><span class="o">)</span> eager median: 1.7280000261962412e-05, compile median: 4.45920005440712e-05, speedup: 0.3875134564748722x
+</span></span><span class="line"><span class="cl">~~~~~~~~~~
+</span></span></code></pre></div><p>Surprisingly, the compiled function was slower than the eager-mode one, with a speedup less than 1 (0.39x). Let&rsquo;s break down why this happens:</p>
+<ol>
+<li>
+<p><strong>Low Computational Complexity</strong>: The benchmarked function is too simple: it performs just a matrix multiplication followed by a softmax. These operations are lightweight, meaning they don’t provide enough work for the compilation optimizations to shine. The overhead introduced by the compilation process outweighs the benefits of the optimizations, resulting in slower execution.</p>
+<p>In this case, there&rsquo;s no significant performance gain from calling a fused softmax function because there’s nothing substantial to fuse—just a basic matrix operation and activation function.</p>
+</li>
+<li>
+<p>*<strong>Compilation Overhead</strong>: Notice that the first couple of iterations of the compiled function are <strong>much slower</strong> than the rest. This is due to the overhead introduced by the compilation step. The TorchInductor backend needs time to analyze and compile the computational graph into optimized code.
+Once the graph is compiled, subsequent iterations are much faster because PyTorch uses the cached version of the graph, avoiding recompilation. So, if you run many iterations, the compilation time becomes less of a factor, and you’ll see the true performance gains.</p>
+</li>
+<li>
+<p><strong>Eager Mode’s Instant Execution</strong>: Eager mode is designed to run PyTorch operations immediately without any ahead-of-time optimizations, which is ideal for small, one-off operations like this. While compiled execution becomes faster over time, eager mode benefits from its simplicity and immediacy for lightweight tasks.</p>
+</li>
+</ol>
+<p>While this example shows a slowdown, that’s because the workload is too small to benefit from TorchInductor’s optimizations. Compiled execution shines when dealing with larger models or heavier workloads. For a more substantial example where the compiled function outperforms eager mode, check out <a href="https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html#demonstrating-speedups"   target="_blank">
+    <strong>this link</strong></a>.</p>
+
+
+<h2 class="relative group"> 
+    <div id="heading" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#heading" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
