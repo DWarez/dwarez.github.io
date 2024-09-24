@@ -1,5 +1,5 @@
 ---
-title: "Torch compile"
+title: "Dissecting torch.compile: Surgical Precision in PyTorch Optimization"
 date: 2024-09-01
 draft: false
 description: ""
