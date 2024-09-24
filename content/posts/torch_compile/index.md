@@ -7,7 +7,7 @@ slug: "torch-compile"
 tags: ["torch-compile", "compiler"]
 ---
 
-> You can take a look at the GitHub repository of this blogpost [**at this link**](https://github.com/DWarez/torch_compile_blogpost)
+> You can take a look at the GitHub repository of this blogpost [**at this link**](https://github.com/DWarez/torch_compile_blogpost)   {{< icon "github" >}}
 
 Remember when machine learning was done using `Caffe`? The ML Surgeon remembers that.
 If you didn’t catch the reference, too bad for you!
@@ -31,7 +31,6 @@ optimized_model = torch.compile(model)
 ```
 
 The `optimized_model` will, hopefully, run faster than the originally instantiated model.
-// ToDo: maybe remove
 Later on, we’ll conduct some benchmarks to demonstrate these speedups. So far, so simple, right?
 
 But what actually happens when we use `torch.compile`? How can a single line of code optimize a model and achieve up to 3x speedups compared to classic, eager-mode PyTorch?
@@ -130,7 +129,7 @@ CUDA Graphs address this by representing GPU operations as a single, cohesive gr
 
 The image below illustrates this concept perfectly:
 
-![](cuda_graph.png "[Credits to this blogpost](https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/)")
+![](cuda_graph.png "[Credits to **this blogpost**](https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/)")
 
 ## Into the Operating Room: Dissecting the Mechanics of Torch Compile
 
@@ -529,7 +528,7 @@ Surprisingly, the compiled function was slower than the eager-mode one, with a s
 
     In this case, there's no significant performance gain from calling a fused softmax function because there’s nothing substantial to fuse—just a basic matrix operation and activation function.
 
-2. ***Compilation Overhead**: Notice that the first couple of iterations of the compiled function are **much slower** than the rest. This is due to the overhead introduced by the compilation step. The TorchInductor backend needs time to analyze and compile the computational graph into optimized code.
+2. **Compilation Overhead**: Notice that the first couple of iterations of the compiled function are **much slower** than the rest. This is due to the overhead introduced by the compilation step. The TorchInductor backend needs time to analyze and compile the computational graph into optimized code.
 Once the graph is compiled, subsequent iterations are much faster because PyTorch uses the cached version of the graph, avoiding recompilation. So, if you run many iterations, the compilation time becomes less of a factor, and you’ll see the true performance gains.
 
 3. **Eager Mode’s Instant Execution**: Eager mode is designed to run PyTorch operations immediately without any ahead-of-time optimizations, which is ideal for small, one-off operations like this. While compiled execution becomes faster over time, eager mode benefits from its simplicity and immediacy for lightweight tasks.
@@ -538,8 +537,71 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 While this example shows a slowdown, that’s because the workload is too small to benefit from TorchInductor’s optimizations. Compiled execution shines when dealing with larger models or heavier workloads. For a more substantial example where the compiled function outperforms eager mode, check out [**this link**](https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html#demonstrating-speedups).
 
 
-## 
+#### GPU-Poor and Proud: Tweaking torch.compile Parameters for Fun (and Slower Functions)
+Let's try to tweak some `torch.compile` parameters and see what happens, shall we?
 
-Hey! Torch just called me GPU-poor! Not cool!
-https://discuss.pytorch.org/t/torch-compile-warning-not-enough-sms-to-use-max-autotune-gemm-mode/184405
-https://github.com/pytorch/pytorch/blob/e5f5bcf6d4ec022558caf4d0611d928497394a88/torch/_inductor/utils.py#L644-L645
+First up, let's play around with **CUDA graphs**. While CUDA graphs are great at reducing host-to-device communication overhead, that’s not exactly helpful when our function is so simple it might as well be considered an atomic operation. But hey, let's try it anyway!
+
+We can try this backend by simply specifying it in `torch.compile`'s arguments, like this:
+
+```python
+compiled_fn = torch.compile(simple_fn, backend="cudagraphs")
+```
+
+And here’s the "amazing" speedup result:
+
+```sh
+(eval) eager median: 1.635199971497059e-05, compile median: 0.00019219200313091278, speedup: 0.08508158221251444x
+```
+
+Oh no! It's slower... again! Turns out wrapping a super-simple function in a CUDA graph is like putting racing tires on a tricycle—you’re not going anywhere faster.
+
+
+Another thing that we could try is to change the `mode` parameter. This is a way of specifying what should be the focus of the compilation. The default mode is a good balance between performance and overhead, but there are other modalities like `reduce-overhead` which relies on CUDA graphs or `max-autotune`, which also relies on CUDA graphs and Triton based matrix multiplications and convolutions.
+
+So naturally, let's crank it up to "max" with:
+
+```python
+compiled_fn = torch.compile(simple_fn, backend="inductor", mode="max-autotune")
+```
+
+Drumroll, please... and the results:
+```sh
+(eval) eager median: 1.5343999955803157e-05, compile median: 4.190399870276451e-05, speedup: 0.36617030428627984x
+```
+
+Once again, we've hit a slowdown. But wait, what's this warning?
+
+```sh
+W0924 11:37:01.192000 123584511351680 torch/_inductor/utils.py:977] [0/0] Not enough SMs to use max_autotune_gemm mode
+```
+
+Uh-oh. PyTorch is warning me that I don’t have enough [**SMs**](https://dwarez.github.io/posts/cpu-gpu-architecture/#cerebral-cortex). Let’s check the code that triggered this passive-aggressive insult from PyTorch:
+
+```python
+@functools.lru_cache(None)
+def is_big_gpu(index) -> bool:
+    min_sms = 68  # 3080
+    avail_sms = torch.cuda.get_device_properties(index).multi_processor_count
+    if avail_sms < min_sms:
+        log.warning(
+            "Not enough SMs to use max_autotune_gemm mode",
+            extra={"min_sms": min_sms, "avail_sms": avail_sms},
+        )
+        return False
+    return True
+```
+
+So, PyTorch basically looked at my hardware and said, "Sorry, but you're too GPU-poor to hang with the big boys." Not cool, PyTorch, not cool at all.
+
+And with that, I’m officially done with this article!
+
+
+## Conclusion: Closing the Incision on torch.compile
+After a deep surgical dive into the world of `torch.compile`, we've explored key components like **Torch Dynamo**, **Torch Inductor**, **CUDA graphs**, and more—each acting like specialized tools in the operating room of PyTorch optimization. Dynamo handles the "diagnosis," tracing and transforming eager-mode operations into a computational graph, while Inductor steps in like a skilled surgeon to optimize that graph and generate fast machine code for CPUs and GPUs. CUDA graphs reduce the back-and-forth between the host and the GPU, making the "patient" function more efficient by minimizing communication.
+
+However, as our benchmarks revealed, not every function needs major surgery. Sometimes, a simple bandage is better than complex procedures. In fact, when we tried to optimize a lightweight function, the compilation overhead actually made it slower. And yes, it turns out being **GPU-poor** can hold you back, as our GPU didn't have the strength for `max-autotune`—PyTorch’s gentle reminder that sometimes, you just need a more powerful toolkit.
+
+In the end, optimization is like surgery—use the right tool for the right task, and remember, not every patient needs to be on the table!
+
+Now, if you’ll excuse me, I’m off to cry over my GPU specs. Bye!
