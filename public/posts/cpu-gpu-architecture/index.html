@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
   data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
   
@@ -26,8 +26,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.586f74a54c9229f6b5d27ee8ef9604e882158391ca83d5e823b47ef3e3d489767da47582ee9a6f57de35e0247ca19de0c161b85e443ea25fb8e1894f035344a0.css"
-    integrity="sha512-WG90pUySKfa10n7o75YE6IIVg5HKg9XoI7R&#43;8&#43;PUiXZ9pHWC7ppvV9414CR8oZ3gwWG4XkQ&#43;ol&#43;44YlPA1NEoA==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.16ef8a6896d8151791996e6789da59a48d35efa92f465864bfebdef24f1b8a6b7b542a9f4a9ca1d2b987d1ac6c72f3ed184dab5eb1db16fa43b0da3255b9f86c.css"
+    integrity="sha512-Fu&#43;KaJbYFReRmW5nidpZpI0176kvRlhkv&#43;ve8k8bimt7VCqfSpyh0rmH0axscvPtGE2rXrHbFvpDsNoyVbn4bA==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -66,7 +66,7 @@
   <meta property="og:url" content="http://localhost:1313/posts/cpu-gpu-architecture/">
   <meta property="og:site_name" content="The ML Surgeon">
   <meta property="og:title" content="Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs">
-  <meta property="og:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function.">
+  <meta property="og:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -78,7 +78,7 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs">
-  <meta name="twitter:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function.">
+  <meta name="twitter:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.">
 
   
   <script type="application/ld+json">
@@ -89,7 +89,7 @@
     "name": "Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs",
     "headline": "Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs",
     
-    "abstract": "Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it\u0026rsquo;s crucial to understand how GPUs function.",
+    "abstract": "\u003cp\u003eWould you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it\u0026rsquo;s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.\u003c\/p\u003e",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/cpu-gpu-architecture\/",
     "author" : {
@@ -1155,46 +1155,46 @@ For three-dimensional grids, we fix the value for the z-axis and then flatten th
 In CUDA, variables are declared with specific properties that dictate the type of memory they will use. These declarations also define the scope and lifetime of each variable, allowing for precise control over memory usage and performance optimization.</p>
 <p>Here&rsquo;s a quick overview of the syntax and the resulting behaviour.</p>
 <table>
-<thead>
-<tr>
-<th>Declaration</th>
-<th>Memory Type</th>
-<th>Scope</th>
-<th>Lifetime</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Automatic Variables (arrays excluded)</td>
-<td>Register</td>
-<td>Thread</td>
-<td>Grid</td>
-</tr>
-<tr>
-<td>Automatic Array Variable</td>
-<td>Local</td>
-<td>Thread</td>
-<td>Grid</td>
-</tr>
-<tr>
-<td><code>__device__ __shared__ int SharedVariable</code></td>
-<td>Shared</td>
-<td>Block</td>
-<td>Grid</td>
-</tr>
-<tr>
-<td><code>__device__ int GlobalVariable</code></td>
-<td>Global</td>
-<td>Grid</td>
-<td>Application</td>
-</tr>
-<tr>
-<td><code>__device__ __constant__ int ConstantVariable</code></td>
-<td>Constant</td>
-<td>Grid</td>
-<td>Application</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Declaration</th>
+          <th style="text-align: left">Memory Type</th>
+          <th style="text-align: left">Scope</th>
+          <th style="text-align: left">Lifetime</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Automatic Variables (arrays excluded)</td>
+          <td style="text-align: left">Register</td>
+          <td style="text-align: left">Thread</td>
+          <td style="text-align: left">Grid</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Automatic Array Variable</td>
+          <td style="text-align: left">Local</td>
+          <td style="text-align: left">Thread</td>
+          <td style="text-align: left">Grid</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>__device__ __shared__ int SharedVariable</code></td>
+          <td style="text-align: left">Shared</td>
+          <td style="text-align: left">Block</td>
+          <td style="text-align: left">Grid</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>__device__ int GlobalVariable</code></td>
+          <td style="text-align: left">Global</td>
+          <td style="text-align: left">Grid</td>
+          <td style="text-align: left">Application</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>__device__ __constant__ int ConstantVariable</code></td>
+          <td style="text-align: left">Constant</td>
+          <td style="text-align: left">Grid</td>
+          <td style="text-align: left">Application</td>
+      </tr>
+  </tbody>
 </table>
 <p>Let&rsquo;s explain in detail each row of this table.</p>
 <p>Saying <strong>non-array automatic variables</strong> is just a fancy way of referring to scalars. Every variable of this type defined in a kernel or device function is automatically placed inside a thread register, meaning each thread will have its own version of the variable. Consequently, their lifespan is limited to the execution time of the thread.
