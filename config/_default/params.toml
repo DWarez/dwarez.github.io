@@ -18,7 +18,8 @@ mainSections = ["posts"]
 disableImageOptimization = false
 disableTextInHeader = false
 
-defaultBackgroundImage = "/img/background.svg"
+defaultBackgroundImage = "/img/gpu_power.jpg"
+# defaultBackgroundImage = "/img/background.svg"
 # defaultFeaturedImage = "/img/featured.svg"
 
 highlightCurrentMenuArea = true

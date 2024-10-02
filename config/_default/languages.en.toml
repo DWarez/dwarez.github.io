@@ -11,7 +11,7 @@ title = "The ML Surgeon"
   logo = "img/logo.png"
   description = "The low level side of machine learning."
 
-[author]
+[params.author]
   name = "Dario Salvati"
   image = "img/avatar.jpg"
   headline = "A surgeon for Machine Learning models."
