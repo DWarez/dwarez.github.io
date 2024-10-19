@@ -7,7 +7,7 @@ slug: "dev-setup"
 tags: ["setup"]
 ---
 
-Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you'll never excel as an ML Surgeon. But being a surgeon isn't just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data. That’s why having a tailored, efficient, and **functional** development setup is essential to stay productive and ensure everything gets done right.
+Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you'll never excel as an ML Surgeon! But being a surgeon isn't just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data. That’s why having a tailored, efficient, and **functional** development setup is essential to stay productive and ensure everything gets done right.
 
 In this brief article, I’ll walk you through **my personalized setup** for coding in Python, C/C++, and most importantly, CUDA. Keep in mind, this is a highly opinionated guide—what works for me might not work for everyone, so feel free to adapt it to your own needs.
 
@@ -46,23 +46,64 @@ If the process of configuring Neovim from scratch seems daunting, you can start 
 
 
 ## A CUDA + Libtorch example 
-In this section, I'd like to give to you an idea of how how I use my environment to write a CUDA kernel also using Libtorch.
-In case you didn't know, Libtorch is the C++ distribution of PyTorch, which provides C++ APIs still based on the ATen library. So, first thing first, let's download the distribution on the [Get Started Page](https://pytorch.org/get-started/locally/). I'm downloading the distribution with CUDA 12.4 and cxx11 ABI support, but that's not that relevant for our example.
+In this part, I’ll give you a glimpse of how I use my environment to write a CUDA kernel while also utilizing Libtorch. For those unfamiliar, Libtorch is the C++ distribution of PyTorch, offering C++ APIs based on the ATen library. To start, head over to the [Get Started Page](https://pytorch.org/get-started/locally/) and download the appropriate distribution. In my case, I’m using the version with CUDA 12.4 and cxx11 ABI support, but for our example, the exact version isn’t crucial.
 
-Once downloaded, I will extract it in my home folder and that's pretty much it as the "installation" goes.
+Once downloaded, extract the library into your home folder—that’s about it for the "installation" process.
 
-Now, I'll create a folder project and open it using Neovim. Since I'll be writing C++ and CUDA code, I made sure to install and configure clang, which is an LSP server which supports C++ and CUDA languages.
+Next, I create a project folder and open it in Neovim. Since I’ll be working with both C++ and CUDA, I’ve configured `clang`, a language server that supports both languages, ensuring smooth linting and formatting.
+I start by writing the CUDA kernel and immediately notice linting and formatting in action, courtesy of clang. Pretty cool!
 
-I start by writing the CUDA kernel, and instantly notice that I have linting and formatting capabilities, thanks to clang. Quite cool!
+However, clang doesn’t seem to recognize Libtorch’s imports—this is expected since we simply have the library sitting in our home directory, and clang isn’t aware of it. Clang relies on a **compilation database** to inform it about external libraries, languages, and the specific commands needed to compile the project and generate binaries. We need to provide this information to clang so it can lint the Libtorch imports correctly!
 
-However, it seems like that the `libtorch`'s imports are not recognized by clang! This is expected, since we simply have the library's content in our home folder, and clang is not aware of it. Tools like clang work using a **compilation database**, which informs the tool about the languages, external imports and commands that will be executed to compile the project and generate the binaries. We have to provide this information to clang in order to make it lint also for libtorch's external source!
-We can generate a `compile_commands.json` file with bear
+To achieve this, we can generate a `compile_commands.json` file using [Bear](https://github.com/rizsotto/Bear), a simple command-line tool that generates the necessary compile commands. Just run it like this:
+```sh
+bear - [[command for compiling]]
+```
+That’s all! Alternatively, you could use CMake to handle this, but personally, I avoid CMake whenever possible.
 
-
-But a problem immediatly arises: I can't remember the parameters for the `torch::rand` function! Now I have to leave my editor, go to the browser, use my mouse to click on results and waste time looking in the online documentation! Or, given my Neovim configuration, I can just hover over the method name, press `Shift+K` and ta-da, I can now read a documentation pop-up, directly from my editor!
+Great! Now I can start programming. But wait—I forgot the parameters for the `torch::rand` function! Normally, I’d have to leave my editor, open a browser, navigate through results, and waste time hunting down the documentation. Or, thanks to my Neovim setup, I can simply hover over the method name, press `Shift+K`, and voilà—a documentation pop-up appears directly in my editor!
 
 ![Docs Popup](docs.png "")
 
-This pop-up shows a lot of useful information, like which library provides the method, which are the input and output parameters and the signature of the method. When provided, it will also show the docstring of the method/function!
+This pop-up displays useful information like the library providing the method, input and output parameters, and the function signature. When available, it even shows the method’s docstring!
 
+But that’s not all—if I want to check the definition of something, I can hover over it (easily done with Vim motions), press `gD`, and jump straight to its definition. Pretty handy!
 
+I can already hear you saying, "But Dario, how am I supposed to remember all these keybindings?" Well, Neovim can be configured to display **suggestions** as you type key sequences. For example, if I hover over the `torch.rand` method and press `g`, this suggestion view will pop up:
+
+![Keybindings suggestions](keybindings_suggestions.png "")
+
+I could go on all day about the editor and its capabilities, but that’s not the focus of this post. Let’s move on to compiling and running our program!
+
+### Compiling and running a CUDA and CPP project
+Let’s start with the compilation command, which we’ll also use with Bear to generate the `compile_commands.json` file. Since we’re working with C++, CUDA, and Libtorch, we need to be mindful of the compilation flags, ensuring that all necessary information is correctly specified to compile the program.
+
+First, we’ll use `nvcc` as the compiler, since `g++` can’t handle the CUDA syntax in `cu` or `cpp` files. Additionally, because Libtorch requires the C++17 standard, we must explicitly specify that during compilation. And since we haven’t installed Libtorch in a system-wide directory (meaning it’s not in a path that the linker will automatically search), we need to provide the correct path to the Libtorch library.
+
+We also want to enable **CUDA acceleration**, so we’ll include the relevant CUDA flags. It’s possible that nvcc already includes these by default, so this part might not be strictly necessary—feel free to experiment and see what works for you!
+
+Finally, we’ll add flags for **cross-compilation** and linking, position-independent code, and use the --no-as-needed flag with the linker to ensure all required libraries are included.
+
+Here’s the resulting command:
+
+```sh
+nvcc -std=c++17 -I/path/to/libtorch/include -I/path/to/libtorch/include/torch/csrc/api/include \
+-L/path/to/libtorch/lib -ltorch -ltorch_cpu -lc10 -lcuda -lcudart \
+-Xcompiler -fPIC -Xlinker --no-as-needed -o my_program csrc/main.cu
+```
+
+Running this command will generate the `my_program` executable. Let’s try running it:
+
+```sh
+$ ./my_program
+
+./my_program: error while loading shared libraries: libtorch.so: cannot open shared object file: No such file or directory
+```
+
+Well, that doesn’t look like a tensor at all! The issue here is familiar: since we didn’t install the Libtorch library system-wide, the operating system doesn’t know where to find `libtorch.so`. We need to explicitly tell it by exporting the library path:
+
+```sh
+export LD_LIBRARY_PATH=/path/to/libtorch/lib:$LD_LIBRARY_PATH`
+```
+
+Running the program again will now execute successfully. Keep in mind, though, that this export is only valid for the current terminal session. If you want to make it permanent, you can add this export command to your `.zshrc` (or equivalent file for your shell).
