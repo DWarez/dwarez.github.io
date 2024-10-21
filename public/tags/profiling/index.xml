@@ -6,7 +6,7 @@
     <description>Recent content in Profiling on The ML Surgeon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 Dario Salvati</copyright>
+    <copyright>© 2024 </copyright>
     <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/profiling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Performing Kernel Surgery: Profiling CUDA Kernels with NVIDIA Nsight Compute</title>
@@ -14,7 +14,7 @@
       <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/profiling-introduction/</guid>
-      <description>&lt;p&gt;Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set. First and foremost, we need a deep understanding of machine learning and deep learning. Additionally, we must be adept at writing software, building infrastructures to host and integrate models, managing large volumes of data, and much more. This requires familiarity with numerous tools.&lt;/p&gt;</description>
+      <description>Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set.</description>
       
     </item>
     

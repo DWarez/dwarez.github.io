@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Setup on The ML Surgeon</title>
+    <link>http://localhost:1313/tags/setup/</link>
+    <description>Recent content in Setup on The ML Surgeon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 </copyright>
+    <lastBuildDate>Tue, 08 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Development setup</title>
+      <link>http://localhost:1313/posts/dev-setup/</link>
+      <pubDate>Tue, 08 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/dev-setup/</guid>
+      <description>Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you&amp;rsquo;ll never excel as an ML Surgeon! But being a surgeon isn&amp;rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
