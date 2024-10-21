@@ -26,8 +26,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.7e511937ade47127f0cc4d4943b7cc62b8f7cf37a9c19383694c5760ad479781345dbedf1b713a57a80254844a8966c81cb86298461c8f60c196036e053f9605.css"
-    integrity="sha512-flEZN63kcSfwzE1JQ7fMYrj3zzepwZODaUxXYK1Hl4E0Xb7fG3E6V6gCVIRKiWbIHLhimEYcj2DBlgNuBT&#43;WBQ==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.16ef8a6896d8151791996e6789da59a48d35efa92f465864bfebdef24f1b8a6b7b542a9f4a9ca1d2b987d1ac6c72f3ed184dab5eb1db16fa43b0da3255b9f86c.css"
+    integrity="sha512-Fu&#43;KaJbYFReRmW5nidpZpI0176kvRlhkv&#43;ve8k8bimt7VCqfSpyh0rmH0axscvPtGE2rXrHbFvpDsNoyVbn4bA==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -44,14 +44,11 @@
   
   
   
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.d6c35110b5d7df8014403fbb81cd21a9d89daf9eb586c936e585e9d04adc204dce554aa737f81e8c902b9dea9e67bd63a977b77dedefb8a39430581ebc519207.js"
+    integrity="sha512-1sNRELXX34AUQD&#43;7gc0hqdidr561hsk25YXp0ErcIE3OVUqnN/gejJArneqeZ71jqXe3fe3vuKOUMFgevFGSBw==" data-copy="" data-copied=""></script>
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.efbf3b6b987689fffaf2d7b73173d2690c0279a04d444b0537a77d7f4ff6e6d493445400cb0cf56bc0f0f123e19f15394e63cae34e67f069bd013dd5c73df56e.js"
-    integrity="sha512-7787a5h2if/68te3MXPSaQwCeaBNREsFN6d9f0/25tSTRFQAywz1a8Dw8SPhnxU5TmPK405n8Gm9AT3Vxz31bg==" data-copy="" data-copied=""></script>
-  
-  
-  
-  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  <script src="/js/zoom.min.js"></script>
   
   
   
@@ -69,7 +66,7 @@
   <meta property="og:url" content="http://localhost:1313/posts/torch-compile/">
   <meta property="og:site_name" content="The ML Surgeon">
   <meta property="og:title" content="Dissecting torch.compile: Surgical Precision in PyTorch Optimization">
-  <meta property="og:description" content=" You can take a look at the GitHub repository of this blogpost at this link ">
+  <meta property="og:description" content="You can take a look at the GitHub repository of this blogpost at this link Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -81,7 +78,7 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Dissecting torch.compile: Surgical Precision in PyTorch Optimization">
-  <meta name="twitter:description" content=" You can take a look at the GitHub repository of this blogpost at this link ">
+  <meta name="twitter:description" content="You can take a look at the GitHub repository of this blogpost at this link Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!">
 
   
   <script type="application/ld+json">
@@ -92,12 +89,12 @@
     "name": "Dissecting torch.compile: Surgical Precision in PyTorch Optimization",
     "headline": "Dissecting torch.compile: Surgical Precision in PyTorch Optimization",
     
-    "abstract": "\u003cblockquote\u003e\n\u003cp\u003eYou can take a look at the GitHub repository of this blogpost \u003ca href=\u0022https:\/\/github.com\/DWarez\/torch_compile_blogpost\u0022 target=\u0022_blank\u0022\u003e\u003cstrong\u003eat this link\u003c\/strong\u003e\u003c\/a\u003e   \n\n  \u003cspan class=\u0022relative inline-block align-text-bottom icon\u0022\u003e\n    \u003csvg xmlns=\u0022http:\/\/www.w3.org\/2000\/svg\u0022 viewBox=\u00220 0 496 512\u0022\u003e\u003cpath fill=\u0022currentColor\u0022 d=\u0022M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z\u0022\/\u003e\u003c\/svg\u003e\n\n  \u003c\/span\u003e\n\n\u003c\/p\u003e",
+    "abstract": "You can take a look at the GitHub repository of this blogpost at this link Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/torch-compile\/",
     "author" : {
       "@type": "Person",
-      "name": "Dario Salvati"
+      "name": ""
     },
     "copyrightYear": "2024",
     "dateCreated": "2024-09-01T00:00:00\u002b00:00",
@@ -108,27 +105,18 @@
     "keywords": ["torch-compile","compiler"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "4776"
+    "wordCount": "4777"
   }]
   </script>
 
 
   
   
-  <meta name="author" content="Dario Salvati" />
-  
-  
-  
-  <link href="https://linkedin.com/in/dwarez" rel="me" />
-  
-  
-  <link href="https://github.com/dwarez" rel="me" />
-  
   
   
   
 
-<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
 
 
 
@@ -140,15 +128,14 @@
 
 
 
-<link type="text/css" rel="stylesheet" href="/lib/katex/katex.min.68e17230ccd917b97b7a2def38a8108918599d8aa4f580bfb8cce5e13d23e4de43dcaba5f9000553cb2c10d0d1300aabfe5c433a3305ebd752609f0762a63e59.css" integrity="sha512-aOFyMMzZF7l7ei3vOKgQiRhZnYqk9YC/uMzl4T0j5N5D3Kul&#43;QAFU8ssENDRMAqr/lxDOjMF69dSYJ8HYqY&#43;WQ==" />
+<link type="text/css" rel="stylesheet" href="/lib/katex/katex.min.af6f85907cdfd6ed3e4906d93a8233d91c5638859f744cd1b98c9b1a3ccaab5f231bdcda49f132f6cdfe8cca86ff33ed468affab8a9a502610a664a34f0f0cfa.css" integrity="sha512-r2&#43;FkHzf1u0&#43;SQbZOoIz2RxWOIWfdEzRuYybGjzKq18jG9zaSfEy9s3&#43;jMqG/zPtRor/q4qaUCYQpmSjTw8M&#43;g==" />
 
 
-<script defer src="/lib/katex/katex.min.50f14e69d6a8da7128ae3b63974c544ed377c36d096b5e3750f114e84c89d668b9301d9b0ed3248969aa183aa2e3bc4d2c1e73d5dcb7d462890c45a18d424589.js" integrity="sha512-UPFOadao2nEorjtjl0xUTtN3w20Ja143UPEU6EyJ1mi5MB2bDtMkiWmqGDqi47xNLB5z1dy31GKJDEWhjUJFiQ=="></script>
+<script defer src="/lib/katex/katex.min.20da6cf7343619410c0900fbc626506c65159ea9f312f9729d5cba7aa713707378f9a4222e8f7fb9a42a7240e9749f199b7334401b3e3e4b60e29cf490492552.js" integrity="sha512-INps9zQ2GUEMCQD7xiZQbGUVnqnzEvlynVy6eqcTcHN4&#43;aQiLo9/uaQqckDpdJ8Zm3M0QBs&#43;Pktg4pz0kEklUg=="></script>
 
 
 <script defer src="/lib/katex/auto-render.min.6095714e3aadb63b14ddc4af69346ab12974c1b460654345f8d1860a0b68fcc51b22f68b757433193090bb80afc8965b65cb607e5541d0f5f0f4b2e64d69b9ff.js" integrity="sha512-YJVxTjqttjsU3cSvaTRqsSl0wbRgZUNF&#43;NGGCgto/MUbIvaLdXQzGTCQu4CvyJZbZctgflVB0PXw9LLmTWm5/w=="
   onload="renderMathInElement(document.body);"></script>
-
 
 
 
@@ -297,7 +284,6 @@
 </script>
 
 
-
   
   
   <meta name="theme-color"/>
@@ -305,7 +291,7 @@
   
 </head>
 <body
-  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
   <div id="the-top" class="absolute flex self-center">
     <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
       href="#main-content"><span
@@ -326,10 +312,8 @@
         <a href="/" class="flex">
             <span class="sr-only">The ML Surgeon</span>
 
-            
             <img src="/img/logo.png" width="250" height="250"
                 class="logo max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom" alt="The ML Surgeon" />
-            
 
         </a>
     </div>
@@ -355,7 +339,6 @@
 </a>
 
 
-
             
             
   <a href="https://linkedin.com/in/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -377,7 +360,6 @@
 </a>
 
 
-
             
             
   <a href="https://github.com/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -397,7 +379,6 @@
         
     </p>
 </a>
-
 
 
             
@@ -502,7 +483,8 @@
     </div>
     <div class="-my-2 -mr-2 md:hidden">
 
-        <label id="menu-button" class="block">
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
             
             <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
                 
@@ -519,7 +501,7 @@
                 <ul
                     class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
 
-                    <li id="menu-close-button">
+                    <li>
                         <span
                             class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
 
@@ -542,7 +524,6 @@
         </p>
     </a>
 </li>
-
 
 
 
@@ -571,7 +552,6 @@
 
 
 
-
                     
 
                     
@@ -594,7 +574,6 @@
         </p>
     </a>
 </li>
-
 
 
 
@@ -660,7 +639,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/gpu_power_hu18357939832410660288.jpg);">
+    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
     
 
 
@@ -792,7 +771,7 @@
 </span><span class="px-2 text-primary-500">&middot;</span>
 
 
-<script type="text/javascript" src="/js/zen-mode.min.63c8a202661f4a2063fdc2706685d668e8ea3da613da2224e9da527e5876e4f53dcac39ab60732626fb4151feae5d430d0cf44731e5d3c726522fcc1519c1547.js" integrity="sha512-Y8iiAmYfSiBj/cJwZoXWaOjqPaYT2iIk6dpSflh25PU9ysOatgcyYm&#43;0FR/q5dQw0M9Ecx5dPHJlIvzBUZwVRw=="></script>
+<script type="text/javascript" src="/js/zen-mode.min.ccc8b2a0c4505216444ca25530c7328aa0bef94f43dabaf3e598e1b4271de9eec76c1cb35917471a4f7ccb8d84051b3acef42baa30724ac3a667fcf1fec4432a.js" integrity="sha512-zMiyoMRQUhZETKJVMMcyiqC&#43;&#43;U9D2rrz5ZjhtCcd6e7HbByzWRdHGk98y42EBRs6zvQrqjBySsOmZ/zx/sRDKg=="></script>
 
 <span class="mb-[2px]">
     <span id="zen-mode-button"
@@ -871,7 +850,6 @@
 
 
 
-
     </div>
 
     
@@ -889,71 +867,10 @@
         
 <div class="flex author">
   
-    
-    
-      
-    
-    
-      
-        
-      
-      <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
-      alt="Dario Salvati" src="/img/avatar_hu9627619460781864252.jpg" />
-    
-  
   <div class="place-self-center">
     
-    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
-      Author
-    </div>
-    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
-      Dario Salvati
-    </div>
-    
-    
-    <div class="text-sm text-neutral-700 dark:text-neutral-400">A surgeon for Machine Learning models.</div>
     
     <div class="text-2xl sm:text-lg">
-  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
-    
-      
-        <a
-          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
-          href="https://linkedin.com/in/dwarez"
-          target="_blank"
-          aria-label="Linkedin"
-          rel="me noopener noreferrer"
-          ><span class="inline-block align-text-bottom">
-
-  <span class="relative block icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-
-  </span>
-
-</span></a
-        >
-      
-    
-      
-        <a
-          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
-          href="https://github.com/dwarez"
-          target="_blank"
-          aria-label="Github"
-          rel="me noopener noreferrer"
-          ><span class="inline-block align-text-bottom">
-
-  <span class="relative block icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-
-  </span>
-
-</span></a
-        >
-      
-    
-  </div>
-
 </div>
   </div>
 </div>
@@ -976,14 +893,13 @@
       class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
       <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
 
-         <details open id="TOCView"
-  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
   <summary
     class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
     Table of Contents
   </summary>
   <div
-    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#dissecting-torchcompile-a-surgeons-approach-to-pytorch-optimization">Dissecting torch.compile: A Surgeon’s Approach to PyTorch Optimization</a></li>
@@ -1074,33 +990,8 @@
   </div>
 </details>
 
+ 
 <script>
-
-  var margin = 200;
-  var marginError = 50;
-
-  (function () {
-    var $window = $(window);
-    var $toc = $('#TOCView');
-    var tocHeight = $toc.height();
-
-    function onResize() {
-      var windowAndMarginHeight = $window.height() - margin;
-      if(tocHeight >= windowAndMarginHeight) {
-        $toc.css("overflow-y", "scroll")
-        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
-      } else {
-        $toc.css("overflow-y", "hidden")
-        $toc.css("max-height", "9999999px")
-      }
-    }
-
-    $window.on('resize', onResize);
-    $(document).ready(onResize);
-  })();
-
-
-
   (function () {
     var $toc = $('#TableOfContents');
     if ($toc.length > 0) {
@@ -1113,7 +1004,7 @@
         h.each(function (i, e) {
           e = $(e);
           if (e.offset().top - $(window).height()/3 <= currentScroll) {
-            id = decodeURIComponent(e.attr('id'));
+            id = e.attr('id');
           }
         });
         var active = $toc.find('a.active');      
@@ -1137,8 +1028,6 @@
       });
     }
   })();
-
-
 </script>
    </div>
       </div>
@@ -1151,7 +1040,8 @@
 
         <div class="article-content max-w-prose mb-20">
           <blockquote>
-<p>You can take a look at the GitHub repository of this blogpost <a href="https://github.com/DWarez/torch_compile_blogpost" target="_blank"><strong>at this link</strong></a>   
+<p>You can take a look at the GitHub repository of this blogpost <a href="https://github.com/DWarez/torch_compile_blogpost"   target="_blank">
+    <strong>at this link</strong></a>   
 
   <span class="relative inline-block align-text-bottom icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -1218,40 +1108,67 @@ Later on, we’ll conduct some benchmarks to demonstrate these speedups. So far,
 </code></pre><p>where, <code>x</code> and <code>y</code> are two tensors, <code>op</code> is an operation (like the product <code>*</code> or sum <code>+</code>), and <code>fn</code> is a function (like <code>log</code> or <code>sin</code>).</p>
 <p>This syntax results in a <strong>computational graph</strong>, which represents the operations that will be performed on the tensors. Below is a simple sketch of the computational graph that would result from the code above:</p>
 <p>
+
+
+
+
+  
+  
+    
+  
+  
     <figure>
+      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/torch-compile/forward_computational_graph_hu5803387795843449264.png 330w,
-        /posts/torch-compile/forward_computational_graph_hu10887185310434375830.png 660w,
-        /posts/torch-compile/forward_computational_graph_hu15119736865244087205.png 1024w,
-        /posts/torch-compile/forward_computational_graph_hu6204957211308731291.png 2x"
-        src="/posts/torch-compile/forward_computational_graph_hu10887185310434375830.png"
+        /posts/torch-compile/forward_computational_graph_hu924190076b03b6a0cf7395bce3da4d6d_119876_330x0_resize_box_3.png 330w,
+        /posts/torch-compile/forward_computational_graph_hu924190076b03b6a0cf7395bce3da4d6d_119876_660x0_resize_box_3.png 660w,
+        /posts/torch-compile/forward_computational_graph_hu924190076b03b6a0cf7395bce3da4d6d_119876_1024x0_resize_box_3.png 1024w,
+        /posts/torch-compile/forward_computational_graph_hu924190076b03b6a0cf7395bce3da4d6d_119876_1320x0_resize_box_3.png 2x"
+        src="/posts/torch-compile/forward_computational_graph_hu924190076b03b6a0cf7395bce3da4d6d_119876_660x0_resize_box_3.png"
         alt="Forward Computational Graph"
       />
+      
       <figcaption>Is this crooked? I can&rsquo;t really tell.</figcaption>
     </figure>
+  
+
 </p>
 <p>In Pytorch, the graph is built <strong>dynamically</strong> as operations are applied to tensors, which is often referred as <em>define-by-run</em>.</p>
 <p>But wait! That&rsquo;s only the forward step! We can’t train our models with just that!
-Luckily for us, Pytorch provides <a href="https://pytorch.org/docs/stable/autograd.html" target="_blank"><strong>autograd</strong></a>, a system responsible for automatic differentiation. It records operations on tensors to form an <strong>autograd graph</strong>.
+Luckily for us, Pytorch provides <a href="https://pytorch.org/docs/stable/autograd.html"   target="_blank">
+    <strong>autograd</strong></a>, a system responsible for automatic differentiation. It records operations on tensors to form an <strong>autograd graph</strong>.
 Long story short, PyTorch automatically computes gradients for tensors. A computational graph for the backward pass looks something like this:</p>
 <p>
+
+
+
+
+  
+  
+    
+  
+  
     <figure>
+      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/torch-compile/backward_computational_graph_hu5545627818671210287.png 330w,
-        /posts/torch-compile/backward_computational_graph_hu11920705000497722419.png 660w,
-        /posts/torch-compile/backward_computational_graph_hu10500698299188109313.png 1024w,
-        /posts/torch-compile/backward_computational_graph_hu17525524064913201236.png 2x"
-        src="/posts/torch-compile/backward_computational_graph_hu11920705000497722419.png"
+        /posts/torch-compile/backward_computational_graph_hu738977abe0b2b59fe3fc231ec0ed405d_210706_330x0_resize_box_3.png 330w,
+        /posts/torch-compile/backward_computational_graph_hu738977abe0b2b59fe3fc231ec0ed405d_210706_660x0_resize_box_3.png 660w,
+        /posts/torch-compile/backward_computational_graph_hu738977abe0b2b59fe3fc231ec0ed405d_210706_1024x0_resize_box_3.png 1024w,
+        /posts/torch-compile/backward_computational_graph_hu738977abe0b2b59fe3fc231ec0ed405d_210706_1320x0_resize_box_3.png 2x"
+        src="/posts/torch-compile/backward_computational_graph_hu738977abe0b2b59fe3fc231ec0ed405d_210706_660x0_resize_box_3.png"
         alt="Backward Computational Graph"
       />
+      
       <figcaption>It&rsquo;s definitely crooked</figcaption>
     </figure>
+  
+
 </p>
 <blockquote>
 <p>⚠️ Note: I forgot to add arrows from <code>op</code> and <code>Z</code> to the <code>Derivative Magic</code> block!</p>
@@ -1273,7 +1190,8 @@ Long story short, PyTorch automatically computes gradients for tensors. A comput
     
 </h3>
 <p>Let’s dive deeper into the world of graphs. In the previous section, we explored the critical role of computational graphs. But how do we go about optimizing them? I’m not referring to techniques or methodologies—I&rsquo;m talking about the nuts and bolts of how we can technically modify and optimize PyTorch&rsquo;s computational graphs.</p>
-<p>To do that, we need a specialized toolkit. Fortunately, PyTorch equips us with just what we need: the <a href="https://arxiv.org/abs/2112.08429" target="_blank"><strong>FX</strong></a> toolkit.</p>
+<p>To do that, we need a specialized toolkit. Fortunately, PyTorch equips us with just what we need: the <a href="https://arxiv.org/abs/2112.08429"   target="_blank">
+    <strong>FX</strong></a> toolkit.</p>
 <p>The FX toolkit allows to modify <code>torch.nn.Module</code>s by implementing a pipeline consisting of a <strong>symbolic tracer</strong>, an <strong>intermediate representation</strong> (IR) and a <strong>Python code generator</strong>. This makes FX a powerful Python-to-Python transformation toolkit.</p>
 <p>The symbolic tracer constructs a <code>torch.fx.GraphModule</code> by recording the operations that occur when the <code>nn.Module</code> is fed with fake data, called <strong>proxies</strong>.</p>
 <p>A <code>GraphModule</code> is essentially a <code>nn.Module</code> generated from a <code>torch.fx.Graph</code>, which serves as the core data structure for FX’s internal representation.</p>
@@ -1320,20 +1238,34 @@ Long story short, PyTorch automatically computes gradients for tensors. A comput
 <p>CUDA Graphs address this by representing GPU operations as a single, cohesive graph. While building and launching this graph may initially be slower, the advantage lies in the fact that all subsequent operations remain on the GPU, significantly reducing the overhead caused by CPU-GPU communication.</p>
 <p>The image below illustrates this concept perfectly:</p>
 <p>
+
+
+
+
+  
+  
+    
+  
+  
     <figure>
+      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/torch-compile/cuda_graph_hu1130890584496980636.png 330w,
-        /posts/torch-compile/cuda_graph_hu13736437457921566354.png 660w,
-        /posts/torch-compile/cuda_graph_hu17365644072580404427.png 1024w,
-        /posts/torch-compile/cuda_graph_hu13967117992900421792.png 2x"
-        src="/posts/torch-compile/cuda_graph_hu13736437457921566354.png"
+        /posts/torch-compile/cuda_graph_hu5efd37167375e4fe51a909e98eb7804e_193145_330x0_resize_box_3.png 330w,
+        /posts/torch-compile/cuda_graph_hu5efd37167375e4fe51a909e98eb7804e_193145_660x0_resize_box_3.png 660w,
+        /posts/torch-compile/cuda_graph_hu5efd37167375e4fe51a909e98eb7804e_193145_1024x0_resize_box_3.png 1024w,
+        /posts/torch-compile/cuda_graph_hu5efd37167375e4fe51a909e98eb7804e_193145_1320x0_resize_box_3.png 2x"
+        src="/posts/torch-compile/cuda_graph_hu5efd37167375e4fe51a909e98eb7804e_193145_660x0_resize_box_3.png"
         alt=""
       />
-      <figcaption><a href="https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/" target="_blank">Credits to <strong>this blogpost</strong></a></figcaption>
+      
+      <figcaption><a href="https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/"   target="_blank">
+    Credits to <strong>this blogpost</strong></a></figcaption>
     </figure>
+  
+
 </p>
 
 
@@ -1364,37 +1296,63 @@ Long story short, PyTorch automatically computes gradients for tensors. A comput
 That sentence might sound a bit overwhelming, so let’s take it step by step.</p>
 <p>First, what is <strong>Just-in-time</strong> (JIT) compilation? It’s a compilation process that occurs during the execution of a program, rather than before (as with languages like C). In Python, this means that while the program is running, its bytecode is translated into machine code, which the system then executes. Here’s a simple diagram to illustrate:</p>
 <p>
+
+
+
+
+  
+  
+    
+  
+  
     <figure>
+      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/torch-compile/python_schema_hu892059387794601592.png 330w,
-        /posts/torch-compile/python_schema_hu6874950270713104524.png 660w,
-        /posts/torch-compile/python_schema_hu7958899415084392755.png 1024w,
-        /posts/torch-compile/python_schema_hu3496970889048702844.png 2x"
-        src="/posts/torch-compile/python_schema_hu6874950270713104524.png"
+        /posts/torch-compile/python_schema_hu6e442d913a610cfa4ea5d3872eb82b9f_136913_330x0_resize_box_3.png 330w,
+        /posts/torch-compile/python_schema_hu6e442d913a610cfa4ea5d3872eb82b9f_136913_660x0_resize_box_3.png 660w,
+        /posts/torch-compile/python_schema_hu6e442d913a610cfa4ea5d3872eb82b9f_136913_1024x0_resize_box_3.png 1024w,
+        /posts/torch-compile/python_schema_hu6e442d913a610cfa4ea5d3872eb82b9f_136913_1320x0_resize_box_3.png 2x"
+        src="/posts/torch-compile/python_schema_hu6e442d913a610cfa4ea5d3872eb82b9f_136913_660x0_resize_box_3.png"
         alt=""
       />
       
+      
     </figure>
+  
+
 </p>
 <p>As you can see, the original Python source code is parsed into bytecode, which is easier to manage during execution. Now, thanks to the <strong>frame evaluation API</strong>, we can insert a middleware between the bytecode and the interpreter, as shown in the diagram below:</p>
 <p>
+
+
+
+
+  
+  
+    
+  
+  
     <figure>
+      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/torch-compile/frame_evaluation_hu15797033654603190872.png 330w,
-        /posts/torch-compile/frame_evaluation_hu10777199593306000427.png 660w,
-        /posts/torch-compile/frame_evaluation_hu1948742451148945910.png 1024w,
-        /posts/torch-compile/frame_evaluation_hu8760490793802124212.png 2x"
-        src="/posts/torch-compile/frame_evaluation_hu10777199593306000427.png"
+        /posts/torch-compile/frame_evaluation_hu9e51a8cdd2e687f16507649fa81294ed_284536_330x0_resize_box_3.png 330w,
+        /posts/torch-compile/frame_evaluation_hu9e51a8cdd2e687f16507649fa81294ed_284536_660x0_resize_box_3.png 660w,
+        /posts/torch-compile/frame_evaluation_hu9e51a8cdd2e687f16507649fa81294ed_284536_1024x0_resize_box_3.png 1024w,
+        /posts/torch-compile/frame_evaluation_hu9e51a8cdd2e687f16507649fa81294ed_284536_1320x0_resize_box_3.png 2x"
+        src="/posts/torch-compile/frame_evaluation_hu9e51a8cdd2e687f16507649fa81294ed_284536_660x0_resize_box_3.png"
         alt=""
       />
       
+      
     </figure>
+  
+
 </p>
 <p>This is where <strong>Torch Dynamo</strong> comes in. It acts as a middleware, intercepting the bytecode to rewrite it and extract FX graphs from the PyTorch operations defined in the source code.</p>
 <p>Since Dynamo operates just-in-time, it dynamically intercepts bytecode during execution and extracts graphs based on the current state of the code. This allows us to work with dynamic graphs, adapting to the changing flow of execution. However, for the sake of performance, we want to avoid re-capturing graphs every time the same code runs—doing so repeatedly, as seen in frameworks like JAX, would result in unnecessary overhead.</p>
@@ -1463,10 +1421,12 @@ That sentence might sound a bit overwhelming, so let’s take it step by step.</
 <p>TorchInductor supports both CPU and GPU architectures, adapting its optimizations based on the target hardware:</p>
 <ul>
 <li>
-<p>For CPUs, TorchInductor generates highly efficient C++/<a href="https://www.openmp.org/" target="_blank"><strong>OpenMP</strong></a> code. OpenMP is a popular framework for parallel computing on CPUs, making it ideal for distributing workloads across multiple cores in modern processors. By leveraging OpenMP, Inductor ensures that the compiled code scales with CPU architectures for tasks like training and inference.</p>
+<p>For CPUs, TorchInductor generates highly efficient C++/<a href="https://www.openmp.org/"   target="_blank">
+    <strong>OpenMP</strong></a> code. OpenMP is a popular framework for parallel computing on CPUs, making it ideal for distributing workloads across multiple cores in modern processors. By leveraging OpenMP, Inductor ensures that the compiled code scales with CPU architectures for tasks like training and inference.</p>
 </li>
 <li>
-<p>For GPUs, the generated code is written in <a href="https://openai.com/index/triton/" target="_blank"><strong>Triton</strong></a>, a high-level programming language designed for ease of use and speed, serving as a flexible alternative to CUDA. Triton is designed to simplify GPU programming by providing Python-like syntax, making it accessible to a broader range of developers. It supports NVIDIA GPUs with compute capability 7.0 or greater, as well as AMD GPUs with ROCm 5.2 or later. Though Triton’s support for CPUs is still evolving, its GPU capabilities make it a powerful ally in the quest for optimization.</p>
+<p>For GPUs, the generated code is written in <a href="https://openai.com/index/triton/"   target="_blank">
+    <strong>Triton</strong></a>, a high-level programming language designed for ease of use and speed, serving as a flexible alternative to CUDA. Triton is designed to simplify GPU programming by providing Python-like syntax, making it accessible to a broader range of developers. It supports NVIDIA GPUs with compute capability 7.0 or greater, as well as AMD GPUs with ROCm 5.2 or later. Though Triton’s support for CPUs is still evolving, its GPU capabilities make it a powerful ally in the quest for optimization.</p>
 </li>
 </ul>
 
@@ -1814,7 +1774,8 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 <p><strong>Eager Mode’s Instant Execution</strong>: Eager mode is designed to run PyTorch operations immediately without any ahead-of-time optimizations, which is ideal for small, one-off operations like this. While compiled execution becomes faster over time, eager mode benefits from its simplicity and immediacy for lightweight tasks.</p>
 </li>
 </ol>
-<p>While this example shows a slowdown, that’s because the workload is too small to benefit from TorchInductor’s optimizations. Compiled execution shines when dealing with larger models or heavier workloads. For a more substantial example where the compiled function outperforms eager mode, check out <a href="https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html#demonstrating-speedups" target="_blank"><strong>this link</strong></a>.</p>
+<p>While this example shows a slowdown, that’s because the workload is too small to benefit from TorchInductor’s optimizations. Compiled execution shines when dealing with larger models or heavier workloads. For a more substantial example where the compiled function outperforms eager mode, check out <a href="https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html#demonstrating-speedups"   target="_blank">
+    <strong>this link</strong></a>.</p>
 
 
 <h4 class="relative group">GPU-Poor and Proud: Tweaking torch.compile Parameters for Fun (and Slower Functions) 
@@ -1841,7 +1802,8 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span><span class="nb">eval</span><span class="o">)</span> eager median: 1.5343999955803157e-05, compile median: 4.190399870276451e-05, speedup: 0.36617030428627984x
 </span></span></code></pre></div><p>Once again, we&rsquo;ve hit a slowdown. But wait, what&rsquo;s this warning?</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">W0924 11:37:01.192000 <span class="m">123584511351680</span> torch/_inductor/utils.py:977<span class="o">]</span> <span class="o">[</span>0/0<span class="o">]</span> Not enough SMs to use max_autotune_gemm mode
-</span></span></code></pre></div><p>Uh-oh. PyTorch is warning me that I don’t have enough <a href="https://dwarez.github.io/posts/cpu-gpu-architecture/#cerebral-cortex" target="_blank"><strong>SMs</strong></a>. Let’s check the code that triggered this passive-aggressive insult from PyTorch:</p>
+</span></span></code></pre></div><p>Uh-oh. PyTorch is warning me that I don’t have enough <a href="https://dwarez.github.io/posts/cpu-gpu-architecture/#cerebral-cortex"   target="_blank">
+    <strong>SMs</strong></a>. Let’s check the code that triggered this passive-aggressive insult from PyTorch:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@functools.lru_cache</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">is_big_gpu</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">min_sms</span> <span class="o">=</span> <span class="mi">68</span>  <span class="c1"># 3080</span>
@@ -1872,9 +1834,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 <p>In the end, optimization is like surgery—use the right tool for the right task, and remember, not every patient needs to be on the table!</p>
 <p>Now, if you’ll excuse me, I’m off to cry over my GPU specs. Bye!</p>
 
-          
-          
-          
         </div>
         
         
@@ -2087,7 +2046,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 
 
 
-
         </div>
 
         
@@ -2097,7 +2055,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
       </div>
     </div>
   </a>
-
   
   
 
@@ -2217,7 +2174,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 
 
 
-
         </div>
 
         
@@ -2227,7 +2183,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
       </div>
     </div>
   </a>
-
   
   
 
@@ -2355,7 +2310,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 
 
 
-
         </div>
 
         
@@ -2365,7 +2319,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
       </div>
     </div>
   </a>
-
   
   
 
@@ -2477,7 +2430,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 
 
 
-
         </div>
 
         
@@ -2487,7 +2439,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
       </div>
     </div>
   </a>
-
   
   
 
@@ -2607,7 +2558,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 
 
 
-
         </div>
 
         
@@ -2617,7 +2567,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
       </div>
     </div>
   </a>
-
   
   
 
@@ -2737,7 +2686,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
 
 
 
-
         </div>
 
         
@@ -2747,7 +2695,6 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
       </div>
     </div>
   </a>
-
   
 </section>
 
@@ -2767,8 +2714,8 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
       </script>
       
       
-      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
       
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
   
     </section>
   <footer class="pt-8 max-w-prose print:hidden">
@@ -2877,7 +2824,7 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
     <p class="text-sm text-neutral-500 dark:text-neutral-400">
       &copy;
       2024
-      Dario Salvati
+      
     </p>
     
 
@@ -2909,8 +2856,7 @@ Once the graph is compiled, subsequent iterations are much faster because PyTorc
   
   <a rel="me" href="https://masto.ai/@blowfish"></a>
   
-</footer>
-<div
+</footer><div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
   data-url="http://localhost:1313/"

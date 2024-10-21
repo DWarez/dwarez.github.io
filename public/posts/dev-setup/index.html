@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Development setup &middot; The ML Surgeon</title>
-  <meta name="title" content="Development setup &middot; The ML Surgeon" />
+  <title>The Operating Room Setup &middot; The ML Surgeon</title>
+  <meta name="title" content="The Operating Room Setup &middot; The ML Surgeon" />
   
   <meta name="description" content="The low level side of machine learning." />
-  <meta name="keywords" content="setup, " />
+  <meta name="keywords" content="setup, cuda, cpp, libtorch, " />
   
   
   <link rel="canonical" href="http://localhost:1313/posts/dev-setup/" />
@@ -26,8 +26,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.7e511937ade47127f0cc4d4943b7cc62b8f7cf37a9c19383694c5760ad479781345dbedf1b713a57a80254844a8966c81cb86298461c8f60c196036e053f9605.css"
-    integrity="sha512-flEZN63kcSfwzE1JQ7fMYrj3zzepwZODaUxXYK1Hl4E0Xb7fG3E6V6gCVIRKiWbIHLhimEYcj2DBlgNuBT&#43;WBQ==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.16ef8a6896d8151791996e6789da59a48d35efa92f465864bfebdef24f1b8a6b7b542a9f4a9ca1d2b987d1ac6c72f3ed184dab5eb1db16fa43b0da3255b9f86c.css"
+    integrity="sha512-Fu&#43;KaJbYFReRmW5nidpZpI0176kvRlhkv&#43;ve8k8bimt7VCqfSpyh0rmH0axscvPtGE2rXrHbFvpDsNoyVbn4bA==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -44,14 +44,11 @@
   
   
   
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.d6c35110b5d7df8014403fbb81cd21a9d89daf9eb586c936e585e9d04adc204dce554aa737f81e8c902b9dea9e67bd63a977b77dedefb8a39430581ebc519207.js"
+    integrity="sha512-1sNRELXX34AUQD&#43;7gc0hqdidr561hsk25YXp0ErcIE3OVUqnN/gejJArneqeZ71jqXe3fe3vuKOUMFgevFGSBw==" data-copy="" data-copied=""></script>
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.efbf3b6b987689fffaf2d7b73173d2690c0279a04d444b0537a77d7f4ff6e6d493445400cb0cf56bc0f0f123e19f15394e63cae34e67f069bd013dd5c73df56e.js"
-    integrity="sha512-7787a5h2if/68te3MXPSaQwCeaBNREsFN6d9f0/25tSTRFQAywz1a8Dw8SPhnxU5TmPK405n8Gm9AT3Vxz31bg==" data-copy="" data-copied=""></script>
-  
-  
-  
-  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  <script src="/js/zoom.min.js"></script>
   
   
   
@@ -68,19 +65,22 @@
   
   <meta property="og:url" content="http://localhost:1313/posts/dev-setup/">
   <meta property="og:site_name" content="The ML Surgeon">
-  <meta property="og:title" content="Development setup">
-  <meta property="og:description" content="Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you’ll never excel as an ML Surgeon! But being a surgeon isn’t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data. That’s why having a tailored, efficient, and functional development setup is essential to stay productive and ensure everything gets done right.">
+  <meta property="og:title" content="The Operating Room Setup">
+  <meta property="og:description" content="Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you’ll never excel as an ML Surgeon! But being a surgeon isn’t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-10-08T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-10-08T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-10-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-10-21T00:00:00+00:00">
     <meta property="article:tag" content="Setup">
+    <meta property="article:tag" content="Cuda">
+    <meta property="article:tag" content="Cpp">
+    <meta property="article:tag" content="Libtorch">
 
   
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Development setup">
-  <meta name="twitter:description" content="Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you’ll never excel as an ML Surgeon! But being a surgeon isn’t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data. That’s why having a tailored, efficient, and functional development setup is essential to stay productive and ensure everything gets done right.">
+  <meta name="twitter:title" content="The Operating Room Setup">
+  <meta name="twitter:description" content="Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you’ll never excel as an ML Surgeon! But being a surgeon isn’t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data.">
 
   
   <script type="application/ld+json">
@@ -88,47 +88,37 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Posts",
-    "name": "Development setup",
-    "headline": "Development setup",
+    "name": "The Operating Room Setup",
+    "headline": "The Operating Room Setup",
     
-    "abstract": "\u003cp\u003eUndoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you\u0026rsquo;ll never excel as an ML Surgeon! But being a surgeon isn\u0026rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data. That’s why having a tailored, efficient, and \u003cstrong\u003efunctional\u003c\/strong\u003e development setup is essential to stay productive and ensure everything gets done right.\u003c\/p\u003e",
+    "abstract": "Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you\u0026rsquo;ll never excel as an ML Surgeon! But being a surgeon isn\u0026rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data.",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/dev-setup\/",
     "author" : {
       "@type": "Person",
-      "name": "Dario Salvati"
+      "name": ""
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-10-08T00:00:00\u002b00:00",
-    "datePublished": "2024-10-08T00:00:00\u002b00:00",
+    "dateCreated": "2024-10-21T00:00:00\u002b00:00",
+    "datePublished": "2024-10-21T00:00:00\u002b00:00",
     
-    "dateModified": "2024-10-08T00:00:00\u002b00:00",
+    "dateModified": "2024-10-21T00:00:00\u002b00:00",
     
-    "keywords": ["setup"],
+    "keywords": ["setup","cuda","cpp","libtorch"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1714"
+    "wordCount": "1815"
   }]
   </script>
 
 
   
   
-  <meta name="author" content="Dario Salvati" />
-  
-  
-  
-  <link href="https://linkedin.com/in/dwarez" rel="me" />
-  
-  
-  <link href="https://github.com/dwarez" rel="me" />
-  
   
   
   
 
-<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
-
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
 
 
 
@@ -163,7 +153,6 @@
 </script>
 
 
-
   
   
   <meta name="theme-color"/>
@@ -171,7 +160,7 @@
   
 </head>
 <body
-  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
   <div id="the-top" class="absolute flex self-center">
     <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
       href="#main-content"><span
@@ -192,10 +181,8 @@
         <a href="/" class="flex">
             <span class="sr-only">The ML Surgeon</span>
 
-            
             <img src="/img/logo.png" width="250" height="250"
                 class="logo max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom" alt="The ML Surgeon" />
-            
 
         </a>
     </div>
@@ -221,7 +208,6 @@
 </a>
 
 
-
             
             
   <a href="https://linkedin.com/in/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -243,7 +229,6 @@
 </a>
 
 
-
             
             
   <a href="https://github.com/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -263,7 +248,6 @@
         
     </p>
 </a>
-
 
 
             
@@ -368,7 +352,8 @@
     </div>
     <div class="-my-2 -mr-2 md:hidden">
 
-        <label id="menu-button" class="block">
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
             
             <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
                 
@@ -385,7 +370,7 @@
                 <ul
                     class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
 
-                    <li id="menu-close-button">
+                    <li>
                         <span
                             class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
 
@@ -408,7 +393,6 @@
         </p>
     </a>
 </li>
-
 
 
 
@@ -437,7 +421,6 @@
 
 
 
-
                     
 
                     
@@ -460,7 +443,6 @@
         </p>
     </a>
 </li>
-
 
 
 
@@ -526,7 +508,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/gpu_power_hu18357939832410660288.jpg);">
+    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
     
 
 
@@ -580,7 +562,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/posts/dev-setup/"
-      >Development setup</a
+      >The Operating Room Setup</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -589,7 +571,7 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Development setup
+      The Operating Room Setup
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -658,7 +640,7 @@
 </span><span class="px-2 text-primary-500">&middot;</span>
 
 
-<script type="text/javascript" src="/js/zen-mode.min.63c8a202661f4a2063fdc2706685d668e8ea3da613da2224e9da527e5876e4f53dcac39ab60732626fb4151feae5d430d0cf44731e5d3c726522fcc1519c1547.js" integrity="sha512-Y8iiAmYfSiBj/cJwZoXWaOjqPaYT2iIk6dpSflh25PU9ysOatgcyYm&#43;0FR/q5dQw0M9Ecx5dPHJlIvzBUZwVRw=="></script>
+<script type="text/javascript" src="/js/zen-mode.min.ccc8b2a0c4505216444ca25530c7328aa0bef94f43dabaf3e598e1b4271de9eec76c1cb35917471a4f7ccb8d84051b3acef42baa30724ac3a667fcf1fec4432a.js" integrity="sha512-zMiyoMRQUhZETKJVMMcyiqC&#43;&#43;U9D2rrz5ZjhtCcd6e7HbByzWRdHGk98y42EBRs6zvQrqjBySsOmZ/zx/sRDKg=="></script>
 
 <span class="mb-[2px]">
     <span id="zen-mode-button"
@@ -722,11 +704,34 @@
 </span>
   </span>
   
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/cuda/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Cuda
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/cpp/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Cpp
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/libtorch/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Libtorch
+  </span>
+</span>
+  </span>
+  
   
   
   
 </div>
-
 
 
 
@@ -747,71 +752,10 @@
         
 <div class="flex author">
   
-    
-    
-      
-    
-    
-      
-        
-      
-      <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
-      alt="Dario Salvati" src="/img/avatar_hu9627619460781864252.jpg" />
-    
-  
   <div class="place-self-center">
     
-    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
-      Author
-    </div>
-    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
-      Dario Salvati
-    </div>
-    
-    
-    <div class="text-sm text-neutral-700 dark:text-neutral-400">A surgeon for Machine Learning models.</div>
     
     <div class="text-2xl sm:text-lg">
-  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
-    
-      
-        <a
-          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
-          href="https://linkedin.com/in/dwarez"
-          target="_blank"
-          aria-label="Linkedin"
-          rel="me noopener noreferrer"
-          ><span class="inline-block align-text-bottom">
-
-  <span class="relative block icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-
-  </span>
-
-</span></a
-        >
-      
-    
-      
-        <a
-          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
-          href="https://github.com/dwarez"
-          target="_blank"
-          aria-label="Github"
-          rel="me noopener noreferrer"
-          ><span class="inline-block align-text-bottom">
-
-  <span class="relative block icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-
-  </span>
-
-</span></a
-        >
-      
-    
-  </div>
-
 </div>
   </div>
 </div>
@@ -834,28 +778,28 @@
       class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
       <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
 
-         <details open id="TOCView"
-  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
   <summary
     class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
     Table of Contents
   </summary>
   <div
-    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#a-machine-learning-surgeon-development-setup">A Machine Learning Surgeon development setup</a>
+    <li><a href="#prepping-for-surgery-my-development-setup">Prepping for Surgery: My Development Setup</a>
       <ul>
-        <li><a href="#the-os">The OS</a></li>
-        <li><a href="#the-terminal">The terminal</a></li>
-        <li><a href="#the-editor">The editor</a></li>
+        <li><a href="#the-os-choosing-the-right-operating-room">The OS: Choosing the Right Operating Room</a></li>
+        <li><a href="#the-terminal-your-scalpel">The Terminal: Your Scalpel</a></li>
+        <li><a href="#the-editor-precision-tools-for-code-surgery">The Editor: Precision Tools for Code Surgery</a></li>
       </ul>
     </li>
-    <li><a href="#a-cuda--libtorch-example">A CUDA + Libtorch example</a>
+    <li><a href="#performing-the-procedure-a-cuda--libtorch-case-study">Performing the Procedure: A CUDA + Libtorch Case Study</a>
       <ul>
-        <li><a href="#compiling-and-running-a-cuda-and-cpp-project">Compiling and running a CUDA and CPP project</a></li>
+        <li><a href="#compiling-and-running-a-cuda--c-project-suturing-together-cuda-and-c-with-libtorch">Compiling and Running a CUDA + C++ Project: Suturing Together CUDA and C++ with Libtorch</a></li>
       </ul>
     </li>
+    <li><a href="#post-op-final-thoughts-and-recovery">Post-Op: Final Thoughts and Recovery</a></li>
   </ul>
 </nav>
   </div>
@@ -869,50 +813,26 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#a-machine-learning-surgeon-development-setup">A Machine Learning Surgeon development setup</a>
+    <li><a href="#prepping-for-surgery-my-development-setup">Prepping for Surgery: My Development Setup</a>
       <ul>
-        <li><a href="#the-os">The OS</a></li>
-        <li><a href="#the-terminal">The terminal</a></li>
-        <li><a href="#the-editor">The editor</a></li>
+        <li><a href="#the-os-choosing-the-right-operating-room">The OS: Choosing the Right Operating Room</a></li>
+        <li><a href="#the-terminal-your-scalpel">The Terminal: Your Scalpel</a></li>
+        <li><a href="#the-editor-precision-tools-for-code-surgery">The Editor: Precision Tools for Code Surgery</a></li>
       </ul>
     </li>
-    <li><a href="#a-cuda--libtorch-example">A CUDA + Libtorch example</a>
+    <li><a href="#performing-the-procedure-a-cuda--libtorch-case-study">Performing the Procedure: A CUDA + Libtorch Case Study</a>
       <ul>
-        <li><a href="#compiling-and-running-a-cuda-and-cpp-project">Compiling and running a CUDA and CPP project</a></li>
+        <li><a href="#compiling-and-running-a-cuda--c-project-suturing-together-cuda-and-c-with-libtorch">Compiling and Running a CUDA + C++ Project: Suturing Together CUDA and C++ with Libtorch</a></li>
       </ul>
     </li>
+    <li><a href="#post-op-final-thoughts-and-recovery">Post-Op: Final Thoughts and Recovery</a></li>
   </ul>
 </nav>
   </div>
 </details>
 
+ 
 <script>
-
-  var margin = 200;
-  var marginError = 50;
-
-  (function () {
-    var $window = $(window);
-    var $toc = $('#TOCView');
-    var tocHeight = $toc.height();
-
-    function onResize() {
-      var windowAndMarginHeight = $window.height() - margin;
-      if(tocHeight >= windowAndMarginHeight) {
-        $toc.css("overflow-y", "scroll")
-        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
-      } else {
-        $toc.css("overflow-y", "hidden")
-        $toc.css("max-height", "9999999px")
-      }
-    }
-
-    $window.on('resize', onResize);
-    $(document).ready(onResize);
-  })();
-
-
-
   (function () {
     var $toc = $('#TableOfContents');
     if ($toc.length > 0) {
@@ -925,7 +845,7 @@
         h.each(function (i, e) {
           e = $(e);
           if (e.offset().top - $(window).height()/3 <= currentScroll) {
-            id = decodeURIComponent(e.attr('id'));
+            id = e.attr('id');
           }
         });
         var active = $toc.find('a.active');      
@@ -949,8 +869,6 @@
       });
     }
   })();
-
-
 </script>
    </div>
       </div>
@@ -967,26 +885,26 @@
 <p>This article will be over before you know it, so no need to put on your gloves!</p>
 
 
-<h2 class="relative group">A Machine Learning Surgeon development setup 
-    <div id="a-machine-learning-surgeon-development-setup" class="anchor"></div>
+<h2 class="relative group">Prepping for Surgery: My Development Setup 
+    <div id="prepping-for-surgery-my-development-setup" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#a-machine-learning-surgeon-development-setup" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#prepping-for-surgery-my-development-setup" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
 <p>In general, I’m not a fan of abstraction—in fact, I despise it. I want full control and awareness of everything happening under the hood. This principle guides me across many domains, including software development. So, as you explore my setup, remember that this desire for control is often the reason behind the decisions I’ve made.</p>
 
 
-<h3 class="relative group">The OS 
-    <div id="the-os" class="anchor"></div>
+<h3 class="relative group">The OS: Choosing the Right Operating Room 
+    <div id="the-os-choosing-the-right-operating-room" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#the-os" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#the-os-choosing-the-right-operating-room" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
@@ -994,33 +912,35 @@
 <p>⚠️Note: When I refer to &ldquo;Linux,&rdquo; I mean a Linux distribution, which serves as an operating system. I understand that Linux itself is just the kernel.</p>
 </blockquote>
 <p>For the past 13 years, I’ve relied on Linux as my operating system of choice. I believe it’s the ideal platform for developers because it offers <strong>complete control</strong> over your machine, and the open-source community continuously creates and supports an array of incredible tools that you can use freely for personal projects or professional work. Unless you’re aiming to develop for specific environments, such as Apple software, I see no reason not to use Linux.</p>
-<p>Throughout my extensive experience with Linux, I’ve experimented with various distributions, desktop environments, tools, and much more. Ultimately, I always gravitate toward an <a href="https://archlinux.org/" target="_blank"><strong>Arch</strong></a>-based distribution. Currently, I’m using Arch Linux itself, but I also find myself comfortable with EndeavourOS and similar alternatives.</p>
-<p>I prefer to use a <strong>tiling window manager</strong>, specifically <a href="https://hyprland.org/" target="_blank">Hyprland</a>. I believe that tiling window managers enhance productivity by optimizing screen space and reducing excessive mouse usage, which is often unnecessary for many tasks.</p>
+<p>Throughout my extensive experience with Linux, I’ve experimented with various distributions, desktop environments, tools, and much more. Ultimately, I always gravitate toward an <a href="https://archlinux.org/"   target="_blank">
+    <strong>Arch</strong></a>-based distribution. Currently, I’m using Arch Linux itself, but I also find myself comfortable with EndeavourOS and similar alternatives.</p>
+<p>I prefer to use a <strong>tiling window manager</strong>, specifically <a href="https://hyprland.org/"   target="_blank">
+    Hyprland</a>. I believe that tiling window managers enhance productivity by optimizing screen space and reducing excessive mouse usage, which is often unnecessary for many tasks.</p>
 
 
-<h3 class="relative group">The terminal 
-    <div id="the-terminal" class="anchor"></div>
+<h3 class="relative group">The Terminal: Your Scalpel 
+    <div id="the-terminal-your-scalpel" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#the-terminal" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#the-terminal-your-scalpel" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
 <p>The terminal is an essential tool for a developer, much like a scalpel is for a surgeon. You can accomplish nearly everything in it: writing code, managing files and Git repositories, compiling or interpreting code, and launching commands for all kinds of purposes. Because of its importance, it’s one of the tools I configure most thoroughly—it must seamlessly align with my workflow.</p>
-<p>My current terminal emulator of choice is <strong>Kitty</strong>, though any terminal that suits your needs will do. As for the shell, I use <strong>zsh</strong>, which I find superior to bash in many ways. I’ve experimented with <strong>fish</strong> and <strong>nushell</strong>, but I always return to zsh. While zsh lacks certain features like syntax highlighting and command suggestions, these can easily be added through plugins managed by a plugin manager (I use <strong>OhMyZsh</strong>).</p>
+<p>My current terminal emulator of choice is <strong>Kitty</strong>, though any terminal that suits your needs will do. As for the shell, I use <strong>zsh</strong>, which I find superior to **bash in many ways. I’ve experimented with <strong>fish</strong> and <strong>nushell</strong>, but I always return to zsh. While zsh lacks certain features like syntax highlighting and command suggestions, these can easily be added through plugins managed by a plugin manager (I use <strong>OhMyZsh</strong>).</p>
 <p>In combination with zsh, I rely on <strong>tmux</strong> for handling multiple windows and panes. This is invaluable when working with several terminal panes simultaneously. With tmux, I can avoid opening multiple instances of Kitty and instead efficiently navigate between panes, split views, detach commands, and more. If you haven’t used tmux yet, I highly recommend giving it a try. I also use <strong>TPM</strong> (Tmux Plugin Manager) to manage external plugins, which further enhance tmux’s functionality.</p>
 <p>To streamline my workflow, I’ve customized my <code>.zshrc</code> file to automatically launch a tmux session whenever I open a terminal, which saves time and keeps everything organized.</p>
 
 
-<h3 class="relative group">The editor 
-    <div id="the-editor" class="anchor"></div>
+<h3 class="relative group">The Editor: Precision Tools for Code Surgery 
+    <div id="the-editor-precision-tools-for-code-surgery" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#the-editor" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#the-editor-precision-tools-for-code-surgery" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
@@ -1031,70 +951,98 @@ That’s when I decided to give <strong>Neovim</strong> a try, and I was genuine
 If the process of configuring Neovim from scratch seems daunting, you can start with <strong>pre-built distributions</strong> like <strong>AstroVim</strong> or <strong>LunarVim</strong>, which handle most of the initial setup for you. However, I still recommend understanding their inner workings—it will be crucial if you want to further customize and optimize your environment down the road.</p>
 
 
-<h2 class="relative group">A CUDA + Libtorch example 
-    <div id="a-cuda--libtorch-example" class="anchor"></div>
+<h2 class="relative group">Performing the Procedure: A CUDA + Libtorch Case Study 
+    <div id="performing-the-procedure-a-cuda--libtorch-case-study" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#a-cuda--libtorch-example" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#performing-the-procedure-a-cuda--libtorch-case-study" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>In this part, I’ll give you a glimpse of how I use my environment to write a CUDA kernel while also utilizing Libtorch. For those unfamiliar, Libtorch is the C++ distribution of PyTorch, offering C++ APIs based on the ATen library. To start, head over to the <a href="https://pytorch.org/get-started/locally/" target="_blank">Get Started Page</a> and download the appropriate distribution. In my case, I’m using the version with CUDA 12.4 and cxx11 ABI support, but for our example, the exact version isn’t crucial.</p>
+<p>In this part, I’ll give you a glimpse of how I use my environment to write a CUDA kernel while also utilizing <strong>Libtorch</strong>. For those unfamiliar, Libtorch is the C++ distribution of PyTorch, offering C++ APIs based on the <strong>ATen</strong> library. To start, head over to the <a href="https://pytorch.org/get-started/locally/"   target="_blank">
+    Get Started Page</a> and download the appropriate distribution. In my case, I’m using the version with CUDA 12.4 and cxx11 ABI support, but for our example, the exact version isn’t crucial.</p>
 <p>Once downloaded, extract the library into your home folder—that’s about it for the &ldquo;installation&rdquo; process.</p>
 <p>Next, I create a project folder and open it in Neovim. Since I’ll be working with both C++ and CUDA, I’ve configured <code>clang</code>, a language server that supports both languages, ensuring smooth linting and formatting.
 I start by writing the CUDA kernel and immediately notice linting and formatting in action, courtesy of clang. Pretty cool!</p>
 <p>However, clang doesn’t seem to recognize Libtorch’s imports—this is expected since we simply have the library sitting in our home directory, and clang isn’t aware of it. Clang relies on a <strong>compilation database</strong> to inform it about external libraries, languages, and the specific commands needed to compile the project and generate binaries. We need to provide this information to clang so it can lint the Libtorch imports correctly!</p>
-<p>To achieve this, we can generate a <code>compile_commands.json</code> file using <a href="https://github.com/rizsotto/Bear" target="_blank">Bear</a>, a simple command-line tool that generates the necessary compile commands. Just run it like this:</p>
+<p>To achieve this, we can generate a <code>compile_commands.json</code> file using <a href="https://github.com/rizsotto/Bear"   target="_blank">
+    Bear</a>, a simple command-line tool that generates the necessary compile commands. Just run it like this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bear - <span class="o">[[</span><span class="nb">command</span> <span class="k">for</span> compiling<span class="o">]]</span>
 </span></span></code></pre></div><p>That’s all! Alternatively, you could use CMake to handle this, but personally, I avoid CMake whenever possible.</p>
 <p>Great! Now I can start programming. But wait—I forgot the parameters for the <code>torch::rand</code> function! Normally, I’d have to leave my editor, open a browser, navigate through results, and waste time hunting down the documentation. Or, thanks to my Neovim setup, I can simply hover over the method name, press <code>Shift+K</code>, and voilà—a documentation pop-up appears directly in my editor!</p>
 <p>
+
+
+
+
+  
+  
+    
+  
+  
     <figure>
+      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/dev-setup/docs_hu16753131656461506154.png 330w,
-        /posts/dev-setup/docs_hu2064906935373150608.png 660w,
-        /posts/dev-setup/docs_hu12307694111264987083.png 1024w,
-        /posts/dev-setup/docs_hu18256990488568178080.png 2x"
-        src="/posts/dev-setup/docs_hu2064906935373150608.png"
+        /posts/dev-setup/docs_hu434053a7fc8cd815bdf5d63298e05cce_159296_330x0_resize_box_3.png 330w,
+        /posts/dev-setup/docs_hu434053a7fc8cd815bdf5d63298e05cce_159296_660x0_resize_box_3.png 660w,
+        /posts/dev-setup/docs_hu434053a7fc8cd815bdf5d63298e05cce_159296_1024x0_resize_box_3.png 1024w,
+        /posts/dev-setup/docs_hu434053a7fc8cd815bdf5d63298e05cce_159296_1320x0_resize_box_3.png 2x"
+        src="/posts/dev-setup/docs_hu434053a7fc8cd815bdf5d63298e05cce_159296_660x0_resize_box_3.png"
         alt="Docs Popup"
       />
       
+      
     </figure>
+  
+
 </p>
 <p>This pop-up displays useful information like the library providing the method, input and output parameters, and the function signature. When available, it even shows the method’s docstring!</p>
 <p>But that’s not all—if I want to check the definition of something, I can hover over it (easily done with Vim motions), press <code>gD</code>, and jump straight to its definition. Pretty handy!</p>
 <p>I can already hear you saying, &ldquo;But Dario, how am I supposed to remember all these keybindings?&rdquo; Well, Neovim can be configured to display <strong>suggestions</strong> as you type key sequences. For example, if I hover over the <code>torch.rand</code> method and press <code>g</code>, this suggestion view will pop up:</p>
 <p>
+
+
+
+
+  
+  
+    
+  
+  
     <figure>
+      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/dev-setup/keybindings_suggestions_hu6370554233022907213.png 330w,
-        /posts/dev-setup/keybindings_suggestions_hu7270073404430446242.png 660w,
-        /posts/dev-setup/keybindings_suggestions_hu6998863526488641235.png 1024w,
-        /posts/dev-setup/keybindings_suggestions_hu3341835704199291695.png 2x"
-        src="/posts/dev-setup/keybindings_suggestions_hu7270073404430446242.png"
+        /posts/dev-setup/keybindings_suggestions_hu4990be1bbf6c428c3d6381ec3c4e89da_54634_330x0_resize_box_3.png 330w,
+        /posts/dev-setup/keybindings_suggestions_hu4990be1bbf6c428c3d6381ec3c4e89da_54634_660x0_resize_box_3.png 660w,
+        /posts/dev-setup/keybindings_suggestions_hu4990be1bbf6c428c3d6381ec3c4e89da_54634_1024x0_resize_box_3.png 1024w,
+        /posts/dev-setup/keybindings_suggestions_hu4990be1bbf6c428c3d6381ec3c4e89da_54634_1320x0_resize_box_3.png 2x"
+        src="/posts/dev-setup/keybindings_suggestions_hu4990be1bbf6c428c3d6381ec3c4e89da_54634_660x0_resize_box_3.png"
         alt="Keybindings suggestions"
       />
       
+      
     </figure>
+  
+
 </p>
 <p>I could go on all day about the editor and its capabilities, but that’s not the focus of this post. Let’s move on to compiling and running our program!</p>
 
 
-<h3 class="relative group">Compiling and running a CUDA and CPP project 
-    <div id="compiling-and-running-a-cuda-and-cpp-project" class="anchor"></div>
+<h3 class="relative group">Compiling and Running a CUDA + C++ Project: Suturing Together CUDA and C++ with Libtorch 
+    <div id="compiling-and-running-a-cuda--c-project-suturing-together-cuda-and-c-with-libtorch" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#compiling-and-running-a-cuda-and-cpp-project" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#compiling-and-running-a-cuda--c-project-suturing-together-cuda-and-c-with-libtorch" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
@@ -1114,9 +1062,19 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/path/to/libtorch/lib:<span class="nv">$LD_LIBRARY_PATH</span><span class="sb">`</span>
 </span></span></code></pre></div><p>Running the program again will now execute successfully. Keep in mind, though, that this export is only valid for the current terminal session. If you want to make it permanent, you can add this export command to your <code>.zshrc</code> (or equivalent file for your shell).</p>
 
-          
-          
-          
+
+<h2 class="relative group">Post-Op: Final Thoughts and Recovery 
+    <div id="post-op-final-thoughts-and-recovery" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#post-op-final-thoughts-and-recovery" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>In conclusion, setting up a development environment tailored for CUDA, C++, and Libtorch may feel like stitching together a complex surgery—but once you get the hang of it, it’s smooth sailing (or should I say, smooth compiling?). With the right tools, a bit of configuration magic, and a trusty terminal scalpel, you’ll be slicing through code like a seasoned ML Surgeon in no time. Happy coding, and remember—always keep your tools sharp!</p>
+
         </div>
         
         
@@ -1130,7 +1088,7 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/dev-setup/&amp;title=Development%20setup"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/dev-setup/&amp;title=The%20Operating%20Room%20Setup"
       title="Share on LinkedIn"
       aria-label="Share on LinkedIn"
       >
@@ -1149,7 +1107,7 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://t.me/share/url?url=http://localhost:1313/posts/dev-setup/&amp;resubmit=true&amp;title=Development%20setup"
+      href="https://t.me/share/url?url=http://localhost:1313/posts/dev-setup/&amp;resubmit=true&amp;title=The%20Operating%20Room%20Setup"
       title=""
       aria-label=""
       >
@@ -1168,7 +1126,7 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://reddit.com/submit/?url=http://localhost:1313/posts/dev-setup/&amp;resubmit=true&amp;title=Development%20setup"
+      href="https://reddit.com/submit/?url=http://localhost:1313/posts/dev-setup/&amp;resubmit=true&amp;title=The%20Operating%20Room%20Setup"
       title="Submit to Reddit"
       aria-label="Submit to Reddit"
       >
@@ -1187,7 +1145,7 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="mailto:?body=http://localhost:1313/posts/dev-setup/&amp;subject=Development%20setup"
+      href="mailto:?body=http://localhost:1313/posts/dev-setup/&amp;subject=The%20Operating%20Room%20Setup"
       title="Send via email"
       aria-label="Send via email"
       >
@@ -1210,258 +1168,6 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
 
 <h2 class="mt-8 text-2xl font-extrabold mb-10">Related</h2>
 <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-  
-  
-
-  <a href="/posts/torch-compile/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/torch-compile/">Dissecting torch.compile: Surgical Precision in PyTorch Optimization</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <span title="Reading time">23 mins</span>
-  
-
-  
-  
-</div>
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/torch-compile/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Torch-Compile
-  </span>
-</span>
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/compiler/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Compiler
-  </span>
-</span>
-  </span>
-  
-  
-  
-  
-</div>
-
-
-
-
-        </div>
-
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-
-  
-  
-
-  <a href="/posts/ten-minutes-to-rag/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/ten-minutes-to-rag/">A quick incision: ten minutes to RAG</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <span title="Reading time">8 mins</span>
-  
-
-  
-  
-</div>
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/rag/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Rag
-  </span>
-</span>
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/llm/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Llm
-  </span>
-</span>
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/vector-db/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Vector-Db
-  </span>
-</span>
-  </span>
-  
-  
-  
-  
-</div>
-
-
-
-
-        </div>
-
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-
   
   
 
@@ -1581,7 +1287,6 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
 
 
 
-
         </div>
 
         
@@ -1591,7 +1296,6 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       </div>
     </div>
   </a>
-
   
   
 
@@ -1719,7 +1423,6 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
 
 
 
-
         </div>
 
         
@@ -1729,129 +1432,6 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       </div>
     </div>
   </a>
-
-  
-  
-
-  <a href="/posts/cpu-gpu-architecture/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/cpu-gpu-architecture/">Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <span title="Reading time">13 mins</span>
-  
-
-  
-  
-</div>
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/gpu/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Gpu
-  </span>
-</span>
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/architecture/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Architecture
-  </span>
-</span>
-  </span>
-  
-  
-  
-  
-</div>
-
-
-
-
-        </div>
-
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-
   
   
 
@@ -1971,6 +1551,125 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
 
 
 
+        </div>
+
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/torch-compile/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/torch-compile/">Dissecting torch.compile: Surgical Precision in PyTorch Optimization</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span title="Reading time">23 mins</span>
+  
+
+  
+  
+</div>
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/torch-compile/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Torch-Compile
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/compiler/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Compiler
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
 
         </div>
 
@@ -1981,7 +1680,254 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       </div>
     </div>
   </a>
+  
+  
 
+  <a href="/posts/ten-minutes-to-rag/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/ten-minutes-to-rag/">A quick incision: ten minutes to RAG</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span title="Reading time">8 mins</span>
+  
+
+  
+  
+</div>
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/rag/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Rag
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/llm/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Llm
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/vector-db/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Vector-Db
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+        </div>
+
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/cpu-gpu-architecture/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/cpu-gpu-architecture/">Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span title="Reading time">13 mins</span>
+  
+
+  
+  
+</div>
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/gpu/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Gpu
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/architecture/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Architecture
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+        </div>
+
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
   
 </section>
 
@@ -2001,8 +1947,8 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
       </script>
       
       
-      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
       
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
   
     </section>
   <footer class="pt-8 max-w-prose print:hidden">
@@ -2091,7 +2037,7 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
     <p class="text-sm text-neutral-500 dark:text-neutral-400">
       &copy;
       2024
-      Dario Salvati
+      
     </p>
     
 
@@ -2123,8 +2069,7 @@ I start by writing the CUDA kernel and immediately notice linting and formatting
   
   <a rel="me" href="https://masto.ai/@blowfish"></a>
   
-</footer>
-<div
+</footer><div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
   data-url="http://localhost:1313/"
