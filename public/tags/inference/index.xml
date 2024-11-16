@@ -6,16 +6,28 @@
     <description>Recent content in Inference on The ML Surgeon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 </copyright>
-    <lastBuildDate>Sun, 05 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/inference/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2024 Dario Salvati</copyright>
+    <lastBuildDate>Sun, 10 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/inference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quantization</title>
+      <link>http://localhost:1313/posts/quantization/</link>
+      <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/quantization/</guid>
+      <description>&lt;p&gt;As humans, we perceive the space and time around us as continuous. This continuity suggests that the concept of infinity is intrinsic to nature. However, some theories challenge this view, proposing that reality might, in fact, be discrete. For instance, &lt;strong&gt;string theory&lt;/strong&gt; posits that the fundamental building blocks of matter are tiny, vibrating strings, with their vibrations determining the properties of matter. Similarly, &lt;strong&gt;loop quantum gravity&lt;/strong&gt; suggests that space itself is composed of &amp;ldquo;space grains,&amp;rdquo; effectively making the fabric of the universe discrete.&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>An Introduction to Sparsity for Efficient Neural Network Inference</title>
       <link>http://localhost:1313/posts/pruning-intro/</link>
       <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/pruning-intro/</guid>
-      <description>NOTE: This post was written before the Machine Learning Surgeon got in charge of the blog, that&amp;rsquo;s why there are no references to surgical operations!
-Large Language Model. How many times did you read that term?</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;NOTE:&lt;/em&gt;&lt;/strong&gt;  This post was written before the Machine Learning Surgeon got in charge of the blog, that&amp;rsquo;s why there are no references to surgical operations!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Large Language Model&lt;/strong&gt;. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.&lt;/p&gt;</description>
       
     </item>
     

@@ -26,8 +26,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.16ef8a6896d8151791996e6789da59a48d35efa92f465864bfebdef24f1b8a6b7b542a9f4a9ca1d2b987d1ac6c72f3ed184dab5eb1db16fa43b0da3255b9f86c.css"
-    integrity="sha512-Fu&#43;KaJbYFReRmW5nidpZpI0176kvRlhkv&#43;ve8k8bimt7VCqfSpyh0rmH0axscvPtGE2rXrHbFvpDsNoyVbn4bA==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.7e511937ade47127f0cc4d4943b7cc62b8f7cf37a9c19383694c5760ad479781345dbedf1b713a57a80254844a8966c81cb86298461c8f60c196036e053f9605.css"
+    integrity="sha512-flEZN63kcSfwzE1JQ7fMYrj3zzepwZODaUxXYK1Hl4E0Xb7fG3E6V6gCVIRKiWbIHLhimEYcj2DBlgNuBT&#43;WBQ==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -44,11 +44,14 @@
   
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.d6c35110b5d7df8014403fbb81cd21a9d89daf9eb586c936e585e9d04adc204dce554aa737f81e8c902b9dea9e67bd63a977b77dedefb8a39430581ebc519207.js"
-    integrity="sha512-1sNRELXX34AUQD&#43;7gc0hqdidr561hsk25YXp0ErcIE3OVUqnN/gejJArneqeZ71jqXe3fe3vuKOUMFgevFGSBw==" data-copy="" data-copied=""></script>
   
   
-  <script src="/js/zoom.min.js"></script>
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.efbf3b6b987689fffaf2d7b73173d2690c0279a04d444b0537a77d7f4ff6e6d493445400cb0cf56bc0f0f123e19f15394e63cae34e67f069bd013dd5c73df56e.js"
+    integrity="sha512-7787a5h2if/68te3MXPSaQwCeaBNREsFN6d9f0/25tSTRFQAywz1a8Dw8SPhnxU5TmPK405n8Gm9AT3Vxz31bg==" data-copy="" data-copied=""></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
   
   
   
@@ -66,7 +69,7 @@
   <meta property="og:url" content="http://localhost:1313/posts/cpu-gpu-architecture/">
   <meta property="og:site_name" content="The ML Surgeon">
   <meta property="og:title" content="Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs">
-  <meta property="og:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function.">
+  <meta property="og:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -78,7 +81,7 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs">
-  <meta name="twitter:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function.">
+  <meta name="twitter:description" content="Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it’s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.">
 
   
   <script type="application/ld+json">
@@ -89,12 +92,12 @@
     "name": "Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs",
     "headline": "Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs",
     
-    "abstract": "Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it\u0026rsquo;s crucial to understand how GPUs function.",
+    "abstract": "\u003cp\u003eWould you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it\u0026rsquo;s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.\u003c\/p\u003e",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/cpu-gpu-architecture\/",
     "author" : {
       "@type": "Person",
-      "name": ""
+      "name": "Dario Salvati"
     },
     "copyrightYear": "2024",
     "dateCreated": "2024-06-14T00:00:00\u002b00:00",
@@ -105,18 +108,28 @@
     "keywords": ["gpu","architecture"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "2585"
+    "wordCount": "2584"
   }]
   </script>
 
 
   
   
+  <meta name="author" content="Dario Salvati" />
+  
+  
+  
+  <link href="https://linkedin.com/in/dwarez" rel="me" />
+  
+  
+  <link href="https://github.com/dwarez" rel="me" />
+  
   
   
   
 
-<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
 
 
 
@@ -151,6 +164,7 @@
 </script>
 
 
+
   
   
   <meta name="theme-color"/>
@@ -158,7 +172,7 @@
   
 </head>
 <body
-  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
   <div id="the-top" class="absolute flex self-center">
     <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
       href="#main-content"><span
@@ -179,8 +193,10 @@
         <a href="/" class="flex">
             <span class="sr-only">The ML Surgeon</span>
 
+            
             <img src="/img/logo.png" width="250" height="250"
                 class="logo max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom" alt="The ML Surgeon" />
+            
 
         </a>
     </div>
@@ -206,6 +222,7 @@
 </a>
 
 
+
             
             
   <a href="https://linkedin.com/in/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -227,6 +244,7 @@
 </a>
 
 
+
             
             
   <a href="https://github.com/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -246,6 +264,7 @@
         
     </p>
 </a>
+
 
 
             
@@ -350,8 +369,7 @@
     </div>
     <div class="-my-2 -mr-2 md:hidden">
 
-        <label id="menu-button" for="menu-controller" class="block">
-            <input type="checkbox" id="menu-controller" class="hidden" />
+        <label id="menu-button" class="block">
             
             <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
                 
@@ -368,7 +386,7 @@
                 <ul
                     class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
 
-                    <li>
+                    <li id="menu-close-button">
                         <span
                             class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
 
@@ -391,6 +409,7 @@
         </p>
     </a>
 </li>
+
 
 
 
@@ -419,6 +438,7 @@
 
 
 
+
                     
 
                     
@@ -441,6 +461,7 @@
         </p>
     </a>
 </li>
+
 
 
 
@@ -506,7 +527,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
+    style="background-image:url(/img/gpu_power_hu18357939832410660288.jpg);">
     
 
 
@@ -638,7 +659,7 @@
 </span><span class="px-2 text-primary-500">&middot;</span>
 
 
-<script type="text/javascript" src="/js/zen-mode.min.ccc8b2a0c4505216444ca25530c7328aa0bef94f43dabaf3e598e1b4271de9eec76c1cb35917471a4f7ccb8d84051b3acef42baa30724ac3a667fcf1fec4432a.js" integrity="sha512-zMiyoMRQUhZETKJVMMcyiqC&#43;&#43;U9D2rrz5ZjhtCcd6e7HbByzWRdHGk98y42EBRs6zvQrqjBySsOmZ/zx/sRDKg=="></script>
+<script type="text/javascript" src="/js/zen-mode.min.63c8a202661f4a2063fdc2706685d668e8ea3da613da2224e9da527e5876e4f53dcac39ab60732626fb4151feae5d430d0cf44731e5d3c726522fcc1519c1547.js" integrity="sha512-Y8iiAmYfSiBj/cJwZoXWaOjqPaYT2iIk6dpSflh25PU9ysOatgcyYm&#43;0FR/q5dQw0M9Ecx5dPHJlIvzBUZwVRw=="></script>
 
 <span class="mb-[2px]">
     <span id="zen-mode-button"
@@ -717,6 +738,7 @@
 
 
 
+
     </div>
 
     
@@ -734,10 +756,71 @@
         
 <div class="flex author">
   
+    
+    
+      
+    
+    
+      
+        
+      
+      <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+      alt="Dario Salvati" src="/img/avatar_hu8198441272534891881.jpg" />
+    
+  
   <div class="place-self-center">
     
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      Dario Salvati
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A surgeon for Machine Learning models.</div>
     
     <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://linkedin.com/in/dwarez"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/dwarez"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
 </div>
   </div>
 </div>
@@ -760,13 +843,14 @@
       class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
       <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
 
-         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+         <details open id="TOCView"
+  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
   <summary
     class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
     Table of Contents
   </summary>
   <div
-    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#the-battle-of-the-brains-cpu-vs-gpu">The Battle of the Brains: CPU vs. GPU</a></li>
@@ -817,8 +901,33 @@
   </div>
 </details>
 
- 
 <script>
+
+  var margin = 200;
+  var marginError = 50;
+
+  (function () {
+    var $window = $(window);
+    var $toc = $('#TOCView');
+    var tocHeight = $toc.height();
+
+    function onResize() {
+      var windowAndMarginHeight = $window.height() - margin;
+      if(tocHeight >= windowAndMarginHeight) {
+        $toc.css("overflow-y", "scroll")
+        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
+      } else {
+        $toc.css("overflow-y", "hidden")
+        $toc.css("max-height", "9999999px")
+      }
+    }
+
+    $window.on('resize', onResize);
+    $(document).ready(onResize);
+  })();
+
+
+
   (function () {
     var $toc = $('#TableOfContents');
     if ($toc.length > 0) {
@@ -831,7 +940,7 @@
         h.each(function (i, e) {
           e = $(e);
           if (e.offset().top - $(window).height()/3 <= currentScroll) {
-            id = e.attr('id');
+            id = decodeURIComponent(e.attr('id'));
           }
         });
         var active = $toc.find('a.active');      
@@ -855,6 +964,8 @@
       });
     }
   })();
+
+
 </script>
    </div>
       </div>
@@ -885,38 +996,23 @@
 <p>In contrast to CPU programming, GPU programming necessitates a more intimate understanding of the underlying hardware to achieve optimal performance. This is because GPUs are designed with a fundamentally different architecture, emphasizing parallel processing capabilities. To leverage these capabilities effectively, programmers need to be aware of concepts such as thread hierarchies, memory coalescing, and warp execution. Unlike CPUs, where compilers can often perform extensive optimizations automatically, GPU programming requires manual optimization to fully exploit the hardware&rsquo;s potential. The programmer must write code that efficiently manages thousands of parallel threads and minimizes memory access latency. Consequently, achieving high performance in GPU programming involves a deep understanding of the GPU&rsquo;s architecture and the intricacies of its operation, making it significantly different from the more abstracted approach possible in CPU programming.</p>
 <p>The figure below shows a comparison between the CPU and GPU architecture design, which is very helpful in understanding the purpose of both processors.</p>
 <p>
-
-
-
-
-  
-  
-    
-  
-  
     <figure>
-      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu3a2330c165cd49b443a0efcc5a82d3f1_176566_330x0_resize_box_3.png 330w,
-        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu3a2330c165cd49b443a0efcc5a82d3f1_176566_660x0_resize_box_3.png 660w,
-        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu3a2330c165cd49b443a0efcc5a82d3f1_176566_1024x0_resize_box_3.png 1024w,
-        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu3a2330c165cd49b443a0efcc5a82d3f1_176566_1320x0_resize_box_3.png 2x"
-        src="/posts/cpu-gpu-architecture/cpu_vs_gpu_hu3a2330c165cd49b443a0efcc5a82d3f1_176566_660x0_resize_box_3.png"
+        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu6758518332434073281.png 330w,
+        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu15705840493757080515.png 660w,
+        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu4451906304189593911.png 1024w,
+        /posts/cpu-gpu-architecture/cpu_vs_gpu_hu31142008922242670.png 2x"
+        src="/posts/cpu-gpu-architecture/cpu_vs_gpu_hu15705840493757080515.png"
         alt="CPU vs GPU architecture"
       />
-      
-      <figcaption>Figure 1.1 of the <a href="https://www.amazon.it/Programming-Massively-Parallel-Processors-Hands/dp/0123814723?tag=snxit51-21"   target="_blank">
-    PMPP book</a></figcaption>
+      <figcaption>Figure 1.1 of the <a href="https://www.amazon.it/Programming-Massively-Parallel-Processors-Hands/dp/0123814723?tag=snxit51-21" target="_blank">PMPP book</a></figcaption>
     </figure>
-  
-
 </p>
 <p>The CPU is designed for general-purpose processing and optimized for single-thread performance, enabling it to run a wide range of applications, from operating systems to specialized software. As illustrated in the figure, the CPU features a large cache memory and a few powerful cores. Additionally, it employs a hierarchical memory system, consisting of registers, multiple levels of cache, and main memory, ensuring rapid data access. To enhance its general-purpose processing capabilities, the CPU includes a complex instruction set, allowing it to perform a broad spectrum of operations.</p>
-<p>On the other hand, the GPU is designed for parallel computing, following the Single Instruction Multiple Data (<a href="https://en.wikipedia.org/wiki/SIMD"   target="_blank">
-    SIMD</a>) paradigm. The GPU design aims to maximize throughput by utilizing thousands of cores that compute simple operations in parallel. For memory, GPUs use High Bandwidth Memory (HBM) to facilitate very fast data flows in and out of the processor, while maintaining unified memory to enable communication between threads.</p>
+<p>On the other hand, the GPU is designed for parallel computing, following the Single Instruction Multiple Data (<a href="https://en.wikipedia.org/wiki/SIMD" target="_blank">SIMD</a>) paradigm. The GPU design aims to maximize throughput by utilizing thousands of cores that compute simple operations in parallel. For memory, GPUs use High Bandwidth Memory (HBM) to facilitate very fast data flows in and out of the processor, while maintaining unified memory to enable communication between threads.</p>
 <p>Enough with these generic notions. Put on your gloves, and let&rsquo;s cut open a GPU!</p>
 
 
@@ -932,34 +1028,20 @@
 </h2>
 <p>The figure below illustrates the fundamental design of a modern GPU, primarily consisting of an array of Streaming Multiprocessors (SMs) and Global Memory.</p>
 <p>
-
-
-
-
-  
-  
-    
-  
-  
     <figure>
-      
       <img
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/cpu-gpu-architecture/cuda_capable_gpu_hud00244b5f52d10ab79ce6329abf1eb67_218724_330x0_resize_box_3.png 330w,
-        /posts/cpu-gpu-architecture/cuda_capable_gpu_hud00244b5f52d10ab79ce6329abf1eb67_218724_660x0_resize_box_3.png 660w,
-        /posts/cpu-gpu-architecture/cuda_capable_gpu_hud00244b5f52d10ab79ce6329abf1eb67_218724_1024x0_resize_box_3.png 1024w,
-        /posts/cpu-gpu-architecture/cuda_capable_gpu_hud00244b5f52d10ab79ce6329abf1eb67_218724_1320x0_resize_box_3.png 2x"
-        src="/posts/cpu-gpu-architecture/cuda_capable_gpu_hud00244b5f52d10ab79ce6329abf1eb67_218724_660x0_resize_box_3.png"
+        /posts/cpu-gpu-architecture/cuda_capable_gpu_hu8891728335788471243.png 330w,
+        /posts/cpu-gpu-architecture/cuda_capable_gpu_hu8638082199888040763.png 660w,
+        /posts/cpu-gpu-architecture/cuda_capable_gpu_hu3473193335301262182.png 1024w,
+        /posts/cpu-gpu-architecture/cuda_capable_gpu_hu1032668821492993435.png 2x"
+        src="/posts/cpu-gpu-architecture/cuda_capable_gpu_hu8638082199888040763.png"
         alt="CUDA capable GPU"
       />
-      
-      <figcaption>Figure 4.1 of the <a href="https://www.amazon.it/Programming-Massively-Parallel-Processors-Hands/dp/0123814723?tag=snxit51-21"   target="_blank">
-    PMPP book</a></figcaption>
+      <figcaption>Figure 4.1 of the <a href="https://www.amazon.it/Programming-Massively-Parallel-Processors-Hands/dp/0123814723?tag=snxit51-21" target="_blank">PMPP book</a></figcaption>
     </figure>
-  
-
 </p>
 <p>Each SM contains a grid of CUDA cores, local memory, and a control unit. The distinction between local and global memory is crucial and must be considered when writing kernels, as loading and storing data between SMs and Global Memory can introduce significant overhead.</p>
 
@@ -974,8 +1056,7 @@
     </span>        
     
 </h3>
-<p>Recall that in CUDA we call kernels as follows (example from <a href="https://dwarez.github.io/posts/hello-cuda/"   target="_blank">
-    HelloCuda</a>):</p>
+<p>Recall that in CUDA we call kernels as follows (example from <a href="https://dwarez.github.io/posts/hello-cuda/" target="_blank">HelloCuda</a>):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">number_of_threads</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">dim3</span> <span class="nf">dimGrid</span><span class="p">(</span><span class="nf">ceil</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">number_of_threads</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">dim3</span> <span class="nf">dimBlock</span><span class="p">(</span><span class="n">number_of_threads</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -1032,8 +1113,7 @@ For three-dimensional grids, we fix the value for the z-axis and then flatten th
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>In this case, the execution of operations depends on the thread ID, so not all threads in a warp will be executing the same code simultaneously. Specifically, when threads with even thread IDs are computing the code inside the if brackets, threads with odd thread IDs will be idle, and vice versa.</p>
 <p>This phenomenon is called <strong>control divergence</strong>, and it generally occurs whenever there is a control structure in the code that depends on the thread ID.</p>
-<p>Control divergence silently suggests that we should try to avoid such control structures when writing a kernel to prevent code execution from diverging and wasting time on idle threads. However, it&rsquo;s not always possible to avoid these control structures, such as when checking the portion of data on which the thread must perform computations (similar to what we did in <a href="https://dwarez.github.io/posts/hello-cuda/"   target="_blank">
-    HelloCuda</a>).</p>
+<p>Control divergence silently suggests that we should try to avoid such control structures when writing a kernel to prevent code execution from diverging and wasting time on idle threads. However, it&rsquo;s not always possible to avoid these control structures, such as when checking the portion of data on which the thread must perform computations (similar to what we did in <a href="https://dwarez.github.io/posts/hello-cuda/" target="_blank">HelloCuda</a>).</p>
 
 
 <h2 class="relative group">Hippocampus 
@@ -1061,8 +1141,7 @@ For three-dimensional grids, we fix the value for the z-axis and then flatten th
     
 </h3>
 <p>Just as for the CPU design, the GPU architecture also specifies a hierarchical memory design, composed by several levels. As always, the size of the memory is inversely proportional to its speed and cost.</p>
-<p><strong>Global Memory</strong> is the largest and slowest type of memory on a GPU. If you followed the <a href="https://dwarez.github.io/posts/hello-cuda/"   target="_blank">
-    Hello CUDA</a> tutorial, you have already used it without even knowing. Both the host and the device have read and write access to this memory. The long access latencies and relatively low access bandwidth of the Global Memory derives from the fact that it is not an on-chip memory and it is also implemented using the DRAM technology.
+<p><strong>Global Memory</strong> is the largest and slowest type of memory on a GPU. If you followed the <a href="https://dwarez.github.io/posts/hello-cuda/" target="_blank">Hello CUDA</a> tutorial, you have already used it without even knowing. Both the host and the device have read and write access to this memory. The long access latencies and relatively low access bandwidth of the Global Memory derives from the fact that it is not an on-chip memory and it is also implemented using the DRAM technology.
 <strong>Constant Memory</strong> is similar to Global Memory but with one key difference: it supports high-bandwidth, read-only access by the device.</p>
 <p><strong>Global Memory</strong> is also used to create <strong>Local Memory</strong>, which shares the same properties in terms of latency and access. However, Local Memory is reserved for a single thread, meaning it is not shared among threads. Each thread has its own portion of dedicated Global Memory, typically used to allocate static arrays, spilled registers, and other elements of the thread’s call stack.</p>
 <p><strong>Shared Memory</strong> is an on-chip memory that allows threads within the same block to share data efficiently. It is much faster than Global Memory and helps minimize latency by reducing the number of accesses to Global Memory. Its primary purpose is to facilitate high-speed data sharing and cooperation among threads.</p>
@@ -1085,46 +1164,46 @@ For three-dimensional grids, we fix the value for the z-axis and then flatten th
 In CUDA, variables are declared with specific properties that dictate the type of memory they will use. These declarations also define the scope and lifetime of each variable, allowing for precise control over memory usage and performance optimization.</p>
 <p>Here&rsquo;s a quick overview of the syntax and the resulting behaviour.</p>
 <table>
-<thead>
-<tr>
-<th>Declaration</th>
-<th>Memory Type</th>
-<th>Scope</th>
-<th>Lifetime</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Automatic Variables (arrays excluded)</td>
-<td>Register</td>
-<td>Thread</td>
-<td>Grid</td>
-</tr>
-<tr>
-<td>Automatic Array Variable</td>
-<td>Local</td>
-<td>Thread</td>
-<td>Grid</td>
-</tr>
-<tr>
-<td><code>__device__ __shared__ int SharedVariable</code></td>
-<td>Shared</td>
-<td>Block</td>
-<td>Grid</td>
-</tr>
-<tr>
-<td><code>__device__ int GlobalVariable</code></td>
-<td>Global</td>
-<td>Grid</td>
-<td>Application</td>
-</tr>
-<tr>
-<td><code>__device__ __constant__ int ConstantVariable</code></td>
-<td>Constant</td>
-<td>Grid</td>
-<td>Application</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Declaration</th>
+          <th>Memory Type</th>
+          <th>Scope</th>
+          <th>Lifetime</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Automatic Variables (arrays excluded)</td>
+          <td>Register</td>
+          <td>Thread</td>
+          <td>Grid</td>
+      </tr>
+      <tr>
+          <td>Automatic Array Variable</td>
+          <td>Local</td>
+          <td>Thread</td>
+          <td>Grid</td>
+      </tr>
+      <tr>
+          <td><code>__device__ __shared__ int SharedVariable</code></td>
+          <td>Shared</td>
+          <td>Block</td>
+          <td>Grid</td>
+      </tr>
+      <tr>
+          <td><code>__device__ int GlobalVariable</code></td>
+          <td>Global</td>
+          <td>Grid</td>
+          <td>Application</td>
+      </tr>
+      <tr>
+          <td><code>__device__ __constant__ int ConstantVariable</code></td>
+          <td>Constant</td>
+          <td>Grid</td>
+          <td>Application</td>
+      </tr>
+  </tbody>
 </table>
 <p>Let&rsquo;s explain in detail each row of this table.</p>
 <p>Saying <strong>non-array automatic variables</strong> is just a fancy way of referring to scalars. Every variable of this type defined in a kernel or device function is automatically placed inside a thread register, meaning each thread will have its own version of the variable. Consequently, their lifespan is limited to the execution time of the thread.
@@ -1150,6 +1229,9 @@ You already know that registers are extremely fast, but be careful not to alloca
 <p>It&rsquo;s important to recognize the profound interconnection between these two brain regions. When developing GPU code, one must consider both the Cerebral Cortex and the Hippocampus to ensure optimal performance and functionality. Neglecting either could lead to inefficiencies or errors in your code—something no true surgeon of GPU programming would permit!</p>
 <p>That wraps up today&rsquo;s session! Remember to remove your gloves and wash your hands! Clear your mind and prepare for the next fascinating dive into the GPU programming world!</p>
 
+          
+          
+          
         </div>
         
         
@@ -1362,6 +1444,7 @@ You already know that registers are extremely fast, but be careful not to alloca
 
 
 
+
         </div>
 
         
@@ -1371,6 +1454,7 @@ You already know that registers are extremely fast, but be careful not to alloca
       </div>
     </div>
   </a>
+
   
   
 
@@ -1490,6 +1574,7 @@ You already know that registers are extremely fast, but be careful not to alloca
 
 
 
+
         </div>
 
         
@@ -1499,6 +1584,7 @@ You already know that registers are extremely fast, but be careful not to alloca
       </div>
     </div>
   </a>
+
   
 </section>
 
@@ -1518,8 +1604,8 @@ You already know that registers are extremely fast, but be careful not to alloca
       </script>
       
       
-      
       <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
   
     </section>
   <footer class="pt-8 max-w-prose print:hidden">
@@ -1628,7 +1714,7 @@ You already know that registers are extremely fast, but be careful not to alloca
     <p class="text-sm text-neutral-500 dark:text-neutral-400">
       &copy;
       2024
-      
+      Dario Salvati
     </p>
     
 
@@ -1660,7 +1746,8 @@ You already know that registers are extremely fast, but be careful not to alloca
   
   <a rel="me" href="https://masto.ai/@blowfish"></a>
   
-</footer><div
+</footer>
+<div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
   data-url="http://localhost:1313/"
