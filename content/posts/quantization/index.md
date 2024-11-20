@@ -30,10 +30,39 @@ The difference between the actual signal value and its closest quantized level i
 
 ![sin](sin.png "Credits to [HanLab](https://hanlab.mit.edu)")
 
-At first glance, you might think this discussion has little to do with machine learning, especially since we’re not directly talking about models. Why should we care about the quantization of real-valued, continuous signals like audio or images? And you’d be partly correct—our primary concern isn’t the raw quantization of these signals.
+At first glance, you might think this discussion has little to do with machine learning, especially since we're not directly talking about models. Why should we care about the quantization of real-valued, continuous signals like audio or images? And you’d be partly correct—our primary concern isn’t the raw quantization of these signals.
 
 Instead, the point here is to emphasize the **tradeoff** between the true value of a signal and its **representation within hardware**. Neural networks aim to mimic the inner workings of the human brain, which constantly produces electrical impulses and signals. In machine learning, these impulses are represented as **neuron activations**. However, these activations must ultimately exist within a machine, and machines operate within the constraints of discreteness and finiteness. This means that the continuous signals we’re trying to emulate must be mapped into a discrete, finite set of values.
 
 This is where data types come into play. The choice of data types for representing weights and activations in neural networks is absolutely critical. It impacts not only the **precision** and **accuracy** of the computations but also the efficiency of the entire system. And, as you’ll see shortly, the requirements for data representation often differ significantly between the training and inference phases of a model.
 
-Before diving into those differences, let’s take a moment to refresh our understanding of numeric data types and their implications.
+Before diving into those differences, let's take a moment to refresh our understanding of numeric data types and their implications.
+
+## Numeric Data Types
+### Integers
+Let’s start with the simplest data type you can think of: the integer.
+
+Representing an unsigned integer is straightforward. Given `n`, the number of bits used for representation, we simply use the binary representation of the number. Here’s a quick refresher for those who might need it:
+
+![int_repr](int_repr.png "Another good opportunity to checkout my great drawings!")
+
+In this case, the range of the representation is {{< katex >}}\\([0, 2^n - 1]\\).
+
+But what about signed integers? These require a way to handle both positive and negative numbers, and there are two common approaches for this:
+
+1. **Sign-Magnitude Representation**
+In this method, the leftmost bit (most significant bit) represents the sign of the number: {{< katex >}}\\(0\\) for positive and {{< katex >}}\\(1\\) for negative. The remaining bits represent the magnitude. For example:
+
+![sign_int](sign_int.png "")
+
+In this representation, the range of values is {{< katex >}}\\([-2^{n-1} + 1, 2^{n-1} - 1]\\).
+
+2. **Two’s Complement Representation**
+Here, the leftmost bit is treated as having a negative value, allowing for a more elegant way to represent signed numbers. This method is widely used in modern computing because it simplifies arithmetic operations. For example:
+
+![twos_complement.png](twos_complement.png "")
+
+With two’s complement, the range of values becomes {{< katex >}}\\([-2^{n-1}, 2^{n-1} - 1]\\).
+
+
+### Floating Point Numbers
