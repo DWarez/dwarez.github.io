@@ -13,7 +13,7 @@ title = "The ML Surgeon"
 
 [params.author]
   name = "Dario Salvati"
-  image = "img/avatar.jpg"
+  image = "/img/avatar.jpg"
   headline = "A surgeon for Machine Learning models."
   bio = "A surgeon for Machine Learning models."
   links = [
