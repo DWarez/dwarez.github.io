@@ -69,7 +69,7 @@
   <meta property="og:url" content="http://localhost:1313/posts/quantization/">
   <meta property="og:site_name" content="The ML Surgeon">
   <meta property="og:title" content="Quantization">
-  <meta property="og:description" content="As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption. For example, string theory posits that the universe’s fundamental components are tiny, vibrating strings, where different vibrations define different particles. Similarly, loop quantum gravity suggests that space itself is made up of discrete “grains,” implying that reality might not be as continuous as it appears.">
+  <meta property="og:description" content="As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -82,7 +82,7 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Quantization">
-  <meta name="twitter:description" content="As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption. For example, string theory posits that the universe’s fundamental components are tiny, vibrating strings, where different vibrations define different particles. Similarly, loop quantum gravity suggests that space itself is made up of discrete “grains,” implying that reality might not be as continuous as it appears.">
+  <meta name="twitter:description" content="As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption.">
 
   
   <script type="application/ld+json">
@@ -93,7 +93,7 @@
     "name": "Quantization",
     "headline": "Quantization",
     
-    "abstract": "\u003cp\u003eAs humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption. For example, \u003cstrong\u003estring theory\u003c\/strong\u003e posits that the universe\u0026rsquo;s fundamental components are tiny, vibrating strings, where different vibrations define different particles. Similarly, \u003cstrong\u003eloop quantum gravity\u003c\/strong\u003e suggests that space itself is made up of discrete \u0026ldquo;grains,\u0026rdquo; implying that reality might not be as continuous as it appears.\u003c\/p\u003e",
+    "abstract": "As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption.",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/quantization\/",
     "author" : {
@@ -109,7 +109,7 @@
     "keywords": ["quantization","inference","optimization"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "3318"
+    "wordCount": "3443"
   }]
   </script>
 
@@ -647,7 +647,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/gpu_power_hu18357939832410660288.jpg);">
+    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
     
 
 
@@ -755,7 +755,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <span title="Reading time">16 mins</span><span class="px-2 text-primary-500">&middot;</span>
+  <span title="Reading time">17 mins</span><span class="px-2 text-primary-500">&middot;</span>
 
 
   
@@ -893,7 +893,7 @@
         
       
       <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
-      alt="Dario Salvati" src="/img/avatar_hu8198441272534891881.jpg" />
+      alt="Dario Salvati" src="/img/avatar_hua8380a823b796a50cd31db02c9b786e0_931263_192x192_fill_q75_box_center.jpg" />
     
   
   <div class="place-self-center">
@@ -1009,6 +1009,7 @@
             <li><a href="#mixed-precision-training">Mixed precision training</a></li>
           </ul>
         </li>
+        <li><a href="#why-the-pros-of-quantization">Why: the pros of quantization</a></li>
       </ul>
     </li>
   </ul>
@@ -1052,6 +1053,7 @@
             <li><a href="#mixed-precision-training">Mixed precision training</a></li>
           </ul>
         </li>
+        <li><a href="#why-the-pros-of-quantization">Why: the pros of quantization</a></li>
       </ul>
     </li>
   </ul>
@@ -1166,11 +1168,11 @@
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/sin_hu1494624014221838219.png 330w,
-        /posts/quantization/sin_hu2204985774782700670.png 660w,
-        /posts/quantization/sin_hu1657740423375082851.png 1024w,
-        /posts/quantization/sin_hu7858288495222261459.png 2x"
-        src="/posts/quantization/sin_hu2204985774782700670.png"
+        /posts/quantization/sin_hu04cfbd1d36b380791ce1566d495d96f5_68270_330x0_resize_box_3.png 330w,
+        /posts/quantization/sin_hu04cfbd1d36b380791ce1566d495d96f5_68270_660x0_resize_box_3.png 660w,
+        /posts/quantization/sin_hu04cfbd1d36b380791ce1566d495d96f5_68270_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/sin_hu04cfbd1d36b380791ce1566d495d96f5_68270_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/sin_hu04cfbd1d36b380791ce1566d495d96f5_68270_660x0_resize_box_3.png"
         alt="sin"
       />
       <figcaption>Credits to <a href="https://hanlab.mit.edu" target="_blank">HanLab</a></figcaption>
@@ -1212,11 +1214,11 @@
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/int_repr_hu15678131003714934971.png 330w,
-        /posts/quantization/int_repr_hu10672864389437112554.png 660w,
-        /posts/quantization/int_repr_hu11980962410474334685.png 1024w,
-        /posts/quantization/int_repr_hu13553334032314528911.png 2x"
-        src="/posts/quantization/int_repr_hu10672864389437112554.png"
+        /posts/quantization/int_repr_hu1f0257cf2de53fc5a05303712db97996_67065_330x0_resize_box_3.png 330w,
+        /posts/quantization/int_repr_hu1f0257cf2de53fc5a05303712db97996_67065_660x0_resize_box_3.png 660w,
+        /posts/quantization/int_repr_hu1f0257cf2de53fc5a05303712db97996_67065_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/int_repr_hu1f0257cf2de53fc5a05303712db97996_67065_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/int_repr_hu1f0257cf2de53fc5a05303712db97996_67065_660x0_resize_box_3.png"
         alt="int_repr"
       />
       <figcaption>Another good opportunity to checkout my great drawings!</figcaption>
@@ -1234,11 +1236,11 @@
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/sign_int_hu317463217483383161.png 330w,
-        /posts/quantization/sign_int_hu16639357193703778517.png 660w,
-        /posts/quantization/sign_int_hu8318752233576064205.png 1024w,
-        /posts/quantization/sign_int_hu4085269106433794421.png 2x"
-        src="/posts/quantization/sign_int_hu16639357193703778517.png"
+        /posts/quantization/sign_int_hu8f60b07c01b913e6e1846a06ea463541_69501_330x0_resize_box_3.png 330w,
+        /posts/quantization/sign_int_hu8f60b07c01b913e6e1846a06ea463541_69501_660x0_resize_box_3.png 660w,
+        /posts/quantization/sign_int_hu8f60b07c01b913e6e1846a06ea463541_69501_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/sign_int_hu8f60b07c01b913e6e1846a06ea463541_69501_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/sign_int_hu8f60b07c01b913e6e1846a06ea463541_69501_660x0_resize_box_3.png"
         alt="sign_int"
       />
       
@@ -1253,11 +1255,11 @@
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/twos_complement_hu6507643035957279036.png 330w,
-        /posts/quantization/twos_complement_hu18295716697755599276.png 660w,
-        /posts/quantization/twos_complement_hu3225733080548392501.png 1024w,
-        /posts/quantization/twos_complement_hu11691711338243953881.png 2x"
-        src="/posts/quantization/twos_complement_hu18295716697755599276.png"
+        /posts/quantization/twos_complement_hud530c551e4db80ff8e1c027a52843e69_69233_330x0_resize_box_3.png 330w,
+        /posts/quantization/twos_complement_hud530c551e4db80ff8e1c027a52843e69_69233_660x0_resize_box_3.png 660w,
+        /posts/quantization/twos_complement_hud530c551e4db80ff8e1c027a52843e69_69233_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/twos_complement_hud530c551e4db80ff8e1c027a52843e69_69233_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/twos_complement_hud530c551e4db80ff8e1c027a52843e69_69233_660x0_resize_box_3.png"
         alt="twos_complement"
       />
       
@@ -1288,11 +1290,11 @@
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/fp32_hu1439551212705150335.png 330w,
-        /posts/quantization/fp32_hu1892927611496781577.png 660w,
-        /posts/quantization/fp32_hu13678460904150180724.png 1024w,
-        /posts/quantization/fp32_hu8959501189225559399.png 2x"
-        src="/posts/quantization/fp32_hu1892927611496781577.png"
+        /posts/quantization/fp32_hu13fce2927b546a2d926a4f2e9b5d0d94_35583_330x0_resize_box_3.png 330w,
+        /posts/quantization/fp32_hu13fce2927b546a2d926a4f2e9b5d0d94_35583_660x0_resize_box_3.png 660w,
+        /posts/quantization/fp32_hu13fce2927b546a2d926a4f2e9b5d0d94_35583_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/fp32_hu13fce2927b546a2d926a4f2e9b5d0d94_35583_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/fp32_hu13fce2927b546a2d926a4f2e9b5d0d94_35583_660x0_resize_box_3.png"
         alt="fp32"
       />
       
@@ -1334,11 +1336,11 @@
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/fp_bf_hu15958357522524004011.png 330w,
-        /posts/quantization/fp_bf_hu3573395009913859456.png 660w,
-        /posts/quantization/fp_bf_hu5018610823853841030.png 1024w,
-        /posts/quantization/fp_bf_hu4513675573266884211.png 2x"
-        src="/posts/quantization/fp_bf_hu3573395009913859456.png"
+        /posts/quantization/fp_bf_hu293dec544ea1cfde46f12c2dd06b20e3_27435_330x0_resize_box_3.png 330w,
+        /posts/quantization/fp_bf_hu293dec544ea1cfde46f12c2dd06b20e3_27435_660x0_resize_box_3.png 660w,
+        /posts/quantization/fp_bf_hu293dec544ea1cfde46f12c2dd06b20e3_27435_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/fp_bf_hu293dec544ea1cfde46f12c2dd06b20e3_27435_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/fp_bf_hu293dec544ea1cfde46f12c2dd06b20e3_27435_660x0_resize_box_3.png"
         alt="fp_bf"
       />
       <figcaption>A visual difference between FP16 and BF16</figcaption>
@@ -1517,11 +1519,11 @@ In this way, we avoid the drawback of dequantization for allowing the matrix mul
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/quant_gemm_2_hu8872081247549180185.png 330w,
-        /posts/quantization/quant_gemm_2_hu9057855779146969884.png 660w,
-        /posts/quantization/quant_gemm_2_hu4219783189014415963.png 1024w,
-        /posts/quantization/quant_gemm_2_hu12074232497463918682.png 2x"
-        src="/posts/quantization/quant_gemm_2_hu9057855779146969884.png"
+        /posts/quantization/quant_gemm_2_huedb067e002f6fad6f63230bfb5a4577f_222449_330x0_resize_box_3.png 330w,
+        /posts/quantization/quant_gemm_2_huedb067e002f6fad6f63230bfb5a4577f_222449_660x0_resize_box_3.png 660w,
+        /posts/quantization/quant_gemm_2_huedb067e002f6fad6f63230bfb5a4577f_222449_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/quant_gemm_2_huedb067e002f6fad6f63230bfb5a4577f_222449_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/quant_gemm_2_huedb067e002f6fad6f63230bfb5a4577f_222449_660x0_resize_box_3.png"
         alt="quant_gemm_2"
       />
       <figcaption>If only the weights are quantized</figcaption>
@@ -1533,17 +1535,18 @@ In this way, we avoid the drawback of dequantization for allowing the matrix mul
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/quantization/quant_gemm_1_hu9823824406583729027.png 330w,
-        /posts/quantization/quant_gemm_1_hu16851481178158378985.png 660w,
-        /posts/quantization/quant_gemm_1_hu8883860730418386383.png 1024w,
-        /posts/quantization/quant_gemm_1_hu11172584217793339639.png 2x"
-        src="/posts/quantization/quant_gemm_1_hu16851481178158378985.png"
+        /posts/quantization/quant_gemm_1_huf3843f1ae500182263b0a5efaa75dbeb_179439_330x0_resize_box_3.png 330w,
+        /posts/quantization/quant_gemm_1_huf3843f1ae500182263b0a5efaa75dbeb_179439_660x0_resize_box_3.png 660w,
+        /posts/quantization/quant_gemm_1_huf3843f1ae500182263b0a5efaa75dbeb_179439_1024x0_resize_box_3.png 1024w,
+        /posts/quantization/quant_gemm_1_huf3843f1ae500182263b0a5efaa75dbeb_179439_1320x0_resize_box_3.png 2x"
+        src="/posts/quantization/quant_gemm_1_huf3843f1ae500182263b0a5efaa75dbeb_179439_660x0_resize_box_3.png"
         alt="quant_gemm_1"
       />
       <figcaption>If both weights and activations are quantized</figcaption>
     </figure>
 </p>
-<p>I know what you&rsquo;re thinking: the first case doesn&rsquo;t make any sense: why would be quantizing the weights if then we are dequantizing them before doing the GEMM? Trust me, there&rsquo;s a reason and I&rsquo;ll explain it in the Why section.</p>
+<p>I know what you&rsquo;re thinking: the first case doesn&rsquo;t make any sense: why would be quantizing the weights if then we are dequantizing them before doing the GEMM? Trust me, there&rsquo;s a reason and I&rsquo;ll explain it in the Why section. &lt;- change &ldquo;Why section&rdquo; with actual name TODO</p>
+<p>This approach applies to static quantization. However, we could also choose dynamic quantization, where activations are quantized on the fly during inference. In this case, there’s no need for a calibration dataset, and the activation quantization becomes more accurate since it isn’t constrained by a pre-computed, limited distribution derived from the calibration data. The tradeoff remains the same: increased latency in exchange for better accuracy.</p>
 
 
 <h4 class="relative group">Quantization Aware Training 
@@ -1573,6 +1576,19 @@ In this way, we avoid the drawback of dequantization for allowing the matrix mul
 <p>As mentioned before, FP16&rsquo;s dynamic range isn&rsquo;t large enough to store training gradients with sufficient precision. This limitation means that if we were to train entirely in FP16, we&rsquo;d likely end up with a poorly performing model.</p>
 <p>This is where mixed precision training comes in. The idea is straightforward: we start with FP32 weights and then quantize them to FP16 to speed up the inference during the forward pass. This results in FP16 gradients, which are then dequantized back to FP32. By doing this, we maintain numerical stability and avoid troublesome issues like vanishing or exploding gradients—fascinating phenomena to study but undesirable in practice.</p>
 <p>After that, the process is business as usual. The optimizer step remains unchanged, wrapping up the training cycle with the stability of FP32 and the speed benefits of FP16.</p>
+
+
+<h3 class="relative group">Why: the pros of quantization 
+    <div id="why-the-pros-of-quantization" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#why-the-pros-of-quantization" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Why are we doing quantization in the first place? Surely, we already discussed a lot about how quantization allows us to reduce the bits needed for representing the model, but the impact on the memory footprint is just one of the many benefits achievable using quantization.</p>
 
           
           

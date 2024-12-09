@@ -14,7 +14,7 @@
       <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/dev-setup/</guid>
-      <description>&lt;p&gt;Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you&amp;rsquo;ll never excel as an ML Surgeon! But being a surgeon isn&amp;rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data. That’s why having a tailored, efficient, and &lt;strong&gt;functional&lt;/strong&gt; development setup is essential to stay productive and ensure everything gets done right.&lt;/p&gt;</description>
+      <description>Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you&amp;rsquo;ll never excel as an ML Surgeon! But being a surgeon isn&amp;rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data.</description>
       
     </item>
     
@@ -24,7 +24,7 @@
       <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/profiling-introduction/</guid>
-      <description>&lt;p&gt;Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set. First and foremost, we need a deep understanding of machine learning and deep learning. Additionally, we must be adept at writing software, building infrastructures to host and integrate models, managing large volumes of data, and much more. This requires familiarity with numerous tools.&lt;/p&gt;</description>
+      <description>Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set.</description>
       
     </item>
     
@@ -34,7 +34,7 @@
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/matrix-multiplication/</guid>
-      <description>&lt;p&gt;During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.&lt;/p&gt;</description>
+      <description>During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</description>
       
     </item>
     
@@ -44,7 +44,7 @@
       <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/hello-cuda/</guid>
-      <description>&lt;p&gt;In case you didn&amp;rsquo;t already know, &lt;a href=&#34;https://it.wikipedia.org/wiki/CUDA&#34; target=&#34;_blank&#34;&gt;CUDA&lt;/a&gt; is a parallel computing platform and API, developed by NVIDIA, that enables programmers to exploit certain types of GPUs. Not too long ago (around until 2007), GPUs were solely utilized for graphics rendering, and programmers had to depend on very specific graphics APIs to utilize them for solving general problems.&lt;/p&gt;</description>
+      <description>In case you didn&amp;rsquo;t already know, CUDA is a parallel computing platform and API, developed by NVIDIA, that enables programmers to exploit certain types of GPUs. Not too long ago (around until 2007), GPUs were solely utilized for graphics rendering, and programmers had to depend on very specific graphics APIs to utilize them for solving general problems.</description>
       
     </item>
     

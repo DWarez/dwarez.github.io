@@ -217,7 +217,9 @@ Here's a visualization of both cases:
 
 ![quant_gemm_1](quant_gemm_1.png "If both weights and activations are quantized")
 
-I know what you're thinking: the first case doesn't make any sense: why would be quantizing the weights if then we are dequantizing them before doing the GEMM? Trust me, there's a reason and I'll explain it in the Why section.
+I know what you're thinking: the first case doesn't make any sense: why would be quantizing the weights if then we are dequantizing them before doing the GEMM? Trust me, there's a reason and I'll explain it in the Why section. <- change "Why section" with actual name TODO
+
+This approach applies to static quantization. However, we could also choose dynamic quantization, where activations are quantized on the fly during inference. In this case, there’s no need for a calibration dataset, and the activation quantization becomes more accurate since it isn’t constrained by a pre-computed, limited distribution derived from the calibration data. The tradeoff remains the same: increased latency in exchange for better accuracy.
 
 #### Quantization Aware Training
 But what if post-training quantization lowers the model's performance too much? In such cases, we can turn to a more sophisticated technique called Quantization-Aware Training (QAT). This method simulates quantized computations during the forward pass while retaining higher-precision weights during backpropagation. By making the training process aware of the quantization, QAT helps the model adapt to the lower precision of its parameters, resulting in significantly better accuracy retention.
@@ -232,4 +234,5 @@ This is where mixed precision training comes in. The idea is straightforward: we
 After that, the process is business as usual. The optimizer step remains unchanged, wrapping up the training cycle with the stability of FP32 and the speed benefits of FP16.
 
 
-
+### Why: the pros of quantization
+Why are we doing quantization in the first place? Surely, we already discussed a lot about how quantization allows us to reduce the bits needed for representing the model, but the impact on the memory footprint is just one of the many benefits achievable using quantization.
