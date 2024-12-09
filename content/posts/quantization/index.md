@@ -202,10 +202,24 @@ Up until now, we've discussed quantizing tensors in general terms. However, in t
 
 
 ### When: to Quantize
+Deciding what to quantize is also closely related to when we want to perform quantization.
 
+The most straightforward approach is post-training quantization. This involves taking a trained model and applying a chosen quantization algorithm. 
 
-The most straightforward approach is post-training quantization. This involves taking the weights of a trained model and applying a chosen quantization algorithm to them. While this method is the easiest to implement, it has a significant drawback: it tends to be less precise. As we mentioned earlier, every time we dequantize a tensor, we introduce an approximation error. This can lead to a noticeable drop in the model's accuracy. To mitigate this issue, post-training quantization often requires a small calibration dataset to ensure the process achieves acceptable accuracy levels.
+Let's stop for a second and think about what we can quantize using this approach. We don't have any particular limitation in this case: we surely can quantize the weights and the model when loading it in memory. However, if we quantize only the weights, the activations of the model will keep their original data type (let's say BF16). This means that in order to perform the multiplication between the weights and the activations, we must dequantize the weights before that. This adds a significant overhead. At the same time, statically quantize the activations of the model seems kinda impossible, since activations depends on  the input, which is only known at runtime, unlike the weights of the model that do not change overtime.
 
+We can actually statically quantize the model's activations by using a calibration dataset, which will be used to observe the activations of the model and compute their distributions. These distributions are then used to determine how the specifically the different activations should be quantized at inference time.
+In this way, we avoid the drawback of dequantization for allowing the matrix multiplication. 
+
+Here's a visualization of both cases:
+
+![quant_gemm_2](quant_gemm_2.png "If only the weights are quantized")
+
+![quant_gemm_1](quant_gemm_1.png "If both weights and activations are quantized")
+
+I know what you're thinking: the first case doesn't make any sense: why would be quantizing the weights if then we are dequantizing them before doing the GEMM? Trust me, there's a reason and I'll explain it in the Why section.
+
+#### Quantization Aware Training
 But what if post-training quantization lowers the model's performance too much? In such cases, we can turn to a more sophisticated technique called Quantization-Aware Training (QAT). This method simulates quantized computations during the forward pass while retaining higher-precision weights during backpropagation. By making the training process aware of the quantization, QAT helps the model adapt to the lower precision of its parameters, resulting in significantly better accuracy retention.
 
 #### Mixed precision training
