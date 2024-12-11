@@ -192,6 +192,7 @@ ToDo: insert code snippet (?)
 ### What: to Quantize
 Now that we've explored a naïve way to perform quantization, let's discuss what to quantize.
 
+#### Weights and Activations
 To begin with, let's start at a very low level. Most of the computations in deep learning models involve matrix (tensor) multiplications. So, let's focus on the matrix multiplications between the input tensor {{< katex >}}\\(\mathrm{X}\\) and the weights {{< katex >}}\\(\mathrm{W}\\). A simple approach to quantization is to quantize the entire matrices. However, remember that the scaling factor depends on the values within the tensors. This means that using a finer granularity can help avoid or limit some potential numerical instability issues.
 
 Consider a scenario where a tensor's values are sampled from a uniform distribution, but the minimum and maximum values are actually out-of-distribution (i.e., extreme values that don't represent the typical data). This can cause numerical instability during quantization because the scaling factor relies heavily on these two values.
@@ -204,6 +205,7 @@ Up until now, we've discussed quantizing tensors in general terms. However, in t
 ### When: to Quantize
 Deciding what to quantize is also closely related to when we want to perform quantization.
 
+#### Static Quantization
 The most straightforward approach is post-training quantization. This involves taking a trained model and applying a chosen quantization algorithm. 
 
 Let's stop for a second and think about what we can quantize using this approach. We don't have any particular limitation in this case: we surely can quantize the weights and the model when loading it in memory. However, if we quantize only the weights, the activations of the model will keep their original data type (let's say BF16). This means that in order to perform the multiplication between the weights and the activations, we must dequantize the weights before that. This adds a significant overhead. At the same time, statically quantize the activations of the model seems kinda impossible, since activations depends on  the input, which is only known at runtime, unlike the weights of the model that do not change overtime.
@@ -219,20 +221,39 @@ Here's a visualization of both cases:
 
 I know what you're thinking: the first case doesn't make any sense: why would be quantizing the weights if then we are dequantizing them before doing the GEMM? Trust me, there's a reason and I'll explain it in the Why section. <- change "Why section" with actual name TODO
 
-This approach applies to static quantization. However, we could also choose dynamic quantization, where activations are quantized on the fly during inference. In this case, there’s no need for a calibration dataset, and the activation quantization becomes more accurate since it isn’t constrained by a pre-computed, limited distribution derived from the calibration data. The tradeoff remains the same: increased latency in exchange for better accuracy.
+#### Dynamic Quantization
+This approach applies to static quantization. However, we could also choose dynamic quantization, where activations are quantized on the fly during inference. In this case, there's no need for a calibration dataset, and the activation quantization becomes more accurate since it isn't constrained by a pre-computed, limited distribution derived from the calibration data. The tradeoff remains the same: increased latency in exchange for better accuracy.
 
 #### Quantization Aware Training
 But what if post-training quantization lowers the model's performance too much? In such cases, we can turn to a more sophisticated technique called Quantization-Aware Training (QAT). This method simulates quantized computations during the forward pass while retaining higher-precision weights during backpropagation. By making the training process aware of the quantization, QAT helps the model adapt to the lower precision of its parameters, resulting in significantly better accuracy retention.
 
 #### Mixed precision training
 Since I brought it up earlier, let me briefly explain mixed precision training.
-
 As mentioned before, FP16's dynamic range isn't large enough to store training gradients with sufficient precision. This limitation means that if we were to train entirely in FP16, we'd likely end up with a poorly performing model.
-
 This is where mixed precision training comes in. The idea is straightforward: we start with FP32 weights and then quantize them to FP16 to speed up the inference during the forward pass. This results in FP16 gradients, which are then dequantized back to FP32. By doing this, we maintain numerical stability and avoid troublesome issues like vanishing or exploding gradients—fascinating phenomena to study but undesirable in practice.
-
 After that, the process is business as usual. The optimizer step remains unchanged, wrapping up the training cycle with the stability of FP32 and the speed benefits of FP16.
 
 
-### Why: the pros of quantization
-Why are we doing quantization in the first place? Surely, we already discussed a lot about how quantization allows us to reduce the bits needed for representing the model, but the impact on the memory footprint is just one of the many benefits achievable using quantization.
+### Why: the Pros of Quantization
+Let's dive into the significant advantages offered by the various quantization techniques we've explored. Quantization isn't just about reducing a model's memory footprint—though that's certainly a key benefit. It also unlocks improvements tailored to specific use cases. Understanding these unique advantages allows us to make informed choices about the best quantization strategy for a given scenario.
+
+#### Static Quantization: The Memory-Bound Savior
+Picture this: you're working with a massive language model (LLM) boasting 70 billion parameters. In such cases, memory becomes the limiting factor, as loading the model's weights into memory dominates the inference process.
+
+Enter weights-only static quantization. By reducing the precision of the weights, the memory requirements shrink dramatically, enabling faster weight loading. Although there's some overhead from the dequantization step (necessary for precise matrix multiplications between weights and activations), this tradeoff is well worth it in memory-bound applications.
+
+In essence, static quantization relieves the memory bottleneck, leading to substantial improvements in overall inference performance. See? I told you it'd make sense!
+
+
+#### Dynamic Quantization: Tackling Compute-Bound Bottlenecks
+Now, let's shift focus to dynamic quantization. While it also reduces the memory footprint by utilizing lower-bit precision data types, its real strength lies in speeding up computations. Dynamic quantization dynamically converts weights or activations into integers for matrix multiplications during inference.
+
+Why is this impactful? Integer matrix multiplications are inherently faster than their floating-point counterparts. As a result, dynamic quantization is a game-changer for compute-bound scenarios, where the primary bottleneck is the sheer number of floating-point operations (FLOPs). By quantizing activations and leveraging the speed of integer arithmetic, we can significantly boost performance with only a minor hit to accuracy.
+
+
+#### Additional Benefits of Quantization
+Quantization's benefits extend beyond speed and memory. From an energy efficiency perspective, lower-precision computations consume considerably less power. For instance, a 32-bit floating-point multiplication requires about 3.7 picojoules (pJ), while an 8-bit integer multiplication demands just 0.2 pJ—a more than 18-fold reduction in power consumption! This is particularly advantageous for edge devices and large-scale deployments where energy efficiency is critical.
+
+Scalability also comes into play. Smaller models are inherently easier to handle due to their reduced memory and computational demands. This makes them more suitable for resource-constrained environments and simplifies scaling in production systems.
+
+These considerations are crucial in real-world settings, where the performance of a machine learning system is evaluated not just by its metrics but also by its cost and return on investment. Not every organization can afford to operate like OpenAI, burning millions of dollars daily. For most companies, quantization offers a practical way to achieve high performance while keeping costs manageable.

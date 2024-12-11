@@ -14,7 +14,7 @@
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/matrix-multiplication/</guid>
-      <description>During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</description>
+      <description>&lt;p&gt;During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.&lt;/p&gt;</description>
       
     </item>
     
@@ -24,7 +24,7 @@
       <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/cpu-gpu-architecture/</guid>
-      <description>Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it&amp;rsquo;s crucial to understand how GPUs function.</description>
+      <description>&lt;p&gt;Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it&amp;rsquo;s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.&lt;/p&gt;</description>
       
     </item>
     
