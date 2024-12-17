@@ -257,3 +257,103 @@ Quantization's benefits extend beyond speed and memory. From an energy efficienc
 Scalability also comes into play. Smaller models are inherently easier to handle due to their reduced memory and computational demands. This makes them more suitable for resource-constrained environments and simplifies scaling in production systems.
 
 These considerations are crucial in real-world settings, where the performance of a machine learning system is evaluated not just by its metrics but also by its cost and return on investment. Not every organization can afford to operate like OpenAI, burning millions of dollars daily. For most companies, quantization offers a practical way to achieve high performance while keeping costs manageable.
+
+
+## Quantization in Frameworks
+Alright, I'll stop rambling now. By this point, you should have a solid grasp of what quantization is, the technical details of how it works, the methodologies we can apply, and the scenarios where each approach excels.
+
+Now, let's roll up our sleeves and dive into how to implement quantization in different frameworks.
+
+### Pytorch
+Let's start simple. PyTorch, as always, is amazing. One of its recent innovations is Torch AO (Architecture Optimization), a framework designed to streamline optimization techniques like quantization. While it's still in beta, it offers a wide range of quantization options that are already incredibly powerful.
+
+PyTorch supports three primary modes for quantization: Eager Mode, FX Graph Mode, and PyTorch 2 Export. I won't go into the details here, but you can check out the [official documentation](https://pytorch.org/docs/stable/quantization.html) for a deeper dive.
+
+Quantizing an `nn.Module` using Torch AO is straightforward. The library abstracts much of the complexity involved in different quantization methodologies, and most approaches boil down to using the quantize_ function.
+
+This function takes several arguments, with the key ones being the `nn.Module` to be quantized and a callable apply_tensor_subclass that specifies the quantization type to perform.
+
+For example, if we want to quantize weights to A16W4 (activations in 16-bit and weights in 4-bit), we'd use:
+
+```python
+quantize_(model, int4_weight_only(group_size=32, use_hqq=False))
+```
+
+Here, int4_weight_only is the function that applies quantization to the weights. Notice that the function takes two arguments, namely `group_size` and `use_hqq`. The **Group Size** is a nifty trick for improving quantization precision. Smaller group sizes lead to better precision because, as we've discussed, scaling factors rely on statistical properties like the minimum and maximum values of the tensor. If the tensor values are widely spread, this can introduce significant de-quantization errors. By dividing the tensor into smaller groups and calculating scaling factors for each, we reduce this error.
+HQQ instead stands for Half-Quadratic Quantization, and it's a method for performing weight-only quantization without requiring a calibration dataset. It's particularly useful for quick deployment. If you're curious, you can read more in this [this blogpost](https://mobiusml.github.io/hqq_blog/).
+
+But how does quantize_ know which modules to quantize? That's where the filter_fn argument comes into play. This callable determines, module by module, whether quantization should be applied. By default, quantize_ only quantizes linear layers using the internal _is_linear function.
+
+Want to try dynamic quantization? It's just as simple:
+
+```python
+quantize_(model, int8_dynamic_activation_int8_weight())
+```
+This applies int8 dynamic symmetric per-token activation quantization and per-channel weight quantization.
+
+Torch AO offers many other quantization options, but you get the idea. It's a versatile and powerful tool that makes implementing quantization in PyTorch easier than ever.
+
+
+### GPTQ
+GPTQ is a post-training quantization technique that leverages int4 weights alongside FP16 activations. It builds upon the Optimal Brain Quantization (OBQ) framework, which originally introduced per-channel quantization. However, GPTQ incorporates key optimizations that make the process more efficient and scalable.
+
+For instance, using GPTQ, Bloom 176B can be quantized in under 4 GPU-hours. That's a remarkable achievement, especially when compared to the original OBQ framework, which required 2 GPU-hours just to quantize a 336M parameter BERT model.
+
+So, how can you apply GPTQ in practice? It's quite straightforward, especially with the auto-gptq library. Here's how you can get started:
+
+First, define a GPTQ configuration:
+
+```python
+gptq_config = GPTQConfig(bits=4, dataset="c4", tokenizer=tokenizer)
+```
+
+In this example, we specify: the number of bits for weight quantization (e.g., bits=4 for int4) and the calibration dataset (e.g., "c4").
+
+The configuration can include many other parameters, so I highly recommend checking the official documentation.
+
+Next, load your model with this configuration:
+
+```python
+quantized_model = AutoModelForCausalLM.from_pretrained(
+    model_id, 
+    device_map="auto", 
+    quantization_config=gptq_config
+)
+```
+
+And voilà! Your model is ready for deployment with efficient post-training quantization.
+
+### Transformers' `LLM.int8()` 
+By now, you're likely familiar with the main tradeoff in quantization: dequantization error. This error largely stems from the scaling factor, which is derived from the statistical properties of the tensor being quantized. While techniques like group quantization aim to minimize this error by using multiple scaling factors, Hugging Face's Transformers library offers another innovative approach: `LLM.int8()`.
+The core idea behind `LLM.int8()` is to tackle the dequantization error caused by outliers. Instead of attempting to quantize every parameter in the tensor, this method separates the outliers—parameters with unusually large magnitudes—and processes them differently.
+
+Here's how it works. First, outliers are identified based on their magnitude. Anything above a threshold of 6 is considered an outlier. Instead of forcing these extreme values into the quantization process, the method handles them separately in FP16, while the rest of the tensor is processed in INT8. Afterward, the two results are combined—dequantized INT8 data merged with FP16 outliers—to produce the final output.
+
+This approach works brilliantly for large models, especially those with more than 6 billion parameters, where cumulative dequantization errors can wreak havoc as they propagate through layers. By dealing with outliers differently, `LLM.int8()` ensures much better precision.
+
+The threshold is statically set to 6, therefore parameters with a magnitude larger than 6 will be considered outliers and will not be quantized. Is it a coincidence that the threshold is the same as for ReLU6? If you think about the motivation behind ReLU6, I'd say it's probably not.
+
+Of course, there's a catch. Since it performs two separate matrix multiplications, one for the outliers and another for the rest, the method isn't as fast as FP16. In fact, it's about 15-23% slower right now, though optimizations are in the works.
+
+So, how do we actually quantize a model to `LLM.int8()`? It's pretty straightforward. First, you load the original FP16 or BF16 model as usual. Next, you create a replica using the Linear8bitLt class provided by `bitsandbytes`. After that, you simply copy the state dictionary from the original model to the quantized one. The magic happens when you move the quantized module to the device—that's when the actual quantization kicks in. Here's a quick example pulled straight from the official documentation:
+
+```python
+import torch
+import torch.nn as nn
+
+import bitsandbytes as bnb
+from bnb.nn import Linear8bitLt
+
+fp16_model = nn.Sequential(
+    nn.Linear(64, 64),
+    nn.Linear(64, 64)
+)
+
+int8_model = nn.Sequential(
+    Linear8bitLt(64, 64, has_fp16_weights=False),
+    Linear8bitLt(64, 64, has_fp16_weights=False)
+)
+
+int8_model.load_state_dict(fp16_model.state_dict())
+int8_model = int8_model.to(0) # Quantization happens here
+```

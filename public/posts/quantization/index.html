@@ -109,7 +109,7 @@
     "keywords": ["quantization","inference","optimization"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "3838"
+    "wordCount": "4854"
   }]
   </script>
 
@@ -755,7 +755,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <span title="Reading time">19 mins</span><span class="px-2 text-primary-500">&middot;</span>
+  <span title="Reading time">23 mins</span><span class="px-2 text-primary-500">&middot;</span>
 
 
   
@@ -1024,6 +1024,13 @@
         </li>
       </ul>
     </li>
+    <li><a href="#quantization-in-frameworks">Quantization in Frameworks</a>
+      <ul>
+        <li><a href="#pytorch">Pytorch</a></li>
+        <li><a href="#gptq">GPTQ</a></li>
+        <li><a href="#transformers-llmint8">Transformers&rsquo; <code>LLM.int8()</code></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -1078,6 +1085,13 @@
             <li><a href="#additional-benefits-of-quantization">Additional Benefits of Quantization</a></li>
           </ul>
         </li>
+      </ul>
+    </li>
+    <li><a href="#quantization-in-frameworks">Quantization in Frameworks</a>
+      <ul>
+        <li><a href="#pytorch">Pytorch</a></li>
+        <li><a href="#gptq">GPTQ</a></li>
+        <li><a href="#transformers-llmint8">Transformers&rsquo; <code>LLM.int8()</code></a></li>
       </ul>
     </li>
   </ul>
@@ -1694,6 +1708,108 @@ After that, the process is business as usual. The optimizer step remains unchang
 <p>Scalability also comes into play. Smaller models are inherently easier to handle due to their reduced memory and computational demands. This makes them more suitable for resource-constrained environments and simplifies scaling in production systems.</p>
 <p>These considerations are crucial in real-world settings, where the performance of a machine learning system is evaluated not just by its metrics but also by its cost and return on investment. Not every organization can afford to operate like OpenAI, burning millions of dollars daily. For most companies, quantization offers a practical way to achieve high performance while keeping costs manageable.</p>
 
+
+<h2 class="relative group">Quantization in Frameworks 
+    <div id="quantization-in-frameworks" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#quantization-in-frameworks" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Alright, I&rsquo;ll stop rambling now. By this point, you should have a solid grasp of what quantization is, the technical details of how it works, the methodologies we can apply, and the scenarios where each approach excels.</p>
+<p>Now, let&rsquo;s roll up our sleeves and dive into how to implement quantization in different frameworks.</p>
+
+
+<h3 class="relative group">Pytorch 
+    <div id="pytorch" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#pytorch" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Let&rsquo;s start simple. PyTorch, as always, is amazing. One of its recent innovations is Torch AO (Architecture Optimization), a framework designed to streamline optimization techniques like quantization. While it&rsquo;s still in beta, it offers a wide range of quantization options that are already incredibly powerful.</p>
+<p>PyTorch supports three primary modes for quantization: Eager Mode, FX Graph Mode, and PyTorch 2 Export. I won&rsquo;t go into the details here, but you can check out the <a href="https://pytorch.org/docs/stable/quantization.html" target="_blank">official documentation</a> for a deeper dive.</p>
+<p>Quantizing an <code>nn.Module</code> using Torch AO is straightforward. The library abstracts much of the complexity involved in different quantization methodologies, and most approaches boil down to using the quantize_ function.</p>
+<p>This function takes several arguments, with the key ones being the <code>nn.Module</code> to be quantized and a callable apply_tensor_subclass that specifies the quantization type to perform.</p>
+<p>For example, if we want to quantize weights to A16W4 (activations in 16-bit and weights in 4-bit), we&rsquo;d use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">quantize_</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">int4_weight_only</span><span class="p">(</span><span class="n">group_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">use_hqq</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span></span></code></pre></div><p>Here, int4_weight_only is the function that applies quantization to the weights. Notice that the function takes two arguments, namely <code>group_size</code> and <code>use_hqq</code>. The <strong>Group Size</strong> is a nifty trick for improving quantization precision. Smaller group sizes lead to better precision because, as we&rsquo;ve discussed, scaling factors rely on statistical properties like the minimum and maximum values of the tensor. If the tensor values are widely spread, this can introduce significant de-quantization errors. By dividing the tensor into smaller groups and calculating scaling factors for each, we reduce this error.
+HQQ instead stands for Half-Quadratic Quantization, and it&rsquo;s a method for performing weight-only quantization without requiring a calibration dataset. It&rsquo;s particularly useful for quick deployment. If you&rsquo;re curious, you can read more in this <a href="https://mobiusml.github.io/hqq_blog/" target="_blank">this blogpost</a>.</p>
+<p>But how does quantize_ know which modules to quantize? That&rsquo;s where the filter_fn argument comes into play. This callable determines, module by module, whether quantization should be applied. By default, quantize_ only quantizes linear layers using the internal _is_linear function.</p>
+<p>Want to try dynamic quantization? It&rsquo;s just as simple:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">quantize_</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">int8_dynamic_activation_int8_weight</span><span class="p">())</span>
+</span></span></code></pre></div><p>This applies int8 dynamic symmetric per-token activation quantization and per-channel weight quantization.</p>
+<p>Torch AO offers many other quantization options, but you get the idea. It&rsquo;s a versatile and powerful tool that makes implementing quantization in PyTorch easier than ever.</p>
+
+
+<h3 class="relative group">GPTQ 
+    <div id="gptq" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#gptq" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>GPTQ is a post-training quantization technique that leverages int4 weights alongside FP16 activations. It builds upon the Optimal Brain Quantization (OBQ) framework, which originally introduced per-channel quantization. However, GPTQ incorporates key optimizations that make the process more efficient and scalable.</p>
+<p>For instance, using GPTQ, Bloom 176B can be quantized in under 4 GPU-hours. That&rsquo;s a remarkable achievement, especially when compared to the original OBQ framework, which required 2 GPU-hours just to quantize a 336M parameter BERT model.</p>
+<p>So, how can you apply GPTQ in practice? It&rsquo;s quite straightforward, especially with the auto-gptq library. Here&rsquo;s how you can get started:</p>
+<p>First, define a GPTQ configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">gptq_config</span> <span class="o">=</span> <span class="n">GPTQConfig</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s2">&#34;c4&#34;</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">)</span>
+</span></span></code></pre></div><p>In this example, we specify: the number of bits for weight quantization (e.g., bits=4 for int4) and the calibration dataset (e.g., &ldquo;c4&rdquo;).</p>
+<p>The configuration can include many other parameters, so I highly recommend checking the official documentation.</p>
+<p>Next, load your model with this configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">quantized_model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_id</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">device_map</span><span class="o">=</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">quantization_config</span><span class="o">=</span><span class="n">gptq_config</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>And voilà! Your model is ready for deployment with efficient post-training quantization.</p>
+
+
+<h3 class="relative group">Transformers&rsquo; <code>LLM.int8()</code> 
+    <div id="transformers-llmint8" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#transformers-llmint8" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>By now, you&rsquo;re likely familiar with the main tradeoff in quantization: dequantization error. This error largely stems from the scaling factor, which is derived from the statistical properties of the tensor being quantized. While techniques like group quantization aim to minimize this error by using multiple scaling factors, Hugging Face&rsquo;s Transformers library offers another innovative approach: <code>LLM.int8()</code>.
+The core idea behind <code>LLM.int8()</code> is to tackle the dequantization error caused by outliers. Instead of attempting to quantize every parameter in the tensor, this method separates the outliers—parameters with unusually large magnitudes—and processes them differently.</p>
+<p>Here&rsquo;s how it works. First, outliers are identified based on their magnitude. Anything above a threshold of 6 is considered an outlier. Instead of forcing these extreme values into the quantization process, the method handles them separately in FP16, while the rest of the tensor is processed in INT8. Afterward, the two results are combined—dequantized INT8 data merged with FP16 outliers—to produce the final output.</p>
+<p>This approach works brilliantly for large models, especially those with more than 6 billion parameters, where cumulative dequantization errors can wreak havoc as they propagate through layers. By dealing with outliers differently, <code>LLM.int8()</code> ensures much better precision.</p>
+<p>The threshold is statically set to 6, therefore parameters with a magnitude larger than 6 will be considered outliers and will not be quantized. Is it a coincidence that the threshold is the same as for ReLU6? If you think about the motivation behind ReLU6, I&rsquo;d say it&rsquo;s probably not.</p>
+<p>Of course, there&rsquo;s a catch. Since it performs two separate matrix multiplications, one for the outliers and another for the rest, the method isn&rsquo;t as fast as FP16. In fact, it&rsquo;s about 15-23% slower right now, though optimizations are in the works.</p>
+<p>So, how do we actually quantize a model to <code>LLM.int8()</code>? It&rsquo;s pretty straightforward. First, you load the original FP16 or BF16 model as usual. Next, you create a replica using the Linear8bitLt class provided by <code>bitsandbytes</code>. After that, you simply copy the state dictionary from the original model to the quantized one. The magic happens when you move the quantized module to the device—that&rsquo;s when the actual quantization kicks in. Here&rsquo;s a quick example pulled straight from the official documentation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">bitsandbytes</span> <span class="k">as</span> <span class="nn">bnb</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bnb.nn</span> <span class="kn">import</span> <span class="n">Linear8bitLt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fp16_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">int8_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Linear8bitLt</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">has_fp16_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Linear8bitLt</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">has_fp16_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">int8_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">fp16_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="n">int8_model</span> <span class="o">=</span> <span class="n">int8_model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Quantization happens here</span>
+</span></span></code></pre></div>
           
           
           
