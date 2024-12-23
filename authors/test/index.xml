@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test on The ML Surgeon</title>
+    <link>http://localhost:1313/authors/test/</link>
+    <description>Recent content in Test on The ML Surgeon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 </copyright>
+    <lastBuildDate>Sun, 10 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/authors/test/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quantization</title>
+      <link>http://localhost:1313/posts/quantization/</link>
+      <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/quantization/</guid>
+      <description>As humans, we perceive the space and time around us as continuous. This continuity suggests that the concept of infinity is intrinsic to nature. However, some theories challenge this view, proposing that reality might, in fact, be discrete.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
