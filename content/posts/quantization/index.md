@@ -1,5 +1,5 @@
 ---
-title: "Quantization"
+title: "The Machine Learning Surgeon's Guide to Quantization: Precision Cuts for Smarter Models"
 date: 2024-11-10
 draft: false
 description: ""
