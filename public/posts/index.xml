@@ -6,12 +6,22 @@
     <description>Recent content in Posts on The ML Surgeon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 </copyright>
-    <lastBuildDate>Tue, 08 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2024 Dario Salvati</copyright>
+    <lastBuildDate>Sun, 10 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Development setup</title>
+      <title>Quantization</title>
+      <link>http://localhost:1313/posts/quantization/</link>
+      <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/quantization/</guid>
+      <description>As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption.</description>
+      
+    </item>
+    
+    <item>
+      <title>The Operating Room Setup</title>
       <link>http://localhost:1313/posts/dev-setup/</link>
-      <pubDate>Tue, 08 Oct 2024 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/dev-setup/</guid>
       <description>Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you&amp;rsquo;ll never excel as an ML Surgeon! But being a surgeon isn&amp;rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data.</description>

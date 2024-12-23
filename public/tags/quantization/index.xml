@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quantization on The ML Surgeon</title>
+    <link>http://localhost:1313/tags/quantization/</link>
+    <description>Recent content in Quantization on The ML Surgeon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 Dario Salvati</copyright>
+    <lastBuildDate>Sun, 10 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/quantization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quantization</title>
+      <link>http://localhost:1313/posts/quantization/</link>
+      <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/quantization/</guid>
+      <description>As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
