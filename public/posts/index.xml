@@ -6,15 +6,28 @@
     <description>Recent content in Posts on The ML Surgeon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 Dario Salvati</copyright>
-    <lastBuildDate>Sun, 10 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2025 Dario Salvati</copyright>
+    <lastBuildDate>Sat, 01 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Quantization</title>
+      <title>Move Fast or Die Slow</title>
+      <link>http://localhost:1313/posts/speed-or-die/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/speed-or-die/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;This will not be an hyper-technical article like the ones I use to write. Therefore, if you only care about tech and code, feel free to skip.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Today, I want to give my vision on the state of AI companies and what are the crucial technical points that must be curated in order to win the AI race.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>The Machine Learning Surgeon&#39;s Guide to Quantization: Precision Cuts for Smarter Models</title>
       <link>http://localhost:1313/posts/quantization/</link>
       <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/quantization/</guid>
-      <description>As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption.</description>
+      <description>&lt;p&gt;As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption. For example, &lt;strong&gt;string theory&lt;/strong&gt; posits that the universe&amp;rsquo;s fundamental components are tiny, vibrating strings, where different vibrations define different particles. Similarly, &lt;strong&gt;loop quantum gravity&lt;/strong&gt; suggests that space itself is made up of discrete &amp;ldquo;grains,&amp;rdquo; implying that reality might not be as continuous as it appears.&lt;/p&gt;</description>
       
     </item>
     
@@ -24,7 +37,7 @@
       <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/dev-setup/</guid>
-      <description>Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you&amp;rsquo;ll never excel as an ML Surgeon! But being a surgeon isn&amp;rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data.</description>
+      <description>&lt;p&gt;Undoubtedly, one of the most critical aspects of machine learning is understanding the theory—without grasping how machines learn, you&amp;rsquo;ll never excel as an ML Surgeon! But being a surgeon isn&amp;rsquo;t just about theory; it’s about getting your hands dirty—writing code, setting up infrastructures, and operating on the intricacies of data. That’s why having a tailored, efficient, and &lt;strong&gt;functional&lt;/strong&gt; development setup is essential to stay productive and ensure everything gets done right.&lt;/p&gt;</description>
       
     </item>
     
@@ -34,7 +47,15 @@
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/torch-compile/</guid>
-      <description>You can take a look at the GitHub repository of this blogpost at this link Remember when machine learning was done using Caffe? The ML Surgeon remembers that. If you didn’t catch the reference, too bad for you!</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;You can take a look at the GitHub repository of this blogpost &lt;a href=&#34;https://github.com/DWarez/torch_compile_blogpost&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;at this link&lt;/strong&gt;&lt;/a&gt;   
+
+  &lt;span class=&#34;relative inline-block align-text-bottom icon&#34;&gt;
+    &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 496 512&#34;&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z&#34;/&gt;&lt;/svg&gt;
+
+  &lt;/span&gt;
+
+&lt;/p&gt;</description>
       
     </item>
     
@@ -44,7 +65,7 @@
       <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/ten-minutes-to-rag/</guid>
-      <description>Hello, fellow surgeons! How is life treating you? I hope you&amp;rsquo;ve spent your vacation relaxing, far, far away from the tools of our trade. After all, a good surgeon needs to rest after a long year of work and learning, right?</description>
+      <description>&lt;p&gt;Hello, fellow surgeons! How is life treating you? I hope you&amp;rsquo;ve spent your vacation relaxing, far, far away from the tools of our trade. After all, a good surgeon needs to rest after a long year of work and learning, right? With that in mind, I&amp;rsquo;ve chosen a simple yet useful topic to discuss today, so you can stay relaxed and not worry about the tremendous complexity of our field—at least for now.&lt;/p&gt;</description>
       
     </item>
     
@@ -54,7 +75,7 @@
       <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/profiling-introduction/</guid>
-      <description>Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set.</description>
+      <description>&lt;p&gt;Being a Machine Learning Surgeon is not an easy life. We not only have to deal with intricate machine learning systems but also navigate the additional complexities surrounding them. To be a proficient ML Surgeon, we must develop a diverse skill set. First and foremost, we need a deep understanding of machine learning and deep learning. Additionally, we must be adept at writing software, building infrastructures to host and integrate models, managing large volumes of data, and much more. This requires familiarity with numerous tools.&lt;/p&gt;</description>
       
     </item>
     
@@ -64,7 +85,7 @@
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/matrix-multiplication/</guid>
-      <description>During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</description>
+      <description>&lt;p&gt;During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.&lt;/p&gt;</description>
       
     </item>
     
@@ -74,7 +95,7 @@
       <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/cpu-gpu-architecture/</guid>
-      <description>Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it&amp;rsquo;s crucial to understand how GPUs function.</description>
+      <description>&lt;p&gt;Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it&amp;rsquo;s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.&lt;/p&gt;</description>
       
     </item>
     
@@ -84,7 +105,7 @@
       <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/hello-cuda/</guid>
-      <description>In case you didn&amp;rsquo;t already know, CUDA is a parallel computing platform and API, developed by NVIDIA, that enables programmers to exploit certain types of GPUs. Not too long ago (around until 2007), GPUs were solely utilized for graphics rendering, and programmers had to depend on very specific graphics APIs to utilize them for solving general problems.</description>
+      <description>&lt;p&gt;In case you didn&amp;rsquo;t already know, &lt;a href=&#34;https://it.wikipedia.org/wiki/CUDA&#34; target=&#34;_blank&#34;&gt;CUDA&lt;/a&gt; is a parallel computing platform and API, developed by NVIDIA, that enables programmers to exploit certain types of GPUs. Not too long ago (around until 2007), GPUs were solely utilized for graphics rendering, and programmers had to depend on very specific graphics APIs to utilize them for solving general problems.&lt;/p&gt;</description>
       
     </item>
     
@@ -94,8 +115,30 @@
       <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/pruning-intro/</guid>
-      <description>NOTE: This post was written before the Machine Learning Surgeon got in charge of the blog, that&amp;rsquo;s why there are no references to surgical operations!
-Large Language Model. How many times did you read that term?</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;NOTE:&lt;/em&gt;&lt;/strong&gt;  This post was written before the Machine Learning Surgeon got in charge of the blog, that&amp;rsquo;s why there are no references to surgical operations!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Large Language Model&lt;/strong&gt;. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/intro_triton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/intro_triton/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Machine Learning Surgery&amp;rsquo;s New Instrument: Triton 
+    &lt;div id=&#34;machine-learning-surgerys-new-instrument-triton&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+    &lt;span
+        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100&#34;&gt;
+        &lt;a class=&#34;group-hover:text-primary-300 dark:group-hover:text-neutral-700&#34;
+            style=&#34;text-decoration-line: none !important;&#34; href=&#34;#machine-learning-surgerys-new-instrument-triton&#34; aria-label=&#34;Anchor&#34;&gt;#&lt;/a&gt;
+    &lt;/span&gt;        
+    
+&lt;/h1&gt;
+&lt;p&gt;One of the most amazing things about being a Machine Learning Surgeon is that you never get bored at work. The reason? There&amp;rsquo;s always novelty, always new things to learn and discover, mainly because your colleagues are always busy creating new exciting things.&lt;/p&gt;</description>
       
     </item>
     
