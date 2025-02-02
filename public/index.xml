@@ -6,10 +6,30 @@
     <description>Recent content on The ML Surgeon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 Dario Salvati</copyright>
-    <lastBuildDate>Sun, 10 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2025 Dario Salvati</copyright>
+    <lastBuildDate>Sat, 01 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Quantization</title>
+      <title>Move Fast or Die Slow</title>
+      <link>http://localhost:1313/posts/speed-or-die/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/speed-or-die/</guid>
+      <description>Today&amp;rsquo;s article steps back from our usual technical deep-dives to examine the strategic importance of ML optimization. While we&amp;rsquo;ll touch on engineering concepts, we&amp;rsquo;ll focus more on their business impact.</description>
+      
+    </item>
+    
+    <item>
+      <title>Learn Triton the Right Way</title>
+      <link>http://localhost:1313/posts/learn-triton/</link>
+      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/learn-triton/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>The Machine Learning Surgeon&#39;s Guide to Quantization: Precision Cuts for Smarter Models</title>
       <link>http://localhost:1313/posts/quantization/</link>
       <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate>
       
@@ -96,6 +116,16 @@
       <guid>http://localhost:1313/posts/pruning-intro/</guid>
       <description>NOTE: This post was written before the Machine Learning Surgeon got in charge of the blog, that&amp;rsquo;s why there are no references to surgical operations!
 Large Language Model. How many times did you read that term?</description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/intro_triton/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/intro_triton/</guid>
+      <description>Machine Learning Surgery&amp;rsquo;s New Instrument: Triton # One of the most amazing things about being a Machine Learning Surgeon is that you never get bored at work. The reason? There&amp;rsquo;s always novelty, always new things to learn and discover, mainly because your colleagues are always busy creating new exciting things.</description>
       
     </item>
     

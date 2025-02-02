@@ -6,8 +6,18 @@
     <description>Recent content in Gpu on The ML Surgeon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 Dario Salvati</copyright>
-    <lastBuildDate>Wed, 10 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2025 Dario Salvati</copyright>
+    <lastBuildDate>Sat, 28 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learn Triton the Right Way</title>
+      <link>http://localhost:1313/posts/learn-triton/</link>
+      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/learn-triton/</guid>
+      <description></description>
+      
+    </item>
+    
     <item>
       <title>A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA</title>
       <link>http://localhost:1313/posts/matrix-multiplication/</link>
