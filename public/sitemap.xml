@@ -21,6 +21,42 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://localhost:1313/tags/gpu/</loc>
+    <lastmod>2024-12-28T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tags/gpu-programming/</loc>
+    <lastmod>2024-12-28T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/learn-triton/</loc>
+    <lastmod>2024-12-28T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tags/low-level/</loc>
+    <lastmod>2024-12-28T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-12-28T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tags/triton/</loc>
+    <lastmod>2024-12-28T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:1313/tags/inference/</loc>
     <lastmod>2024-11-10T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
@@ -34,12 +70,6 @@
   </url>
   <url>
     <loc>http://localhost:1313/tags/quantization/</loc>
-    <lastmod>2024-11-10T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-11-10T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
@@ -141,12 +171,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:1313/tags/gpu/</loc>
-    <lastmod>2024-07-10T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://localhost:1313/tags/matrix-multiplication/</loc>
     <lastmod>2024-07-10T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
@@ -166,12 +190,6 @@
   </url>
   <url>
     <loc>http://localhost:1313/tags/basics/</loc>
-    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://localhost:1313/tags/gpu-programming/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>

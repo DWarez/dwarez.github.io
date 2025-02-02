@@ -12,7 +12,7 @@
   <meta name="title" content="Move Fast or Die Slow &middot; The ML Surgeon" />
   
   <meta name="description" content="The low level side of machine learning." />
-  
+  <meta name="keywords" content="strategy, business, " />
   
   
   <link rel="canonical" href="http://localhost:1313/posts/speed-or-die/" />
@@ -69,19 +69,19 @@
   <meta property="og:url" content="http://localhost:1313/posts/speed-or-die/">
   <meta property="og:site_name" content="The ML Surgeon">
   <meta property="og:title" content="Move Fast or Die Slow">
-  <meta property="og:description" content="This will not be an hyper-technical article like the ones I use to write. Therefore, if you only care about tech and code, feel free to skip.
-Start from abstraction (having a better model [how to define better?], having a nicer user experience [what is a good user experience in the context of AI?]) These things are connected to the optimization of the ML stack. Speed for training and inference. Speed in training = more experiments -&gt; better models -&gt; can experiment faster than competitors and find the best novelty (see DeepSeek with their MLA and other techniques) Speed in inference = better user experience -&gt; your product is faster overall because typically the responsiveness bottleneck is created by models Speed is time -&gt; GPU hours as a metric for calculating costs -&gt; More efficiency = less cost = you get more out of your infrastructure, you can serve at a lower price point etc. The AI landscape is evolving at a breakneck pace, and conventional wisdom suggests that competitive advantage is simply a function of computing power - the more GPUs you can afford, the better positioned you are to win. However, recent events in the market tell a different, more nuanced story. Consider what happened when DeepSeek released their R1-Zero and R1 models. The announcement sent shockwaves through the US stock market, affecting even giants like NVIDIA. Why would the release of two models from a relatively smaller player have such a dramatic impact? The answer lies in what these models represented: a fundamental challenge to the “more hardware equals better results” paradigm. Operating under China’s GPU restrictions, DeepSeek demonstrated something remarkable - they achieved results comparable to industry leaders while reportedly using significantly less computational resources. While the full technical details and production costs remain a subject of debate (and I encourage readers to check Semianalysis’s detailed breakdown for a fact-based perspective), the key takeaway isn’t about DeepSeek specifically. It’s about what their approach represents: a shift from brute-force scaling to intelligent optimization. This paradigm shift reveals a crucial truth about today’s AI market: raw computational power alone isn’t enough. The real competitive edge comes from how effectively companies can optimize their AI infrastructure and development pipeline. The winners in this space won’t necessarily be those with the biggest GPU farms, but those who can:">
+  <meta property="og:description" content="Today’s article steps back from our usual technical deep-dives to examine the strategic importance of ML optimization. While we’ll touch on engineering concepts, we’ll focus more on their business impact.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-02-01T00:00:00+00:00">
     <meta property="article:modified_time" content="2025-02-01T00:00:00+00:00">
+    <meta property="article:tag" content="Strategy">
+    <meta property="article:tag" content="Business">
 
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Move Fast or Die Slow">
-  <meta name="twitter:description" content="This will not be an hyper-technical article like the ones I use to write. Therefore, if you only care about tech and code, feel free to skip.
-Start from abstraction (having a better model [how to define better?], having a nicer user experience [what is a good user experience in the context of AI?]) These things are connected to the optimization of the ML stack. Speed for training and inference. Speed in training = more experiments -&gt; better models -&gt; can experiment faster than competitors and find the best novelty (see DeepSeek with their MLA and other techniques) Speed in inference = better user experience -&gt; your product is faster overall because typically the responsiveness bottleneck is created by models Speed is time -&gt; GPU hours as a metric for calculating costs -&gt; More efficiency = less cost = you get more out of your infrastructure, you can serve at a lower price point etc. The AI landscape is evolving at a breakneck pace, and conventional wisdom suggests that competitive advantage is simply a function of computing power - the more GPUs you can afford, the better positioned you are to win. However, recent events in the market tell a different, more nuanced story. Consider what happened when DeepSeek released their R1-Zero and R1 models. The announcement sent shockwaves through the US stock market, affecting even giants like NVIDIA. Why would the release of two models from a relatively smaller player have such a dramatic impact? The answer lies in what these models represented: a fundamental challenge to the “more hardware equals better results” paradigm. Operating under China’s GPU restrictions, DeepSeek demonstrated something remarkable - they achieved results comparable to industry leaders while reportedly using significantly less computational resources. While the full technical details and production costs remain a subject of debate (and I encourage readers to check Semianalysis’s detailed breakdown for a fact-based perspective), the key takeaway isn’t about DeepSeek specifically. It’s about what their approach represents: a shift from brute-force scaling to intelligent optimization. This paradigm shift reveals a crucial truth about today’s AI market: raw computational power alone isn’t enough. The real competitive edge comes from how effectively companies can optimize their AI infrastructure and development pipeline. The winners in this space won’t necessarily be those with the biggest GPU farms, but those who can:">
+  <meta name="twitter:description" content="Today’s article steps back from our usual technical deep-dives to examine the strategic importance of ML optimization. While we’ll touch on engineering concepts, we’ll focus more on their business impact.">
 
   
   <script type="application/ld+json">
@@ -92,7 +92,7 @@ Start from abstraction (having a better model [how to define better?], having a 
     "name": "Move Fast or Die Slow",
     "headline": "Move Fast or Die Slow",
     
-    "abstract": "\u003cblockquote\u003e\n\u003cp\u003eThis will not be an hyper-technical article like the ones I use to write. Therefore, if you only care about tech and code, feel free to skip.\u003c\/p\u003e\n\u003c\/blockquote\u003e\n\u003col\u003e\n\u003cli\u003eStart from abstraction (having a better model [how to define better?], having a nicer user experience [what is a good user experience in the context of AI?])\u003c\/li\u003e\n\u003cli\u003eThese things are connected to the optimization of the ML stack. Speed for training and inference.\u003c\/li\u003e\n\u003cli\u003eSpeed in training = more experiments -\u0026gt; better models -\u0026gt; can experiment faster than competitors and find the best novelty (see DeepSeek with their MLA and other techniques)\u003c\/li\u003e\n\u003cli\u003eSpeed in inference = better user experience -\u0026gt; your product is faster overall because typically the responsiveness bottleneck is created by models\u003c\/li\u003e\n\u003cli\u003eSpeed is time -\u0026gt; GPU hours as a metric for calculating costs -\u0026gt; More efficiency = less cost = you get more out of your infrastructure, you can serve at a lower price point etc.\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cp\u003eThe AI landscape is evolving at a breakneck pace, and conventional wisdom suggests that competitive advantage is simply a function of computing power - the more GPUs you can afford, the better positioned you are to win. However, recent events in the market tell a different, more nuanced story.\nConsider what happened when DeepSeek released their R1-Zero and R1 models. The announcement sent shockwaves through the US stock market, affecting even giants like NVIDIA. Why would the release of two models from a relatively smaller player have such a dramatic impact? The answer lies in what these models represented: a fundamental challenge to the \u0026ldquo;more hardware equals better results\u0026rdquo; paradigm.\nOperating under China\u0026rsquo;s GPU restrictions, DeepSeek demonstrated something remarkable - they achieved results comparable to industry leaders while reportedly using significantly less computational resources. While the full technical details and production costs remain a subject of debate (and I encourage readers to check \u003ca href=\u0022https:\/\/semianalysis.com\/2025\/01\/31\/deepseek-debates\/\u0022 target=\u0022_blank\u0022\u003eSemianalysis\u0026rsquo;s detailed breakdown\u003c\/a\u003e for a fact-based perspective), the key takeaway isn\u0026rsquo;t about DeepSeek specifically. It\u0026rsquo;s about what their approach represents: a shift from brute-force scaling to intelligent optimization.\nThis paradigm shift reveals a crucial truth about today\u0026rsquo;s AI market: raw computational power alone isn\u0026rsquo;t enough. The real competitive edge comes from how effectively companies can optimize their AI infrastructure and development pipeline. The winners in this space won\u0026rsquo;t necessarily be those with the biggest GPU farms, but those who can:\u003c\/p\u003e",
+    "abstract": "Today\u0026rsquo;s article steps back from our usual technical deep-dives to examine the strategic importance of ML optimization. While we\u0026rsquo;ll touch on engineering concepts, we\u0026rsquo;ll focus more on their business impact.",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/speed-or-die\/",
     "author" : {
@@ -105,10 +105,10 @@ Start from abstraction (having a better model [how to define better?], having a 
     
     "dateModified": "2025-02-01T00:00:00\u002b00:00",
     
-    
+    "keywords": ["strategy","business"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1214"
+    "wordCount": "1117"
   }]
   </script>
 
@@ -202,7 +202,7 @@ Start from abstraction (having a better model [how to define better?], having a 
             
   <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
     
-    <p class="text-base font-medium" title="Posts">
+    <p class="text-base font-medium" title="">
         Blog
     </p>
 </a>
@@ -390,7 +390,7 @@ Start from abstraction (having a better model [how to define better?], having a 
   <li class="mt-1">
     <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
         
-        <p class="text-bg font-bg" title="Posts">
+        <p class="text-bg font-bg" title="">
             Blog
         </p>
     </a>
@@ -513,7 +513,7 @@ Start from abstraction (having a better model [how to define better?], having a 
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/gpu_power_hu_57149ed645ba7af8.jpg);">
+    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
     
 
 
@@ -701,6 +701,24 @@ Start from abstraction (having a better model [how to define better?], having a 
   
   
   
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/strategy/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Strategy
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/business/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Business
+  </span>
+</span>
+  </span>
+  
+  
+  
   
 </div>
 
@@ -733,7 +751,7 @@ Start from abstraction (having a better model [how to define better?], having a 
         
       
       <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
-      alt="Dario Salvati" src="/img/avatar_hu_20729d8348a32780.jpg" />
+      alt="Dario Salvati" src="/img/avatar_hua8380a823b796a50cd31db02c9b786e0_931263_192x192_fill_q75_box_center.jpg" />
     
   
   <div class="place-self-center">
@@ -828,6 +846,7 @@ Start from abstraction (having a better model [how to define better?], having a 
         <li><a href="#making-intelligence-fast">Making Intelligence Fast</a></li>
       </ul>
     </li>
+    <li><a href="#the-bottom-line-speed-is-strategy">The Bottom Line: Speed is Strategy</a></li>
   </ul>
 </nav>
   </div>
@@ -848,6 +867,7 @@ Start from abstraction (having a better model [how to define better?], having a 
         <li><a href="#making-intelligence-fast">Making Intelligence Fast</a></li>
       </ul>
     </li>
+    <li><a href="#the-bottom-line-speed-is-strategy">The Bottom Line: Speed is Strategy</a></li>
   </ul>
 </nav>
   </div>
@@ -930,19 +950,12 @@ Start from abstraction (having a better model [how to define better?], having a 
 
         <div class="article-content max-w-prose mb-20">
           <blockquote>
-<p>This will not be an hyper-technical article like the ones I use to write. Therefore, if you only care about tech and code, feel free to skip.</p>
+<p>Today&rsquo;s article steps back from our usual technical deep-dives to examine the strategic importance of ML optimization. While we&rsquo;ll touch on engineering concepts, we&rsquo;ll focus more on their business impact.</p>
 </blockquote>
-<ol>
-<li>Start from abstraction (having a better model [how to define better?], having a nicer user experience [what is a good user experience in the context of AI?])</li>
-<li>These things are connected to the optimization of the ML stack. Speed for training and inference.</li>
-<li>Speed in training = more experiments -&gt; better models -&gt; can experiment faster than competitors and find the best novelty (see DeepSeek with their MLA and other techniques)</li>
-<li>Speed in inference = better user experience -&gt; your product is faster overall because typically the responsiveness bottleneck is created by models</li>
-<li>Speed is time -&gt; GPU hours as a metric for calculating costs -&gt; More efficiency = less cost = you get more out of your infrastructure, you can serve at a lower price point etc.</li>
-</ol>
-<p>The AI landscape is evolving at a breakneck pace, and conventional wisdom suggests that competitive advantage is simply a function of computing power - the more GPUs you can afford, the better positioned you are to win. However, recent events in the market tell a different, more nuanced story.
-Consider what happened when DeepSeek released their R1-Zero and R1 models. The announcement sent shockwaves through the US stock market, affecting even giants like NVIDIA. Why would the release of two models from a relatively smaller player have such a dramatic impact? The answer lies in what these models represented: a fundamental challenge to the &ldquo;more hardware equals better results&rdquo; paradigm.
-Operating under China&rsquo;s GPU restrictions, DeepSeek demonstrated something remarkable - they achieved results comparable to industry leaders while reportedly using significantly less computational resources. While the full technical details and production costs remain a subject of debate (and I encourage readers to check <a href="https://semianalysis.com/2025/01/31/deepseek-debates/" target="_blank">Semianalysis&rsquo;s detailed breakdown</a> for a fact-based perspective), the key takeaway isn&rsquo;t about DeepSeek specifically. It&rsquo;s about what their approach represents: a shift from brute-force scaling to intelligent optimization.
-This paradigm shift reveals a crucial truth about today&rsquo;s AI market: raw computational power alone isn&rsquo;t enough. The real competitive edge comes from how effectively companies can optimize their AI infrastructure and development pipeline. The winners in this space won&rsquo;t necessarily be those with the biggest GPU farms, but those who can:</p>
+<p>The AI landscape is evolving at a breakneck pace, and conventional wisdom suggests that competitive advantage is simply a function of computing power - the more GPUs you can afford, the better positioned you are to win. However, recent events in the market tell a different, more nuanced story.</p>
+<p>Consider what happened when DeepSeek released their R1-Zero and R1 models. The announcement sent shockwaves through the US stock market, affecting even giants like NVIDIA. Why would the release of two models from a relatively smaller player have such a dramatic impact? The answer lies in what these models represented: a fundamental challenge to the &ldquo;more hardware equals better results&rdquo; paradigm.</p>
+<p>Operating under China&rsquo;s GPU restrictions, DeepSeek demonstrated something remarkable - they achieved results comparable to industry leaders while reportedly using significantly less computational resources. While the full technical details and production costs remain a subject of debate (and I encourage readers to check <a href="https://semianalysis.com/2025/01/31/deepseek-debates/" target="_blank">Semianalysis&rsquo;s detailed breakdown</a> for a fact-based perspective), the key takeaway isn&rsquo;t about DeepSeek specifically. It&rsquo;s about what their approach represents: a shift from brute-force scaling to intelligent optimization.</p>
+<p>This paradigm shift reveals a crucial truth about today&rsquo;s AI market: raw computational power alone isn&rsquo;t enough. The real competitive edge comes from how effectively companies can optimize their AI infrastructure and development pipeline. The winners in this space won&rsquo;t necessarily be those with the biggest GPU farms, but those who can:</p>
 <ol>
 <li>Execute more meaningful experiments in less time</li>
 <li>Deliver faster inference speeds for better user experiences</li>
@@ -961,11 +974,11 @@ This paradigm shift reveals a crucial truth about today&rsquo;s AI market: raw c
     </span>        
     
 </h2>
-<p>In the AI industry, optimization isn&rsquo;t just a technical nicety—it&rsquo;s a strategic imperative that creates value for both companies and users. Let&rsquo;s break down why this matters from both perspectives.
-For users, an AI product&rsquo;s value proposition is remarkably straightforward: it needs to be both intelligent and fast. Intelligence is non-negotiable, it&rsquo;s the core promise of AI, especially in generative applications. However, raw intelligence isn&rsquo;t enough. A brilliantly capable model that takes too long to respond creates a frustrating user experience. In fact, there&rsquo;s likely a critical response-time threshold (though its exact value remains debatable) beyond which users will abandon a smarter but slower solution in favor of a faster, less capable alternative.
-For companies, developing such products presents a complex challenge. While the definition of a &ldquo;good&rdquo; AI product might be simple, intelligent and fast, achieving this balance within real-world constraints is extraordinarily difficult. Companies must navigate limited budgets, finite computational resources, market timing pressures, and funding constraints.
-Here&rsquo;s where it gets interesting: these constraints, rather than being purely limiting factors, often drive innovation. Consider this paradox: companies with unlimited resources often innovate less in terms of efficiency. When you can solve any problem by throwing more hardware at it, optimization becomes an afterthought. Similarly, companies with massive funding might neglect infrastructure optimization, believing they can simply buy their way out of performance bottlenecks.
-But this approach has a critical flaw: it eventually hits a wall. The recent market dynamics between OpenAI and DeepSeek illustrate this perfectly. When scaling through raw computing power reaches its limits, companies that haven&rsquo;t invested in optimization find themselves vulnerable to more efficient and innovative competitors. The ability to do more with less becomes a crucial competitive advantage.</p>
+<p>In the AI industry, optimization isn&rsquo;t just a technical nicety—it&rsquo;s a strategic imperative that creates value for both companies and users. Let&rsquo;s break down why this matters from both perspectives.</p>
+<p>For users, an AI product&rsquo;s value proposition is remarkably straightforward: it needs to be both intelligent and fast. Intelligence is non-negotiable, it&rsquo;s the core promise of AI, especially in generative applications. However, raw intelligence isn&rsquo;t enough. A brilliantly capable model that takes too long to respond creates a frustrating user experience. In fact, there&rsquo;s likely a critical response-time threshold (though its exact value remains debatable) beyond which users will abandon a smarter but slower solution in favor of a faster, less capable alternative.</p>
+<p>For companies, developing such products presents a complex challenge. While the definition of a &ldquo;good&rdquo; AI product might be simple, intelligent and fast, achieving this balance within real-world constraints is extraordinarily difficult. Companies must navigate limited budgets, finite computational resources, market timing pressures, and funding constraints.</p>
+<p>Here&rsquo;s where it gets interesting: these constraints, rather than being purely limiting factors, often drive innovation. Consider this paradox: companies with unlimited resources often innovate less in terms of efficiency. When you can solve any problem by throwing more hardware at it, optimization becomes an afterthought. Similarly, companies with massive funding might neglect infrastructure optimization, believing they can simply buy their way out of performance bottlenecks.</p>
+<p>But this approach has a critical flaw: it eventually hits a wall. The recent market dynamics between OpenAI and DeepSeek illustrate this perfectly. When scaling through raw computing power reaches its limits, companies that haven&rsquo;t invested in optimization find themselves vulnerable to more efficient and innovative competitors. The ability to do more with less becomes a crucial competitive advantage.</p>
 
 
 <h2 class="relative group">Breaking Down DeepSeek&rsquo;s Success: Speed in Training and Inference 
@@ -991,8 +1004,8 @@ But this approach has a critical flaw: it eventually hits a wall. The recent mar
     </span>        
     
 </h3>
-<p>In AI development, there&rsquo;s no substitute for experimentation. Despite machine learning&rsquo;s mathematical foundations, the behavior of models at scale often surprises even the most experienced experts. Success comes through systematic trial and error, making the speed of experimentation a crucial competitive factor. Simply put: the company that can run more meaningful experiments faster has a higher probability of achieving the next breakthrough.
-DeepSeek exemplified this by optimizing their training pipeline to maximize experiments per unit of infrastructure. Their strategic choice to explore Reinforcement Learning over traditional Supervised Fine Tuning (SFT) wasn&rsquo;t just about building a smarter model—it was about finding a more efficient path to innovation. By focusing on training workflow efficiency, they could conduct more experiments despite infrastructure constraints, ultimately leading to novel methodologies.</p>
+<p>In AI development, there&rsquo;s no substitute for experimentation. Despite machine learning&rsquo;s mathematical foundations, the behavior of models at scale often surprises even the most experienced experts. Success comes through systematic trial and error, making the speed of experimentation a crucial competitive factor. Simply put: the company that can run more meaningful experiments faster has a higher probability of achieving the next breakthrough.</p>
+<p>DeepSeek exemplified this by optimizing their training pipeline to maximize experiments per unit of infrastructure. Their strategic choice to explore Reinforcement Learning over traditional Supervised Fine Tuning (SFT) wasn&rsquo;t just about building a smarter model—it was about finding a more efficient path to innovation. By focusing on training workflow efficiency, they could conduct more experiments despite infrastructure constraints, ultimately leading to novel methodologies.</p>
 
 
 <h3 class="relative group">Making Intelligence Fast 
@@ -1005,19 +1018,24 @@ DeepSeek exemplified this by optimizing their training pipeline to maximize expe
     </span>        
     
 </h3>
-<p>However, developing a smart model is only half the battle. DeepSeek&rsquo;s R1 model uses Chain of Thought reasoning (DeepThink) to achieve high accuracy, but this approach requires generating significantly more tokens than models like Claude Sonnet. Without optimization, this would result in unacceptably long response times—potentially minutes of waiting for users.
-DeepSeek tackled this challenge through several innovative approaches. At the core of their optimization strategy is the Multi-head Latent Attention, which achieved a remarkable 93.3% reduction in KV Cache requirements per query. They further enhanced performance through multi-token prediction and quantization techniques. The choice of a Mixture of Experts (MoE) architecture means fewer parameters need to be activated during inference, making the model more efficient to run.
-These optimizations transform directly into business value. The reduced computational requirements mean lower infrastructure costs and more competitive API pricing. Most importantly, they enable DeepSeek to deliver what users truly want: intelligent responses that arrive quickly. The optimization work ensures users aren&rsquo;t forced to choose between smart answers and fast ones—they get both.</p>
-<p>Deepseek = MLA, and stuff
-OpenAI = let&rsquo;s add more data</p>
-<p>DeepSeek = RL instead of SFT
-OpenAI = why shouldn&rsquo;t we SFT? Let&rsquo;s add more data</p>
-<p>DeepSeek = more thinking -&gt; more tokens -&gt; better results -&gt; possible thanks to MLA, multi token prediction, latent kv cache
-OpenAI = RAG in the chat, instead of having a huge context window like Claude -&gt; openai is starting to lose ground</p>
-<p>DeepSeek = write in PTX, no dependency on nvidia, can run inference on Huawai chips
-OpenAI = triton, so even more abstract that CUDA, which means adding a dependency</p>
-<p>In general: optimizing makes you spend less money, less time, be faster, more agile, more versatile. It&rsquo;s harder to do w.r.t. scaling with hardware or data, but it gives you better results.</p>
-<p>Restricted markets (like defense, healthcare) often rely on embedding systems, so running large models on low power is another interesting topic.</p>
+<p>However, developing a smart model is only half the battle. DeepSeek&rsquo;s R1 model uses Chain of Thought reasoning (DeepThink) to achieve high accuracy, but this approach requires generating significantly more tokens than models like Claude Sonnet. Without optimization, this would result in unacceptably long response times—potentially minutes of waiting for users.</p>
+<p>DeepSeek tackled this challenge through several innovative approaches. At the core of their optimization strategy is the Multi-head Latent Attention, which achieved a remarkable 93.3% reduction in KV Cache requirements per query. They further enhanced performance through multi-token prediction and quantization techniques. The choice of a Mixture of Experts (MoE) architecture means fewer parameters need to be activated during inference, making the model more efficient to run.</p>
+<p>These optimizations transform directly into business value. The reduced computational requirements mean lower infrastructure costs and more competitive API pricing. Most importantly, they enable DeepSeek to deliver what users truly want: intelligent responses that arrive quickly. The optimization work ensures users aren&rsquo;t forced to choose between smart answers and fast ones—they get both.</p>
+
+
+<h2 class="relative group">The Bottom Line: Speed is Strategy 
+    <div id="the-bottom-line-speed-is-strategy" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-bottom-line-speed-is-strategy" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>The AI landscape has reached a fascinating inflection point. While the narrative has long centered on raw computational power and model size, companies like DeepSeek are showing that the path to innovation isn&rsquo;t just about having more GPUs—it&rsquo;s about using them smarter.</p>
+<p>Optimization isn&rsquo;t merely a technical consideration; it&rsquo;s a strategic imperative that touches every aspect of an AI company&rsquo;s success. Through efficient training pipelines, companies can experiment more rapidly and discover breakthroughs faster than competitors. Through optimized inference, they can deliver superior user experiences while keeping costs manageable. The result is a virtuous cycle where technical excellence enables business success, which in turn funds further innovation.</p>
+<p>The message for AI companies is clear: in a market where everyone is chasing the next breakthrough, the winners won&rsquo;t necessarily be those with the biggest infrastructure budgets. They&rsquo;ll be the ones who can innovate efficiently, experiment rapidly, and deliver solutions that are both smart and fast. In the AI race, optimization isn&rsquo;t just about saving money—it&rsquo;s about surviving and thriving in an increasingly competitive landscape.</p>
 
           
           
@@ -1145,7 +1163,7 @@ OpenAI = triton, so even more abstract that CUDA, which means adding a dependenc
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/quantization/">
+            <a class="flex group mr-3" href="/posts/learn-triton/">
               <span
                 class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
                 >&larr;</span
@@ -1157,7 +1175,7 @@ OpenAI = triton, so even more abstract that CUDA, which means adding a dependenc
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >The Machine Learning Surgeon's Guide to Quantization: Precision Cuts for Smarter Models</span
+                  >Learn Triton the Right Way</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
@@ -1194,7 +1212,7 @@ OpenAI = triton, so even more abstract that CUDA, which means adding a dependenc
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
-            title="Tags">
+            title="">
             
             Tags
           </a>
@@ -1202,7 +1220,7 @@ OpenAI = triton, so even more abstract that CUDA, which means adding a dependenc
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/authors/"
-            title="Authors">
+            title="">
             
             Authors
           </a>
