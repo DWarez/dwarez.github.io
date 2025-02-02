@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Low Level on NeuronBit</title>
+    <title>Low Level on The ML Surgeon</title>
     <link>http://localhost:1313/tags/low-level/</link>
-    <description>Recent content in Low Level on NeuronBit</description>
+    <description>Recent content in Low Level on The ML Surgeon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 Dario Salvati</copyright>
-    <lastBuildDate>Sun, 05 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/low-level/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2025 Dario Salvati</copyright>
+    <lastBuildDate>Sat, 28 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/low-level/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>An Introduction to Sparsity for Efficient Neural Network Inference</title>
-      <link>http://localhost:1313/posts/pruning/</link>
-      <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
+      <title>Learn Triton the Right Way</title>
+      <link>http://localhost:1313/posts/learn-triton/</link>
+      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/pruning/</guid>
-      <description>Large Language Model. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models.</description>
+      <guid>http://localhost:1313/posts/learn-triton/</guid>
+      <description></description>
       
     </item>
     
