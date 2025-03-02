@@ -7,14 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2025 Dario Salvati</copyright>
-    <lastBuildDate>Thu, 29 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scaling</title>
+      <link>http://localhost:1313/posts/scaling-laws/</link>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/scaling-laws/</guid>
+      <description>&lt;h3 class=&#34;relative group&#34;&gt;Scaling Laws 
+    &lt;div id=&#34;scaling-laws&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;
+    
+    &lt;span
+        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100&#34;&gt;
+        &lt;a class=&#34;group-hover:text-primary-300 dark:group-hover:text-neutral-700&#34;
+            style=&#34;text-decoration-line: none !important;&#34; href=&#34;#scaling-laws&#34; aria-label=&#34;Anchor&#34;&gt;#&lt;/a&gt;
+    &lt;/span&gt;        
+    
+&lt;/h3&gt;
+&lt;p&gt;&amp;ldquo;Scaling Laws for Neural Language Models&amp;rdquo; is a paper from OpenAI published in 2020. In this effort, Kaplan et al tried to answer one of the most interesting questions in Machine Learning: given a model and a dataset, which result should I expect? If there existed a closed formula to obtain an estimate of the end result of a training without performing it, we would save so much money. At this point in time, it&amp;rsquo;s fundamentally impossible to know a priory the result of an experiment; however this paper resulted in a very interesting result, which formally makes an estimation of the expected Loss of the model, given its size (in terms of parameters), the size of the dataset used to train it (in terms of tokens) and the computational power used to train it (in terms of FLOPs).&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>A quick incision: ten minutes to RAG</title>
       <link>http://localhost:1313/posts/ten-minutes-to-rag/</link>
       <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/ten-minutes-to-rag/</guid>
-      <description>Hello, fellow surgeons! How is life treating you? I hope you&amp;rsquo;ve spent your vacation relaxing, far, far away from the tools of our trade. After all, a good surgeon needs to rest after a long year of work and learning, right?</description>
+      <description>&lt;p&gt;Hello, fellow surgeons! How is life treating you? I hope you&amp;rsquo;ve spent your vacation relaxing, far, far away from the tools of our trade. After all, a good surgeon needs to rest after a long year of work and learning, right? With that in mind, I&amp;rsquo;ve chosen a simple yet useful topic to discuss today, so you can stay relaxed and not worry about the tremendous complexity of our field—at least for now.&lt;/p&gt;</description>
       
     </item>
     
