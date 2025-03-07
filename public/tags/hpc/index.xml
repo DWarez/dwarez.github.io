@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hpc on The ML Surgeon</title>
+    <link>http://localhost:1313/tags/hpc/</link>
+    <description>Recent content in Hpc on The ML Surgeon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2025 Dario Salvati</copyright>
+    <lastBuildDate>Thu, 06 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/hpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comms</title>
+      <link>http://localhost:1313/posts/comms/</link>
+      <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/comms/</guid>
+      <description>&lt;p&gt;During my Master&amp;rsquo;s degree in Artificial Intelligence and Machine Learning at the University of Pisa, I took a variety of courses. These ranged from highly specialized subjects (machine learning, human language technologies, systems for pattern recognition) to more foundational ones (algorithm engineering, information retrieval, computational mathematics).&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

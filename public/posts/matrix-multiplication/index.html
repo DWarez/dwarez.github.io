@@ -94,7 +94,7 @@
     "name": "A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA",
     "headline": "A Machine Learning Surgeon’s Toolkit: Advanced Matrix Multiplication in CUDA",
     
-    "abstract": "During the first year of my Master\u0026rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.",
+    "abstract": "\u003cp\u003eDuring the first year of my Master\u0026rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.\u003c\/p\u003e",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/matrix-multiplication\/",
     "author" : {
@@ -337,7 +337,7 @@
             
   <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
     
-    <p class="text-base font-medium" title="">
+    <p class="text-base font-medium" title="Posts">
         Blog
     </p>
 </a>
@@ -525,7 +525,7 @@
   <li class="mt-1">
     <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
         
-        <p class="text-bg font-bg" title="">
+        <p class="text-bg font-bg" title="Posts">
             Blog
         </p>
     </a>
@@ -648,7 +648,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
+    style="background-image:url(/img/gpu_power_hu_57149ed645ba7af8.jpg);">
     
 
 
@@ -902,7 +902,7 @@
         
       
       <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
-      alt="Dario Salvati" src="/img/avatar_hua8380a823b796a50cd31db02c9b786e0_931263_192x192_fill_q75_box_center.jpg" />
+      alt="Dario Salvati" src="/img/avatar_hu_20729d8348a32780.jpg" />
     
   
   <div class="place-self-center">
@@ -1115,8 +1115,7 @@
           <p>During the first year of my Master&rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</p>
 <p>That project was crucial for me because it revealed an inconvenient truth: matrix multiplication is the most fundamental aspect of Machine Learning. Hence, I named my project &ldquo;ML is ML&rdquo;: <strong>Machine Learning is Matrix Multiplication</strong>. Although the course professor didn&rsquo;t fully appreciate the title, it still earned me the highest grade. Because deep down, they knew it was true. It was, indeed, an inconvenient truth.</p>
 <blockquote>
-<p><strong><em>NOTE:</em></strong>  Yes, I&rsquo;m well aware that tensor contraction is not the same as matrix multiplication. Still, the &ldquo;ML is ML&rdquo; joke only works when talking about matrices, so stick with it.</p>
-</blockquote>
+<p><strong><em>NOTE:</em></strong>  Yes, I&rsquo;m well aware that tensor contraction is not the same as matrix multiplication. Still, the &ldquo;ML is ML&rdquo; joke only works when talking about matrices, so stick with it.</p></blockquote>
 <p>However, this is not the place to explain why matrix multiplication is so fundamental to modern AI. Besides, if you&rsquo;re reading this blog, you probably already know.</p>
 <p>Instead, as Machine Learning Surgeons, we should ask ourselves how such an important operation is implemented to fully utilize the power of GPUs. It&rsquo;s easy to implement something, but it&rsquo;s much harder to make it run fast! Just like humans need to train their reaction times to do tasks like driving an F1 car, we Machine Learning Surgeons must operate on the muscle fibres of kernels in order to make them fast and powerful!</p>
 <p>So, put on your gloves, wield your scalpels and let&rsquo;s start the operation!</p>
@@ -1274,8 +1273,7 @@ Consider the first thread of the grid, let&rsquo;s call it
     
 </h3>
 <blockquote>
-<p><strong><em>NOTE:</em></strong>  A bit of linear algebra ahead, proceed with caution.</p>
-</blockquote>
+<p><strong><em>NOTE:</em></strong>  A bit of linear algebra ahead, proceed with caution.</p></blockquote>
 <p>As mentioned before, the dot product can be computed incrementally. We can leverage this property to split the computation of a single dot product into <strong>phases</strong>, which correspond directly to tiles. Let&rsquo;s consider two matrices 
 \(\mathrm{A} \in \mathrm{R}^{16x16}\) and 
 \(\mathrm{B} \in \mathrm{R}^{16x16}\). We want to perform a matrix multiplication which result will be represented by 
@@ -1410,11 +1408,11 @@ Consider the first thread of the grid, let&rsquo;s call it
         class="my-0 rounded-md"
         loading="lazy"
         srcset="
-        /posts/matrix-multiplication/tiled_multiplication_hudbde271b6b09a773589dc61564bbac00_225343_330x0_resize_box_3.png 330w,
-        /posts/matrix-multiplication/tiled_multiplication_hudbde271b6b09a773589dc61564bbac00_225343_660x0_resize_box_3.png 660w,
-        /posts/matrix-multiplication/tiled_multiplication_hudbde271b6b09a773589dc61564bbac00_225343_1024x0_resize_box_3.png 1024w,
-        /posts/matrix-multiplication/tiled_multiplication_hudbde271b6b09a773589dc61564bbac00_225343_1320x0_resize_box_3.png 2x"
-        src="/posts/matrix-multiplication/tiled_multiplication_hudbde271b6b09a773589dc61564bbac00_225343_660x0_resize_box_3.png"
+        /posts/matrix-multiplication/tiled_multiplication_hu_bae8166acd4bf2ff.png 330w,
+        /posts/matrix-multiplication/tiled_multiplication_hu_5d5ff115d87e70ce.png 660w,
+        /posts/matrix-multiplication/tiled_multiplication_hu_1f1328736dcaede.png 1024w,
+        /posts/matrix-multiplication/tiled_multiplication_hu_32c8c8cc824a881d.png 2x"
+        src="/posts/matrix-multiplication/tiled_multiplication_hu_5d5ff115d87e70ce.png"
         alt="tiled matrix multiplication"
       />
       <figcaption>Visualization of indexes computation for tiled matrix multiplication. Credits to the <a href="https://www.amazon.it/Programming-Massively-Parallel-Processors-Hands/dp/0123814723?tag=snxit51-21" target="_blank">PMPP book</a></figcaption>
@@ -1823,7 +1821,7 @@ Fear not! In the next blog post, we’ll dive into the art of <strong>profiling<
   <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/gpu-programming/&#34;,'_self');">
     <span class="flex" style="cursor: pointer;">
   <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Gpu Programming
+    Gpu-Programming
   </span>
 </span>
   </span>
@@ -2096,7 +2094,7 @@ Fear not! In the next blog post, we’ll dive into the art of <strong>profiling<
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
-            title="">
+            title="Tags">
             
             Tags
           </a>
@@ -2104,7 +2102,7 @@ Fear not! In the next blog post, we’ll dive into the art of <strong>profiling<
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/authors/"
-            title="">
+            title="Authors">
             
             Authors
           </a>

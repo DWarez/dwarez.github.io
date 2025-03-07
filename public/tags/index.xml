@@ -7,43 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2025 Dario Salvati</copyright>
-    <lastBuildDate>Sat, 28 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Gpu</title>
-      <link>http://localhost:1313/tags/gpu/</link>
-      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      <title>Hpc</title>
+      <link>http://localhost:1313/tags/hpc/</link>
+      <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/gpu/</guid>
+      <guid>http://localhost:1313/tags/hpc/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>Gpu Programming</title>
-      <link>http://localhost:1313/tags/gpu-programming/</link>
-      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      <title>Business</title>
+      <link>http://localhost:1313/tags/business/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/gpu-programming/</guid>
+      <guid>http://localhost:1313/tags/business/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>Low Level</title>
-      <link>http://localhost:1313/tags/low-level/</link>
-      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      <title>Strategy</title>
+      <link>http://localhost:1313/tags/strategy/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/low-level/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>Triton</title>
-      <link>http://localhost:1313/tags/triton/</link>
-      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/tags/triton/</guid>
+      <guid>http://localhost:1313/tags/strategy/</guid>
       <description></description>
       
     </item>
@@ -179,6 +169,16 @@
     </item>
     
     <item>
+      <title>Gpu</title>
+      <link>http://localhost:1313/tags/gpu/</link>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/gpu/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
       <title>Matrix-Multiplication</title>
       <link>http://localhost:1313/tags/matrix-multiplication/</link>
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
@@ -204,6 +204,16 @@
       <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/basics/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Gpu-Programming</title>
+      <link>http://localhost:1313/tags/gpu-programming/</link>
+      <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/gpu-programming/</guid>
       <description></description>
       
     </item>

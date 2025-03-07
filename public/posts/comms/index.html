@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>An Introduction to Sparsity for Efficient Neural Network Inference &middot; The ML Surgeon</title>
-  <meta name="title" content="An Introduction to Sparsity for Efficient Neural Network Inference &middot; The ML Surgeon" />
+  <title>Comms &middot; The ML Surgeon</title>
+  <meta name="title" content="Comms &middot; The ML Surgeon" />
   
-  <meta name="description" content="Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference." />
-  <meta name="keywords" content="pruning, optimization, inference, " />
+  <meta name="description" content="The low level side of machine learning." />
+  <meta name="keywords" content="hpc, " />
   
   
-  <link rel="canonical" href="http://localhost:1313/posts/pruning-intro/" />
+  <link rel="canonical" href="http://localhost:1313/posts/comms/" />
   
   
   
@@ -66,23 +66,21 @@
   
   
   
-  <meta property="og:url" content="http://localhost:1313/posts/pruning-intro/">
+  <meta property="og:url" content="http://localhost:1313/posts/comms/">
   <meta property="og:site_name" content="The ML Surgeon">
-  <meta property="og:title" content="An Introduction to Sparsity for Efficient Neural Network Inference">
-  <meta property="og:description" content="Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference.">
+  <meta property="og:title" content="Comms">
+  <meta property="og:description" content="During my Master’s degree in Artificial Intelligence and Machine Learning at the University of Pisa, I took a variety of courses. These ranged from highly specialized subjects (machine learning, human language technologies, systems for pattern recognition) to more foundational ones (algorithm engineering, information retrieval, computational mathematics).">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-05-05T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-05-05T00:00:00+00:00">
-    <meta property="article:tag" content="Pruning">
-    <meta property="article:tag" content="Optimization">
-    <meta property="article:tag" content="Inference">
+    <meta property="article:published_time" content="2025-03-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-06T00:00:00+00:00">
+    <meta property="article:tag" content="Hpc">
 
   
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="An Introduction to Sparsity for Efficient Neural Network Inference">
-  <meta name="twitter:description" content="Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference.">
+  <meta name="twitter:title" content="Comms">
+  <meta name="twitter:description" content="During my Master’s degree in Artificial Intelligence and Machine Learning at the University of Pisa, I took a variety of courses. These ranged from highly specialized subjects (machine learning, human language technologies, systems for pattern recognition) to more foundational ones (algorithm engineering, information retrieval, computational mathematics).">
 
   
   <script type="application/ld+json">
@@ -90,26 +88,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Posts",
-    "name": "An Introduction to Sparsity for Efficient Neural Network Inference",
-    "headline": "An Introduction to Sparsity for Efficient Neural Network Inference",
-    "description": "Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference.",
-    "abstract": "\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003e\u003cem\u003eNOTE:\u003c\/em\u003e\u003c\/strong\u003e  This post was written before the Machine Learning Surgeon got in charge of the blog, that\u0026rsquo;s why there are no references to surgical operations!\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e\u003cstrong\u003eLarge Language Model\u003c\/strong\u003e. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.\u003c\/p\u003e",
+    "name": "Comms",
+    "headline": "Comms",
+    
+    "abstract": "\u003cp\u003eDuring my Master\u0026rsquo;s degree in Artificial Intelligence and Machine Learning at the University of Pisa, I took a variety of courses. These ranged from highly specialized subjects (machine learning, human language technologies, systems for pattern recognition) to more foundational ones (algorithm engineering, information retrieval, computational mathematics).\u003c\/p\u003e",
     "inLanguage": "en",
-    "url" : "http:\/\/localhost:1313\/posts\/pruning-intro\/",
+    "url" : "http:\/\/localhost:1313\/posts\/comms\/",
     "author" : {
       "@type": "Person",
       "name": "Dario Salvati"
     },
-    "copyrightYear": "2024",
-    "dateCreated": "2024-05-05T00:00:00\u002b00:00",
-    "datePublished": "2024-05-05T00:00:00\u002b00:00",
+    "copyrightYear": "2025",
+    "dateCreated": "2025-03-06T00:00:00\u002b00:00",
+    "datePublished": "2025-03-06T00:00:00\u002b00:00",
     
-    "dateModified": "2024-05-05T00:00:00\u002b00:00",
+    "dateModified": "2025-03-06T00:00:00\u002b00:00",
     
-    "keywords": ["pruning","optimization","inference"],
+    "keywords": ["hpc"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1371"
+    "wordCount": "916"
   }]
   </script>
 
@@ -130,139 +128,6 @@
   
 
 <script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
-
-
-
-
-
-
-
-
-
-
-
-<link type="text/css" rel="stylesheet" href="/lib/katex/katex.min.68e17230ccd917b97b7a2def38a8108918599d8aa4f580bfb8cce5e13d23e4de43dcaba5f9000553cb2c10d0d1300aabfe5c433a3305ebd752609f0762a63e59.css" integrity="sha512-aOFyMMzZF7l7ei3vOKgQiRhZnYqk9YC/uMzl4T0j5N5D3Kul&#43;QAFU8ssENDRMAqr/lxDOjMF69dSYJ8HYqY&#43;WQ==" />
-
-
-<script defer src="/lib/katex/katex.min.50f14e69d6a8da7128ae3b63974c544ed377c36d096b5e3750f114e84c89d668b9301d9b0ed3248969aa183aa2e3bc4d2c1e73d5dcb7d462890c45a18d424589.js" integrity="sha512-UPFOadao2nEorjtjl0xUTtN3w20Ja143UPEU6EyJ1mi5MB2bDtMkiWmqGDqi47xNLB5z1dy31GKJDEWhjUJFiQ=="></script>
-
-
-<script defer src="/lib/katex/auto-render.min.6095714e3aadb63b14ddc4af69346ab12974c1b460654345f8d1860a0b68fcc51b22f68b757433193090bb80afc8965b65cb607e5541d0f5f0f4b2e64d69b9ff.js" integrity="sha512-YJVxTjqttjsU3cSvaTRqsSl0wbRgZUNF&#43;NGGCgto/MUbIvaLdXQzGTCQu4CvyJZbZctgflVB0PXw9LLmTWm5/w=="
-  onload="renderMathInElement(document.body);"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -700,8 +565,8 @@
   <li class="inline hidden">
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="/posts/pruning-intro/"
-      >An Introduction to Sparsity for Efficient Neural Network Inference</a
+      href="/posts/comms/"
+      >Comms</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -710,7 +575,7 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      An Introduction to Sparsity for Efficient Neural Network Inference
+      Comms
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -755,7 +620,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <span title="Reading time">7 mins</span><span class="px-2 text-primary-500">&middot;</span>
+  <span title="Reading time">5 mins</span><span class="px-2 text-primary-500">&middot;</span>
 
 
   
@@ -763,7 +628,7 @@
 
 <span class="mb-[2px]">
   <a
-    href="https://github.com/DWarez/dwarez.github.io/tree/master/content/posts/pruning/index.md"
+    href="https://github.com/DWarez/dwarez.github.io/tree/master/content/posts/communication_operations/index.md"
     class="text-lg hover:text-primary-500"
     rel="noopener noreferrer"
     target="_blank"
@@ -835,26 +700,10 @@
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/pruning/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/hpc/&#34;,'_self');">
     <span class="flex" style="cursor: pointer;">
   <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Pruning
-  </span>
-</span>
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/optimization/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Optimization
-  </span>
-</span>
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/inference/&#34;,'_self');">
-    <span class="flex" style="cursor: pointer;">
-  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Inference
+    Hpc
   </span>
 </span>
   </span>
@@ -981,13 +830,11 @@
     class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#pruning-for-sparsity">Pruning for Sparsity</a></li>
-    <li><a href="#choosing-what-to-prune">Choosing what to prune</a></li>
-    <li><a href="#pruning-granularity">Pruning Granularity</a></li>
-    <li><a href="#pruning-ratio">Pruning Ratio</a></li>
-    <li><a href="#does-pruning-work">Does pruning work?</a></li>
-    <li><a href="#computations-with-sparsity">Computations with sparsity</a></li>
-    <li><a href="#conclusions">Conclusions</a></li>
+    <li><a href="#why-we-care-whats-the-deal">Why we care, what&rsquo;s the deal</a>
+      <ul>
+        <li><a href="#point-to-point">Point to point</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -1001,13 +848,11 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#pruning-for-sparsity">Pruning for Sparsity</a></li>
-    <li><a href="#choosing-what-to-prune">Choosing what to prune</a></li>
-    <li><a href="#pruning-granularity">Pruning Granularity</a></li>
-    <li><a href="#pruning-ratio">Pruning Ratio</a></li>
-    <li><a href="#does-pruning-work">Does pruning work?</a></li>
-    <li><a href="#computations-with-sparsity">Computations with sparsity</a></li>
-    <li><a href="#conclusions">Conclusions</a></li>
+    <li><a href="#why-we-care-whats-the-deal">Why we care, what&rsquo;s the deal</a>
+      <ul>
+        <li><a href="#point-to-point">Point to point</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -1089,197 +934,53 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <blockquote>
-<p><strong><em>NOTE:</em></strong>  This post was written before the Machine Learning Surgeon got in charge of the blog, that&rsquo;s why there are no references to surgical operations!</p></blockquote>
-<p><strong>Large Language Model</strong>. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.</p>
-<p>When I first started learning about neural networks -about 5 years ago-, one of the key questions I had was if it would be possible to know, a priori, the minimum number of parameters that a network must implement to achieve a certain metric value when solving a specific problem. Unfortunately, as far as I know, there is no such theorem. Surely, we know about convergence theorems -like the <a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem" target="_blank">Universal Approximation Theorem</a>-, but nothing tells us the optimal number of parameters, given an architecture and a problem to solve.</p>
-<p>A very interesting methodology is the Cascade Correlation, which is a constructive approach for obtaining a network that solves a specific problem. However, this methodology is impractical in modern times: the size of neural networks is just too big, especially when talking about LLMs, which typically span from 7 to 70 billion parameters.</p>
-<p>Therefore, a follow-up question: given a trained, large network, can we reduce its size while maintaining the same accuracy?</p>
-<p>That’s the key idea behind Pruning.</p>
+          <p>During my Master&rsquo;s degree in Artificial Intelligence and Machine Learning at the University of Pisa, I took a variety of courses. These ranged from highly specialized subjects (machine learning, human language technologies, systems for pattern recognition) to more foundational ones (algorithm engineering, information retrieval, computational mathematics).</p>
+<p>Like many enthusiastic students, I was drawn to the flashy, specialized courses while undervaluing the fundamental ones. I was young and naive, not yet realizing that understanding vertical, technical topics requires a solid foundation in algorithmic basics. This oversight is a common trap in technical education.
+One course I particularly disregarded was Parallel and Distributed Computing Systems. At the time, it seemed tedious compared to the allure of models, optimization, and the &ldquo;wow factor&rdquo; of artificial intelligence. GPU architectures and parallel design patterns? Boring! I wanted the glamour of AI, not the plumbing.</p>
+<p>Yet as I delved deeper into AI, I had an epiphany: what appears magical is simply what we don&rsquo;t yet understand. Yes, modern AI systems have remarkable capabilities that can seem almost intelligent. But creating such systems isn&rsquo;t mystical, it&rsquo;s methodical, provided you understand the fundamentals. A newcomer might envision these massive models as mysterious entities that somehow absorb knowledge and develop intelligence. An AI practitioner, however, recognizes that behind the curtain, it&rsquo;s primarily about computational scale and efficiency.</p>
+<p>Today, what fascinates me most is precisely this pragmatic reality of AI systems. Opening up the &ldquo;patient&rdquo; and examining the &ldquo;organs&rdquo; of these systems has become intellectually stimulating in ways I couldn&rsquo;t have anticipated as a student.</p>
+<p>So why share this journey? Because many Machine Learning Engineers take for granted how we scale these enormous systems and computations. We use abstracted software tools, add hardware, and, seemingly like magic, our giant model runs. But what&rsquo;s actually happening under the hood?</p>
+<p>To answer this complex question, we need to start with the fundamentals. This brings us to communication operations, the circulatory system of machine learning parallelization that makes large-scale AI possible.</p>
 
 
-<h2 class="relative group">Pruning for Sparsity 
-    <div id="pruning-for-sparsity" class="anchor"></div>
+<h2 class="relative group">Why we care, what&rsquo;s the deal 
+    <div id="why-we-care-whats-the-deal" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#pruning-for-sparsity" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#why-we-care-whats-the-deal" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>Let’s start from a biological point of view: humans drastically reduce the number of synapses per neuron from early childhood to adolescence. This has been shown in various papers (e.g. <a href="https://pubmed.ncbi.nlm.nih.gov/18287055/" target="_blank">Synapse elimination accompanies functional plasticity in hippocampal neurons</a>) and it is a way for the brain to optimize its knowledge and remove redundancy. As often happens, this concept can also be applied to learning architectures.</p>
-<p>Assume to have a relatively large neural network that has been trained to approximate the solving function for a given problem, which was described by a dataset. This means that, by training, we minimized the loss function defined as:</p>
-<p>
-
-\(\mathrm{L}(\theta, \mathcal{D}) = \frac{1}{N}\sum_{(x,y)\in(X,Y)}{L(\theta, x, y)}\)</p>
-<p>where \(\theta\) represents the weights of the network and \(\mathcal{D}\) symbolizes the data used to train it.</p>
-<p>Let’s now assume that we are capable of pruning the weights \(\theta\), therefore obtaining \(\theta_{pruned}\). Our objective is to get approximately the same loss value when using the pruned weights. In math:</p>
-<p>The advantage here is obvious: \(\theta_{pruned}\) is a smaller, more efficient model that is capable of replicating the accuracy of a bigger, slower model.</p>
-<p>Take a look at the picture below: by pruning the red neuron, we remove 8 connections and the activation of the neuron itself. If both the networks had the same accuracy, we would prefer the right one, because its inference is more efficient.</p>
-<p>
-    <figure>
-      <img
-        class="my-0 rounded-md"
-        loading="lazy"
-        srcset="
-        /posts/pruning-intro/nvidia_blog_hu_cfe7783d14118974.webp 330w,
-        /posts/pruning-intro/nvidia_blog_hu_3695b7a9800daa1f.webp 660w,
-        /posts/pruning-intro/nvidia_blog_hu_8e36dd63eef04b79.webp 1024w,
-        /posts/pruning-intro/nvidia_blog_hu_216a71a1d0f6891a.webp 2x"
-        src="/posts/pruning-intro/nvidia_blog_hu_3695b7a9800daa1f.webp"
-        alt="Nvidia Blog"
-      />
-      <figcaption>credits to <a href="https://developer.nvidia.com/blog/wp-content/uploads/2019/03/remove_neuron.png" target="_blank">Nvidia blog</a></figcaption>
-    </figure>
-</p>
+<p>Before diving into technicalities, let&rsquo;s establish why understanding communication operations and patterns is crucial in AI systems.</p>
+<p>While I won&rsquo;t explore parallelization methodologies exhaustively in this article, consider this simple scenario: you have two GPUs, each capable of hosting your model. How can you leverage both GPUs working in parallel? A common approach is Data Parallelism, where identical copies of the model exist on each GPU, and your dataset is divided between them. This allows parallel computation with a larger effective batch size. If one GPU can train with a batch size of 16, two GPUs enable a global batch size of 32, roughly linear scaling.</p>
+<p>However, a fundamental challenge emerges: how do we maintain consistency between model replicas? Without communication, each GPU would train a different model, defeating our purpose. We want system components to cooperate, enhancing training efficiency. This cooperation necessitates communication, perhaps sharing gradients computed by each GPU so all replicas update their parameters with the same information.</p>
+<p>This example illustrates just one scenario requiring inter-component communication. The complexity increases dramatically when we scale to cluster environments with numerous nodes. How do we orchestrate communication across such distributed systems?</p>
+<p>Communication presents two major challenges. First, implementing it efficiently is technically difficult. Second, it introduces overhead. In some cases, this overhead can be so substantial that it negates the benefits of parallelization. The key insight is to implement efficient communication and, critically, overlap it with computation. This creates a pipeline where one part of the system computes while another simultaneously transfers data.</p>
+<p>This overlap becomes even more vital in Machine Learning, where we transmit massive volumes of data: layers, parameters, checkpoints, optimizer states, and more. Additionally, as we increase the number of GPUs, the communication complexity grows exponentially.</p>
+<p>While we&rsquo;ll address the specific hardware involved in this process in a future article, I hope you now appreciate the significance of communications in AI systems, especially when training large-scale models. With this foundation established, let&rsquo;s examine the fundamental operations that make this communication possible.</p>
 
 
-<h2 class="relative group">Choosing what to prune 
-    <div id="choosing-what-to-prune" class="anchor"></div>
+<h3 class="relative group">Point to point 
+    <div id="point-to-point" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#choosing-what-to-prune" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#point-to-point" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
-<p>The pruning criterion is a very important factor to take into account, and research is still very active in this specific field. The common idea that unites all the pruning criteria is to prune parameters that are less useful in solving the problem. Therefore, we need a metric that describes the importance of a neuron in the overall network.</p>
-<p>In this post, I’ll only talk about the Magnitude-based criterion, but I encourage interested readers to research other methodologies, e.g. Scaling-based pruning, Regression-based pruning, and Percentage-of-zero-based pruning.</p>
-<p>The Magnitude-based criterion selects parameters to prune based on, guess what, their magnitude, therefore using an L_p norm. For example, we could choose to use an L_1 norm (a.k.a. the absolute value) as the importance metric for the parameter:</p>
-<p>
-
-\(importance(\theta_{i}) = ||\theta_{i}||\)</p>
-<p>The rationale behind this is that the smaller the parameter, the less its influence is in the activation of the neuron.</p>
-<p>So, if you assume to have a neural network with 100 parameters, and you want to prune 80% of them, you should first define an importance metric, then compute it for each parameter, sort the result, and pick the top-k parameters for that importance.</p>
-
-
-<h2 class="relative group">Pruning Granularity 
-    <div id="pruning-granularity" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#pruning-granularity" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>Another key concept for pruning is granularity. We can proceed either by selecting parameters in an unstructured way or using a pattern. Let’s just see two examples to grasp this concept.</p>
-<p>Assume to have a matrix that represents the parameters we want to prune:</p>
-<p>\(\mathsf{P} \in \mathcal{R}^{m,n} \)</p>
-<p>and also assume that we picked the L_2norm as the importance metric for the Magnitude-based criterion.</p>
-<p>Then, we can perform either:</p>
+</h3>
+<p>Let&rsquo;s start with the most basic communication operation: point-to-point.</p>
+<p>This foundational pattern involves one process <code>s</code> (sender) transmitting a message to process <code>r</code> (receiver). Think of this as the neural synapse of distributed computing—the elemental connection that enables more complex communication patterns.</p>
+<p>Point-to-point communication can operate in different modes:</p>
 <ul>
-<li>
-<p>unstructured pruning: we iterate over each parameter, compute its L_2 norm, and prune it if it’s not in the top-k percentage of neurons per importance.</p>
-</li>
-<li>
-<p>structured pruning: instead of computing the L_2 norm for the single parameter, we first select a pattern. Let’s keep things simple and assume that our pattern corresponds to the row of the matrix P. Therefore, we will not prune the single parameter, but instead, we will prune the rows that do not belong to the top-k percentage of the highest-importance rows in the matrix.</p>
-</li>
+<li>Blocking communication: The sender s waits for an acknowledgment from receiver r confirming message receipt. This ensures reliability but creates a waiting period where the sender cannot perform other tasks—similar to how a surgeon might pause during a critical moment, waiting for confirmation before proceeding.</li>
+<li>Asynchronous communication: The sender dispatches the message and continues with other operations without waiting for confirmation. This enables the crucial overlapping of communication and computation we discussed earlier—allowing one part of the system to &ldquo;talk&rdquo; while another part &ldquo;works.&rdquo;</li>
+<li>Buffered communication: This variant uses a dedicated memory space (buffer) to store transmitted data, with the receiver acting as a consumer that processes this data when ready. While this approach offers flexibility, it demands additional memory resources for the buffer—like how a surgical team might need extra workspace for temporarily storing instruments or samples.</li>
 </ul>
-<p>The picture below depicts the difference between the two approaches.</p>
-<p>
-    <figure>
-      <img
-        class="my-0 rounded-md"
-        loading="lazy"
-        srcset="
-        /posts/pruning-intro/efficientml_hu_c47283dfa8e3eb1c.png 330w,
-        /posts/pruning-intro/efficientml_hu_e1927c23ad111ec7.png 660w,
-        /posts/pruning-intro/efficientml_hu_38e1dc6b25a9974a.png 1024w,
-        /posts/pruning-intro/efficientml_hu_88e15e1b53bcf605.png 2x"
-        src="/posts/pruning-intro/efficientml_hu_e1927c23ad111ec7.png"
-        alt="Efficientml"
-      />
-      <figcaption>credits to <a href="https://hanlab.mit.edu/courses/2023-fall-65940" target="_blank">efficientml.ai</a></figcaption>
-    </figure>
-</p>
-<p>This picture also foretells the advantages of pattern-based pruning, which I will explain in a later section.</p>
-
-
-<h2 class="relative group">Pruning Ratio 
-    <div id="pruning-ratio" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#pruning-ratio" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>The pruning ratio is the last key concept we need to understand. Luckily for us, it’s quite straightforward. The ratio indicates how much sparsity we want in our neural network.</p>
-<p>For example, if we pick a uniform pruning ratio of 80%, we will remove 80% of the parameters of the network, which will be selected based on the criterion and importance measure, defined before.</p>
-<p>The word “uniform” is not randomly put. In fact, we can also provide a different pruning ratio for different levels of the network architecture. For example, we could select different pruning ratios for different layers of the architecture, or different channels.</p>
-<p>There are several methodologies to find the optimal pruning ratio, but I will not cover them in this introduction.</p>
-
-
-<h2 class="relative group">Does pruning work? 
-    <div id="does-pruning-work" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#does-pruning-work" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>Yes, and incredibly, if done correctly.</p>
-<p>The first thing to notice is that we should always retrain the network after pruning. This is done because, when pruning aggressively (typically &gt; 90%), the accuracy of the network drops significantly. Performing a fine-tuning step is crucial to retain information in the parameters that survived the pruning phase, and therefore stabilize the accuracy of the model.</p>
-<p>This excellent picture from <a href="https://hanlab.mit.edu/courses/2023-fall-65940" target="_blank">efficientml.ai</a> very clearly depicts this concept</p>
-<p>
-    <figure>
-      <img
-        class="my-0 rounded-md"
-        loading="lazy"
-        srcset="
-        /posts/pruning-intro/pruning_effective_hu_3af9fc34ca132dcf.jpg 330w,
-        /posts/pruning-intro/pruning_effective_hu_92a5b99e7409042d.jpg 660w,
-        /posts/pruning-intro/pruning_effective_hu_48b2e9fdbf561dea.jpg 1024w,
-        /posts/pruning-intro/pruning_effective_hu_f6de3878e08a5f2.jpg 2x"
-        src="/posts/pruning-intro/pruning_effective_hu_92a5b99e7409042d.jpg"
-        alt="Pruning effective"
-      />
-      <figcaption>credits to <a href="https://hanlab.mit.edu/courses/2023-fall-65940" target="_blank">efficientml.ai</a></figcaption>
-    </figure>
-</p>
-
-
-<h2 class="relative group">Computations with sparsity 
-    <div id="computations-with-sparsity" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#computations-with-sparsity" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>When talking about the pruning granularity, we saw the conceptual difference between unstructured and structured pruning. Let’s consider again the matrix:</p>
-<p>\(\mathsf{P} \in \mathcal{R}^{m,n}\)</p>
-<p>Let’s now assume another matrix, which will be multiplied with matrix \(\mathcal{P}\):</p>
-<p>\(\mathsf{L} \in \mathcal{R}^{n,l}\)</p>
-<p>Computing \(\mathsf{P}\) x \(\mathsf{L}\) in the most straightforward way possible, we perform a number of MACs equal to:</p>
-<p>\(MACs = m \times n \times l\)</p>
-<p>If we manage to reduce the number of rows of \(\mathsf{P}\) -therefore reducing \(m\)-, it’s easy to see how the number of computations is reduced, as the size of the matrix \(\mathsf{P}\) itself.</p>
-<p>In the unstructured case, instead, we did not shrink the dimension of the \(\mathsf{P}\) matrix, but we just made it sparse, by setting some elements to 0. How are we getting a benefit from that?</p>
-<p>That’s the catch: we don’t. If we don’t have the availability of an efficient system for sparsity, we will not get any benefit from having a sparse \(\mathsf{P}\) matrix. This applies to both the computational and memory point of view.</p>
-<p>The topic of efficient systems for sparsity computations is just too vast to be discussed here. Let me know if you are interested in the topic and would like to read a post that delves into it!</p>
-
-
-<h2 class="relative group">Conclusions 
-    <div id="conclusions" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#conclusions" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>In this brief introduction to pruning for efficient neural networks’ inference, we learned about the three key concepts for this methodology: selecting the parameters to prune, the pruning granularity, and the pruning ratio.</p>
-<p>We also saw how much benefit can be obtained by pruning a model, both in terms of computational and memory complexity.</p>
-<p>There’s still much to say about this technique, so the learning doesn’t stop here! I hope this post was a good introduction, and that it conveyed well to you these basic concepts.</p>
+<p>This point-to-point operation, though simple in concept, serves as the fundamental building block from which we construct more sophisticated patterns. Much like how individual nerve fibers combine to form complex neural networks, these basic connections enable us to create what we call basic collective operations—the more advanced communication patterns that power large-scale machine learning systems.</p>
 
           
           
@@ -1297,7 +998,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/pruning-intro/&amp;title=An%20Introduction%20to%20Sparsity%20for%20Efficient%20Neural%20Network%20Inference"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/comms/&amp;title=Comms"
       title="Share on LinkedIn"
       aria-label="Share on LinkedIn"
       >
@@ -1316,7 +1017,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://t.me/share/url?url=http://localhost:1313/posts/pruning-intro/&amp;resubmit=true&amp;title=An%20Introduction%20to%20Sparsity%20for%20Efficient%20Neural%20Network%20Inference"
+      href="https://t.me/share/url?url=http://localhost:1313/posts/comms/&amp;resubmit=true&amp;title=Comms"
       title=""
       aria-label=""
       >
@@ -1335,7 +1036,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://reddit.com/submit/?url=http://localhost:1313/posts/pruning-intro/&amp;resubmit=true&amp;title=An%20Introduction%20to%20Sparsity%20for%20Efficient%20Neural%20Network%20Inference"
+      href="https://reddit.com/submit/?url=http://localhost:1313/posts/comms/&amp;resubmit=true&amp;title=Comms"
       title="Submit to Reddit"
       aria-label="Submit to Reddit"
       >
@@ -1354,7 +1055,7 @@
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="mailto:?body=http://localhost:1313/posts/pruning-intro/&amp;subject=An%20Introduction%20to%20Sparsity%20for%20Efficient%20Neural%20Network%20Inference"
+      href="mailto:?body=http://localhost:1313/posts/comms/&amp;subject=Comms"
       title="Send via email"
       aria-label="Send via email"
       >
@@ -1375,6 +1076,133 @@
         
 
 
+<h2 class="mt-8 text-2xl font-extrabold mb-10">Related</h2>
+<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+  
+  
+
+  <a href="/posts/speed-or-die/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/speed-or-die/">Move Fast or Die Slow</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span title="Reading time">6 mins</span>
+  
+
+  
+  
+</div>
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/strategy/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Strategy
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/business/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Business
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+
+        </div>
+
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+
+  
+</section>
+
   
       </div>
      
@@ -1386,8 +1214,8 @@
           
         
       <script>
-        var oid = "views_posts\/pruning\/index.md"
-        var oid_likes = "likes_posts\/pruning\/index.md"
+        var oid = "views_posts\/communication_operations\/index.md"
+        var oid_likes = "likes_posts\/communication_operations\/index.md"
       </script>
       
       
@@ -1407,7 +1235,7 @@
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/intro_triton/">
+            <a class="flex group mr-3" href="/posts/speed-or-die/">
               <span
                 class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
                 >&larr;</span
@@ -1419,7 +1247,7 @@
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  ></span
+                  >Move Fast or Die Slow</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
@@ -1429,26 +1257,6 @@
           
         </span>
         <span>
-          
-            <a class="flex text-right group ml-3" href="/posts/hello-cuda/">
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Hello CUDA: A Surgical Dissection</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                </span>
-              </span>
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-            </a>
           
         </span>
       </div>

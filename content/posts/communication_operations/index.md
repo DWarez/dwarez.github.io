@@ -35,3 +35,16 @@ Communication presents two major challenges. First, implementing it efficiently 
 This overlap becomes even more vital in Machine Learning, where we transmit massive volumes of data: layers, parameters, checkpoints, optimizer states, and more. Additionally, as we increase the number of GPUs, the communication complexity grows exponentially.
 
 While we'll address the specific hardware involved in this process in a future article, I hope you now appreciate the significance of communications in AI systems, especially when training large-scale models. With this foundation established, let's examine the fundamental operations that make this communication possible.
+
+
+### Point to point
+Let's start with the most basic communication operation: point-to-point. 
+
+This foundational pattern involves one process `s` (sender) transmitting a message to process `r` (receiver). Think of this as the neural synapse of distributed computing—the elemental connection that enables more complex communication patterns.
+
+Point-to-point communication can operate in different modes:
+- Blocking communication: The sender s waits for an acknowledgment from receiver r confirming message receipt. This ensures reliability but creates a waiting period where the sender cannot perform other tasks—similar to how a surgeon might pause during a critical moment, waiting for confirmation before proceeding.
+- Asynchronous communication: The sender dispatches the message and continues with other operations without waiting for confirmation. This enables the crucial overlapping of communication and computation we discussed earlier—allowing one part of the system to "talk" while another part "works."
+- Buffered communication: This variant uses a dedicated memory space (buffer) to store transmitted data, with the receiver acting as a consumer that processes this data when ready. While this approach offers flexibility, it demands additional memory resources for the buffer—like how a surgical team might need extra workspace for temporarily storing instruments or samples.
+
+This point-to-point operation, though simple in concept, serves as the fundamental building block from which we construct more sophisticated patterns. Much like how individual nerve fibers combine to form complex neural networks, these basic connections enable us to create what we call basic collective operations—the more advanced communication patterns that power large-scale machine learning systems.
