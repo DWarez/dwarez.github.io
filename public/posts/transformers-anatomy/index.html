@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>The Transformer&#39;s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning &middot; The ML Surgeon</title>
+  <meta name="title" content="The Transformer&#39;s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning &middot; The ML Surgeon" />
+  
+  <meta name="description" content="The low level side of machine learning." />
+  <meta name="keywords" content="transformers, dl, " />
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/transformers-anatomy/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.7e511937ade47127f0cc4d4943b7cc62b8f7cf37a9c19383694c5760ad479781345dbedf1b713a57a80254844a8966c81cb86298461c8f60c196036e053f9605.css"
+    integrity="sha512-flEZN63kcSfwzE1JQ7fMYrj3zzepwZODaUxXYK1Hl4E0Xb7fG3E6V6gCVIRKiWbIHLhimEYcj2DBlgNuBT&#43;WBQ==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.efbf3b6b987689fffaf2d7b73173d2690c0279a04d444b0537a77d7f4ff6e6d493445400cb0cf56bc0f0f123e19f15394e63cae34e67f069bd013dd5c73df56e.js"
+    integrity="sha512-7787a5h2if/68te3MXPSaQwCeaBNREsFN6d9f0/25tSTRFQAywz1a8Dw8SPhnxU5TmPK405n8Gm9AT3Vxz31bg==" data-copy="" data-copied=""></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/transformers-anatomy/">
+  <meta property="og:site_name" content="The ML Surgeon">
+  <meta property="og:title" content="The Transformer&#39;s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning">
+  <meta property="og:description" content="In the vast landscape of machine learning, few architectures have captured the imagination and transformed the field as profoundly as the Transformer. Like a master anatomist approaching a complex organism, we must carefully dissect each component to understand how this remarkable architecture breathes life into modern AI systems.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-26T00:00:00+00:00">
+    <meta property="article:tag" content="Transformers">
+    <meta property="article:tag" content="Dl">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Transformer&#39;s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning">
+  <meta name="twitter:description" content="In the vast landscape of machine learning, few architectures have captured the imagination and transformed the field as profoundly as the Transformer. Like a master anatomist approaching a complex organism, we must carefully dissect each component to understand how this remarkable architecture breathes life into modern AI systems.">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "The Transformer\u0027s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning",
+    "headline": "The Transformer\u0027s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning",
+    
+    "abstract": "In the vast landscape of machine learning, few architectures have captured the imagination and transformed the field as profoundly as the Transformer. Like a master anatomist approaching a complex organism, we must carefully dissect each component to understand how this remarkable architecture breathes life into modern AI systems.",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/transformers-anatomy\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Dario Salvati"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-05-26T00:00:00\u002b00:00",
+    "datePublished": "2025-05-26T00:00:00\u002b00:00",
+    
+    "dateModified": "2025-05-26T00:00:00\u002b00:00",
+    
+    "keywords": ["transformers","dl"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "3585"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="Dario Salvati" />
+  
+  
+  
+  <link href="https://linkedin.com/in/dwarez" rel="me" />
+  
+  
+  <link href="https://github.com/dwarez" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PEDMYR1V0K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PEDMYR1V0K');
+</script>
+
+
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">The ML Surgeon</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Blog
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="https://linkedin.com/in/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <span >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+
+    </span>
+    
+    <p class="text-base font-medium" title="">
+        
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="https://github.com/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <span >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+    </span>
+    
+    <p class="text-base font-medium" title="">
+        
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 flex items-center">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+                    <div class="flex items-center justify-center dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12 h-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400" style="margin-right:5px">
+                <div class="flex items-center justify-center dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" class="block">
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li id="menu-close-button">
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="https://linkedin.com/in/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <div >
+            
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+
+        </div>
+        
+        <p class="text-bg font-bg" title="">
+            
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="https://github.com/dwarez"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <div >
+            
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+        </div>
+        
+        <p class="text-bg font-bg" title="">
+            
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+ 
+  
+   
+  
+ 
+
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/"
+      >The ML Surgeon</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline ">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/transformers-anatomy/"
+      >The Transformer&#39;s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      The Transformer's Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span title="Reading time">17 mins</span><span class="px-2 text-primary-500">&middot;</span>
+
+
+  
+  
+
+<span class="mb-[2px]">
+  <a
+    href="https://github.com/DWarez/dwarez.github.io/tree/master/content/posts/transformers_anatomy/index.md"
+    class="text-lg hover:text-primary-500"
+    rel="noopener noreferrer"
+    target="_blank"
+    title="Edit content"
+    ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"/></svg>
+  </span>
+
+</span></a
+  >
+</span><span class="px-2 text-primary-500">&middot;</span>
+
+
+<script type="text/javascript" src="/js/zen-mode.min.63c8a202661f4a2063fdc2706685d668e8ea3da613da2224e9da527e5876e4f53dcac39ab60732626fb4151feae5d430d0cf44731e5d3c726522fcc1519c1547.js" integrity="sha512-Y8iiAmYfSiBj/cJwZoXWaOjqPaYT2iIk6dpSflh25PU9ysOatgcyYm&#43;0FR/q5dQw0M9Ecx5dPHJlIvzBUZwVRw=="></script>
+
+<span class="mb-[2px]">
+    <span id="zen-mode-button"
+          class="text-lg hover:text-primary-500"
+          title="Enable zen mode"
+          data-title-i18n-disable="Enable zen mode"
+          data-title-i18n-enable="Disable zen mode">
+        <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+    <path fill="currentColor" d="M 12.980469 4 C 9.1204688 4 5.9804688 7.14 5.9804688 11 L 6 26 L 9.9804688 26 L 9.9804688 11 C 9.9804688 9.35 11.320469 8 12.980469 8 L 40.019531 8 C 41.679531 8 43.019531 9.35 43.019531 11 L 43.019531 39 C 43.019531 40.65 41.679531 42 40.019531 42 L 29 42 C 29 43.54 28.420938 44.94 27.460938 46 L 40.019531 46 C 43.879531 46 47.019531 42.86 47.019531 39 L 47.019531 11 C 47.019531 7.14 43.879531 4 40.019531 4 L 12.980469 4 z M 7 28 C 4.794 28 3 29.794 3 32 L 3 42 C 3 44.206 4.794 46 7 46 L 23 46 C 25.206 46 27 44.206 27 42 L 27 32 C 27 29.794 25.206 28 23 28 L 7 28 z M 7 32 L 23 32 L 23.001953 42 L 7 42 L 7 32 z"/>
+</svg>
+  </span>
+
+</span>
+    </span>
+</span>
+  
+
+  
+  
+</div>
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/transformers/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Transformers
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/dl/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Dl
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+        
+        
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+        
+      
+      <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+      alt="Dario Salvati" src="/img/avatar_hua8380a823b796a50cd31db02c9b786e0_931263_192x192_fill_q75_box_center.jpg" />
+    
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      Dario Salvati
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A surgeon for Machine Learning models.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://linkedin.com/in/dwarez"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/dwarez"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+      
+
+      
+
+      
+      <div class="mb-5"></div>
+      
+
+    
+
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open id="TOCView"
+  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-evolutionary-context-why-transformers-emerged">The Evolutionary Context: Why Transformers Emerged</a></li>
+    <li><a href="#the-skeletal-framework-architecture-overview">The Skeletal Framework: Architecture Overview</a>
+      <ul>
+        <li><a href="#the-positional-encoding-the-transformers-spatial-awareness">The Positional Encoding: The Transformer&rsquo;s Spatial Awareness</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-attention-mechanism-the-heart-of-the-transformer">The Attention Mechanism: The Heart of the Transformer</a>
+      <ul>
+        <li><a href="#the-mathematics-of-attention">The Mathematics of Attention</a></li>
+        <li><a href="#self-attention-the-introspective-mechanism">Self-Attention: The Introspective Mechanism</a></li>
+        <li><a href="#multi-head-self-attention-the-compound-eye">Multi-Head Self-Attention: The Compound Eye</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-feed-forward-network-the-transformers-digestive-system">The Feed-Forward Network: The Transformer&rsquo;s Digestive System</a>
+      <ul>
+        <li><a href="#the-expansion-and-compression-dance">The Expansion and Compression Dance</a></li>
+        <li><a href="#the-memory-bank-of-knowledge">The Memory Bank of Knowledge</a></li>
+      </ul>
+    </li>
+    <li><a href="#layer-normalization-and-residual-connections-the-transformers-circulatory-system">Layer Normalization and Residual Connections: The Transformer&rsquo;s Circulatory System</a>
+      <ul>
+        <li><a href="#residual-connections-the-information-highways">Residual Connections: The Information Highways</a></li>
+        <li><a href="#layer-normalization-the-homeostatic-regulator">Layer Normalization: The Homeostatic Regulator</a>
+          <ul>
+            <li><a href="#the-synergistic-dance-pre-norm-vs-post-norm">The Synergistic Dance: Pre-Norm vs Post-Norm</a></li>
+            <li><a href="#the-gradient-flow-perspective">The Gradient Flow Perspective</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#encoder-decoder-vs-decoder-only-two-evolutionary-paths">Encoder-Decoder vs. Decoder-Only: Two Evolutionary Paths</a>
+      <ul>
+        <li><a href="#the-encoder-decoder-architecture-comprehension-then-generation">The Encoder-Decoder Architecture: Comprehension Then Generation</a></li>
+        <li><a href="#the-decoder-only-revolution-unified-processing">The Decoder-Only Revolution: Unified Processing</a></li>
+      </ul>
+    </li>
+    <li><a href="#autoregressive-inference-the-art-of-sequential-prediction">Autoregressive Inference: The Art of Sequential Prediction</a>
+      <ul>
+        <li><a href="#the-generation-process-a-step-by-step-journey">The Generation Process: A Step-by-Step Journey</a></li>
+        <li><a href="#key-generation-parameters">Key Generation Parameters</a></li>
+        <li><a href="#the-mechanical-reality">The Mechanical Reality</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion-the-computational-body-revealed">Conclusion: The Computational Body Revealed</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-evolutionary-context-why-transformers-emerged">The Evolutionary Context: Why Transformers Emerged</a></li>
+    <li><a href="#the-skeletal-framework-architecture-overview">The Skeletal Framework: Architecture Overview</a>
+      <ul>
+        <li><a href="#the-positional-encoding-the-transformers-spatial-awareness">The Positional Encoding: The Transformer&rsquo;s Spatial Awareness</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-attention-mechanism-the-heart-of-the-transformer">The Attention Mechanism: The Heart of the Transformer</a>
+      <ul>
+        <li><a href="#the-mathematics-of-attention">The Mathematics of Attention</a></li>
+        <li><a href="#self-attention-the-introspective-mechanism">Self-Attention: The Introspective Mechanism</a></li>
+        <li><a href="#multi-head-self-attention-the-compound-eye">Multi-Head Self-Attention: The Compound Eye</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-feed-forward-network-the-transformers-digestive-system">The Feed-Forward Network: The Transformer&rsquo;s Digestive System</a>
+      <ul>
+        <li><a href="#the-expansion-and-compression-dance">The Expansion and Compression Dance</a></li>
+        <li><a href="#the-memory-bank-of-knowledge">The Memory Bank of Knowledge</a></li>
+      </ul>
+    </li>
+    <li><a href="#layer-normalization-and-residual-connections-the-transformers-circulatory-system">Layer Normalization and Residual Connections: The Transformer&rsquo;s Circulatory System</a>
+      <ul>
+        <li><a href="#residual-connections-the-information-highways">Residual Connections: The Information Highways</a></li>
+        <li><a href="#layer-normalization-the-homeostatic-regulator">Layer Normalization: The Homeostatic Regulator</a>
+          <ul>
+            <li><a href="#the-synergistic-dance-pre-norm-vs-post-norm">The Synergistic Dance: Pre-Norm vs Post-Norm</a></li>
+            <li><a href="#the-gradient-flow-perspective">The Gradient Flow Perspective</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#encoder-decoder-vs-decoder-only-two-evolutionary-paths">Encoder-Decoder vs. Decoder-Only: Two Evolutionary Paths</a>
+      <ul>
+        <li><a href="#the-encoder-decoder-architecture-comprehension-then-generation">The Encoder-Decoder Architecture: Comprehension Then Generation</a></li>
+        <li><a href="#the-decoder-only-revolution-unified-processing">The Decoder-Only Revolution: Unified Processing</a></li>
+      </ul>
+    </li>
+    <li><a href="#autoregressive-inference-the-art-of-sequential-prediction">Autoregressive Inference: The Art of Sequential Prediction</a>
+      <ul>
+        <li><a href="#the-generation-process-a-step-by-step-journey">The Generation Process: A Step-by-Step Journey</a></li>
+        <li><a href="#key-generation-parameters">Key Generation Parameters</a></li>
+        <li><a href="#the-mechanical-reality">The Mechanical Reality</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion-the-computational-body-revealed">Conclusion: The Computational Body Revealed</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+<script>
+
+  var margin = 200;
+  var marginError = 50;
+
+  (function () {
+    var $window = $(window);
+    var $toc = $('#TOCView');
+    var tocHeight = $toc.height();
+
+    function onResize() {
+      var windowAndMarginHeight = $window.height() - margin;
+      if(tocHeight >= windowAndMarginHeight) {
+        $toc.css("overflow-y", "scroll")
+        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
+      } else {
+        $toc.css("overflow-y", "hidden")
+        $toc.css("max-height", "9999999px")
+      }
+    }
+
+    $window.on('resize', onResize);
+    $(document).ready(onResize);
+  })();
+
+
+
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = decodeURIComponent(e.attr('id'));
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+          
+            $(e).removeClass('active');
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+        
+        onScroll();
+      });
+    }
+  })();
+
+
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <p>In the vast landscape of machine learning, few architectures have captured the imagination and transformed the field as profoundly as the <strong>Transformer</strong>. Like a master anatomist approaching a complex organism, we must carefully dissect each component to understand how this remarkable architecture breathes life into modern AI systems.</p>
+<p>Since its introduction in the groundbreaking 2017 paper <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf" target="_blank">Attention is All You Need</a>, the Transformer has become the backbone of revolutionary models like GPT, BERT, and countless others that now power everything from chatbots to code generators. What makes this architecture so special isn&rsquo;t just its performance, it&rsquo;s the elegant way it processes information, abandoning the sequential constraints that limited previous models and instead embracing a more holistic, attention-driven approach.</p>
+<p>Grab your scalpel and prepare to explore the intricate organs that compose this revolutionary architecture. Each component plays a vital role, orchestrating a symphony of mathematical transformations that have redefined our understanding of sequence modeling and beyond.</p>
+<p>By the end of our anatomical journey, you&rsquo;ll understand not just what each part does, but why the Transformer&rsquo;s design was such a leap forward in artificial intelligence.</p>
+
+
+<h2 class="relative group">The Evolutionary Context: Why Transformers Emerged 
+    <div id="the-evolutionary-context-why-transformers-emerged" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-evolutionary-context-why-transformers-emerged" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Before cutting it open, let&rsquo;s understand the evolutionary pressures that birthed the Transformer architecture.</p>
+<p>Traditional <strong>recurrent networks</strong> (<a href="https://en.wikipedia.org/wiki/Recurrent_neural_network" target="_blank">RNNs</a>) processed sequences like a reader parsing text word by word, carrying forward a hidden state, a kind of computational memory that accumulated information as it moved through the sequence. But this sequential processing created significant bottlenecks, much like trying to understand a symphony by listening to one note at a time while forgetting the melodies that came before.</p>
+<p>This design imposed harsh limitations: RNNs not only struggled with long sequences due to their inability to maintain coherent long-term dependencies, but they also made training painfully slow and unstable because of the <a href="https://en.wikipedia.org/wiki/Vanishing_gradient_problem" target="_blank">Vanishing Gradient problem</a>. Gradients would either explode or fade to nothing as they propagated backward through time, making it nearly impossible for the network to learn meaningful patterns across extended sequences.</p>
+<p>The Transformer emerged in 2017 with a radical proposition: <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf" target="_blank">Attention is All You Need</a>. This wasn&rsquo;t merely a technical advancement: it represented a philosophical shift in how we conceptualize information processing. Instead of sequential digestion, the Transformer enables parallel comprehension, allowing the model to perceive entire sequences simultaneously and weigh the importance of each element in relation to all others. It&rsquo;s like viewing a painting in its entirety rather than tracing its brushstrokes one by one, capturing both fine details and the broader compositional relationships that give the work its meaning.</p>
+
+
+<h2 class="relative group">The Skeletal Framework: Architecture Overview 
+    <div id="the-skeletal-framework-architecture-overview" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-skeletal-framework-architecture-overview" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/transformers-anatomy/transformers_architecture_hu54566746a9be971e8c9ff32cf3f17aa9_48596_330x0_resize_q75_h2_box_2.webp 330w,
+        /posts/transformers-anatomy/transformers_architecture_hu54566746a9be971e8c9ff32cf3f17aa9_48596_660x0_resize_q75_h2_box_2.webp 660w,
+        /posts/transformers-anatomy/transformers_architecture_hu54566746a9be971e8c9ff32cf3f17aa9_48596_1024x0_resize_q75_h2_box_2.webp 1024w,
+        /posts/transformers-anatomy/transformers_architecture_hu54566746a9be971e8c9ff32cf3f17aa9_48596_1320x0_resize_q75_h2_box_2.webp 2x"
+        src="/posts/transformers-anatomy/transformers_architecture_hu54566746a9be971e8c9ff32cf3f17aa9_48596_660x0_resize_q75_h2_box_2.webp"
+        alt="Transformer&amp;rsquo;s Architecture"
+      />
+      <figcaption>The Transformer&rsquo;s Architecture as defined in the Attention is All You Need paper</figcaption>
+    </figure>
+</p>
+<p>The Transformer&rsquo;s anatomy consists of two primary sections: the <strong>encoder</strong> and the <strong>decoder</strong>. Think of them as the sensory and motor systems of our computational organism: the encoder ingests and comprehends input sequences, while the decoder generates responses based on this understanding.</p>
+<p>The encoder stack processes the input sequence in its entirety, building rich representations that capture both the meaning of individual elements and their relationships to one another. Meanwhile, the decoder stack takes these representations and generates output sequences one token at a time, but with the crucial ability to attend to all previously generated tokens and the full encoded input simultaneously.</p>
+<p>This dual-stack architecture enables the Transformer to excel at sequence-to-sequence tasks like translation, summarization, and question answering. However, it&rsquo;s worth noting that many modern applications use only one half of this system: encoder-only models like BERT for understanding tasks, or decoder-only models like GPT for generation tasks.</p>
+<p>But before any processing begins, we must address a fundamental challenge that seems almost paradoxical: how does a parallel architecture <strong>understand sequence order</strong>? After all, if we&rsquo;re processing everything simultaneously, how does the model know that &ldquo;The cat sat on the mat&rdquo; is different from &ldquo;Mat the on sat cat the&rdquo;? Enter our first vital organ.</p>
+
+
+<h3 class="relative group">The Positional Encoding: The Transformer&rsquo;s Spatial Awareness 
+    <div id="the-positional-encoding-the-transformers-spatial-awareness" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-positional-encoding-the-transformers-spatial-awareness" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/transformers-anatomy/pe_hu1dd4cffed16cb4bef5c4403f3ec463c9_112172_330x0_resize_box_3.png 330w,
+        /posts/transformers-anatomy/pe_hu1dd4cffed16cb4bef5c4403f3ec463c9_112172_660x0_resize_box_3.png 660w,
+        /posts/transformers-anatomy/pe_hu1dd4cffed16cb4bef5c4403f3ec463c9_112172_1024x0_resize_box_3.png 1024w,
+        /posts/transformers-anatomy/pe_hu1dd4cffed16cb4bef5c4403f3ec463c9_112172_1320x0_resize_box_3.png 2x"
+        src="/posts/transformers-anatomy/pe_hu1dd4cffed16cb4bef5c4403f3ec463c9_112172_660x0_resize_box_3.png"
+        alt="Positional Encoding"
+      />
+      <figcaption>Visualization of Positional Encodings. <a href="https://erdem.pl/2021/05/understanding-positional-encoding-in-transformers" target="_blank">Source</a></figcaption>
+    </figure>
+</p>
+<p>Imagine trying to understand a sentence with all words presented simultaneously, but without knowing their order. This is the challenge facing our Transformer: since the architecture processes the entire sequence in parallel, it inherently loses the <strong>spatial information</strong> about where each token sits in the sequence.</p>
+<p>Positional encoding serves as the architecture&rsquo;s <em>proprioceptive</em> system, its sense of where things are in space and time. Without this crucial component, the Transformer would be like a reader with perfect comprehension but no ability to distinguish between &ldquo;The dog bit the man&rdquo; and &ldquo;The man bit the dog.&rdquo;</p>
+<p>The mathematical elegance of positional encoding lies in its use of sinusoidal functions:</p>
+<pre tabindex="0"><code>PE(pos, 2i) = sin(pos / 10000^(2i/d_model))
+PE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))
+</code></pre><p>Where <code>pos</code> is the position in the sequence, <code>i</code> is the dimension index, and <code>d_model</code> is the model&rsquo;s embedding dimension.</p>
+<p>These functions create unique positional fingerprints that the model can learn to interpret. The genius lies in using different frequencies across dimensions, creating a rich positional vocabulary that&rsquo;s both learnable and generalizable. Low frequencies capture broad positional patterns (distinguishing between the beginning, middle, and end of sequences), while high frequencies encode fine-grained distinctions between adjacent positions. This multi-scale approach mirrors how our visual system processes information, using different spatial frequencies to capture both coarse shapes and intricate details.</p>
+<p>The sinusoidal choice isn&rsquo;t arbitrary: it allows the model to potentially extrapolate to sequence lengths longer than those seen during training, since the mathematical relationships between positions remain consistent regardless of absolute sequence length.</p>
+<p>But knowing where each word sits is only half the battle. The real magic happens when the Transformer decides <strong>what to pay attention to</strong>.</p>
+
+
+<h2 class="relative group">The Attention Mechanism: The Heart of the Transformer 
+    <div id="the-attention-mechanism-the-heart-of-the-transformer" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-attention-mechanism-the-heart-of-the-transformer" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/transformers-anatomy/attention_weights_huf0df034e2e546ab2973a7b9126781ce4_96518_330x0_resize_q75_h2_box_2.webp 330w,
+        /posts/transformers-anatomy/attention_weights_huf0df034e2e546ab2973a7b9126781ce4_96518_660x0_resize_q75_h2_box_2.webp 660w,
+        /posts/transformers-anatomy/attention_weights_huf0df034e2e546ab2973a7b9126781ce4_96518_1024x0_resize_q75_h2_box_2.webp 1024w,
+        /posts/transformers-anatomy/attention_weights_huf0df034e2e546ab2973a7b9126781ce4_96518_1320x0_resize_q75_h2_box_2.webp 2x"
+        src="/posts/transformers-anatomy/attention_weights_huf0df034e2e546ab2973a7b9126781ce4_96518_660x0_resize_q75_h2_box_2.webp"
+        alt="Attention Weights"
+      />
+      <figcaption>An example of computed attention weights for a specific sequence. <a href="https://www.kdnuggets.com/how-to-visualize-model-internals-and-attention-in-hugging-face-transformers" target="_blank">Source</a></figcaption>
+    </figure>
+</p>
+<p>If positional encoding provides spatial awareness, attention represents the Transformer&rsquo;s consciousness, its ability to <strong>focus on relevant</strong> information while maintaining awareness of the entire context. This mechanism embodies a profound insight: understanding emerges not from isolated analysis but from the dynamic interplay of relationships between all elements in a sequence.</p>
+<p>Consider how you read this sentence right now. Your brain doesn&rsquo;t process each word in isolation. Instead, it&rsquo;s constantly relating &ldquo;you,&rdquo; &ldquo;read,&rdquo; &ldquo;this,&rdquo; and &ldquo;sentence&rdquo; to build meaning. The Transformer&rsquo;s attention mechanism replicates this cognitive process computationally, allowing every position to simultaneously consider its relationship with every other position.</p>
+
+
+<h3 class="relative group">The Mathematics of Attention 
+    <div id="the-mathematics-of-attention" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-mathematics-of-attention" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>At its core, attention computes a weighted sum of values based on the compatibility between queries and keys:</p>
+<pre tabindex="0"><code>Attention(Q, K, V) = softmax(QK^T / √d_k)V
+</code></pre><p>But this formula, elegant as it is, barely hints at the profound computational process it represents. Let&rsquo;s unpack each component:</p>
+<ul>
+<li><strong>Queries (Q)</strong>: These represent what each position is &ldquo;asking for&rdquo;, the information it needs to better understand its role in the sequence.</li>
+<li><strong>Keys (K)</strong>: These advertise what information each position contains, like labels on filing cabinets announcing their contents.</li>
+<li><strong>Values (V)</strong>: The actual information content to be retrieved and aggregated, like the files inside those cabinets.</li>
+</ul>
+<p>The dot product between queries and keys measures <strong>compatibility</strong>, how relevant each piece of information is to each position&rsquo;s needs. A high dot product means &ldquo;this key answers this query well.&rdquo; The scaling factor (<code>√d_k</code>) prevents the dot products from growing too large in high-dimensional spaces, maintaining stable gradients during training and ensuring the softmax doesn&rsquo;t become too peaked.</p>
+
+
+<h3 class="relative group">Self-Attention: The Introspective Mechanism 
+    <div id="self-attention-the-introspective-mechanism" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#self-attention-the-introspective-mechanism" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Self-attention allows the model to relate different positions within the same sequence. It&rsquo;s literally the sequence paying attention to itself. When processing &ldquo;The cat sat on the mat,&rdquo; self-attention enables &ldquo;sat&rdquo; to simultaneously consider its relationship with &ldquo;cat&rdquo; (the subject performing the action), &ldquo;mat&rdquo; (the location of the action), and every other word in the sentence. This parallel consideration of all relationships creates a rich, contextual understanding that surpasses simple sequential processing.</p>
+
+
+<h3 class="relative group">Multi-Head Self-Attention: The Compound Eye 
+    <div id="multi-head-self-attention-the-compound-eye" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#multi-head-self-attention-the-compound-eye" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/transformers-anatomy/mha_hu6ff394b4a4a019b2902101157dc32e37_106503_330x0_resize_box_3.png 330w,
+        /posts/transformers-anatomy/mha_hu6ff394b4a4a019b2902101157dc32e37_106503_660x0_resize_box_3.png 660w,
+        /posts/transformers-anatomy/mha_hu6ff394b4a4a019b2902101157dc32e37_106503_1024x0_resize_box_3.png 1024w,
+        /posts/transformers-anatomy/mha_hu6ff394b4a4a019b2902101157dc32e37_106503_1320x0_resize_box_3.png 2x"
+        src="/posts/transformers-anatomy/mha_hu6ff394b4a4a019b2902101157dc32e37_106503_660x0_resize_box_3.png"
+        alt="Multi Head Attention"
+      />
+      <figcaption>The Multi Head Attention module as stack of Attention modules</figcaption>
+    </figure>
+</p>
+<p>If single attention is like focusing with one lens, multi-head attention resembles the <strong>compound eye</strong> of an insect: multiple specialized perspectives combining to create a richer, more nuanced representation.</p>
+<p>Each attention head learns to focus on different types of relationships:</p>
+<pre tabindex="0"><code>MultiHead(Q, K, V) = Concat(head_1, ..., head_h)W^O
+</code></pre><p>where <code>head_i = Attention(QW_i^Q, KW_i^K, VW_i^V)</code></p>
+<p>The projection matrices (<code>W^Q</code>, <code>W^K</code>, <code>W^V</code>) allow each head to develop its own &ldquo;viewing angle&rdquo; by transforming the input representations into different subspaces. One head <em>might</em> specialize in syntactic relationships (subject-verb connections), another in semantic associations (related concepts), and yet another in long-range dependencies (pronouns to their antecedents). This specialization emerges naturally through training, without explicit instruction. A beautiful example of self-organization in neural systems.
+The final linear projection <code>W^O</code> combines these diverse perspectives into a unified representation, much like how your brain integrates information from different sensory modalities to create a coherent perception of reality.</p>
+<p>Once the Transformer has identified what information is relevant, it needs to process and transform that information into something useful, much like how your digestive system breaks down food into nutrients your body can actually use.</p>
+
+
+<h2 class="relative group">The Feed-Forward Network: The Transformer&rsquo;s Digestive System 
+    <div id="the-feed-forward-network-the-transformers-digestive-system" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-feed-forward-network-the-transformers-digestive-system" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>While attention mechanisms capture the spotlight in most Transformer discussions, the feed-forward networks (FFNs) quietly perform the <strong>heavy lifting</strong> of information processing.</p>
+<p>These networks, positioned after each attention layer, serve as the Transformer&rsquo;s metabolic engine, taking the relationally-enriched representations from attention and transforming them through nonlinear processing.
+The architecture is deceptively simple:</p>
+<pre tabindex="0"><code>FFN(x) = max(0, xW₁ + b₁)W₂ + b₂
+</code></pre><p>This represents a two-layer neural network with a <code>ReLU</code> activation function sandwiched between them. But don&rsquo;t let the simplicity fool you, this component typically <strong>contains the majority of the Transformer&rsquo;s parameters</strong>, making it the model&rsquo;s primary repository of learned knowledge.</p>
+
+
+<h3 class="relative group">The Expansion and Compression Dance 
+    <div id="the-expansion-and-compression-dance" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-expansion-and-compression-dance" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>The feed-forward network follows a distinctive expand-then-compress pattern.</p>
+<p>The first layer typically <strong>expands</strong> the representation to a much higher dimension (often 4x the model dimension), creating a rich, high-dimensional space where complex transformations can occur. Think of this as breaking down complex ideas into their constituent parts for detailed examination.</p>
+<p>The ReLU activation introduces crucial <strong>nonlinearity</strong>, allowing the network to learn complex, non-trivial transformations. Without this nonlinearity, multiple linear layers would collapse into a single linear transformation, mathematically equivalent but computationally wasteful.</p>
+<p>The second layer then <strong>compresses</strong> this expanded representation back to the original dimension, synthesizing the processed information into a form that can integrate with the rest of the architecture. This expansion-compression cycle resembles how we might explode a complex problem into detailed analysis before synthesizing our findings into actionable insights.</p>
+
+
+<h3 class="relative group">The Memory Bank of Knowledge 
+    <div id="the-memory-bank-of-knowledge" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-memory-bank-of-knowledge" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><a href="https://arxiv.org/abs/2012.14913" target="_blank">Recent research</a> suggests that feed-forward networks function as <strong>associative memories</strong>, storing factual knowledge and retrieving it based on input patterns. When you ask a language model &ldquo;What is the capital of France?&rdquo;, it&rsquo;s likely the feed-forward layers that contain and retrieve the &ldquo;Paris&rdquo; association, triggered by the specific pattern of the query.</p>
+<p>This perspective explains why larger models with more FFN parameters tend to know more facts, they simply have more storage capacity in their associative memory banks.</p>
+<p>Just as a biological organism needs a circulatory system to maintain homeostasis and ensure nutrients reach every cell, the Transformer requires its own stabilizing infrastructure to enable <strong>deep, stable learning</strong>.</p>
+
+
+<h2 class="relative group">Layer Normalization and Residual Connections: The Transformer&rsquo;s Circulatory System 
+    <div id="layer-normalization-and-residual-connections-the-transformers-circulatory-system" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#layer-normalization-and-residual-connections-the-transformers-circulatory-system" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>While attention and feed-forward networks capture most of the spotlight, two seemingly modest components quietly ensure the Transformer&rsquo;s architectural stability: <strong>layer normalization</strong> and <strong>residual connections</strong>. These elements work in concert like a sophisticated circulatory system, maintaining the health of information flow throughout the network&rsquo;s many layers.</p>
+<p>Without these stabilizing mechanisms, training deep Transformers would be nearly impossible. Gradients would vanish or explode, representations would drift to extreme values, and the delicate balance between different components would collapse.</p>
+
+
+<h3 class="relative group">Residual Connections: The Information Highways 
+    <div id="residual-connections-the-information-highways" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#residual-connections-the-information-highways" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Residual connections, borrowed from computer vision&rsquo;s <a href="https://arxiv.org/abs/1512.03385" target="_blank">ResNet architecture</a>, create &ldquo;skip highways&rdquo; that allow information to bypass processing layers entirely. In mathematical terms, instead of simply computing <code>F(x)</code>, each sub-layer computes <code>x + F(x)</code>, where <code>x</code> is the input and <code>F(x)</code> is the transformation performed by that layer.</p>
+<p>This seemingly simple addition has profound implications. It ensures that even if a layer learns to contribute nothing (<code>F(x) = 0</code>), the input can still flow through unchanged. More importantly, during backpropagation, gradients can flow directly back through these skip connections, preventing the vanishing gradient problem that plagued earlier deep architectures.</p>
+<p>Think of residual connections as express lanes on a highway system: while local traffic (the layer transformations) handles detailed processing, the main flow of information can always take the express route when needed.</p>
+
+
+<h3 class="relative group">Layer Normalization: The Homeostatic Regulator 
+    <div id="layer-normalization-the-homeostatic-regulator" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#layer-normalization-the-homeostatic-regulator" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Layer normalization serves as the Transformer&rsquo;s homeostatic mechanism, maintaining <strong>stable activation distributions</strong> across the network. Unlike batch normalization, which normalizes across the batch dimension, layer normalization operates across the feature dimension for each individual example:</p>
+<pre tabindex="0"><code>LayerNorm(x) = γ × (x - μ) / σ + β
+</code></pre><p>Where <code>μ</code> and <code>σ</code> are the mean and standard deviation computed across the feature dimension, while <code>γ</code>  and <code>β</code> are learned scaling and shifting parameters.</p>
+<p>This normalization prevents activation values from growing too large or too small, which could cause training instabilities or push the network into saturated regions where gradients become negligible. By keeping activations in a reasonable range, layer normalization enables the use of higher learning rates and more stable training dynamics.</p>
+
+
+<h4 class="relative group">The Synergistic Dance: Pre-Norm vs Post-Norm 
+    <div id="the-synergistic-dance-pre-norm-vs-post-norm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-synergistic-dance-pre-norm-vs-post-norm" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>The original Transformer placed layer normalization after each sub-layer (post-norm), but many modern implementations use pre-normalization, applying it before each sub-layer. This architectural choice profoundly affects training dynamics:</p>
+<p>Post-Norm Architecture:</p>
+<pre tabindex="0"><code>x + LayerNorm(SubLayer(x))
+</code></pre><p>Pre-Norm Architecture:</p>
+<pre tabindex="0"><code>x + SubLayer(LayerNorm(x))
+</code></pre><p>Pre-norm architectures tend to be more stable during training, as the normalization happens before potentially destabilizing transformations. However, post-norm can lead to better final performance, though it requires more careful tuning. This trade-off exemplifies how seemingly small architectural decisions can have cascading effects throughout the system.</p>
+
+
+<h4 class="relative group">The Gradient Flow Perspective 
+    <div id="the-gradient-flow-perspective" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-gradient-flow-perspective" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>Together, these components create what researchers call &ldquo;gradient superhighways&rdquo;, direct paths for gradient information to flow from the output back to early layers. Without residual connections, gradients would need to pass through every transformation, potentially vanishing to nothing. Without layer normalization, the scale of gradients could vary wildly between layers, making optimization unstable.
+The combination enables the training of models with hundreds of layers, something that would have been impossible with earlier architectures. It&rsquo;s a beautiful example of how engineering solutions inspired by biological systems (homeostasis) and highway design (skip connections) can solve fundamental computational challenges.</p>
+<p>Now that we&rsquo;ve dissected the individual organs, let&rsquo;s see how they work together in the two main architectural configurations that power modern AI.</p>
+
+
+<h2 class="relative group">Encoder-Decoder vs. Decoder-Only: Two Evolutionary Paths 
+    <div id="encoder-decoder-vs-decoder-only-two-evolutionary-paths" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#encoder-decoder-vs-decoder-only-two-evolutionary-paths" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>The original Transformer architecture featured both encoder and decoder stacks working in tandem, but the field has since evolved into two distinct evolutionary branches, each optimized for different computational philosophies and use cases.</p>
+
+
+<h3 class="relative group">The Encoder-Decoder Architecture: Comprehension Then Generation 
+    <div id="the-encoder-decoder-architecture-comprehension-then-generation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-encoder-decoder-architecture-comprehension-then-generation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>The encoder-decoder design embodies a &ldquo;think first, then speak&rdquo; approach to sequence processing. The encoder stack processes the entire input sequence in parallel, building increasingly <strong>sophisticated representations</strong> through its layers. Each encoder layer applies self-attention and feed-forward processing to understand relationships within the input, creating a rich contextual understanding.</p>
+<p>The decoder operates differently, it generates output <strong>autoregressively</strong> while attending to both the encoded input representations (through cross-attention) and its own previously generated tokens (through masked self-attention). This cross-attention mechanism allows the decoder to selectively focus on relevant parts of the input when generating each new token.</p>
+<p>This architecture excels at tasks requiring explicit input-output mapping: machine translation (&ldquo;Translate this German text to English&rdquo;), summarization (&ldquo;Summarize this article&rdquo;), and question answering (&ldquo;Given this passage, answer the question&rdquo;). Models like T5, BART, and early neural machine translation systems exemplify this approach.</p>
+
+
+<h3 class="relative group">The Decoder-Only Revolution: Unified Processing 
+    <div id="the-decoder-only-revolution-unified-processing" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-decoder-only-revolution-unified-processing" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>The decoder-only architecture represents a philosophical shift toward unified, <strong>autoregressive processing</strong>. Instead of separating comprehension and generation phases, these models treat everything (prompts, context, and generated responses) as a continuous sequence to be processed autoregressively.
+This simplification brings <strong>surprising benefits</strong>. GPT-style models demonstrate that the same autoregressive objective that generates text can also learn to <strong>understand</strong>, <strong>reason</strong>, and <strong>follow instructions</strong>. The decoder&rsquo;s masked self-attention ensures that information flows only from previous positions to future ones, maintaining the <strong>causal structure</strong> necessary for language generation while enabling rich contextual understanding.
+Modern large language models like GPT-4 and Claude have proven that decoder-only architectures can achieve remarkable versatility, handling tasks from creative writing to mathematical reasoning to code generation, all through the same autoregressive framework.</p>
+
+
+<h2 class="relative group">Autoregressive Inference: The Art of Sequential Prediction 
+    <div id="autoregressive-inference-the-art-of-sequential-prediction" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#autoregressive-inference-the-art-of-sequential-prediction" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Understanding how modern language models generate text reveals the fascinating dance between mathematical precision and emergent intelligence. Let&rsquo;s trace through exactly what happens when you interact with an instruction-tuned model, keeping in mind that we&rsquo;re simplifying the actual process to illustrate the underlying mechanisms.</p>
+
+
+<h3 class="relative group">The Generation Process: A Step-by-Step Journey 
+    <div id="the-generation-process-a-step-by-step-journey" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-generation-process-a-step-by-step-journey" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Imagine you&rsquo;ve just typed: &ldquo;The weather in Paris today is&rdquo;.</p>
+<p>Imagine you&rsquo;ve asked an instruction-tuned model: &ldquo;Explain why the sky appears blue.&rdquo;
+Here&rsquo;s a simplified version of what unfolds inside the Transformer (note that actual tokenization and processing is more complex, but this illustrates the core principles):</p>
+<p><strong>Step 1: Initial Processing</strong>
+Your question gets tokenized, let&rsquo;s say into tokens representing: [&ldquo;Explain&rdquo;, &ldquo;why&rdquo;, &ldquo;the&rdquo;, &ldquo;sky&rdquo;, &ldquo;appears&rdquo;, &ldquo;blue&rdquo;, &ldquo;.&rdquo;]. Each token receives its embedding and positional encoding. The model also processes this within the context of its instruction-following training, recognizing this as a request for an explanation.</p>
+<p><strong>Step 2: Parallel Context Building</strong>
+All tokens flow through the Transformer&rsquo;s layers <strong>simultaneously</strong>. Attention mechanisms activate: &ldquo;Explain&rdquo; signals that a pedagogical response is needed, &ldquo;sky&rdquo; and &ldquo;blue&rdquo; connect to scientific knowledge about light scattering, and the question structure indicates the model should provide a clear, educational answer rather than simply continue the text.</p>
+<p><strong>Step 3: The First Prediction</strong>
+At the position where generation begins, the model outputs a <strong>probability distribution</strong>. For an instruction-tuned model, this might heavily favor tokens that start explanatory responses: &ldquo;The&rdquo; (0.25), &ldquo;Light&rdquo; (0.15), &ldquo;When&rdquo; (0.12), &ldquo;This&rdquo; (0.08), very different from what a base model trained only on next-token prediction might generate.</p>
+<p><strong>Step 4: Selection and Continuation</strong>
+Let&rsquo;s say &ldquo;The&rdquo; gets selected. <strong>The sequence in the model&rsquo;s context now includes your question plus: &ldquo;The&rdquo;</strong>. The model continues, perhaps selecting &ldquo;sky&rdquo; next, then &ldquo;appears,&rdquo; building toward: &ldquo;The sky appears blue because&hellip;&rdquo;</p>
+<p><strong>Step 5: The Autoregressive Loop</strong>
+Each new token <strong>shifts the context and influences the next prediction</strong>. When the model reaches &ldquo;because,&rdquo; the attention mechanism now focuses heavily on the scientific explanation it needs to provide. The feed-forward networks retrieve knowledge about Rayleigh scattering, wavelength properties, and atmospheric physics.</p>
+
+
+<h3 class="relative group">Key Generation Parameters 
+    <div id="key-generation-parameters" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#key-generation-parameters" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Several crucial parameters control how this anatomical process unfolds during generation. Let&rsquo;s see some of them:</p>
+<p><strong>Temperature (τ)</strong>: Controls the &ldquo;sharpness&rdquo; of the probability distribution by scaling the logits before applying softmax:
+<code>P(token) = softmax(logits, τ)</code>. Temperature ranges from 0 to 1 in most frameworks. Lower temperature (approaching 0) makes the model more confident and deterministic, while higher temperature (approaching 1) increases randomness and creativity. At temperature 0, the model always selects the highest probability token.</p>
+<p><strong>Top-k Filtering</strong>: Restricts sampling to only the <code>k</code> most probable tokens, effectively &ldquo;amputating&rdquo; the long tail of unlikely possibilities and focusing the model&rsquo;s attention mechanism on the most relevant options.</p>
+<p><strong>Top-p Sampling</strong>: Dynamically selects tokens whose cumulative probability mass reaches <code>p</code>, adapting the selection pool based on the model&rsquo;s confidence distribution.</p>
+<p><strong>Maximum Length</strong>: Determines when the autoregressive process terminates, preventing infinite generation loops.</p>
+
+
+<h3 class="relative group">The Mechanical Reality 
+    <div id="the-mechanical-reality" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-mechanical-reality" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>What makes this process remarkable is its mechanical simplicity. Each forward pass is identical: embeddings flow through attention layers, get processed by feed-forward networks, pass through normalization and residual connections, and produce a probability distribution. Yet this repetitive mechanical process, guided by the parameters above (and many more), creates the appearance of reasoning, creativity, and understanding.
+The Transformer&rsquo;s anatomy enables this autoregressive dance: positional encoding maintains sequence awareness, attention mechanisms preserve context relationships, feed-forward networks contribute learned knowledge, and the stabilizing components ensure consistent processing throughout the generation loop.</p>
+
+
+<h2 class="relative group">Conclusion: The Computational Body Revealed 
+    <div id="conclusion-the-computational-body-revealed" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#conclusion-the-computational-body-revealed" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Our anatomical journey through the Transformer has revealed an architecture of remarkable elegance and mechanical precision. Like dissecting a biological organism, we&rsquo;ve traced how each component serves a vital function in the emergence of intelligent behavior.
+The positional encoding provides spatial awareness in a parallel processing world, attention mechanisms create selective focus and relational understanding, feed-forward networks store and retrieve vast knowledge, and layer normalization with residual connections maintain the stability necessary for deep computation. When these components work together through the autoregressive generation process, mathematical operations transform into behavior that appears genuinely intelligent.</p>
+<p>Perhaps the most profound insight from our dissection is how relatively <strong>simple mathematical operations</strong> (matrix multiplications, dot products, nonlinear transformations) can combine through careful architectural design to produce such sophisticated capabilities. The Transformer doesn&rsquo;t think as humans do, but through the orchestrated interaction of its anatomical components, it achieves something functionally remarkable.
+Understanding this anatomy provides the foundation for future innovations. Whether improving attention efficiency, enhancing knowledge storage in feed-forward layers, or developing new normalization techniques, progress requires deep appreciation of how each organ contributes to the computational whole.
+The Transformer has already reshaped our technological landscape, but our anatomical exploration suggests <strong>we&rsquo;ve only begun to understand</strong> what&rsquo;s possible when we truly comprehend the mechanics of artificial intelligence. Like early anatomists whose detailed observations enabled medical breakthroughs, understanding the Transformer&rsquo;s internal structure opens pathways to even more capable architectures.
+In the end, the Transformer stands as a testament to the power of thoughtful design; proof that complex intelligence can emerge from the careful orchestration of simple, well-understood components.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+        
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/transformers-anatomy/&amp;title=The%20Transformer%27s%20Anatomy:%20A%20Deep%20Dive%20into%20the%20Architecture%20that%20Revolutionized%20Machine%20Learning"
+      title="Share on LinkedIn"
+      aria-label="Share on LinkedIn"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://t.me/share/url?url=http://localhost:1313/posts/transformers-anatomy/&amp;resubmit=true&amp;title=The%20Transformer%27s%20Anatomy:%20A%20Deep%20Dive%20into%20the%20Architecture%20that%20Revolutionized%20Machine%20Learning"
+      title=""
+      aria-label=""
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://reddit.com/submit/?url=http://localhost:1313/posts/transformers-anatomy/&amp;resubmit=true&amp;title=The%20Transformer%27s%20Anatomy:%20A%20Deep%20Dive%20into%20the%20Architecture%20that%20Revolutionized%20Machine%20Learning"
+      title="Submit to Reddit"
+      aria-label="Submit to Reddit"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="mailto:?body=http://localhost:1313/posts/transformers-anatomy/&amp;subject=The%20Transformer%27s%20Anatomy:%20A%20Deep%20Dive%20into%20the%20Architecture%20that%20Revolutionized%20Machine%20Learning"
+      title="Send via email"
+      aria-label="Send via email"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+  </section>
+
+
+        
+
+
+<h2 class="mt-8 text-2xl font-extrabold mb-10">Related</h2>
+<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+  
+  
+
+  <a href="/posts/speed-or-die/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/speed-or-die/">Move Fast or Die Slow</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span title="Reading time">6 mins</span>
+  
+
+  
+  
+</div>
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/strategy/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Strategy
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/business/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Business
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+
+        </div>
+
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+
+  
+</section>
+
+  
+      </div>
+     
+      
+      
+        
+        
+          
+          
+        
+      <script>
+        var oid = "views_posts\/transformers_anatomy\/index.md"
+        var oid_likes = "likes_posts\/transformers_anatomy\/index.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/speed-or-die/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Move Fast or Die Slow</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/authors/"
+            title="">
+            
+            Authors
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2025
+      Dario Salvati
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="http://localhost:1313/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>
