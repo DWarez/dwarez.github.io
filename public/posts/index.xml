@@ -7,25 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2025 Dario Salvati</copyright>
-    <lastBuildDate>Sat, 01 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Transformer&#39;s Anatomy: A Deep Dive into the Architecture that Revolutionized Machine Learning</title>
+      <link>http://localhost:1313/posts/transformers-anatomy/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/transformers-anatomy/</guid>
+      <description>In the vast landscape of machine learning, few architectures have captured the imagination and transformed the field as profoundly as the Transformer. Like a master anatomist approaching a complex organism, we must carefully dissect each component to understand how this remarkable architecture breathes life into modern AI systems.</description>
+      
+    </item>
+    
     <item>
       <title>Move Fast or Die Slow</title>
       <link>http://localhost:1313/posts/speed-or-die/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/speed-or-die/</guid>
-      <description>This will not be an hyper-technical article like the ones I use to write. Therefore, if you only care about tech and code, feel free to skip.
-Start from abstraction (having a better model [how to define better?</description>
-      
-    </item>
-    
-    <item>
-      <title>Learn Triton the Right Way</title>
-      <link>http://localhost:1313/posts/learn-triton/</link>
-      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/posts/learn-triton/</guid>
-      <description></description>
+      <description>Today&amp;rsquo;s article steps back from our usual technical deep-dives to examine the strategic importance of ML optimization. While we&amp;rsquo;ll touch on engineering concepts, we&amp;rsquo;ll focus more on their business impact.</description>
       
     </item>
     
