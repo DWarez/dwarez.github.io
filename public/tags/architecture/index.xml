@@ -8,13 +8,14 @@
     <language>en</language>
     <copyright>© 2025 Dario Salvati</copyright>
     <lastBuildDate>Fri, 14 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>Cerebral Cortex and Hippocampus: Understanding the Computational and Memory Design of GPUs</title>
       <link>http://localhost:1313/posts/cpu-gpu-architecture/</link>
       <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/cpu-gpu-architecture/</guid>
-      <description>Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it&amp;rsquo;s crucial to understand how GPUs function.</description>
+      <description>&lt;p&gt;Would you operate on a human body without knowing its organs? Similarly, how can you effectively write a GPU kernel without understanding the underlying hardware? This is why it&amp;rsquo;s crucial to understand how GPUs function. Knowing the philosophy behind their architectural design, the problems they aim to solve, and the reasons for their specific construction is essential for leveraging their full potential.&lt;/p&gt;</description>
       
     </item>
     
