@@ -15,7 +15,7 @@
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/matrix-multiplication/</guid>
-      <description>&lt;p&gt;During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.&lt;/p&gt;</description>
+      <description>During the first year of my Master&amp;rsquo;s Degree in Computer Science, I had to complete a project for a Machine Learning course. It involved implementing a small feed-forward neural network framework from scratch, using only numerical libraries and coding elements such as loss functions, backpropagation, and the feed-forward step.</description>
       
     </item>
     
