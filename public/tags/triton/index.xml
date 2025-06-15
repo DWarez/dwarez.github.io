@@ -7,14 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2025 Dario Salvati</copyright>
-    <lastBuildDate>Sat, 28 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/triton/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/triton/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
-      <title>Learn Triton the Right Way</title>
-      <link>http://localhost:1313/posts/learn-triton/</link>
-      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      <title>Intro to Triton</title>
+      <link>http://localhost:1313/posts/intro-triton/</link>
+      <pubDate>Sat, 14 Jun 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/learn-triton/</guid>
-      <description></description>
+      <guid>http://localhost:1313/posts/intro-triton/</guid>
+      <description>We all know that GPU programming is hard. There are many layers of complexity that make writing a kernel difficult: thinking in a parallel way (which goes against our natural sequential thinking), understanding the math behind a certain operation, keeping track of data movement, memory hierarchies, occupancy, concurrency, boundaries, and much more.</description>
       
     </item>
     

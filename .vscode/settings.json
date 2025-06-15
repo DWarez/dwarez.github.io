@@ -4,7 +4,11 @@
         "Autoregressive",
         "autoregressively",
         "chatbots",
+        "CUDA",
         "dequantizing",
-        "softmax"
+        "Leetcode",
+        "leetgpu",
+        "softmax",
+        "Tinygrad"
     ]
 }

@@ -15,7 +15,7 @@
       <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/quantization/</guid>
-      <description>&lt;p&gt;As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption. For example, &lt;strong&gt;string theory&lt;/strong&gt; posits that the universe&amp;rsquo;s fundamental components are tiny, vibrating strings, where different vibrations define different particles. Similarly, &lt;strong&gt;loop quantum gravity&lt;/strong&gt; suggests that space itself is made up of discrete &amp;ldquo;grains,&amp;rdquo; implying that reality might not be as continuous as it appears.&lt;/p&gt;</description>
+      <description>As humans, we perceive space and time as a seamless, continuous flow. This perception leads us to believe that continuity—and perhaps even infinity—is a fundamental aspect of nature. However, some scientific theories challenge this assumption.</description>
       
     </item>
     
@@ -25,9 +25,8 @@
       <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/pruning-intro/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;NOTE:&lt;/em&gt;&lt;/strong&gt;  This post was written before the Machine Learning Surgeon got in charge of the blog, that&amp;rsquo;s why there are no references to surgical operations!&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Large Language Model&lt;/strong&gt;. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.&lt;/p&gt;</description>
+      <description>NOTE: This post was written before the Machine Learning Surgeon got in charge of the blog, that&amp;rsquo;s why there are no references to surgical operations!
+Large Language Model. How many times did you read that term?</description>
       
     </item>
     

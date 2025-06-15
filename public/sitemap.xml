@@ -3,25 +3,49 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>http://localhost:1313/tags/dl/</loc>
-    <lastmod>2025-05-26T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/basics/</loc>
+    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tags/gpu-programming/</loc>
+    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/intro-triton/</loc>
+    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-05-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-05-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tags/triton/</loc>
+    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tags/dl/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
@@ -195,18 +219,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:1313/tags/basics/</loc>
-    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://localhost:1313/tags/gpu-programming/</loc>
-    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://localhost:1313/posts/hello-cuda/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
@@ -221,11 +233,6 @@
   <url>
     <loc>http://localhost:1313/tags/pruning/</loc>
     <lastmod>2024-05-05T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/intro_triton/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>

@@ -26,8 +26,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.5a22c02f652c059fb591ca9b98ce644b93828aaf3b59b8aba7547920d2fbb522ad160a339e241cdacbc5919583541aa8e93c346b97f21e1b15c8426f916128f6.css"
-    integrity="sha512-WiLAL2UsBZ&#43;1kcqbmM5kS5OCiq87Wbirp1R5INL7tSKtFgozniQc2svFkZWDVBqo6Tw0a5fyHhsVyEJvkWEo9g==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.1c891cb8a3db6f75c0bff8208ddf1f213ab560cefaadbd26ec290b2abc02662036293c281fdd13503813ecd4374368b19f7f3f772f11ad86f1f4305009704876.css"
+    integrity="sha512-HIkcuKPbb3XAv/ggjd8fITq1YM76rb0m7CkLKrwCZiA2KTwoH90TUDgT7NQ3Q2ixn38/dy8RrYbx9DBQCXBIdg==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -46,8 +46,8 @@
   
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.f7e04724dda02f8ffdc6b4507869a4010cd1ae9151a97168d5fd3112b9825c5c6ac376f7d11b0bc353a66d91d614f06e749efb7e56da4ee6fa0c900ed45c85f7.js"
-    integrity="sha512-9&#43;BHJN2gL4/9xrRQeGmkAQzRrpFRqXFo1f0xErmCXFxqw3b30RsLw1OmbZHWFPBudJ77flbaTub6DJAO1FyF9w==" data-copy="Copy" data-copied="Copied"></script>
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.f27dd6679de5d623566dd9710566c4646d18aea2a6771e0d7e261f8f9dc5653ab591e92e278f03512e0d3eb39c2afd23ffa9e120f79fe6a59fe7f506694ad301.js"
+    integrity="sha512-8n3WZ53l1iNWbdlxBWbEZG0YrqKmdx4NfiYfj53FZTq1kekuJ48DUS4NPrOcKv0j/6nhIPef5qWf5/UGaUrTAQ==" data-copy="Copy" data-copied="Copied"></script>
   
   
   
@@ -67,23 +67,16 @@
   
   
   
-  <meta property="og:url" content="http://localhost:1313/posts/pruning-intro/">
-  <meta property="og:site_name" content="The ML Surgeon">
-  <meta property="og:title" content="An Introduction to Sparsity for Efficient Neural Network Inference">
-  <meta property="og:description" content="Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-05-05T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-05-05T00:00:00+00:00">
-    <meta property="article:tag" content="Pruning">
-    <meta property="article:tag" content="Optimization">
-    <meta property="article:tag" content="Inference">
+  <meta property="og:title" content="An Introduction to Sparsity for Efficient Neural Network Inference" />
+<meta property="og:description" content="Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/pruning-intro/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-05T00:00:00+00:00" />
 
-  
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="An Introduction to Sparsity for Efficient Neural Network Inference">
-  <meta name="twitter:description" content="Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference.">
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="An Introduction to Sparsity for Efficient Neural Network Inference"/>
+<meta name="twitter:description" content="Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference."/>
 
     
   
@@ -96,7 +89,7 @@
     "name": "An Introduction to Sparsity for Efficient Neural Network Inference",
     "headline": "An Introduction to Sparsity for Efficient Neural Network Inference",
     "description": "Sparsity is a solution to reduce the number of parameters and number of operations in Neural Networks, granting outstanding computational speedups and memory savings during inference.",
-    "abstract": "\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003e\u003cem\u003eNOTE:\u003c\/em\u003e\u003c\/strong\u003e  This post was written before the Machine Learning Surgeon got in charge of the blog, that\u0026rsquo;s why there are no references to surgical operations!\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e\u003cstrong\u003eLarge Language Model\u003c\/strong\u003e. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.\u003c\/p\u003e",
+    "abstract": "NOTE: This post was written before the Machine Learning Surgeon got in charge of the blog, that\u0026rsquo;s why there are no references to surgical operations!\nLarge Language Model. How many times did you read that term?",
     "inLanguage": "en",
     "url" : "http:\/\/localhost:1313\/posts\/pruning-intro\/",
     "author" : {
@@ -345,7 +338,7 @@
             
   <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
     
-    <p class="text-base font-medium" title="Posts">
+    <p class="text-base font-medium" title="">
         Blog
     </p>
 </a>
@@ -533,7 +526,7 @@
   <li class="mt-1">
     <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
         
-        <p class="text-bg font-bg" title="Posts">
+        <p class="text-bg font-bg" title="">
             Blog
         </p>
     </a>
@@ -656,7 +649,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/gpu_power_hu_57149ed645ba7af8.jpg);">
+    style="background-image:url(/img/gpu_power_hu0df537f92ed19eed6f5f1bc2d4f0f273_645617_1200x0_resize_q75_box.jpg);">
     
 
 
@@ -905,7 +898,7 @@
         
       
       <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
-      alt="Dario Salvati" src="/img/avatar_hu_20729d8348a32780.jpg" />
+      alt="Dario Salvati" src="/img/avatar_hua8380a823b796a50cd31db02c9b786e0_931263_192x192_fill_q75_box_center.jpg" />
     
   
   <div class="place-self-center">
@@ -1075,7 +1068,8 @@
 
         <div class="article-content max-w-prose mb-20">
           <blockquote>
-<p><strong><em>NOTE:</em></strong>  This post was written before the Machine Learning Surgeon got in charge of the blog, that&rsquo;s why there are no references to surgical operations!</p></blockquote>
+<p><strong><em>NOTE:</em></strong>  This post was written before the Machine Learning Surgeon got in charge of the blog, that&rsquo;s why there are no references to surgical operations!</p>
+</blockquote>
 <p><strong>Large Language Model</strong>. How many times did you read that term? Nowadays, the popularity of Artificial Intelligence is to be attributed to the exceptional results obtained, in the past few years, by applications that leverage large models. Surely, you know the most popular one, ChatGPT, made by OpenAI.</p>
 <p>When I first started learning about neural networks -about 5 years ago-, one of the key questions I had was if it would be possible to know, a priori, the minimum number of parameters that a network must implement to achieve a certain metric value when solving a specific problem. Unfortunately, as far as I know, there is no such theorem. Surely, we know about convergence theorems -like the <a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem" target="_blank">Universal Approximation Theorem</a>-, but nothing tells us the optimal number of parameters, given an architecture and a problem to solve.</p>
 <p>A very interesting methodology is the Cascade Correlation, which is a constructive approach for obtaining a network that solves a specific problem. However, this methodology is impractical in modern times: the size of neural networks is just too big, especially when talking about LLMs, which typically span from 7 to 70 billion parameters.</p>
@@ -1111,9 +1105,9 @@
       <img
     class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Nvidia Blog"
     srcset="
-      /posts/pruning-intro/nvidia_blog_hu_cfe7783d14118974.webp 330w,
-      /posts/pruning-intro/nvidia_blog_hu_3695b7a9800daa1f.webp 660w,
-      /posts/pruning-intro/nvidia_blog_hu_107b765c51a5781.webp 1280w"
+      /posts/pruning-intro/nvidia_blog_huf904576e72f570f74ce0b3610b7e3771_18620_330x0_resize_q75_h2_box_2.webp 330w,
+      /posts/pruning-intro/nvidia_blog_huf904576e72f570f74ce0b3610b7e3771_18620_660x0_resize_q75_h2_box_2.webp 660w,
+      /posts/pruning-intro/nvidia_blog_huf904576e72f570f74ce0b3610b7e3771_18620_1280x0_resize_q75_h2_box_2.webp 1280w"
     data-zoom-src="/posts/pruning-intro/nvidia_blog.webp"
     src="/posts/pruning-intro/nvidia_blog.webp"
   />
@@ -1176,9 +1170,9 @@
       <img
     class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Efficientml"
     srcset="
-      /posts/pruning-intro/efficientml_hu_c47283dfa8e3eb1c.png 330w,
-      /posts/pruning-intro/efficientml_hu_e1927c23ad111ec7.png 660w,
-      /posts/pruning-intro/efficientml_hu_62f196f89f0657aa.png 1280w"
+      /posts/pruning-intro/efficientml_hu0da4d2a559bc9271648747f17af2734b_27332_330x0_resize_box_3.png 330w,
+      /posts/pruning-intro/efficientml_hu0da4d2a559bc9271648747f17af2734b_27332_660x0_resize_box_3.png 660w,
+      /posts/pruning-intro/efficientml_hu0da4d2a559bc9271648747f17af2734b_27332_1280x0_resize_box_3.png 1280w"
     data-zoom-src="/posts/pruning-intro/efficientml.png"
     src="/posts/pruning-intro/efficientml.png"
   />
@@ -1227,9 +1221,9 @@
       <img
     class="my-0 rounded-md" loading="lazy" decoding="async" fetchpriority="low" alt="Pruning effective"
     srcset="
-      /posts/pruning-intro/pruning_effective_hu_3af9fc34ca132dcf.jpg 330w,
-      /posts/pruning-intro/pruning_effective_hu_92a5b99e7409042d.jpg 660w,
-      /posts/pruning-intro/pruning_effective_hu_a119c4431f95dc0b.jpg 1280w"
+      /posts/pruning-intro/pruning_effective_hu9ae4b25781e86cfd207d7d09342fd35c_27959_330x0_resize_q75_box.jpg 330w,
+      /posts/pruning-intro/pruning_effective_hu9ae4b25781e86cfd207d7d09342fd35c_27959_660x0_resize_q75_box.jpg 660w,
+      /posts/pruning-intro/pruning_effective_hu9ae4b25781e86cfd207d7d09342fd35c_27959_1280x0_resize_q75_box.jpg 1280w"
     data-zoom-src="/posts/pruning-intro/pruning_effective.jpg"
     src="/posts/pruning-intro/pruning_effective.jpg"
   />
@@ -1384,7 +1378,7 @@
       </script>
       
       
-      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      <script type="text/javascript" src="/js/page.min.b06a29d42a4ed16787978e2eee1e8c797b7698db2bc14ccee78f5c80ac566fc996190a73ad80a5e987558474b20b96fa38f7d85b405f165ff72b7b163c5ad11b.js" integrity="sha512-sGop1CpO0WeHl44u7h6MeXt2mNsrwUzO549cgKxWb8mWGQpzrYCl6YdVhHSyC5b6OPfYW0BfFl/3K3sWPFrRGw=="></script>
       
   
     </section>
@@ -1399,26 +1393,6 @@
       <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
       <div class="flex justify-between pt-3">
         <span>
-          
-            <a class="flex group mr-3" href="/posts/intro_triton/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  ></span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                </span>
-              </span>
-            </a>
           
         </span>
         <span>
@@ -1469,7 +1443,7 @@
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
-            title="Tags">
+            title="">
             
             Tags
           </a>
@@ -1477,7 +1451,7 @@
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/authors/"
-            title="Authors">
+            title="">
             
             Authors
           </a>
@@ -1521,7 +1495,7 @@
   </script>
   
   
-  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
   
   
   <a rel="me" href="https://masto.ai/@blowfish"></a>
